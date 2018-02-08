@@ -1,0 +1,35 @@
+import React from 'react'
+import {
+    BrowserRouter as Router,
+    Route, 
+    Link
+} from 'react-router-dom'
+
+import Home from './home'
+import DeckBuilder from './deck-builder'
+import ChooseClass from'./choose-class'
+import Signup from './signup'
+
+const DeckBuilderRoute = () => {
+    return (
+        <div>
+            <DeckBuilder />
+        </div>
+    )
+}
+
+const App = () => {
+    return (
+        
+        <Router>
+            <div>
+                <Route exact path='/' component={ChooseClass} />
+                <Route exact path='/search' component={Home} />
+                <Route exact path='/build/:class' component={DeckBuilder} />
+                <Route exact path='/signup' component={Signup} />
+            </div>
+        </Router>
+    )
+}
+
+export default App;
