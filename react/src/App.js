@@ -11,6 +11,7 @@ import ChooseClass from'./choose-class'
 import Signup from './signup'
 import Profile from './profile'
 import Login from './login'
+import Logout from './logout'
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/logout' component={Logout} />                
             </div>
         </Router>
     )

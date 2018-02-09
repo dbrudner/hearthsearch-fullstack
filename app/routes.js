@@ -38,11 +38,10 @@ module.exports = function(app, passport) {
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
     });
 
     app.get('/test', function(req, res) {
-        res.json(req.isAuthenticated())
+        res.json(req.user)
     })
 
     // process the signup form
