@@ -6,6 +6,7 @@ import DeckHeader from './deck-builder-header'
 import DeckManaChart from './deck-builder-mana-chart'
 import DeckDust from './deck-builder-dust'
 import DeckCardsLeft from './deck-builder-cards-left'
+import Submit from './deck-builder-submit'
 
 export default class Deck extends Component {
 
@@ -66,6 +67,7 @@ export default class Deck extends Component {
         return (
             <div>
                 <DeckManaChart deck={this.state.deck} />
+                <Submit cards={this.state.deck} name='name' archetype='archetype' cost={1200} />
                 <DeckDust deck={this.state.deck} />
                 <DeckCardsLeft deck={this.state.deck} />
                 <ul className='list-group deck-list'>

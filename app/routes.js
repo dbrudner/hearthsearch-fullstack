@@ -1,7 +1,9 @@
 // app/routes.js
 var path = require('path')
 var mongoose = require('mongoose');
-var db = require('./models/index')
+var db = require('./models/index');
+var bodyParser = require('body-parser')
+
 
 
 function Deck(name, cards, archetype, user, cost) {
@@ -42,7 +44,13 @@ module.exports = function(app, passport) {
     });
 
     app.post('/newdeck', function(req, res) {
-        db.Deck.create(new Deck(req.params.name, req.params.cards, req.params.archetype, req.params.user, req.params.cost))
+        db.Deck.create({
+            name: req.body.name,
+            archetype: req.body.archetype,
+            cost: req.body.cost,
+            cards: req.body.cards,
+            cost: 1200
+        })
     })
 
     app.get('*', (req, res) => {
