@@ -47,7 +47,7 @@ export default class SignUp extends Component {
         console.log(email)
         console.log(password)
 
-        axios.post('/login', {
+        axios.post('/notarealroute', {
             email, password
           })
           .then(function (response) {
