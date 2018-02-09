@@ -42,9 +42,7 @@ module.exports = function(app, passport) {
         req.logout();
     });
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'/react/build/index.html'));
-      });
+    
       
 
     app.get('/test', function(req, res) {
@@ -59,6 +57,10 @@ module.exports = function(app, passport) {
     app.post('/login', passport.authenticate('local-login', {
         failureFlash : true // allow flash messages
     }));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/react/build/index.html'));
+      });
 };
 
 
