@@ -15,7 +15,6 @@ export default function Submit(props) {
             cost: 1200
             })
             .then(response => {
-                console.log('sent?')
             }) 
     }
     
