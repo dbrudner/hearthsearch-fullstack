@@ -13,7 +13,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-var cors = require('cors')
+var path = require('path')
 // configuration ===============================================================
 
 var developmentUrl = "mongodb://localhost/hearthsearch"
@@ -24,6 +24,8 @@ if (process.env.MONGODB_URI) {
     mongoose.connect(developmentUrl)
 }
 
+app.use(express.static(path.join(__dirname, 'react/src')));
+
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
@@ -33,7 +35,6 @@ app.use(bodyParser()); // get information from html forms
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
-app.use(cors())
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(passport.initialize());
