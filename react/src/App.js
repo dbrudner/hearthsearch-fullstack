@@ -9,14 +9,9 @@ import Home from './home'
 import DeckBuilder from './deck-builder'
 import ChooseClass from'./choose-class'
 import Signup from './signup'
+import Profile from './profile'
+import Login from './login'
 
-const DeckBuilderRoute = () => {
-    return (
-        <div>
-            <DeckBuilder />
-        </div>
-    )
-}
 
 const App = () => {
     return (
@@ -27,6 +22,8 @@ const App = () => {
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
                 <Route exact path='/signup' component={Signup} />
+                <Route exact path='/profile' component={Profile} />
+                <Route exact path='/login' component={Login} />
             </div>
         </Router>
     )

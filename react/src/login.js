@@ -13,17 +13,17 @@ export default class SignUp extends Component {
             password: ''
         }
 
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        // this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);                
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleUsernameChange(event) {
-        this.setState({
-            username: event.target.value
-        })
-    }
+    // handleUsernameChange(event) {
+    //     this.setState({
+    //         username: event.target.value
+    //     })
+    // }
 
     handlePasswordChange(event) {
         this.setState({
@@ -40,11 +40,15 @@ export default class SignUp extends Component {
     handleSubmit(event) {
         console.log("HI")
         event.preventDefault();
-        let username = this.state.username
         let email = this.state.email
         let password = this.state.password
-        axios.post('/signup', {
-            email, username, password
+
+
+        console.log(email)
+        console.log(password)
+
+        axios.post('/login', {
+            email, password
           })
           .then(function (response) {
             console.log(response);
@@ -60,15 +64,9 @@ export default class SignUp extends Component {
                 <Nav />
                 <div className="jumbotron">
                     <div class='signup-container text-center'>
-                        <h1 className="display-3">Sign up!</h1>
+                        <h1 className="display-3">Log in!</h1>
                         <p className="lead">I stole this shit from bootstrap.</p>
                         <form onSubmit={this.handleSubmit}>
-                            <div>
-                                <label>
-                                Username:
-                                <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                                </label>
-                            </div>
                             <div>
                                 <label>
                                 Email:
