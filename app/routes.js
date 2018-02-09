@@ -33,8 +33,10 @@ module.exports = function(app, passport) {
     // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get('/logout', function(req, res) {
-        req.logout();
+    app.get('/profile/logout', function(req, res) {
+        req.session.destroy(function (err) {
+            console.log("Success?")
+          });
     });
 
     
@@ -53,9 +55,9 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'/react/build/index.html'));
-      });
+    // app.get('*', (req, res) => {
+    //     res.sendFile(path.join(__dirname+'/react/build/index.html'));
+    //   });
 };
 
 

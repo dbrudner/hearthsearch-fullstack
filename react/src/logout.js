@@ -2,9 +2,9 @@ import React from 'react'
 import axios from 'axios'
 
 export default function Logout(props) {
-    
-    axios.get('/logout')
+    axios.get('/profile/logout')
         .then((response) => {
+        console.log("HI")            
             console.log(response)
         })
 
