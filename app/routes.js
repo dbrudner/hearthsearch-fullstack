@@ -55,9 +55,9 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // app.get('*', (req, res) => {
-    //     res.sendFile(path.join(__dirname+'/react/build/index.html'));
-    //   });
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/react/build/index.html'));
+      });
 };
 
 
