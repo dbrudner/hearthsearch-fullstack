@@ -175,7 +175,7 @@ class Home extends Component {
 		
 			<Banner />
 			<div className='row'>
-					<div className='col-xs-3'>
+					<div className='col-md-1 col-xs-12'>
 					{this.state.filterOn ? 
 						<Filters 
 							getHero={this.getHero} 
@@ -198,7 +198,7 @@ class Home extends Component {
 						/> : 
 						<div />}
 					</div>
-				<div className='col-xs-9'>
+				<div className='col-md-11 col-xs-12'>
 					<Searchbar onSearch={cardSearch}/>
 					
 					<CardList 

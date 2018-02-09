@@ -180,7 +180,7 @@ class App extends Component {
 			<Banner />
 			<div>{this.props.match.params.class}</div>
 			<div className='row'>
-					<div className='col-xs-3'>
+					<div className='col-lg-1 col-md-2 col-xs-12'>
 					{this.state.filterOn ? 
 						<Filters 
 							getHero={this.getHero} 
@@ -204,34 +204,34 @@ class App extends Component {
 						/> : 
 						<div />}
 					</div>
-				<div className='col-xs-8'>
+				<div className='col-lg-10 col-md-9 col-xs-12'>
 					<Searchbar onSearch={cardSearch}/>
 					
 					<CardList 
-					cards={this.state.cards} 
-					term={this.state.term} 
-					hero={this.state.hero}
-					type={this.state.type}
-					rarity={this.state.rarity}
-					cardSet={this.state.cardSet}
-					mana={this.state.mana}
-					attack={this.state.attack}
-					health={this.state.health}
-					minMana={this.state.minMana}
-					maxMana={this.state.maxMana}
-					minHealth={this.state.minHealth}
-					maxHealth={this.state.maxHealth}
-					minAttack={this.state.minAttack}
-					maxAttack={this.state.maxAttack}
-					gameFormat={this.state.gameFormat}
-					ability={this.state.ability}
-					ability2={this.state.ability2}
-					tribe={this.state.tribe}
-					getCard = {this.getCard}
-					class={this.props.match.params.class}        
+						cards={this.state.cards} 
+						term={this.state.term} 
+						hero={this.state.hero}
+						type={this.state.type}
+						rarity={this.state.rarity}
+						cardSet={this.state.cardSet}
+						mana={this.state.mana}
+						attack={this.state.attack}
+						health={this.state.health}
+						minMana={this.state.minMana}
+						maxMana={this.state.maxMana}
+						minHealth={this.state.minHealth}
+						maxHealth={this.state.maxHealth}
+						minAttack={this.state.minAttack}
+						maxAttack={this.state.maxAttack}
+						gameFormat={this.state.gameFormat}
+						ability={this.state.ability}
+						ability2={this.state.ability2}
+						tribe={this.state.tribe}
+						getCard = {this.getCard}
+						class={this.props.match.params.class}        
 					/>
 				</div>
-				<div className='col-xs-1'>
+				<div className='col-lg-1 col-md-1 col-xs-12'>
 					<div className=''>
 						<DeckBuilderList card={this.state.card}/>
 					</div>

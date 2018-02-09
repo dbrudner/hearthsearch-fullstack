@@ -19,13 +19,14 @@ const App = () => {
         
         <Router>
             <div>
-                <Route exact path='/' component={ChooseClass} />
+                <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/logout' component={Logout} />                
+                <Route exact path='/logout' component={Logout} />
+                <Route exact path='/build' component={ChooseClass} />                                              
             </div>
         </Router>
     )
