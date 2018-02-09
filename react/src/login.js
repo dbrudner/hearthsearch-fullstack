@@ -51,7 +51,6 @@ export default class SignUp extends Component {
             email, password
           })
           .then(function (response) {
-            console.log(response);
           })
           .catch(function (error) {
             console.log(error);
