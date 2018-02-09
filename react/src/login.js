@@ -53,16 +53,16 @@ export default class SignUp extends Component {
         axios.post('/login', {
             email, password
           })
-          .then(function (response) {
-              
+          .then((response) => {
+            this.setState({
+                redirectTo: '/'
+            })
           })
           .catch(function (error) {
             console.log(error);
           });
 
-        this.setState({
-            redirectTo: '/'
-        })
+        
     }
 
     render() {

@@ -36,7 +36,7 @@ export default class Profile extends React.Component {
         } else {
             return (
                 <div>
-                    {/* <Signup /> */}
+                    <Signup />
                 </div>
             )
         }

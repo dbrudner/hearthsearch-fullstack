@@ -48,21 +48,23 @@ export default class SignUp extends Component {
         let username = this.state.username
         let email = this.state.email
         let password = this.state.password
+
         axios.post('/signup', {
             email, username, password
           })
-          .then(function (response) {
+          .then(response => {
             console.log(response);
+            this.setState(() => {
+                return ({
+                    redirectTo: '/'
+                })
+            })
           })
           .catch(function (error) {
             console.log(error);
           });
 
-        this.setState(() => {
-            return ({
-                redirectTo: '/'
-            })
-        })
+        
     }
 
     componentWillMount() {
@@ -129,7 +131,5 @@ export default class SignUp extends Component {
                 </div>
             )
         }
-
-       
     }
 }
