@@ -1,38 +1,25 @@
 // app/routes.js
 var path = require('path')
+var mongoose = require('mongoose');
+var db = require('./models/index')
+
+
+function Deck(name, cards, archetype, user, cost) {
+    this.name = name
+    this.cards = cards
+    this.archetype = archetype
+    this.user = user
+    this.cost = cost
+}
 
 module.exports = function(app, passport) {
 
-    // =====================================
-    // HOME PAGE (with login links) ========
-    // =====================================
-
-    // =====================================
-    // LOGIN ===============================
-    // =====================================
-    // show the login form
-
-
-    // =====================================
-    // SIGNUP ==============================
-    // =====================================
-    // show the signup form
-
-
-    // =====================================
-    // PROFILE SECTION =====================
-    // =====================================
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/myprofile', isLoggedIn, function(req, res) {
         
 
         res.json(req.user)
     });
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
     app.get('/profile/logout', function(req, res) {
         req.session.destroy(function (err) {
             console.log("Success?")
@@ -46,14 +33,17 @@ module.exports = function(app, passport) {
         res.json(req.user)
     })
 
-    // process the signup form
-    app.post('/signup', passport.authenticate('local-signup', {
-        failureFlash : true // allow flash messages
-    }));
+    app.post('/signup', passport.authenticate('local-signup'), function(req,res) {
+        res.redirect('/');
+    });
 
-    app.post('/login', passport.authenticate('local-login', {
-        failureFlash : true // allow flash messages
-    }));
+    app.post('/login', passport.authenticate('local-login'), function(req,res) {
+        res.redirect('/')
+    });
+
+    app.post('/newdeck', function(req, res) {
+        db.Deck.create(new Deck(req.params.name, req.params.cards, req.params.archetype, req.params.user, req.params.cost))
+    })
 
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname+'/react/build/index.html'));

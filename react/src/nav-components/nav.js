@@ -52,7 +52,10 @@ export default class Nav extends React.Component {
                         <li><a href="/search">Search</a></li>
                         <li><a href='/'>Test</a></li>                        
                      </ul>
-
+                     <ul class='nav navbar-nav navbar-right'>
+                        <li><a href="/login">Log in</a></li>
+                        <li><a href="/signup">Sign up</a></li>                        
+                     </ul>
                 </nav>
             )
         }
