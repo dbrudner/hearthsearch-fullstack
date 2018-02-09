@@ -40,6 +40,11 @@ module.exports = function(app, passport) {
         req.logout();
     });
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/react/build/index.html'));
+      });
+      
+
     app.get('/test', function(req, res) {
         res.json(req.user)
     })
