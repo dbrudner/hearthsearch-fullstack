@@ -24,7 +24,7 @@ if (process.env.MONGODB_URI) {
     mongoose.connect(developmentUrl)
 }
 
-app.use(express.static(path.join(__dirname, 'react/src')));
+app.use(express.static(path.join(__dirname, 'react/build')));
 
 require('./config/passport')(passport); // pass passport for configuration
 
