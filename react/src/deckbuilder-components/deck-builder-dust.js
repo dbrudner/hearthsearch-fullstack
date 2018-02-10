@@ -58,6 +58,8 @@ export default function DeckDust(props) {
 
             if (card.rarity === 'Legendary') {
                 return a  + 1600
+            } else {
+                return 0
             }
 
     }, 0)

@@ -4,6 +4,10 @@ import axios from 'axios'
 export default class DeckSearch extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            thing: ''
+        }
     }
 
     componentDidMount() {

@@ -5,15 +5,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import axios from 'axios'
 import _ from 'lodash'
-import HearthstoneJSON from "hearthstonejson";
+// import HearthstoneJSON from "hearthstonejson";
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
 import Filters from './filter-components/filters'
-import Header from './header'
 import Banner from './banner'
-import DeckList from './deckbuilder-components/deck-builder-list'
-import DeckHeader from './deckbuilder-components/deck-builder-header'
 import Nav from './nav-components/nav'
 
 class Home extends Component {
@@ -148,19 +145,39 @@ class Home extends Component {
 		}).then(data => {
 
 			this.setState({cards: data.data});
-			console.log(data);
+				
+			console.log(data.data["Goblins vs Gnomes"])
+
+			
+
+			data.data["Goblins vs Gnomes"].forEach(card => {
+				axios.post('/newcard', card)
+				
+
+				// for (var key in data.data) {
+				// 	data.data[key].forEach(card => {
+				// 		axios.post('/newcard', card)
+				// 		.then((res) => {
+				// 			console.log("Finish")
+				// 		})
+				// 		.catch(err => {
+				// 			console.log(err);
+				// 		})
+				// 	})
+				// }
 		})
 
 		// axios({
 		// 	method:'get',
-		// 	url: 'https://api.hearthstonejson.com/v1/22611/enUS/cards.collectible.json',
-		// }).then(data2 => {
-		// 	console.log('hsjon', data2);
-		// })	
+		// 	url: 'api/cards',
+		// }).then(data => {
 
-	
-
-	}
+		// 	this.setState({cards: data.data});
+		// 	console.log(data);
+		// })
+		
+	})
+}
 
 	render() {
 
@@ -221,7 +238,8 @@ class Home extends Component {
 					ability={this.state.ability}
 					ability2={this.state.ability2}
 					tribe={this.state.tribe}
-					getCard = {this.getCard}          
+					getCard = {this.getCard}
+					buildMode={false}          
 					/>
 				</div>
 			</div>

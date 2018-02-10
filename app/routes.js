@@ -46,6 +46,14 @@ module.exports = function(app, passport) {
         })
     })
 
+    app.get('/api/cards', function(req, res) {
+        db.Card.find({}, (err, result) => {
+            if (err) throw err;
+
+            res.json(result);
+        })
+    })
+
     // Get all decks by one user
     app.get('/api/user/decks/:userId', function(req, res) {
         db.Deck.find({ 'user': req.params.userId}, (err, result) => {
@@ -54,6 +62,8 @@ module.exports = function(app, passport) {
         })
         
     })
+
+
 
     // Check if user is logged in and reurn info about user
     app.get('/test', function(req, res) {
@@ -78,6 +88,31 @@ module.exports = function(app, passport) {
             user: req.body.user
         })
     })
+
+    app.post('/newcard', function(req, res) {
+        db.Card.create({
+            artist: req.body.artist,       
+            attack: req.body.attack,
+            cardId: req.body.cardId,
+            cardSet: req.body.cardSet,
+            collectible: req.body.collectible,
+            cost:req.body.cost,
+            dbfId:req.body.dbfId,
+            flavor:req.body.flavor,
+            health: req.body.health,
+            img: req.body.img,
+            name:req.body.name,
+            playRequirements: req.body.playRequirements,
+            playerClass: req.body.playerClass,
+            rarity: req.body.rarity,
+            text: req.body.text,  
+            type: req.body.type
+        })
+    })
+
+    // app.get('api/cards', function(req, res) {
+    //     res.json(path.join(__dirname+'/cards.collectible.json'))
+    // })
 
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname+'/react/build/index.html'));

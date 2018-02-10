@@ -7,19 +7,13 @@ export default class CardList extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			totalMatches: "",
-			hero: ''
+			totalMatches: ""
 		}
 
 		this.getCard = this.getCard.bind(this);
 
 	}
 
-	componentDidMount() {
-		this.setState(() => {
-			hero: this.props.hero
-		})		
-	}
 
 	getCard(card, cardObj) {
 		this.props.getCard(card);
@@ -34,16 +28,20 @@ export default class CardList extends React.Component {
 		const textMatches = array.filter(item => {
 			if (item.text) {
 				return item.text.toLowerCase().match(term.toLowerCase())				
+			} else {
+				return false				
 			}
 		})
 
 		let matches = [...nameMatches, ...textMatches]
-
-		if (filters.hero) {
-			matches = matches.filter((card) => {
-				return card.playerClass === filters.hero
-			})
+		if (!this.props.hero) {
+			if (filters.hero) {
+				matches = matches.filter((card) => {
+					return card.playerClass === filters.hero
+				})
+			}
 		}
+		
 
 		if (filters.type) {
 			matches = matches.filter((card) => {
@@ -210,7 +208,6 @@ export default class CardList extends React.Component {
 
 	renderCardList(term, cards, filters) {
 		
-		var filterKeys = Object.keys(filters);
 		var numberOfFilters = 0;
 
 		Object.keys(filters).forEach(function(key) {
@@ -229,10 +226,10 @@ export default class CardList extends React.Component {
 				))
 			)
 
-
-			if (this.state.hero) {
+			console.log(this.props.hero)
+			if (this.props.hero) {
 				matches = matches.filter(card => {
-					return card.playerClass === this.state.hero ||
+					return card.playerClass === this.props.hero ||
 					card.playerClass === "Neutral"
 				})
 			}
@@ -240,7 +237,6 @@ export default class CardList extends React.Component {
 			if (matches.length < 50) {
 				return matches.map(card => {
 					
-					let boundGetCard = this.getCard.bind(this, card);
 					
 					return (
 						<li className='list-group-item' key={card.name}>
@@ -262,6 +258,7 @@ export default class CardList extends React.Component {
 									class={card.playerClass}
 									cardSet={card.cardSet}
 									getCard={this.getCard}
+									buildMode={this.props.buildMode}
 								/>
 								
 							</div>

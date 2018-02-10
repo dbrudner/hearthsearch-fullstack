@@ -23,7 +23,7 @@ export default function(props) {
                 </div>
                 <div class='row'>
                     <div className='col-md-4'>
-                        <img alt='class' className='center-block' alt='class' src='https://d1u5p3l4wpay3k.cloudfront.net/hearthstone_gamepedia/thumb/f/fa/Malfurion_Stormrage%28621%29.png/250px-Malfurion_Stormrage%28621%29.png?version=dde108b507476cbaf2535bc3b15e9eef' />
+                        <img className='center-block' alt='class' src='https://d1u5p3l4wpay3k.cloudfront.net/hearthstone_gamepedia/thumb/f/fa/Malfurion_Stormrage%28621%29.png/250px-Malfurion_Stormrage%28621%29.png?version=dde108b507476cbaf2535bc3b15e9eef' />
                     </div>
                     <div className='col-md-4'>
                         <img alt='class' className='center-block' src='https://d1u5p3l4wpay3k.cloudfront.net/hearthstone_gamepedia/thumb/f/fa/Malfurion_Stormrage%28621%29.png/250px-Malfurion_Stormrage%28621%29.png?version=dde108b507476cbaf2535bc3b15e9eef' />

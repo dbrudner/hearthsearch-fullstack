@@ -64,7 +64,7 @@ export default class CardInfo extends Component{
 					<div className='col-md-6 col-xs-12'>
 						<CardType attack={this.props.attack} health={this.props.health} type={this.props.type}/>
 						<CardText text={this.props.text}/>
-						<AddToDeck getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
+						<AddToDeck buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 						{ (this.props.type === 'Minion') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : <div/> }
 						
 					</div>

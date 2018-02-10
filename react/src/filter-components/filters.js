@@ -1,6 +1,5 @@
 import React from 'react'
 import DropDown from './dropdown'
-import CardTextSearchbar from './card-text-searchbar'
 
 
 export default class Filters extends React.Component {

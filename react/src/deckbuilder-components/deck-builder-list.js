@@ -3,7 +3,6 @@ import _ from 'lodash'
 import axios from 'axios'
 
 import DeckCardName from './deck-builder-card-name'
-import DeckHeader from './deck-builder-header'
 import DeckManaChart from './deck-builder-mana-chart'
 import DeckDust from './deck-builder-dust'
 import DeckCardsLeft from './deck-builder-cards-left'

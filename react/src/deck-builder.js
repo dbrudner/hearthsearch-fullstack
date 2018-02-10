@@ -5,15 +5,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import axios from 'axios'
 import _ from 'lodash'
-import HearthstoneJSON from "hearthstonejson";
+// import HearthstoneJSON from "hearthstonejson";
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
 import Filters from './filter-components/filters'
-import Header from './header'
 import Banner from './banner'
 import DeckBuilderList from './deckbuilder-components/deck-builder-list'
-import DeckBuilderHeader from './deckbuilder-components/deck-builder-header'
+// import DeckBuilderHeader from './deckbuilder-components/deck-builder-header'
 import Nav from './nav-components/nav'
 
 class App extends Component {
@@ -210,8 +209,6 @@ class App extends Component {
 					<CardList 
 						cards={this.state.cards} 
 						term={this.state.term} 
-						hero={this.state.hero}
-						type={this.state.type}
 						rarity={this.state.rarity}
 						cardSet={this.state.cardSet}
 						mana={this.state.mana}
@@ -228,7 +225,8 @@ class App extends Component {
 						ability2={this.state.ability2}
 						tribe={this.state.tribe}
 						getCard = {this.getCard}
-						hero={this.props.match.params.class}        
+						hero={this.props.match.params.class}
+						buildMode={true}        
 					/>
 				</div>
 				<div className='col-lg-1 col-md-1 col-xs-12'>

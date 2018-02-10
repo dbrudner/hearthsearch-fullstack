@@ -9,6 +9,11 @@ export default class extends Component{
     
 
     render() {
+
+        if (!this.props.buildMode) {
+            return (<div/>)
+        }
+
         return (
             <div>
                 <button onClick={() => {
