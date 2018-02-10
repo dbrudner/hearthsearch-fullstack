@@ -31,12 +31,20 @@ var DeckSchema = new Schema({
     description: {
         type: String
     },
+    
+    upvotes: {
+        type: Number,
+        default: 0
+    },
 
-  user:
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
+    comments: {
+        type: Array
+    },
+
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 });
 

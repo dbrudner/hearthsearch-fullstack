@@ -228,7 +228,7 @@ class App extends Component {
 						ability2={this.state.ability2}
 						tribe={this.state.tribe}
 						getCard = {this.getCard}
-						class={this.props.match.params.class}        
+						hero={this.props.match.params.class}        
 					/>
 				</div>
 				<div className='col-lg-1 col-md-1 col-xs-12'>

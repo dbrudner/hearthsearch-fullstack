@@ -1,7 +1,6 @@
 import React from 'react'
 import CardImage from './card-image'
 import CardInfo from './card-info'
-import _ from 'lodash'
 
 export default class CardList extends React.Component {
 
@@ -9,7 +8,7 @@ export default class CardList extends React.Component {
 		super(props)
 		this.state = {
 			totalMatches: "",
-			class: ''
+			hero: ''
 		}
 
 		this.getCard = this.getCard.bind(this);
@@ -18,7 +17,7 @@ export default class CardList extends React.Component {
 
 	componentDidMount() {
 		this.setState(() => {
-			this.state.class = this.props.class
+			hero: this.props.hero
 		})		
 	}
 
@@ -27,31 +26,18 @@ export default class CardList extends React.Component {
 	}
 	
 	search(term, array, filters) {
-		var matches = []
-		var textMatches = []
+		
+		const nameMatches = array.filter(item => {
+			return item.name.toLowerCase().match(term.toLowerCase())
+		})
 
-		for (let i=0; i<array.length; i++) {
- 
-			if ((array[i].name.toLowerCase()).match(term.toLowerCase())) {
-				matches.push(array[i])
-				console.log(array[i].text)
-				console.log(term)
+		const textMatches = array.filter(item => {
+			if (item.text) {
+				return item.text.toLowerCase().match(term.toLowerCase())				
 			}
+		})
 
-			if (array[i].text) {
-				if (array[i].text.toLowerCase().match(term.toLowerCase())) {
-					matches.push(array[i])
-				}
-			}
-
-			
-
-			// if ((array[i].text.match(term.toLowerCase()))) {
-			// 	matches.push(array[i])
-			// }
-
-		}
-		console.log(matches)
+		let matches = [...nameMatches, ...textMatches]
 
 		if (filters.hero) {
 			matches = matches.filter((card) => {
@@ -216,7 +202,6 @@ export default class CardList extends React.Component {
 			}
 			return secondArray;
 		}
-		// console.log(matches);
 		
 		return matches.filter(card => {
 			return card.collectible === true
@@ -245,9 +230,9 @@ export default class CardList extends React.Component {
 			)
 
 
-			if (this.state.class) {
+			if (this.state.hero) {
 				matches = matches.filter(card => {
-					return card.playerClass === this.state.class ||
+					return card.playerClass === this.state.hero ||
 					card.playerClass === "Neutral"
 				})
 			}

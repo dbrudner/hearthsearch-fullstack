@@ -1,5 +1,4 @@
 import React,{ Component } from 'react'
-import DeckManaChart from './deck-builder-mana-chart'
 import DeckStats from './deck-builder-stats'
 
 import _ from 'lodash'

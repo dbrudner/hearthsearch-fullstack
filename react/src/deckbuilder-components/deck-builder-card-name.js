@@ -10,7 +10,7 @@ export default function DeckCardName(props) {
         return (
             <span className='deck-list-card-name legendary' draggable='true'>
             {props.name} {(props.quantity === 2) ? (<span>{props.quantity}</span>) : null}
-                <img className='card-tile' src={source} />                
+                <img alt={props.name} className='card-tile' src={source} />                
             </span>
         )
     }
@@ -19,7 +19,7 @@ export default function DeckCardName(props) {
         return (
             <span className='deck-list-card-name epic' draggable='true'>
             {props.name} {(props.quantity === 2) ? (<span>{props.quantity}</span>) : null}
-            <img className='card-tile' src={source} />
+            <img alt={props.name} className='card-tile' src={source} />
             </span>
         )
     }
@@ -28,7 +28,7 @@ export default function DeckCardName(props) {
         return (
             <span className='deck-list-card-name rare' draggable='true'>
             {props.name} {(props.quantity === 2) ? (<span>{ props.quantity}</span>) : null}
-                <img className='card-tile' src={source} />    
+                <img alt={props.name} className='card-tile' src={source} />    
             </span>
         )
     }
@@ -36,7 +36,7 @@ export default function DeckCardName(props) {
     return (
         <span className='deck-list-card-name' draggable='true'>
         {props.name} {(props.quantity === 2) ? (<span>{props.quantity}</span>) : null}
-            <img className='card-tile' src={source} />    
+            <img alt={props.name} className='card-tile' src={source} />    
         </span>
     )
    

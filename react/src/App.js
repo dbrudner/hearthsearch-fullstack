@@ -31,7 +31,7 @@ const App = () => {
                 <Route exact path='/build' component={ChooseClass} />
                 <Route exact path='/deck' component={SingleDeck} />
                 <Route exact path='/decksearch' component={DeckSearch} />
-                <Route exact path='/user' component={UserProfile} />                                                                                                                                    
+                <Route exact path='/user/:userId' component={UserProfile} />                                                                                                                                    
             </div>
         </Router>
     )
