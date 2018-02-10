@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import axios from 'axios'
 
 import DeckCardName from './deck-builder-card-name'
 import DeckHeader from './deck-builder-header'
@@ -14,7 +15,8 @@ export default class Deck extends Component {
         super(props)
 
         this.state = {
-            deck: []
+            deck: [],
+            userId: ''
         }
     }
 
@@ -46,7 +48,14 @@ export default class Deck extends Component {
         }
     }
 
-    
+    componentDidMount() {
+        axios.get('/test')
+        .then((response) => {
+            this.setState({
+                userId: response.data._id
+            })
+        }) 
+    }
 
     render() {
 
@@ -67,7 +76,7 @@ export default class Deck extends Component {
         return (
             <div>
                 <DeckManaChart deck={this.state.deck} />
-                <Submit cards={this.state.deck} name='name' archetype='archetype' cost={1200} />
+                <Submit userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} />
                 <DeckDust deck={this.state.deck} />
                 <DeckCardsLeft deck={this.state.deck} />
                 <ul className='list-group deck-list'>

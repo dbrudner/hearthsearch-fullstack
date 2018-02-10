@@ -28,8 +28,22 @@ module.exports = function(app, passport) {
           });
     });
 
-    
-      
+    app.get('/api/deck/:deckId', function(req,res) {
+        console.log(req.params.deckId);
+        db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
+            if (err) throw err;
+
+            res.json(response)
+        })
+    })
+
+    app.get('/api/decks', function(req, res) {
+        db.Deck.find({}, (err, result) => {
+            if (err) throw err;
+          
+            res.json(result)
+        })
+    })
 
     app.get('/test', function(req, res) {
         res.json(req.user)
@@ -49,7 +63,8 @@ module.exports = function(app, passport) {
             archetype: req.body.archetype,
             cost: req.body.cost,
             cards: req.body.cards,
-            cost: 1200
+            cost: 1200,
+            userId: req.body.userId
         })
     })
 

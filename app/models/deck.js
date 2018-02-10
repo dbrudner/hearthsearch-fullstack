@@ -32,10 +32,11 @@ var DeckSchema = new Schema({
         type: String
     },
 
-  user:
+  userId:
     {
       type: Schema.Types.ObjectId,
-      ref: "User"
+      ref: "User",
+      required: true
     }
 });
 

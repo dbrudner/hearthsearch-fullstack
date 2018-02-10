@@ -1,26 +1,48 @@
 import axios from 'axios'
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 
-export default function Submit(props) {
+export default class Submit extends React.Component {
     
-    let cards = props.cards;
+    constructor(props) {
+        super(props)
 
-    function handleClick() {
-        console.log('sending')
+        this.state = {
+            redirectTo: null
+        }
+    }
+
+    handleClick() {
+        let cards = this.props.cards;
+        var x = ''        
         axios.post('/newdeck', {
-            name: props.name,
-            archetype: props.archetype,
-            cost: props.cost,
-            cards: props.cards,
-            cost: 1200
+            name: this.props.name,
+            archetype: this.props.archetype,
+            cost: this.props.cost,
+            cards: this.props.cards,
+            cost: 1200,
+            userId: this.props.userId,
             })
             .then(response => {
-            }) 
+                console.log('hi')
+                this.setState({
+                    redirectTo: '/profile'
+                })
+            }).catch(error => {
+                console.log(error)
+            });
     }
     
-    return (
-        <button className='btn btn-primary' onClick={() => handleClick()}>Submit</button>
-    )
+    render() {
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: '/search' }} />
+        } else {
+            return (
+                <button className='btn btn-primary' onClick={() => this.handleClick()}>Submit</button>
+            )
+        }
+    }
+
         
 }
 
