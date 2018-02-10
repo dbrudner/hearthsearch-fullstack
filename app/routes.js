@@ -17,17 +17,17 @@ function Deck(name, cards, archetype, user, cost) {
 module.exports = function(app, passport) {
 
     app.get('/myprofile', isLoggedIn, function(req, res) {
-        
-
         res.json(req.user)
     });
 
+    // Logout
     app.get('/profile/logout', function(req, res) {
         req.session.destroy(function (err) {
             console.log("Success?")
           });
     });
 
+    // Get one deck
     app.get('/api/deck/:deckId', function(req,res) {
         console.log(req.params.deckId);
         db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
@@ -37,6 +37,7 @@ module.exports = function(app, passport) {
         })
     })
 
+    // Get all decks
     app.get('/api/decks', function(req, res) {
         db.Deck.find({}, (err, result) => {
             if (err) throw err;
@@ -45,6 +46,16 @@ module.exports = function(app, passport) {
         })
     })
 
+    // Get all decks by one user
+    app.get('/api/user/decks/:userId', function(req, res) {
+        db.Deck.find({ 'user': req.params.userId}, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
+        
+    })
+
+    // Check if user is logged in and reurn info about user
     app.get('/test', function(req, res) {
         res.json(req.user)
     })
@@ -64,7 +75,7 @@ module.exports = function(app, passport) {
             cost: req.body.cost,
             cards: req.body.cards,
             cost: 1200,
-            userId: req.body.userId
+            user: req.body.user
         })
     })
 

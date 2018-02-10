@@ -10,27 +10,8 @@ var userSchema = mongoose.Schema({
         email        : String,
         password     : String,
         username     : String,
-        decks        : Array
+        decks        : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Deck' }]
     }
-    // ,
-    // facebook         : {
-    //     id           : String,
-    //     token        : String,
-    //     name         : String,
-    //     email        : String
-    // },
-    // twitter          : {
-    //     id           : String,
-    //     token        : String,
-    //     displayName  : String,
-    //     username     : String
-    // },
-    // google           : {
-    //     id           : String,
-    //     token        : String,
-    //     email        : String,
-    //     name         : String
-    // }
 
 });
 

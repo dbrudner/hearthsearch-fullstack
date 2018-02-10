@@ -14,14 +14,13 @@ export default class Submit extends React.Component {
 
     handleClick() {
         let cards = this.props.cards;
-        var x = ''        
         axios.post('/newdeck', {
             name: this.props.name,
             archetype: this.props.archetype,
             cost: this.props.cost,
             cards: this.props.cards,
             cost: 1200,
-            userId: this.props.userId,
+            user: this.props.userId
             })
             .then(response => {
                 console.log('hi')

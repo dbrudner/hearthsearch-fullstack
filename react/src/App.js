@@ -14,6 +14,7 @@ import Login from './login'
 import Logout from './logout'
 import SingleDeck from './single-deck-components/single-deck'
 import DeckSearch from './deck-search-components/deck-search'
+import UserProfile from './user-profile-components/user-profile'
 
 const App = () => {
     return (
@@ -29,7 +30,8 @@ const App = () => {
                 <Route exact path='/logout' component={Logout} />
                 <Route exact path='/build' component={ChooseClass} />
                 <Route exact path='/deck' component={SingleDeck} />
-                <Route exact path='/decksearch' component={DeckSearch} />                                                          
+                <Route exact path='/decksearch' component={DeckSearch} />
+                <Route exact path='/user' component={UserProfile} />                                                                                                                                    
             </div>
         </Router>
     )
