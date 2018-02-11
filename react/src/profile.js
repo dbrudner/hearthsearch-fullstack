@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Signup from './signup'
 import Home from './home'
+import UserProfile from './user-profile-components/user-profile'
 
 export default class Profile extends React.Component {
 
@@ -30,7 +31,7 @@ export default class Profile extends React.Component {
         if (this.state.isLoggedIn === true) {
             return (
                 <div>
-                    <Home />
+                    <UserProfile />
                 </div>
             )
         } else {

@@ -146,12 +146,12 @@ class Home extends Component {
 
 			this.setState({cards: data.data});
 				
-			console.log(data.data["Goblins vs Gnomes"])
+			// console.log(data.data["Goblins vs Gnomes"])
 
 			
 
-			data.data["Goblins vs Gnomes"].forEach(card => {
-				axios.post('/newcard', card)
+			// data.data["Goblins vs Gnomes"].forEach(card => {
+			// 	axios.post('/newcard', card)
 				
 
 				// for (var key in data.data) {
@@ -176,8 +176,7 @@ class Home extends Component {
 		// 	console.log(data);
 		// })
 		
-	})
-}
+	}
 
 	render() {
 

@@ -2,5 +2,6 @@
 module.exports = {
     Deck: require("./deck"),
     User: require("./user"),
-    Card: require("./card")
+    Card: require("./card"),
+    Comment: require("./comment")
   };

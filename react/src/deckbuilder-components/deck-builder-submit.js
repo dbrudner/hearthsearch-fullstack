@@ -13,6 +13,7 @@ export default class Submit extends React.Component {
     }
 
     handleClick() {
+        console.log(this.props.userId)
         axios.post('/newdeck', {
             name: this.props.name,
             archetype: this.props.archetype,

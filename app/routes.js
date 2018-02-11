@@ -29,7 +29,6 @@ module.exports = function(app, passport) {
 
     // Get one deck
     app.get('/api/deck/:deckId', function(req,res) {
-        console.log(req.params.deckId);
         db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
             if (err) throw err;
 
@@ -70,6 +69,14 @@ module.exports = function(app, passport) {
         res.json(req.user)
     })
 
+    // Upvote a deck
+    app.post('/upvote/:deckId', function(req, res) {
+
+        db.Deck.findOneAndUpdate({ '_id': req.params.deckId}, {$inc: {upvotes: 1}}).exec((res) => {
+            console.log(res)
+        })
+    })
+
     app.post('/signup', passport.authenticate('local-signup'), function(req,res) {
         res.redirect('/');
     });
@@ -86,6 +93,22 @@ module.exports = function(app, passport) {
             cards: req.body.cards,
             cost: 1200,
             user: req.body.user
+        })
+    })
+
+    app.post('/newcommentupvote', function(req, res) {
+        console.log(req.body.commentId)
+        db.Comment.findOneAndUpdate({ '_id' : req.body.commentId }, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((res) => {
+            console.log(res)
+        })    
+    })
+
+    app.post('/newcomment', function(req, res) {
+        db.Comment.create({
+            user: req.body.user,
+            comment: req.body.comment,
+            deckId: req.body.deckId,
+            date: new Date(),
         })
     })
 
