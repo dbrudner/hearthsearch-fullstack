@@ -27,6 +27,14 @@ module.exports = function(app, passport) {
           });
     });
 
+    app.get('/api/cards', function(req, res) {
+        db.Card.find({}, (err, response) => {
+            if (err) throw err;
+            res.json(response)
+        })
+        // res.send("HI")
+    })
+
     // Get one deck
     app.get('/api/deck/:deckId', function(req,res) {
         db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
