@@ -67,7 +67,27 @@ var CardSchema = new Schema({
 
     type: {
         type: String
+    },
+
+    upvotes: {
+        type: Number,
+        default: 0
+    }, 
+
+    upvoters: {
+        type: Array
+    },
+
+    downvotes: {
+        type: Number,
+        default: 0
+    },
+
+    downvoters: {
+        type: Array
     }
+
+
 
 });
 

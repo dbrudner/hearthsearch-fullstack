@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var CommentSchema = new Schema({
+var DeckCommentSchema = new Schema({
     user: {
         type: String,
         required: true
@@ -30,9 +30,19 @@ var CommentSchema = new Schema({
 
     upvoters: {
         type: Array
+    },
+
+    downvotes: {
+        type: Number,
+        default: 0
+    },
+
+    downvoters: {
+        type: Array
     }
+
 });
 
-var Comment = mongoose.model("Comments", CommentSchema);
+var DeckComment = mongoose.model("DeckComment", DeckCommentSchema);
 
-module.exports = Comment;
+module.exports = DeckComment;

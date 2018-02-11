@@ -148,22 +148,21 @@ class App extends Component {
 	}
 
 	componentWillMount() {
-		axios({
-			method:'get',
-			url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards',
-			headers: {"X-Mashape-Key": "BhtFx5NH0bmshlnQj9CkNKDDWrrjp1gr6JXjsnJ81pEtaCDfHV"}
-		}).then(data => {
-
-			this.setState({cards: data.data});
-			console.log(data);
-		})
-
 		// axios({
 		// 	method:'get',
-		// 	url: 'https://api.hearthstonejson.com/v1/22611/enUS/cards.collectible.json',
-		// }).then(data2 => {
-		// 	console.log('hsjon', data2);
-		// })	
+		// 	url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards',
+		// 	headers: {"X-Mashape-Key": "BhtFx5NH0bmshlnQj9CkNKDDWrrjp1gr6JXjsnJ81pEtaCDfHV"}
+		// }).then(data => {
+
+		// 	this.setState({cards: data.data});
+		// 	console.log(data);
+		// })
+
+		axios.get('/api/cards')
+		.then((data) => {
+			console.log(data)
+			this.setState({cards: data.data})
+		}).catch(err => console.log(err))	
 	}
 
 	render() {

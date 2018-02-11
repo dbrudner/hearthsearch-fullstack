@@ -47,18 +47,9 @@ module.exports = function(app, passport) {
     // Get all decks
     app.get('/api/decks', function(req, res) {
         db.Deck.find({})
-        .populate('comments')
         .exec((err, result) => {
             if (err) throw err;
             res.json(result)
-        })
-    })
-
-    app.get('/api/cards', function(req, res) {
-        db.Card.find({}, (err, result) => {
-            if (err) throw err;
-
-            res.json(result);
         })
     })
 
@@ -79,21 +70,44 @@ module.exports = function(app, passport) {
     })
 
     // Upvote a deck
-    app.post('/upvote/:deckId', function(req, res) {
-
+    // Confirmed working
+    app.post('/deck/upvote/:deckId', function(req, res) {
         db.Deck.findOneAndUpdate({ '_id': req.params.deckId}, {$inc: {upvotes: 1}}).exec((res) => {
             console.log(res)
         })
     })
 
+    // Upvote a card
+    // Confirmed working
+    // ***************** USE CARD ID, NOT MONGO OBJECT ID *****************
+    app.post('/card/upvote/:cardId', function(req, res) {
+        db.Card.findOneAndUpdate({ 'cardId': req.params.cardId}, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((err, res) => {
+            if (err) throw err;
+            console.log(res)
+        })
+    })
+
+    // downvote a card
+    // Confirmed working
+    // ***************** USE CARD ID, NOT MONGO OBJECT ID *****************
+    app.post('/card/downvote/:cardId', function(req, res) {
+        db.Card.findOneAndUpdate({ 'cardId': req.params.cardId}, {$inc: {downvotes: 1}, $push: {'downvoters': 'guy'}}).exec((err, res) => {
+            if (err) throw err;
+            console.log(res)
+        })
+    })
+
+    // Signup
     app.post('/signup', passport.authenticate('local-signup'), function(req,res) {
         res.redirect('/');
     });
 
+    // Login
     app.post('/login', passport.authenticate('local-login'), function(req,res) {
         res.redirect('/')
     });
 
+    // Post a new deck
     app.post('/newdeck', function(req, res) {
         db.Deck.create({
             name: req.body.name,
@@ -105,15 +119,17 @@ module.exports = function(app, passport) {
         })
     })
 
-    app.post('/newcommentupvote', function(req, res) {
+    // Upvote an existing deck comment
+    app.post('/newdeckcommentupvote', function(req, res) {
         console.log(req.body.commentId)
-        db.Comment.findOneAndUpdate({ '_id' : req.body.commentId }, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((result) => {
+        db.DeckComment.findOneAndUpdate({ '_id' : req.body.commentId }, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((result) => {
             console.log(result)
         })    
     })
 
-    app.post('/newcomment', function(req, res) {
-        db.Comment.create({
+    // Post a new deck comment
+    app.post('/newdeckcomment', function(req, res) {
+        db.DeckComment.create({
             user: req.body.user,
             comment: req.body.comment,
             deckId: req.body.deckId,
@@ -123,10 +139,11 @@ module.exports = function(app, passport) {
 
     // Get all comments for a deck
     app.get('/api/deck/comments', function(req, res) {
-        db.Comment.find({'deckId': req.body.deckId})
+        db.DeckComment.find({'deckId': req.body.deckId})
         .exec(result => json(result))
     });
 
+    // Route for posting a new card. Not needed for anything, but since I made it already, left it here.
     app.post('/newcard', function(req, res) {
         db.Card.create({
             artist: req.body.artist,       
@@ -147,10 +164,6 @@ module.exports = function(app, passport) {
             type: req.body.type
         })
     })
-
-    // app.get('api/cards', function(req, res) {
-    //     res.json(path.join(__dirname+'/cards.collectible.json'))
-    // })
 
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname+'/react/build/index.html'));

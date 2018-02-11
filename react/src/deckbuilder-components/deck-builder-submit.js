@@ -29,7 +29,7 @@ export default class Submit extends React.Component {
             }).catch(error => {
                 console.log(error)
             });
-    }
+    } 
     
     render() {
         if (this.state.redirectTo) {

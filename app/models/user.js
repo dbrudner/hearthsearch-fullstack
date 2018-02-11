@@ -10,7 +10,9 @@ var userSchema = mongoose.Schema({
         email        : String,
         password     : String,
         username     : String,
-        decks        : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Deck' }]
+        decks        : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Deck' }],
+        upvotedCards: Array,
+        upvotedDecks: Array
     }
 
 });
