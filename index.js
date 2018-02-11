@@ -43,7 +43,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================h
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
+require('./app/deck-routes.js')(app);
 // launch ======================================================================
 app.listen(port);
 console.log('HSBend listening on port ' + port);

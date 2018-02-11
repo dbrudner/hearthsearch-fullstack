@@ -6,8 +6,11 @@ export default function SingleDeck() {
     // .then(function(response) {
     //     console.log(response.data)
     // })
-    axios.post('/card/downvote/GAME_004'
-    ).catch(err => console.log(err))
+    axios.post('/newcardcomment', {
+        user: "user",
+        comment: "comment",
+        cardId: "GAME_004",
+    })
     
     // axios.get('/api/decks')
     // .then(result => {console.log(result.data)})
