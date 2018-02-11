@@ -12,11 +12,13 @@ export default function SingleDeck() {
     //     comment: 'comment',
     //     deckId: '5a7f9afcd4972210fc198fe5'
     // })
+    
+    axios.get('/api/decks')
+    .then(result => {console.log(result.data)})
 
-
-    axios.post('/newcommentupvote', {
-        commentId: "5a7fc184b6ab3e2590243f74"
-    })
+    // axios.post('/newcommentupvote', {
+    //     commentId: "5a7fc184b6ab3e2590243f74"
+    // })
 
     return (
         <div>wow</div>

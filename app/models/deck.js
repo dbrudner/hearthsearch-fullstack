@@ -37,14 +37,14 @@ var DeckSchema = new Schema({
         default: 0
     },
 
-    comments: {
-        type: Array
-    },
+    // Find all comments with this deckId and populate in an array
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+    }],
 
     user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+        type: String
     }
 });
 

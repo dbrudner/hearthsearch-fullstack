@@ -38,9 +38,10 @@ module.exports = function(app, passport) {
 
     // Get all decks
     app.get('/api/decks', function(req, res) {
-        db.Deck.find({}, (err, result) => {
+        db.Deck.find({})
+        .populate('comments')
+        .exec((err, result) => {
             if (err) throw err;
-          
             res.json(result)
         })
     })
@@ -98,8 +99,8 @@ module.exports = function(app, passport) {
 
     app.post('/newcommentupvote', function(req, res) {
         console.log(req.body.commentId)
-        db.Comment.findOneAndUpdate({ '_id' : req.body.commentId }, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((res) => {
-            console.log(res)
+        db.Comment.findOneAndUpdate({ '_id' : req.body.commentId }, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((result) => {
+            console.log(result)
         })    
     })
 
@@ -111,6 +112,12 @@ module.exports = function(app, passport) {
             date: new Date(),
         })
     })
+
+    // Get all comments for a deck
+    app.get('/api/deck/comments', function(req, res) {
+        db.Comment.find({'deckId': req.body.deckId})
+        .exec(result => json(result))
+    });
 
     app.post('/newcard', function(req, res) {
         db.Card.create({
