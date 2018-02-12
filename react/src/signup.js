@@ -11,22 +11,14 @@ export default class SignUp extends Component {
 
         this.state = {
             username: '',
+            email: '',
             password: '',
-            redirectTo: null,
-            isLoggedIn: '',
-            email: ''
+            redirectTo: null
         }
 
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);                
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleUsernameChange(event) {
-        this.setState({
-            username: event.target.value
-        })
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);                
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     handlePasswordChange(event) {
@@ -35,100 +27,65 @@ export default class SignUp extends Component {
         })
     }
 
-    handleEmailChange(event) {
+    handleUsernameChange(event) {
         this.setState({
             email: event.target.value
         })
     }
 
-    handleSubmit(event) {
+    handleLogin(event) {
         console.log("HI")
         event.preventDefault();
-        let username = this.state.username
         let email = this.state.email
         let password = this.state.password
 
+
+        console.log(email)
+        console.log(password)
+
         axios.post('/signup', {
-            email, username, password
+            email, password
           })
-          .then(response => {
-            console.log(response);
-            this.setState(() => {
-                return ({
-                    redirectTo: '/'
-                })
-            })
+          .then((response) => {
+            window.location.href='/'
           })
           .catch(function (error) {
             console.log(error);
-          });
-
-        
-    }
-
-    componentWillMount() {
-        axios.get('/test')
-        .then((response) => {
-            if (response.data) {
-                this.setState(() => {
-                    return {
-                        isLoggedIn: true,
-                        email: response.data.local.email
-                    }
-                })
-               
-            }
-        })
+          }); 
     }
 
     render() {
 
-        if (this.state.isLoggedIn) {
-            return (
-                <div>
-                    <Nav />
-                    You're already logged in as {this.state.email}
-                </div>
-            )
-        }
-
         if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
+            return <Redirect to={{ pathname: '/' }} />
         } else {
             return (
                 <div>
                     <Nav />
-                    <div className="jumbotron">
-                        <div class='signup-container text-center'>
-                            <h1 className="display-3">Sign up!</h1>
-                            <p className="lead">I stole this shit from bootstrap.</p>
-                            <form onSubmit={this.handleSubmit}>
-                                <div>
-                                    <label>
-                                    Username:
+                    <div className='card'>
+                        <div className='card-content'>
+                            <div className='card-title'>Sign up</div>
+                            <form onSubmit={this.handleLogin}>
+                                <div className='input-field'>
                                     <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                                    </label>
+                                    <label for='username'>Username</label>
                                 </div>
-                                <div>
-                                    <label>
-                                    Email:
-                                    <input name='email' type="text" value={this.state.value} onChange={this.handleEmailChange} />
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                    Password:
+                                <div className='input-field'>
                                     <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                                    </label>
+                                    <label for='password'>Password</label>
                                 </div>
-                                <div>                            
-                                    <input type="submit" value="Submit" />
+                                <div>
+                                    <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                        <i className="material-icons right">send</i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div>   
             )
         }
+
+        
     }
 }

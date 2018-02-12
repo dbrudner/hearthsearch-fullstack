@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+// import Logout from './logout'
 
 export default class Nav extends React.Component {
 
@@ -8,13 +10,22 @@ export default class Nav extends React.Component {
 
 		this.state = {
 			isLoggedIn: false,
-			email: ''
+			email: '',
+			fireRedirect: null,
+			checkedLoggedin: false
 		}
 	}
 
 	componentWillMount() {
 		axios.get('/test')
 		.then((response) => {
+
+			this.setState({
+				checkedLoggedin: true
+			})
+
+			console.log(this.state.checkedLoggedin);
+
 			if (response.data) {
 				this.setState(() => {
 					return {
@@ -27,26 +38,48 @@ export default class Nav extends React.Component {
 		})
 	}
 
+	handleClick() {
+		console.log("Hi?");
+		axios.get('/profile/logout')
+        .then(response => {
+						console.log('hi')
+            window.location.href='/'
+				})
+
+	}
+
 	render() {
+
+		if (!this.state.checkedLoggedin) {
+			return (
+				<nav>
+					<div className="nav-wrapper">
+						<a href="/home" className="brand-logo">HearthSearch</a>
+					</div>
+			  </nav>
+			)
+		}
+
+
 		if (this.state.isLoggedIn === true) {
 			return (
 				<nav>
-				<div className="nav-wrapper">
-				  <a href="/home" className="brand-logo">HearthSearch</a>
-				  <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
-				  <ul className="right hide-on-med-and-down">
-						<li><a href="/search">Card Search</a></li>
-						<li><a href="/decks">Deck Search</a></li>
-						<li><a href="/build">Build a Deck</a></li>
-						<li><a href="/logout">Log Out</a></li>						
-				  </ul>
-				  <ul className="side-nav" id="mobile-demo">
-						<li><a href="/search">Card Search</a></li>
-						<li><a href="/decks">Deck Search</a></li>
-						<li><a href="/build">Build a Deck</a></li>
-						<li><a href="/logout">Log Out</a></li>
-				  </ul>
-				</div>
+					<div className="nav-wrapper">
+						<a href="/home" className="brand-logo">HearthSearch</a>
+						<a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
+						<ul className="right hide-on-med-and-down">
+							<li><a href="/search">Card Search</a></li>
+							<li><a href="/decks">Deck Search</a></li>
+							<li><a href="/build">Build a Deck</a></li>
+							<li><a onClick={this.handleClick} >Log Out</a></li>						
+						</ul>
+						<ul className="side-nav" id="mobile-demo">
+							<li><a href="/search">Card Search</a></li>
+							<li><a href="/decks">Deck Search</a></li>
+							<li><a href="/build">Build a Deck</a></li>
+							<li><a onClick={this.handleClick}>Log Out</a></li>
+						</ul>
+					</div>
 			  </nav>
 			)
 		} else {

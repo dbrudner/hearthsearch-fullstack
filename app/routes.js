@@ -17,11 +17,10 @@ function Deck(name, cards, archetype, user, cost) {
 module.exports = function(app, passport) {
 
     // Logout
-    app.get('/profile/logout', function(req, res) {
-        req.session.destroy(function (err) {
-            console.log("Success?")
-          });
-    });
+    app.get('/profile/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+      });
 
     // Get one deck
     app.get('/api/deck/:deckId', function(req,res) {
@@ -116,14 +115,18 @@ module.exports = function(app, passport) {
     }
 
     // Signup
-    app.post('/signup', passport.authenticate('local-signup'), function(req,res) {
-        res.redirect('/');
-    });
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
 
     // Login
     app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/', 
+        failureRedirect: '/login',
         failureFlash: true
-    }))
+    }));
 
     // Post a new deck
     app.post('/newdeck', function(req, res) {
@@ -196,7 +199,7 @@ module.exports = function(app, passport) {
 
     // Serves react stuff.
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'/react/build/index.html'));
+        res.sendFile(path.join(__dirname+'/react/build/index.html'))
       });
 };
 

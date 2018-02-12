@@ -96,16 +96,16 @@ export default class Filters extends React.Component {
 
 	render() {
 
-		const classes = ["", "Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
-		const types = ["", "Minion", "Spell", "Weapon"].sort()
-		const rarities = ["", "Free", "Common", "Rare", "Epic", "Legendary"]
-		const cardSets = ["", "Basic","Blackrock Mountain","Classic","Goblins vs Gnomes","Hall of Fame","Journey to Un'Goro","Knights of the Frozen Throne","Kobolds & Catacombs","Mean Streets of Gadgetzan","Naxxramas","One Night in Karazhan","Tavern Brawl","The Grand Tournament","The League of Explorers","Whispers of the Old Gods"]
-		const mana = ["","0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const attack = ["","0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const health = ["", "0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const gameFormats = ["", "Standard", "Wild"]
-		const abilities = ["", "Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
-		const tribe = ["", "Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
+		const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
+		const types = ["Minion", "Spell", "Weapon"].sort()
+		const rarities = ["Free", "Common", "Rare", "Epic", "Legendary"]
+		const cardSets = ["Basic","Blackrock Mountain","Classic","Goblins vs Gnomes","Hall of Fame","Journey to Un'Goro","Knights of the Frozen Throne","Kobolds & Catacombs","Mean Streets of Gadgetzan","Naxxramas","One Night in Karazhan","Tavern Brawl","The Grand Tournament","The League of Explorers","Whispers of the Old Gods"]
+		const mana = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const attack = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const health = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const gameFormats = ["Standard", "Wild"]
+		const abilities = ["Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
+		const tribe = ["Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
 
 		return (
 			<div>

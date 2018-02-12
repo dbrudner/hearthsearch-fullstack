@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Nav from './nav-components/nav'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom'
 
 
 export default class SignUp extends Component {
@@ -13,7 +14,8 @@ export default class SignUp extends Component {
             username: '',
             email: '',
             password: '',
-            redirectTo: null
+            redirectTo: null,
+            loginError: false
         }
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -39,6 +41,15 @@ export default class SignUp extends Component {
         let email = this.state.email
         let password = this.state.password
 
+        this.setState({
+            loginError: 'loading'
+        })
+
+        setTimeout(() => {
+            this.setState({
+                loginError: 'error'
+            })
+        }, 2000)
 
         console.log(email)
         console.log(password)
@@ -46,12 +57,9 @@ export default class SignUp extends Component {
         axios.post('/login', {
             email, password
           })
-          .then((response) => {
-            console.log(response);
-            // this.setState({
-            //     redirectTo: '/'
-            // })
-          })
+            .then((res) => {
+                window.location.href='/'
+            })
           .catch(function (error) {
             console.log(error);
           }); 
@@ -59,36 +67,63 @@ export default class SignUp extends Component {
 
     render() {
 
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
-        } else {
+        const loading =  () => {
             return (
-                <div>
-                    <Nav />
-                    <div className='card'>
-                        <div className='card-content'>
-                            <div className='card-title'>Log In</div>
-                            <form onSubmit={this.handleLogin}>
-                                <div className='input-field'>
-                                    <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                                    <label for='username'>Username</label>
-                                </div>
-                                <div className='input-field'>
-                                    <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                                    <label for='password'>Password</label>
-                                </div>
-                                <div>
-                                    <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-                                        <i className="material-icons right">send</i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>   
+                <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
             )
         }
-
+            
         
+
+        return (
+            <div>
+                <Nav />
+                <div className='card'>
+                    <div className='card-content'>
+                        {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
+                        {this.state.loginError === 'loading' ? 
+                            <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                            </div>
+                            </div>
+                        :
+                        <div/>}                        
+                        <div className='card-title'>Log In</div>
+                        <form onSubmit={this.handleLogin}>
+                            <div className='input-field'>
+                                <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
+                                <label for='username'>Username</label>
+                            </div>
+                            <div className='input-field'>
+                                <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
+                                <label for='password'>Password</label>
+                            </div>
+                            <div>
+                                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <i className="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>   
+        )
     }
 }

@@ -3,6 +3,7 @@ import './App.css';
 import './index.css';
 import axios from 'axios'
 import _ from 'lodash'
+import {Helmet} from 'react-helmet'
 // import HearthstoneJSON from "hearthstonejson";
 
 import Searchbar from './searchbar'
@@ -136,12 +137,17 @@ class Home extends Component {
 
 	componentWillMount() {
 
+		console.log(this.props.match.params.redirect)
+		console.log(this.state.reload)
+		
+
 		axios.get('/api/cards')
 		.then((data) => {
 			console.log(data)
 			this.setState({cards: data.data})
 		}).catch(err => console.log(err))
 
+		// *****DONT DELETE****
 		// axios({
 		// 	method:'get',
 		// 	url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards',
@@ -160,7 +166,7 @@ class Home extends Component {
 		return (
 		<div>
 			<Nav />			
-		<div className='deck-builder-container'>
+			<div className='deck-builder-container'>
 		
 			<Banner />
 			<div className='row'>

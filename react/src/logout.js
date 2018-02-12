@@ -7,11 +7,11 @@ export default function Logout() {
 
     axios.get('/profile/logout')
         .then(response => {
-            console.log(response)
+            window.location.href='/'
         })
 
     return (
-        <Redirect to={{ pathname: '/' }} />
+        <div />
     )
     
 }
