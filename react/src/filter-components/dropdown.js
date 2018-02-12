@@ -19,7 +19,8 @@ export default class DropDown extends React.Component {
 	}
 
 	handleChange(event) {
-		this.props.onChange(event.target.value);
+		console.log(this.props.filter)
+		this.props.onChange(this.props.filter, event.target.value);
 	}
 
 	render() {
@@ -30,6 +31,5 @@ export default class DropDown extends React.Component {
 				</select>
 			</div>
 		)	
-	}
-	
+	}	
 }

@@ -6,93 +6,13 @@ export default class Filters extends React.Component {
 
 	constructor(props) {
 		super(props)
-
-		this.heroChange = this.heroChange.bind(this);
-		this.typeChange = this.typeChange.bind(this);
-		this.rarityChange = this.rarityChange.bind(this);
-		this.cardSetChange = this.cardSetChange.bind(this);
-		this.manaChange = this.manaChange.bind(this);
-		this.attackChange = this.attackChange.bind(this);
-		this.healthChange = this.healthChange.bind(this);
-		this.minManaChange = this.minManaChange.bind(this);
-		this.maxManaChange = this.maxManaChange.bind(this);
-		this.minAttackChange = this.minAttackChange.bind(this);
-		this.maxAttackChange = this.maxAttackChange.bind(this);
-		this.minHealthChange = this.minHealthChange.bind(this);
-		this.maxHealthChange = this.maxHealthChange.bind(this);
-		this.gameFormatChange = this.gameFormatChange.bind(this);
-		this.abilityChange = this.abilityChange.bind(this);
-		this.ability2Change = this.ability2Change.bind(this);
-		this.tribeChange = this.tribeChange.bind(this);
 	}
 
-	heroChange(hero) {
-		this.props.getHero(hero);
+	getFilter = (filterName, filterValue) => {
+		this.props.getFilter(filterName, filterValue)
+		console.log(filterName, filterValue)
 	}
 
-	typeChange(type) {
-		this.props.getType(type);
-	}
-
-	rarityChange(rarity) {
-		this.props.getRarity(rarity);
-	}
-
-	cardSetChange(cardSet) {
-		this.props.getCardSet(cardSet);
-	}
-
-	manaChange(mana) {
-		this.props.getMana(mana);
-	}
-
-	attackChange(attack) {
-		this.props.getAttack(attack);
-	}
-
-	healthChange(health) {
-		this.props.getHealth(health);
-	}
-
-	minManaChange(minMana) {
-		this.props.getMinMana(minMana);
-	}
-
-	maxManaChange(maxMana) {
-		this.props.getMaxMana(maxMana);
-	}
-
-	minHealthChange(minhealth) {
-		this.props.getMinHealth(minhealth);
-	}
-
-	maxHealthChange(maxHealth) {
-		this.props.getMaxHealth(maxHealth);
-	}
-
-	minAttackChange(minAttack) {
-		this.props.getMinAttack(minAttack);
-	}
-
-	maxAttackChange(maxAttack) {
-		this.props.getMaxAttack(maxAttack);
-	}
-
-	gameFormatChange(gameFormat) {
-		this.props.getGameFormat(gameFormat)
-	}
-
-	abilityChange(ability) {
-		this.props.getAbility(ability)
-	}
-
-	ability2Change(ability2) {
-		this.props.getAbility2(ability2)
-	}
-
-	tribeChange(tribe) {
-		this.props.getTribe(tribe)
-	}
 
 	render() {
 
@@ -117,79 +37,79 @@ export default class Filters extends React.Component {
 						<div className='row'>
 							{!this.props.deckBuilder ? <div className='col-sm-12 '>
 								<div className='filter-header'>Class</div>
-								<DropDown onChange={this.heroChange}  options={classes}/>
+								<DropDown filter='hero' onChange={this.getFilter}  options={classes}/>
 							</div> : null}
 							
 							<div className='col-sm-12'>
 								<div className='filter-header'>Card Type</div>
-								<DropDown onChange={this.typeChange}  options={types}/>
+								<DropDown filter='type' onChange={this.getFilter}  options={types}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Game Format</div>
-								<DropDown onChange={this.gameFormatChange} options={gameFormats} />
+								<DropDown filter='gameFormat' onChange={this.getFilter} options={gameFormats} />
  							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Rarity</div>
-								<DropDown onChange={this.rarityChange}  options={rarities}/>
+								<DropDown filter='rarity' onChange={this.getFilter}  options={rarities}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Card Set</div>
-								<DropDown onChange={this.cardSetChange} options={cardSets}/>
+								<DropDown filter='cardSet' onChange={this.getFilter} options={cardSets}/>
 							</div>
 						</div>
 						<hr/>
 						<div className='row second-row'>
  							<div className='col-sm-12'>
 								<div className='filter-header'>Ability</div>
-								<DropDown onChange={this.abilityChange} options={abilities} />
+								<DropDown filter='ability' onChange={this.getFilter} options={abilities} />
  							</div>
  							<div className='col-sm-12'>
 								<div className='filter-header'>Ability 2</div>
-								<DropDown onChange={this.ability2Change} options={abilities} />
+								<DropDown filter='ability2' onChange={this.getFilter} options={abilities} />
  							</div>
  							<div className='col-sm-12'>
 								<div className='filter-header'>Tribe</div>
-								<DropDown onChange={this.tribeChange} options={tribe} />
+								<DropDown filter='tribe' onChange={this.getFilter} options={tribe} />
  							</div>
 							 <div className='col-sm-12'>
 								<div className='filter-header'>Mana</div>
-								<DropDown onChange={this.manaChange} options={mana}/>
+								<DropDown filter='mana' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Attack</div>
-								<DropDown onChange={this.attackChange} options={attack}/>
+								<DropDown filter='attack' onChange={this.getFilter} options={attack}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Health</div>
-								<DropDown onChange={this.healthChange} options={health}/>
+								<DropDown filter='health' onChange={this.getFilter} options={health}/>
 							</div>
 						</div>
 						<hr/>
 						<div className='row third-row'>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Min Mana</div>
-								<DropDown onChange={this.minManaChange} options={mana}/>
+								<DropDown filter='minMana' onChange={this.getFilter} options={mana}/>
 							</div>
 							
 							<div className='col-sm-12'>
 								<div className='filter-header'>Max Mana</div>
-								<DropDown onChange={this.maxManaChange} options={mana}/>
+								<DropDown filter='maxMana' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Min Attack</div>
-								<DropDown onChange={this.minAttackChange} options={mana}/>
+								<DropDown filter='minAttack' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Max Attack</div>
-								<DropDown onChange={this.maxAttackChange} options={mana}/>
+								<DropDown filter='maxAttack' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Min Health</div>
-								<DropDown onChange={this.minhealthChange} options={mana}/>
+								<DropDown filter='minHealth' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								<div className='filter-header'>Max Health</div>
-								<DropDown onChange={this.maxHealthChange} options={mana}/>
+								<DropDown filter='maxHealth' onChange={this.getFilter} options={mana}/>
 							</div>
 						</div>
 					</div>
