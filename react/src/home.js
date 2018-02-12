@@ -53,7 +53,6 @@ class Home extends Component {
 		this.getAbility2 = this.getAbility2.bind(this);
 		this.getTribe = this.getTribe.bind(this);
 		this.getCard = this.getCard.bind(this);
-
 	}
 
 	getTerm(term) {
@@ -165,7 +164,7 @@ class Home extends Component {
 		
 			<Banner />
 			<div className='row'>
-					<div className='col-md-1 col-xs-12'>
+					<div className='col s3'>
 					{this.state.filterOn ? 
 						<Filters 
 							getHero={this.getHero} 
@@ -188,31 +187,31 @@ class Home extends Component {
 						/> : 
 						<div />}
 					</div>
-				<div className='col-md-11 col-xs-12'>
+				<div className='col s9'>
 					<Searchbar onSearch={cardSearch}/>
 					
 					<CardList 
-					cards={this.state.cards} 
-					term={this.state.term} 
-					hero={this.state.hero}
-					type={this.state.type}
-					rarity={this.state.rarity}
-					cardSet={this.state.cardSet}
-					mana={this.state.mana}
-					attack={this.state.attack}
-					health={this.state.health}
-					minMana={this.state.minMana}
-					maxMana={this.state.maxMana}
-					minHealth={this.state.minHealth}
-					maxHealth={this.state.maxHealth}
-					minAttack={this.state.minAttack}
-					maxAttack={this.state.maxAttack}
-					gameFormat={this.state.gameFormat}
-					ability={this.state.ability}
-					ability2={this.state.ability2}
-					tribe={this.state.tribe}
-					getCard = {this.getCard}
-					buildMode={false}          
+						cards={this.state.cards} 
+						term={this.state.term} 
+						hero={this.state.hero}
+						type={this.state.type}
+						rarity={this.state.rarity}
+						cardSet={this.state.cardSet}
+						mana={this.state.mana}
+						attack={this.state.attack}
+						health={this.state.health}
+						minMana={this.state.minMana}
+						maxMana={this.state.maxMana}
+						minHealth={this.state.minHealth}
+						maxHealth={this.state.maxHealth}
+						minAttack={this.state.minAttack}
+						maxAttack={this.state.maxAttack}
+						gameFormat={this.state.gameFormat}
+						ability={this.state.ability}
+						ability2={this.state.ability2}
+						tribe={this.state.tribe}
+						getCard = {this.getCard}
+						buildMode={false}          
 					/>
 				</div>
 			</div>

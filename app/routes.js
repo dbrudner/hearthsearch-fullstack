@@ -121,9 +121,9 @@ module.exports = function(app, passport) {
     });
 
     // Login
-    app.post('/login', passport.authenticate('local-login'), function(req,res) {
-        res.redirect('/')
-    });
+    app.post('/login', passport.authenticate('local-login', {
+        failureFlash: true
+    }))
 
     // Post a new deck
     app.post('/newdeck', function(req, res) {

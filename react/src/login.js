@@ -16,17 +16,10 @@ export default class SignUp extends Component {
             redirectTo: null
         }
 
-        // this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);                
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);                
+        this.handleLogin = this.handleLogin.bind(this);
     }
-
-    // handleUsernameChange(event) {
-    //     this.setState({
-    //         username: event.target.value
-    //     })
-    // }
 
     handlePasswordChange(event) {
         this.setState({
@@ -34,13 +27,13 @@ export default class SignUp extends Component {
         })
     }
 
-    handleEmailChange(event) {
+    handleUsernameChange(event) {
         this.setState({
             email: event.target.value
         })
     }
 
-    handleSubmit(event) {
+    handleLogin(event) {
         console.log("HI")
         event.preventDefault();
         let email = this.state.email
@@ -54,15 +47,14 @@ export default class SignUp extends Component {
             email, password
           })
           .then((response) => {
-            this.setState({
-                redirectTo: '/'
-            })
+            console.log(response);
+            // this.setState({
+            //     redirectTo: '/'
+            // })
           })
           .catch(function (error) {
             console.log(error);
-          });
-
-        
+          }); 
     }
 
     render() {
@@ -73,30 +65,27 @@ export default class SignUp extends Component {
             return (
                 <div>
                     <Nav />
-                    <div className="jumbotron">
-                        <div class='signup-container text-center'>
-                            <h1 className="display-3">Log in!</h1>
-                            <p className="lead">I stole this shit from bootstrap.</p>
-                            <form onSubmit={this.handleSubmit}>
-                                <div>
-                                    <label>
-                                    Email:
-                                    <input name='email' type="text" value={this.state.value} onChange={this.handleEmailChange} />
-                                    </label>
+                    <div className='card'>
+                        <div className='card-content'>
+                            <div className='card-title'>Log In</div>
+                            <form onSubmit={this.handleLogin}>
+                                <div className='input-field'>
+                                    <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
+                                    <label for='username'>Username</label>
                                 </div>
-                                <div>
-                                    <label>
-                                    Password:
+                                <div className='input-field'>
                                     <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                                    </label>
+                                    <label for='password'>Password</label>
                                 </div>
-                                <div>                            
-                                    <input type="submit" value="Submit" />
+                                <div>
+                                    <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                        <i className="material-icons right">send</i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div>   
             )
         }
 
