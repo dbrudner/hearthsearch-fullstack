@@ -96,78 +96,102 @@ export default class Filters extends React.Component {
 
 	render() {
 
-		const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
-		const types = ["Minion", "Spell", "Weapon"].sort()
-		const rarities = ["Free", "Common", "Rare", "Epic", "Legendary"]
-		const cardSets = ["Basic","Blackrock Mountain","Classic","Goblins vs Gnomes","Hall of Fame","Journey to Un'Goro","Knights of the Frozen Throne","Kobolds & Catacombs","Mean Streets of Gadgetzan","Naxxramas","One Night in Karazhan","Tavern Brawl","The Grand Tournament","The League of Explorers","Whispers of the Old Gods"]
-		const mana = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const attack = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const health = ["0","1","2","3","4","5","6","7","8","9","10",">10"]
-		const gameFormats = ["Standard", "Wild"]
-		const abilities = ["Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
-		const tribe = ["Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
+		const classes = ["", "Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
+		const types = ["", "Minion", "Spell", "Weapon"].sort()
+		const rarities = ["", "Free", "Common", "Rare", "Epic", "Legendary"]
+		const cardSets = ["", "Basic","Blackrock Mountain","Classic","Goblins vs Gnomes","Hall of Fame","Journey to Un'Goro","Knights of the Frozen Throne","Kobolds & Catacombs","Mean Streets of Gadgetzan","Naxxramas","One Night in Karazhan","Tavern Brawl","The Grand Tournament","The League of Explorers","Whispers of the Old Gods"]
+		const mana = ["","0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const attack = ["","0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const health = ["", "0","1","2","3","4","5","6","7","8","9","10",">10"]
+		const gameFormats = ["", "Standard", "Wild"]
+		const abilities = ["", "Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
+		const tribe = ["", "Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
 
 		return (
 			<div>
-				<div className='card'>
-					<div className='card-content'>
-							<div className='card-title'>
-								Filters
+				<div className='panel panel-default'>
+					<div className='panel-heading'>
+						Filters
+					</div>
+					<div className='panel-body'>
+						<div className='row'>
+							{!this.props.deckBuilder ? <div className='col-sm-12 '>
+								<div className='filter-header'>Class</div>
+								<DropDown onChange={this.heroChange}  options={classes}/>
+							</div> : null}
+							
+							<div className='col-sm-12'>
+								<div className='filter-header'>Card Type</div>
+								<DropDown onChange={this.typeChange}  options={types}/>
 							</div>
-								<div className='row'>
-									{!this.props.deckBuilder ? <div className='col s12 '>
-										<DropDown filterName='Hero' onChange={this.heroChange}  options={classes}/>
-									</div> : null}
-									
-									<div className='col s12'>
-										<DropDown filterName='Card Type' onChange={this.typeChange}  options={types}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Game Format' onChange={this.gameFormatChange} options={gameFormats} />
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Rarity' onChange={this.rarityChange}  options={rarities}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Card Set' onChange={this.cardSetChange} options={cardSets}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Keyword' onChange={this.abilityChange} options={abilities} />
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Second Keyword' onChange={this.ability2Change} options={abilities} />
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Tribe/Faction' onChange={this.tribeChange} options={tribe} />
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Mana' onChange={this.manaChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Attack' onChange={this.attackChange} options={attack}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Health' onChange={this.healthChange} options={health}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Minimum Mana' onChange={this.minManaChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Maximum Mana' onChange={this.maxManaChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Minimum Attack' onChange={this.minAttackChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Maximum Attack' onChange={this.maxAttackChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Minimum Health' onChange={this.minhealthChange} options={mana}/>
-									</div>
-									<div className='col s12'>
-										<DropDown filterName='Maximum Health' onChange={this.maxHealthChange} options={mana}/>
-									</div>
-								</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Game Format</div>
+								<DropDown onChange={this.gameFormatChange} options={gameFormats} />
+ 							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Rarity</div>
+								<DropDown onChange={this.rarityChange}  options={rarities}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Card Set</div>
+								<DropDown onChange={this.cardSetChange} options={cardSets}/>
+							</div>
+						</div>
+						<hr/>
+						<div className='row second-row'>
+ 							<div className='col-sm-12'>
+								<div className='filter-header'>Ability</div>
+								<DropDown onChange={this.abilityChange} options={abilities} />
+ 							</div>
+ 							<div className='col-sm-12'>
+								<div className='filter-header'>Ability 2</div>
+								<DropDown onChange={this.ability2Change} options={abilities} />
+ 							</div>
+ 							<div className='col-sm-12'>
+								<div className='filter-header'>Tribe</div>
+								<DropDown onChange={this.tribeChange} options={tribe} />
+ 							</div>
+							 <div className='col-sm-12'>
+								<div className='filter-header'>Mana</div>
+								<DropDown onChange={this.manaChange} options={mana}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Attack</div>
+								<DropDown onChange={this.attackChange} options={attack}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Health</div>
+								<DropDown onChange={this.healthChange} options={health}/>
+							</div>
+						</div>
+						<hr/>
+						<div className='row third-row'>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Min Mana</div>
+								<DropDown onChange={this.minManaChange} options={mana}/>
+							</div>
+							
+							<div className='col-sm-12'>
+								<div className='filter-header'>Max Mana</div>
+								<DropDown onChange={this.maxManaChange} options={mana}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Min Attack</div>
+								<DropDown onChange={this.minAttackChange} options={mana}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Max Attack</div>
+								<DropDown onChange={this.maxAttackChange} options={mana}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Min Health</div>
+								<DropDown onChange={this.minhealthChange} options={mana}/>
+							</div>
+							<div className='col-sm-12'>
+								<div className='filter-header'>Max Health</div>
+								<DropDown onChange={this.maxHealthChange} options={mana}/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

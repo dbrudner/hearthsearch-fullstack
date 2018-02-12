@@ -3,7 +3,6 @@ import './App.css';
 import './index.css';
 import axios from 'axios'
 import _ from 'lodash'
-import {Helmet} from 'react-helmet'
 // import HearthstoneJSON from "hearthstonejson";
 
 import Searchbar from './searchbar'
@@ -54,6 +53,7 @@ class Home extends Component {
 		this.getAbility2 = this.getAbility2.bind(this);
 		this.getTribe = this.getTribe.bind(this);
 		this.getCard = this.getCard.bind(this);
+
 	}
 
 	getTerm(term) {
@@ -137,17 +137,12 @@ class Home extends Component {
 
 	componentWillMount() {
 
-		console.log(this.props.match.params.redirect)
-		console.log(this.state.reload)
-		
-
 		axios.get('/api/cards')
 		.then((data) => {
 			console.log(data)
 			this.setState({cards: data.data})
 		}).catch(err => console.log(err))
 
-		// *****DONT DELETE****
 		// axios({
 		// 	method:'get',
 		// 	url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards',
@@ -166,11 +161,11 @@ class Home extends Component {
 		return (
 		<div>
 			<Nav />			
-			<div className='deck-builder-container'>
+		<div className='deck-builder-container'>
 		
 			<Banner />
 			<div className='row'>
-					<div className='col s3'>
+					<div className='col-md-1 col-xs-12'>
 					{this.state.filterOn ? 
 						<Filters 
 							getHero={this.getHero} 
@@ -193,31 +188,31 @@ class Home extends Component {
 						/> : 
 						<div />}
 					</div>
-				<div className='col s9'>
+				<div className='col-md-11 col-xs-12'>
 					<Searchbar onSearch={cardSearch}/>
 					
 					<CardList 
-						cards={this.state.cards} 
-						term={this.state.term} 
-						hero={this.state.hero}
-						type={this.state.type}
-						rarity={this.state.rarity}
-						cardSet={this.state.cardSet}
-						mana={this.state.mana}
-						attack={this.state.attack}
-						health={this.state.health}
-						minMana={this.state.minMana}
-						maxMana={this.state.maxMana}
-						minHealth={this.state.minHealth}
-						maxHealth={this.state.maxHealth}
-						minAttack={this.state.minAttack}
-						maxAttack={this.state.maxAttack}
-						gameFormat={this.state.gameFormat}
-						ability={this.state.ability}
-						ability2={this.state.ability2}
-						tribe={this.state.tribe}
-						getCard = {this.getCard}
-						buildMode={false}          
+					cards={this.state.cards} 
+					term={this.state.term} 
+					hero={this.state.hero}
+					type={this.state.type}
+					rarity={this.state.rarity}
+					cardSet={this.state.cardSet}
+					mana={this.state.mana}
+					attack={this.state.attack}
+					health={this.state.health}
+					minMana={this.state.minMana}
+					maxMana={this.state.maxMana}
+					minHealth={this.state.minHealth}
+					maxHealth={this.state.maxHealth}
+					minAttack={this.state.minAttack}
+					maxAttack={this.state.maxAttack}
+					gameFormat={this.state.gameFormat}
+					ability={this.state.ability}
+					ability2={this.state.ability2}
+					tribe={this.state.tribe}
+					getCard = {this.getCard}
+					buildMode={false}          
 					/>
 				</div>
 			</div>

@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "bootstrap": "^3.3.7",
     "hearthstonejson": "^0.7.1",
     "install": "^0.10.2",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
     "react-easy-chart": "^1.0.0",
     "react-image-fallback": "^7.0.1",

@@ -69,16 +69,8 @@ export default class SignUp extends Component {
 
         const loading =  () => {
             return (
-                <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue-only">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-                </div>
+            <div>
+                Loading
             </div>
             )
         }
@@ -92,21 +84,11 @@ export default class SignUp extends Component {
                     <div className='card-content'>
                         {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
                         {this.state.loginError === 'loading' ? 
-                            <div class="preloader-wrapper big active">
-                            <div class="spinner-layer spinner-blue-only">
-                            <div class="circle-clipper left">
-                                <div class="circle"></div>
-                            </div><div class="gap-patch">
-                                <div class="circle"></div>
-                            </div><div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
-                            </div>
-                            </div>
-                        :
-                        <div/>}                        
-                        <div className='card-title'>Log In</div>
-                        <form onSubmit={this.handleLogin}>
+                            <div>Loading</div>
+                            :
+                            <div/>
+                        }                        
+                            <form onSubmit={this.handleLogin}>
                             <div className='input-field'>
                                 <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
                                 <label for='username'>Username</label>
@@ -117,7 +99,6 @@ export default class SignUp extends Component {
                             </div>
                             <div>
                                 <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-                                    <i className="material-icons right">send</i>
                                 </button>
                             </div>
                         </form>

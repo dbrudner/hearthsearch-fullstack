@@ -11,7 +11,7 @@ export default class DropDown extends React.Component {
 	renderOptions(array) {
 		return array.map((item) => {
 			return (
-				<option value={item} key={item}>
+				<option value={item} key={item} className='small-text'>
 					{item}
 				</option>
 			)
@@ -24,9 +24,8 @@ export default class DropDown extends React.Component {
 
 	render() {
 		return (
-			<div className='input-field'>
-				<select className='' onChange={this.handleChange}>
-					<option>{this.props.filterName}</option>
+			<div>
+				<select className='filter-dropdown' onChange={this.handleChange}>
 					{this.renderOptions(this.props.options)}
 				</select>
 			</div>

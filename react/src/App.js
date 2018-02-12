@@ -21,8 +21,7 @@ const App = () => {
         <Router>
             <div>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/search' component={Home} forceRefresh={true}/>
-                <Route exact path='/search/:redirect' component={Home} />
+                <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile' component={Profile} />

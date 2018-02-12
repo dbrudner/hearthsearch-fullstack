@@ -63,48 +63,34 @@ export default class Nav extends React.Component {
 
 		if (this.state.isLoggedIn === true) {
 			return (
-				<nav>
-					<div className="nav-wrapper">
-						<a href="/home" className="brand-logo">HearthSearch</a>
-						<a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
-						<ul className="right hide-on-med-and-down">
-							<li><a href="/search">Card Search</a></li>
-							<li><a href="/decks">Deck Search</a></li>
-							<li><a href="/build">Build a Deck</a></li>
-							<li><a onClick={this.handleClick} >Log Out</a></li>						
-						</ul>
-						<ul className="side-nav" id="mobile-demo">
-							<li><a href="/search">Card Search</a></li>
-							<li><a href="/decks">Deck Search</a></li>
-							<li><a href="/build">Build a Deck</a></li>
-							<li><a onClick={this.handleClick}>Log Out</a></li>
-						</ul>
-					</div>
-			  </nav>
-			)
+                <nav className='navbar nav'>
+                     <a className="navbar-brand" href="/">Brand</a>
+                     <ul className='nav navbar-nav'>
+                        <li><a href="/build">Build</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href='/'>Test</a></li>
+                     </ul>
+                     <ul className='nav navbar-nav navbar-right'>
+                        <li><a href="/profile">{this.state.email}</a></li>
+                        <li><a href="/logout">Logout</a></li>                        
+                     </ul>
+                </nav>
+            )
 		} else {
 			return (
-				<nav>
-				<div className="nav-wrapper">
-				  <a href="#!" className="brand-logo">HearthSearch</a>
-				  <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
-				  <ul className="right hide-on-med-and-down">
-						<li><a href="/search">Card Search</a></li>
-						<li><a href="/decks">Deck Search</a></li>
-						<li><a href="/build">Build a Deck</a></li>
-						<li><a href="/login">Log in</a></li>
-						<li><a href="/signup">Sign up</a></li>
-				  </ul>
-				  <ul className="side-nav" id="mobile-demo">
-						<li><a href="/search">Card Search</a></li>
-						<li><a href="/decks">Deck Search</a></li>
-						<li><a href="/build">Build a Deck</a></li>
-						<li><a href="/login">Log in</a></li>
-						<li><a href="/signup">Sign up</a></li>
-				  </ul>
-				</div>
-			  </nav>
-			)
+                <nav className='navbar nav'>
+                     <a className="navbar-brand" href="/">Brand</a>
+                     <ul className='nav navbar-nav'>
+                        <li><a href="/build">Build</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href='/'>Test</a></li>                        
+                     </ul>
+                     <ul className='nav navbar-nav navbar-right'>
+                        <li><a href="/login">Log in</a></li>
+                        <li><a href="/signup">Sign up</a></li>                        
+                     </ul>
+                </nav>
+            )
 		}   
 	}    
 }

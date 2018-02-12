@@ -3,15 +3,31 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom';
 
 
-export default function Logout() {
+export default class Logout extends React.Component {
 
-    axios.get('/profile/logout')
-        .then(response => {
-            window.location.href='/'
-        })
+    constructor(props) {
+        super(props)
 
-    return (
-        <div />
-    )
+        this.state = {
+            fireRedirect: null
+        }
+    }
+
+    componentDidMount() {
+        axios.get('/profile/logout')
+            .then(response => {
+                this.setState({
+                    fireRedirect: true
+                })
+                console.log("HI")
+            })
+    }
     
+    render() {
+        if (this.state.fireRedirect) {
+            return <Redirect to={{ pathname: '/search' }} />
+        } else {
+            return <div/>
+        }  
+    }  
 }
