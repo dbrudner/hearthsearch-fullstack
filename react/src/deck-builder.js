@@ -18,7 +18,9 @@ class App extends Component {
 
 		this.state = {
 			filterOn: true,
-			term: ''
+			term: '',
+			cards: [],
+			card: ''
 		}
 
 	}
@@ -30,11 +32,17 @@ class App extends Component {
 		})
 	}
 
+	getCard = card => {
+
+		this.setState({card})
+		console.log(this.state.card)
+	}
+
 	componentWillMount() {
 
 		axios.get('/api/cards')
 		.then((data) => {
-			console.log(data)
+			console.log(data.data)
 			this.setState({cards: data.data})
 		}).catch(err => console.log(err))
 

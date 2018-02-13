@@ -17,6 +17,7 @@ export default class CardList extends React.Component {
 
 	getCard(card, cardObj) {
 		this.props.getCard(card);
+		console.log('added')
 	}
 	
 	search(term, array, filters) {

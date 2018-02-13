@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 import axios from 'axios'
 import _ from 'lodash'
 // import HearthstoneJSON from "hearthstonejson";
@@ -26,7 +24,6 @@ class Home extends Component {
 	}
 
 	getFilter = (filterName, filterValue) => {
-		console.log(filterName, filterValue)
 		this.setState({
 			[filterName]: filterValue
 		})

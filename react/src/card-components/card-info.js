@@ -23,7 +23,7 @@ export default class CardInfo extends Component{
 	}
 
 	getCard(name, mana, rarity, cardSet, hero, dbfId, cardId) {
-
+		console.log('added')
 		var card = {
 			name,
 			mana,

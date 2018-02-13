@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import Logout from './logout'
 
 export default class Nav extends React.Component {
@@ -52,11 +53,16 @@ export default class Nav extends React.Component {
 
 		if (!this.state.checkedLoggedin) {
 			return (
-				<nav>
-					<div className="nav-wrapper">
-						<a href="/home" className="brand-logo">HearthSearch</a>
-					</div>
-			  </nav>
+				<nav className='navbar nav'>
+                     <a className="navbar-brand" href="/">Brand</a>
+                     <ul className='nav navbar-nav'>
+					 	<li><Link to="/build">Build</Link></li>
+                        <li><Link to="/Search">Search</Link></li>
+                        <li><Link to="/Decks">Decks</Link></li>
+                     </ul>
+                     <ul className='nav navbar-nav navbar-right'>                     
+                     </ul>
+                </nav>
 			)
 		}
 
@@ -66,28 +72,28 @@ export default class Nav extends React.Component {
                 <nav className='navbar nav'>
                      <a className="navbar-brand" href="/">Brand</a>
                      <ul className='nav navbar-nav'>
-                        <li><a href="/build">Build</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href='/'>Test</a></li>
+                        <li><Link to="/build">Build</Link></li>
+                        <li><Link to="/Search">Search</Link></li>
+                        <li><Link to="/Decks">Decks</Link></li>
                      </ul>
                      <ul className='nav navbar-nav navbar-right'>
-                        <li><a href="/profile">{this.state.email}</a></li>
-                        <li><a href="/logout">Logout</a></li>                        
+                        <li><Link to="/profile">{this.state.email}</Link></li>
+                        <li><Link to="/Logout">Logout</Link></li>                        
                      </ul>
                 </nav>
             )
 		} else {
 			return (
                 <nav className='navbar nav'>
-                     <a className="navbar-brand" href="/">Brand</a>
+					 <Link className='navbar-brand' to="/">Brand</Link>
                      <ul className='nav navbar-nav'>
-                        <li><a href="/build">Build</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href='/'>Test</a></li>                        
+                        <li><Link to="/Build">Build</Link></li>
+                        <li><Link to="/Search">Search</Link></li>
+                        <li><Link to="/Decks">Decks</Link></li>                 
                      </ul>
                      <ul className='nav navbar-nav navbar-right'>
-                        <li><a href="/login">Log in</a></li>
-                        <li><a href="/signup">Sign up</a></li>                        
+                        <li><Link to="/login">Log In</Link></li>
+                        <li><Link to="/signup">Sign up</Link></li>                        
                      </ul>
                 </nav>
             )
