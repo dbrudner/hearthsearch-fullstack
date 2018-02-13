@@ -22,7 +22,7 @@ export default class Submit extends React.Component {
             user: this.props.userId
             })
             .then(response => {
-                console.log('hi')
+                console.log('id', response)
                 this.setState({
                     redirectTo: '/profile'
                 })
