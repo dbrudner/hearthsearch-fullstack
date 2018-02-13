@@ -4,7 +4,6 @@ export default function DeckCardName(props) {
 
     var source = `https://art.hearthstonejson.com/v1/tiles/${props.cardId}.png`
 
-    console.log(props.cardId);
 
     if (props.rarity === 'Legendary') {
         return (

@@ -17,7 +17,6 @@ export default class CardList extends React.Component {
 
 	getCard(card, cardObj) {
 		this.props.getCard(card);
-		console.log('added')
 	}
 	
 	search(term, array, filters) {
@@ -227,7 +226,6 @@ export default class CardList extends React.Component {
 				))
 			)
 
-			console.log(this.props.hero)
 			if (this.props.hero) {
 				matches = matches.filter(card => {
 					return card.playerClass === this.props.hero ||
@@ -287,7 +285,6 @@ export default class CardList extends React.Component {
 				allCards = allCards.concat(this.props.cards[key])
 			})
 
-			// console.log(allCards);
 
 			return (
 					<div>

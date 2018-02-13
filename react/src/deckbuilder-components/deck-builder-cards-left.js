@@ -2,10 +2,18 @@ import React from 'react'
 
 export default function DeckCardsLeft(props) {
 
+    const getQuantity = (deck) => {
+        return deck.reduce((a, card) => {
+            return card.quantity
+        }, 0)
+    }
+
+   const totalCards = getQuantity(props.deck)
+
     if (props.deck.length) {
         return (
             <div>
-                {0 + props.deck.length}/30
+                {totalCards}/30
             </div>
         )
     } else {

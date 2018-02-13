@@ -26,7 +26,6 @@ class App extends Component {
 	}
 
 	getFilter = (filterName, filterValue) => {
-		console.log(filterName, filterValue)
 		this.setState({
 			[filterName]: filterValue
 		})

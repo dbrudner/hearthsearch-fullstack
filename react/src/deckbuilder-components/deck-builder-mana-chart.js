@@ -90,7 +90,7 @@ export default function DeckManaChart(props) {
                             {x: 10, y: tenMana.length},
                         ]}
                     />
-                    <div class='x-axis'>
+                    <div className='x-axis'>
                         0 1 2 3 4 5 6 7 8 9 10
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import DeckManaChart from './deck-builder-mana-chart'
 import DeckDust from './deck-builder-dust'
 import DeckCardsLeft from './deck-builder-cards-left'
 import Submit from './deck-builder-submit'
+import DeckAverageMana from './deck-average-mana'
 
 export default class Deck extends Component {
 
@@ -15,9 +16,56 @@ export default class Deck extends Component {
 
         this.state = {
             deck: [],
-            userId: ''
+            userId: '',
+            dust: 0
         }
     }
+
+    getManaCurve(deck) {
+        return ((deck.reduce((a, card) => {
+            return card.mana + a
+        }, 0))/(deck.length)).toFixed(2)
+    }
+
+    getDust(array) {
+        return array.reduce((a, card) => {
+
+            console.log('card', card);
+    
+            if (card.rarity === 'Free') {
+                return a + 0
+            }
+    
+            if (card.rarity === 'Common') {
+                if (card.quantity === 2) {
+                    return a + 80
+                }
+                return a + 40
+            }
+    
+            if (card.rarity === 'Rare') {
+                if (card.quantity === 2) {
+                    return a + 200
+                }
+                return a + 100
+            }
+    
+            if (card.rarity === 'Epic') {
+                if (card.quantity === 2) {
+                    return a + 800
+                }
+                return a + 400
+            }
+    
+            if (card.rarity === 'Legendary') {
+                return a  + 1600
+            } else {
+                return 0
+            }
+    
+            }, 0)
+    }
+    
 
     componentWillReceiveProps(nextProps) {
         
@@ -41,9 +89,12 @@ export default class Deck extends Component {
             var removedDuplicates = _.uniqBy(newDeck, 'name');
 
             this.setState(() => {
-                return {deck: removedDuplicates}
+                return {
+                    deck: removedDuplicates,
+                    dust: this.getDust(removedDuplicates),
+                    curve: this.getManaCurve(removedDuplicates)
+                }
             })
-
         }
     }
 
@@ -76,8 +127,9 @@ export default class Deck extends Component {
             <div>
                 <DeckManaChart deck={this.state.deck} />
                 <Submit userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} />
-                <DeckDust deck={this.state.deck} />
+                <DeckDust dust={this.state.dust} />
                 <DeckCardsLeft deck={this.state.deck} />
+                {this.state.deck.length > 0 ? <DeckAverageMana curve={this.state.curve} /> : null}
                 <ul className='list-group deck-list'>
                     {cardDeck}
                 </ul>
