@@ -48,7 +48,16 @@ module.exports = function(app, passport) {
             if (err) throw err;
             res.json(result)
         })
+    })
 
+    // Get all collectible cards
+    app.get('/api/cards/collectible', function(req, res) {
+        db.Card.find({'collectible': true}, function(err, docs) {
+            if (err) throw err
+            console.log(docs)            
+            res.json(docs)
+        })
+        
     })
 
     // Get all decks by one user
