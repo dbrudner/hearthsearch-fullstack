@@ -70,6 +70,20 @@ module.exports = function(app, passport) {
     })
 
 
+    // Updates a deck. Used for deck details form.
+    app.post('/deck/update/:deckId', function(req, res) {
+
+        console.log(req.params.deckId)
+        console.log(req.body.archetype)
+        console.log(req.body.description)
+        console.log(req.body.name)
+
+        db.Deck.findOneAndUpdate({'_id': req.params.deckId}, {
+            archetype: req.body.archetype,
+            description: req.body.description,
+            name: req.body.name
+        }).exec(res => console.log(res))
+    })
 
     // Check if user is logged in and reurn info about user
     app.get('/test', function(req, res) {
@@ -146,6 +160,10 @@ module.exports = function(app, passport) {
             cards: req.body.cards,
             cost: 1200,
             user: req.body.user
+        }, function(err, result) {
+            if (err) throw err
+            console.log('done?')
+            res.json(result)
         })
     })
 

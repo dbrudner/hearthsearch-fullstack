@@ -37,6 +37,10 @@ var DeckSchema = new Schema({
         default: 0
     },
 
+    curve: {
+        type: Number
+    },
+
     // Find all comments with this deckId and populate in an array
     comments: [{
         type: Schema.Types.ObjectId,

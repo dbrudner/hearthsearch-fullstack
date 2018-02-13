@@ -22,9 +22,8 @@ export default class Submit extends React.Component {
             user: this.props.userId
             })
             .then(response => {
-                console.log('id', response)
                 this.setState({
-                    redirectTo: '/profile'
+                    redirectTo: '/deck/page2/' + response.data._id
                 })
             }).catch(error => {
                 console.log(error)
@@ -33,7 +32,7 @@ export default class Submit extends React.Component {
     
     render() {
         if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: '/search' }} />
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
                 <button className='btn btn-primary' onClick={() => this.handleClick()}>Submit</button>
