@@ -10,7 +10,8 @@ export default class CardList extends React.Component {
 			totalMatches: "",
 			matches: [],
 			term: '',
-			hero: this.props.hero
+			hero: this.props.hero,
+			totalRendered: 10
 		}
 
 		this.search = this.search.bind(this);
@@ -198,50 +199,43 @@ export default class CardList extends React.Component {
 
 	}
 
-	renderCardList = () => {
+	renderCardList = (cards) => {
 
-		if (this.state.matches.length < 10) {
-			if (this.props.cards) {
-	
-					return this.state.matches.map(card => {
-						return (
-							<li className='list-group-item' key={card.name}>
-								<div className='row'>
-									<CardImage image={card.img} artist={card.artist}/>
-									<CardInfo 
-										flavor={card.flavor}
-										attack={card.attack}
-										health={card.health}
-										cardId={card.cardId}
-										dbfId={card.dbfId}
-										name={card.name}
-										cost={card.cost}
-										type={card.type}
-										text={card.text}
-										rarity={card.rarity}
-										howToGet={card.howToGet}
-										howToGetGold={card.howToGetGold}
-										class={card.playerClass}
-										cardSet={card.cardSet}
-										getCard={this.getCard}
-										buildMode={this.props.buildMode}
-									/>
-									
-								</div>
-							</li>
-						)
-					})
+			return cards.map(card => {
 				return (
-					<div>
-						
-					</div>
+					<li className='list-group-item' key={card.name}>
+						<div className='row'>
+							<CardImage image={card.img} artist={card.artist}/>
+							<CardInfo 
+								flavor={card.flavor}
+								attack={card.attack}
+								health={card.health}
+								cardId={card.cardId}
+								dbfId={card.dbfId}
+								name={card.name}
+								cost={card.cost}
+								type={card.type}
+								text={card.text}
+								rarity={card.rarity}
+								howToGet={card.howToGet}
+								howToGetGold={card.howToGetGold}
+								class={card.playerClass}
+								cardSet={card.cardSet}
+								getCard={this.getCard}
+								buildMode={this.props.buildMode}
+							/>
+							
+						</div>
+					</li>
 				)
-			}
+			})
 		}
 
-		
 
-			
+	renderTen = () => {
+		this.setState({
+			totalRendered: this.state.totalRendered + 10
+		})
 	}
  	
 	render() {
@@ -250,8 +244,9 @@ export default class CardList extends React.Component {
 			return (
 					<div>
 						<ul className='list-group cards'>
-							{this.renderCardList()}
+							{this.renderCardList(this.state.matches.slice(0, this.state.totalRendered))}
 						</ul>
+						<button onClick={this.renderTen} className='btn btn-primary'>Button</button>
 					</div>
 				)
 		}

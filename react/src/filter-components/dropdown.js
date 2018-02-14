@@ -26,6 +26,7 @@ export default class DropDown extends React.Component {
 		return (
 			<div>
 				<select className='filter-dropdown' onChange={this.handleChange}>
+					<option>{this.props.filter}</option>
 					{this.renderOptions(this.props.options)}
 				</select>
 			</div>

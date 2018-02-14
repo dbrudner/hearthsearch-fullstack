@@ -31,7 +31,7 @@ class Home extends Component {
 
 	componentWillMount() {
 
-		axios.get('/api/cards')
+		axios.get('/api/cards/collectible')
 		.then((data) => {
 			console.log(data)
 			this.setState({cards: data.data})
