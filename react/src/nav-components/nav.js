@@ -73,6 +73,7 @@ export default class Nav extends React.Component {
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build A Deck<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<li><Link to="/import">Import</Link></li>							
 								{this.renderClasses(classes)}
 							</ul>
 						</li>
@@ -88,7 +89,6 @@ export default class Nav extends React.Component {
                 <nav className='navbar nav'>
 					 <Link className='navbar-brand' to="/">Brand</Link>
                      <ul className='nav navbar-nav'>
-                        <li><Link to="/Build">Build</Link></li>
                         <li><Link to="/Search">Search</Link></li>
                         <li><Link to="/Decks">Decks</Link></li>                 
                      </ul>

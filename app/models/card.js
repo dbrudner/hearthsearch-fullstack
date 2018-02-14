@@ -30,7 +30,7 @@ var CardSchema = new Schema({
     },
 
     dbfId: {
-        type: Number
+        type: String
     },
 
     flavor: {

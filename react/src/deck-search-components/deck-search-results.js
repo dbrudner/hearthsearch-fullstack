@@ -12,9 +12,9 @@ export default function DeckSearchResults(props) {
                 <td>{deck.class}</td>
                 <td>{deck.archetype}</td>
                 <td>{deck.curve}</td>
-                <td>{deck.dust}</td>
+                <td>{deck.cost}</td>
                 <td>{deck.upvotes}</td>
-                <td>{deck.Created}</td>                
+                <td>{deck.created}</td>                
             </tr>
         )
     })

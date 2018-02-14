@@ -3,8 +3,7 @@ var path = require('path')
 var mongoose = require('mongoose');
 var db = require('./models/index');
 var bodyParser = require('body-parser')
-import {encode, decode} from 'deckstrings'
-
+var deckStrings = require('deckStrings')
 
 
 function Deck(name, cards, archetype, user, cost) {
@@ -17,9 +16,10 @@ function Deck(name, cards, archetype, user, cost) {
 
 module.exports = function(app, passport) {
 
-    app.get('/api/deckstring', function(req, res) {
-
-        res.json(deckstring)
+    
+    app.get('/api/import/:deckString', function(req, res) {
+        const decoded = deckStrings.decode(req.params.deckString)
+        res.json(decoded)
     })
 
     // Logout
@@ -45,6 +45,28 @@ module.exports = function(app, passport) {
             res.json(result)
         })
     })
+
+    // Get card by dbfId and attach quantity to returned object
+    app.get('/blah/:dbfId', function(req, res) {
+        
+        db.Card.findOne({'dbfId': req.params.dbfId}, (err, response) => {
+            if (err) throw err;
+            console.log(response)
+
+            res.json(response)
+        })
+        
+    })
+
+    // app.get('/blah'), function(req, res) {
+    //     console.log(req.params.dbfId)
+    //     res.json('blah')
+    //     db.Card.findOne({"dbfId": '1740'})
+    //     .exec((err, result) => {
+    //         if (err) throw err;
+    //         res.json(result)
+    //     })
+    // }
 
     // Get all cards
     app.get('/api/cards', function(req, res) {

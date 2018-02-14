@@ -15,6 +15,7 @@ import SingleDeck from './single-deck-components/single-deck'
 import DeckSearch from './deck-search-components/deck-search'
 import UserProfile from './user-profile-components/user-profile'
 import DeckBuilderDetailsForm from './deckbuilder-components/deck-builder-details-form'
+import DeckImporter from './deck-import-components/deck-import'
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
+                <Route exact path='/import' component={DeckImporter} />                
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />

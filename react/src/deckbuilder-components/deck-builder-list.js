@@ -69,36 +69,54 @@ export default class Deck extends Component {
 
     componentWillReceiveProps(nextProps) {
         
-        if (nextProps.card.name && nextProps.card.rarity) {
-            var currentDeck = this.state.deck
-            var newCard = nextProps.card
-            newCard.quantity = 1;
-
-            var incomingCard = [newCard]
-
-            for (var i=0; i<currentDeck.length; i++) {
-                if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
-                    currentDeck[i].quantity = 2
-                }
-            }
-
-
-
-            var newDeck = currentDeck.concat(incomingCard) 
-
-            var removedDuplicates = _.uniqBy(newDeck, 'name');
-
-            this.setState(() => {
-                return {
-                    deck: removedDuplicates,
-                    dust: this.getDust(removedDuplicates),
-                    curve: this.getManaCurve(removedDuplicates)
-                }
+        if (nextProps.deck) {
+            console.log(nextProps.deck)
+            this.setState({
+                deck: this.props.deck
             })
         }
+
+        if (nextProps.card) {
+            if (nextProps.card.name && nextProps.card.rarity) {
+                var currentDeck = this.state.deck
+                var newCard = nextProps.card
+                newCard.quantity = 1;
+    
+                var incomingCard = [newCard]
+    
+                for (var i=0; i<currentDeck.length; i++) {
+                    if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
+                        currentDeck[i].quantity = 2
+                    }
+                }
+    
+    
+    
+                var newDeck = currentDeck.concat(incomingCard) 
+    
+                var removedDuplicates = _.uniqBy(newDeck, 'name');
+    
+                this.setState(() => {
+                    return {
+                        deck: removedDuplicates,
+                        dust: this.getDust(removedDuplicates),
+                        curve: this.getManaCurve(removedDuplicates)
+                    }
+                })
+            }
+        }
+
+        
     }
 
     componentDidMount() {
+
+        if (this.props.deck) {
+            this.setState({
+                deck: this.props.deck
+            })
+        }
+
         axios.get('/test')
         .then((response) => {
             this.setState({
