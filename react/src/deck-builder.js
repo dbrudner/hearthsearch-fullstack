@@ -56,6 +56,8 @@ class App extends Component {
 
 	render() {
 
+		console.log(this.props.match.params.class)
+
 		return (
 		<div>
 			<Nav />
@@ -95,7 +97,7 @@ class App extends Component {
 				</div>
 				<div className='col-lg-1 col-md-1 col-xs-12'>
 					<div className=''>
-						<DeckBuilderList card={this.state.card}/>
+						<DeckBuilderList hero={this.props.match.params.class} card={this.state.card}/>
 					</div>
 				</div>
 			</div>

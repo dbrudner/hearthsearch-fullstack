@@ -159,7 +159,8 @@ module.exports = function(app, passport) {
             cost: req.body.cost,
             cards: req.body.cards,
             cost: 1200,
-            user: req.body.user
+            user: req.body.user,
+            hero: req.body.hero
         }, function(err, result) {
             if (err) throw err
             console.log('done?')

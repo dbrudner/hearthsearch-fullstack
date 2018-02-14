@@ -19,11 +19,12 @@ export default class Submit extends React.Component {
             archetype: this.props.archetype,
             cost: this.props.cost,
             cards: this.props.cards,
-            user: this.props.userId
+            user: this.props.userId,
+            hero: this.props.hero
             })
             .then(response => {
                 this.setState({
-                    redirectTo: '/deck/page2/' + response.data._id
+                    redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
                 })
             }).catch(error => {
                 console.log(error)
@@ -31,6 +32,9 @@ export default class Submit extends React.Component {
     } 
     
     render() {
+
+        console.log(this.props.hero)
+
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {

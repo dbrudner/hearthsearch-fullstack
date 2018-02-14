@@ -8,6 +8,11 @@ var DeckSchema = new Schema({
         required: true
     },
 
+    hero: {
+        type: String,
+        required: true
+    },
+
     archetype: {
         type: String,
         required: true
