@@ -39,7 +39,13 @@ export default class CardList extends React.Component {
 		if (this.props.cards) {
 			this.search()
 		}
+		window.addEventListener('scroll', this.onScroll, false);
 	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.onScroll, false);
+	  }
+
 
 	getCard = (card, cardObj) => {
 		this.props.getCard(card);
@@ -237,6 +243,14 @@ export default class CardList extends React.Component {
 			totalRendered: this.state.totalRendered + 10
 		})
 	}
+
+	onScroll = () => {
+		if (
+		  (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)
+		) {
+		  this.renderTen();
+		}
+	  }
  	
 	render() {
 		if (this.props.cards) {
@@ -246,7 +260,6 @@ export default class CardList extends React.Component {
 						<ul className='list-group cards'>
 							{this.renderCardList(this.state.matches.slice(0, this.state.totalRendered))}
 						</ul>
-						<button onClick={this.renderTen} className='btn btn-primary'>Button</button>
 					</div>
 				)
 		}
