@@ -3,6 +3,7 @@ import axios from 'axios'
 import Nav from '../nav-components/nav'
 import Searchbar from '../searchbar'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 
 export default class DeckSearch extends React.Component {
     constructor(props) {
@@ -72,7 +73,9 @@ export default class DeckSearch extends React.Component {
 
         return decks.map(deck => {
             return (
-                <div>{deck.name}</div>
+                <div>
+                    <Link to={`/deck/${deck._id}`}>{deck.name}</Link>
+                </div>
             )
         })
 
@@ -128,6 +131,7 @@ export default class DeckSearch extends React.Component {
                         <option value='curve'>Mana Curve</option>
                         <option value='cost'>Dust</option>
                         <option value='upvotes'>Upvotes</option>
+                        <option value='date'>Date</option>                        
                     </select>
                 </div>
                 <div className="form-group">

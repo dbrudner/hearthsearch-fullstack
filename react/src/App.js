@@ -29,7 +29,7 @@ const App = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/logout' component={Logout} />
                 <Route exact path='/build' component={ChooseClass} />
-                <Route exact path='/deck' component={SingleDeck} />
+                <Route exact path='/deck/:deckId' component={SingleDeck} />
                 <Route exact path='/decks' component={DeckSearch} />
                 <Route exact path='/user/:class/:userId' component={UserProfile} />
                 <Route exact path ='/deck/page2/:class/:deckId' component={DeckBuilderDetailsForm} />                                                                                                                              
