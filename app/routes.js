@@ -3,6 +3,7 @@ var path = require('path')
 var mongoose = require('mongoose');
 var db = require('./models/index');
 var bodyParser = require('body-parser')
+import {encode, decode} from 'deckstrings'
 
 
 
@@ -15,6 +16,11 @@ function Deck(name, cards, archetype, user, cost) {
 }
 
 module.exports = function(app, passport) {
+
+    app.get('/api/deckstring', function(req, res) {
+
+        res.json(deckstring)
+    })
 
     // Logout
     app.get('/profile/logout', function(req, res){
@@ -82,7 +88,7 @@ module.exports = function(app, passport) {
             archetype: req.body.archetype,
             description: req.body.description,
             name: req.body.name
-        }).exec(res => console.log(res))
+        }).exec(result => res.json(result))
     })
 
     // Check if user is logged in and reurn info about user

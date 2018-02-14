@@ -226,12 +226,20 @@ export default class CardList extends React.Component {
 				))
 			)
 
-			if (this.props.hero) {
+
+			if (this.props.buildMode && this.props.hero) {
 				matches = matches.filter(card => {
 					return card.playerClass === this.props.hero ||
 					card.playerClass === "Neutral"
 				})
 			}
+
+			if (!this.props.buildMode && this.props.hero) {
+				matches = matches.filter(card => {
+					return card.playerClass === this.props.hero
+				})
+			}
+
 
 			if (matches.length < 50) {
 				return matches.map(card => {

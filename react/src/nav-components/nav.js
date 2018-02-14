@@ -20,13 +20,9 @@ export default class Nav extends React.Component {
 	componentWillMount() {
 		axios.get('/test')
 		.then((response) => {
-
 			this.setState({
 				checkedLoggedin: true
 			})
-
-			console.log(this.state.checkedLoggedin);
-
 			if (response.data) {
 				this.setState(() => {
 					return {
@@ -34,29 +30,30 @@ export default class Nav extends React.Component {
 						email: response.data.local.email
 					}
 				})
-			   
 			}
 		})
 	}
 
-	handleClick() {
-		console.log("Hi?");
-		axios.get('/profile/logout')
-        .then(response => {
-						console.log('hi')
-            window.location.href='/'
-				})
-
+	renderClasses = (array) => {
+		return array.map(item => {
+			return (
+				<li><Link to={`/Build/${item}`}>{item}</Link></li>			
+			)
+		})
 	}
+	
 
 	render() {
+
+		const classes = ["", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
+
+
 
 		if (!this.state.checkedLoggedin) {
 			return (
 				<nav className='navbar nav'>
                      <a className="navbar-brand" href="/">Brand</a>
                      <ul className='nav navbar-nav'>
-					 	<li><Link to="/build">Build</Link></li>
                         <li><Link to="/Search">Search</Link></li>
                         <li><Link to="/Decks">Decks</Link></li>
                      </ul>
@@ -72,9 +69,13 @@ export default class Nav extends React.Component {
                 <nav className='navbar nav'>
                      <a className="navbar-brand" href="/">Brand</a>
                      <ul className='nav navbar-nav'>
-                        <li><Link to="/build">Build</Link></li>
                         <li><Link to="/Search">Search</Link></li>
-                        <li><Link to="/Decks">Decks</Link></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build A Deck<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								{this.renderClasses(classes)}
+							</ul>
+						</li>
                      </ul>
                      <ul className='nav navbar-nav navbar-right'>
                         <li><Link to="/profile">{this.state.email}</Link></li>

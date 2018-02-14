@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import Nav from '../nav-components/nav'
-import Searchbar from '../searchbar'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
+
+import Nav from '../nav-components/nav'
+import Searchbar from '../searchbar'
+import DeckSearchResults from './deck-search-results'
 
 export default class DeckSearch extends React.Component {
     constructor(props) {
@@ -20,7 +22,8 @@ export default class DeckSearch extends React.Component {
         console.log(this.state)
 		this.setState({
 			[filterName]: filterValue
-		})
+        })
+        this.renderSearchResults()
 	}
 
     componentDidMount = () => {
@@ -39,9 +42,8 @@ export default class DeckSearch extends React.Component {
         })
     }
 
-    renderSearchResults() {
+    renderSearchResults= () => {
         let decks = this.state.decks
-        console.log('hi')
         // if (this.state.hero) {
         //     decks = decks.filter(deck => {
         //         return deck.playerClass === this.state.hero
@@ -54,15 +56,6 @@ export default class DeckSearch extends React.Component {
             })
         }
 
-        // if (this.state.sort === 'cost') {
-        //     decks = _.sortBy(decks, ['cost'],['asc'])
-        // }
-
-        // if (this.state.sort === 'cost' && this.state.sortType === 'descending') {
-            
-        //     decks = _.sortBy(decks, ['cost'],['asc']).reverse()
-        // }
-
         if (this.state.sort) {
             decks = _.sortBy(decks, [this.state.sort],['asc'])
         }
@@ -71,12 +64,9 @@ export default class DeckSearch extends React.Component {
             decks = _.sortBy(decks, ['cost'],['asc']).reverse()
         }
 
-        return decks.map(deck => {
-            return (
-                <div>
-                    <Link to={`/deck/${deck._id}`}>{deck.name}</Link>
-                </div>
-            )
+
+        this.setState({
+            results: decks
         })
 
     }
@@ -142,7 +132,7 @@ export default class DeckSearch extends React.Component {
                 </div>
                 <button className='btn btn-primary'>Submit</button>
                 <div>
-                    {this.renderSearchResults()}
+                    {this.state.results ? <DeckSearchResults results={this.state.results} /> :  <div>asdfaf</div>}
                 </div>
             </div>
         )

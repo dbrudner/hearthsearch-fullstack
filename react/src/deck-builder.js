@@ -67,7 +67,7 @@ class App extends Component {
 			<div className='row'>
 					<div className='col-lg-1 col-md-2 col-xs-12'>
 					{this.state.filterOn ? 
-						<Filters getFilter={this.getFilter}/> : <div />}
+						<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 					</div>
 				<div className='col-lg-10 col-md-9 col-xs-12'>
 					<Searchbar onSearch={this.getFilter}/>

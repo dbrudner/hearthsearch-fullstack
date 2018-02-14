@@ -126,7 +126,7 @@ export default class Deck extends Component {
         return (
             <div>
                 <DeckManaChart deck={this.state.deck} />
-                <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} />
+                {this.state.deck.length > 0 ? <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> : null}
                 <DeckDust dust={this.state.dust} />
                 <DeckCardsLeft deck={this.state.deck} />
                 {this.state.deck.length > 0 ? <DeckAverageMana curve={this.state.curve} /> : null}
