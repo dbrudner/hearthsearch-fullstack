@@ -9,21 +9,34 @@ export default class CardList extends React.Component {
 		this.state = {
 			totalMatches: "",
 			matches: [],
-			term: ''
+			term: '',
+			hero: this.props.hero
 		}
 
-
+		this.search = this.search.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.term) {
-			console.log(nextProps.term)
 
+		if (nextProps) {
 			this.setState({
 				term: nextProps.term
 			}, () => {
-				this.search()				
+				this.search(nextProps)				
 			})
+
+			this.setState({
+				hero: nextProps.hero
+			}, () => {
+				this.search(nextProps)				
+			})
+		}
+
+	}
+
+	componentDidMount() {
+		if (this.props.cards) {
+			this.search()
 		}
 	}
 
@@ -31,15 +44,19 @@ export default class CardList extends React.Component {
 		this.props.getCard(card);
 	}
 	
-	search = () => {
-		console.log('hi?')
-		console.log(this.state.term)
+	search = (filters) => {
+
+		console.log(this.props.hero)
+
+		const thisProps = this.props
+
+		console.log(thisProps)
 
 		const nameMatches = this.props.cards.filter(item => {
 			return item.name.toLowerCase().match(this.state.term.toLowerCase())
 		})
 
-		const textMatches = this.props.cards.filter(item => {
+		const textMatches = thisProps.cards.filter(item => {
 			if (item.text) {
 				return item.text.toLowerCase().match(this.state.term.toLowerCase())				
 			} else {
@@ -48,37 +65,31 @@ export default class CardList extends React.Component {
 		})
 
 		let matches = [...nameMatches, ...textMatches]
-		console.log('48', matches)
 
-		if (!this.props.hero) {
-			if (this.props.hero) {
-				matches = matches.filter((card) => {
-					return card.playerClass === this.props.hero
-				})
-			}
-		}
 
-		if (this.props.type) {
+		console.log(thisProps.hero)
+
+		if (thisProps.type) {
 			matches = matches.filter((card) => {
-				return card.type === this.props.type
+				return card.type === thisProps.type
 			})
 		}
 
-		if (this.props.rarity) {
+		if (thisProps.rarity) {
 			matches = matches.filter((card) => {
-				return card.rarity === this.props.rarity
+				return card.rarity === thisProps.rarity
 			})
 		}
 
-		if (this.props.cardSet) {
+		if (thisProps.cardSet) {
 			matches = matches.filter((card) => {
-				return card.cardSet === this.props.cardSet;
+				return card.cardSet === thisProps.cardSet;
 			})
 		}
 
-		if (this.props.mana) {
+		if (thisProps.mana) {
 
-			if (this.props.mana === ">10") {
+			if (thisProps.mana === ">10") {
 				matches = matches.filter((card) => {
 					return card.cost > 10;
 				})
@@ -86,79 +97,98 @@ export default class CardList extends React.Component {
 
 
 			matches = matches.filter((card) => {
-				return card.cost === parseInt(this.props.mana, 10);
+				return card.cost === parseInt(thisProps.mana, 10);
 			})
 		}
 
-		if (this.props.attack) {
+		if (thisProps.attack) {
 
-			if (this.props.attack === ">10") {
+			if (thisProps.attack === ">10") {
 				matches = matches.filter((card) => {
 					return card.attack > 10;
 				})
 			}
 			matches = matches.filter((card) => {
-				return card.attack === parseInt(this.props.attack, 10);
+				return card.attack === parseInt(thisProps.attack, 10);
 			})
 		}
 
-		if (this.props.health) {
+		if (thisProps.health) {
 
-			if (this.props.health === ">10") {
+			if (thisProps.health === ">10") {
 				matches = matches.filter((card) => {
 					return card.health > 10;
 				})
 			}
 
 			matches = matches.filter((card) => {
-				return card.health === parseInt(this.props.health, 10);
+				return card.health === parseInt(thisProps.health, 10);
 			})
 		}
 
-		if (this.props.minMana) {
+		if (thisProps.minMana) {
 			matches = matches.filter((card) => {
-				return card.cost >= this.props.minMana;
+				return card.cost >= thisProps.minMana;
 			})
 		}
 
-		if (this.props.maxMana) {
+		if (thisProps.maxMana) {
 
 			matches = matches.filter((card) => {
-				return card.cost <= this.props.maxMana;
+				return card.cost <= thisProps.maxMana;
 			})
 		}
 
-		if (this.props.minAttack) {
+		if (thisProps.minAttack) {
 			matches = matches.filter((card) => {
-				return card.attack >= this.props.minAttack;
+				return card.attack >= thisProps.minAttack;
 			})
 		}
 
-		if (this.props.maxAttack) {
+		if (thisProps.maxAttack) {
 			matches = matches.filter((card) => {
-				return card.attack <= this.props.maxAttack;
+				return card.attack <= thisProps.maxAttack;
 			})
 		}
 
-		if (this.props.minMana) {
+		if (thisProps.minMana) {
 			matches = matches.filter((card) => {
-				return card.cost <= this.props.minMana;
+				return card.cost <= thisProps.minMana;
 			})
 		}
 
-		if (this.props.gameFormat === "Standard") {
+		if (thisProps.gameFormat === "Standard") {
 			matches = matches.filter((card) => {
 				return card.cardSet === "Basic" || card.cardSet === "Classic" || card.cardSet === "Journey to Un'Goro" || card.cardSet === "Kobolds & Catacombs" || card.cardSet === "Mean Streets of Gadgetzan" ||  card.cardSet === "One Night in Karazhan" || card.cardSet === "Knights of the Frozen Throne" || card.cardSet === "Whispers of the Old Gods"
 			})
 		}
 
-		if (this.props.tribe) {
+		if (thisProps.tribe) {
 			matches = matches.filter(function(card) {
-				return card.race === this.props.tribe;
+				return card.race === thisProps.tribe;
 			})
 		}
 
-		console.log('check?', matches)
+		if (thisProps.hero) {
+			console.log(thisProps)
+			matches = matches.filter(function(card) {
+				return card.playerClass === thisProps.hero;
+			})
+		}
+
+	// 	if (!thisProps.buildMode && thisProps.hero) {
+	// 		matches = this.state.matches.filter(card => {
+	// 			return card.playerClass === thisProps.hero 
+	// 		})	
+	// }
+
+	// 	if (thisProps.buildMode && thisProps.hero) {
+	// 		matches = this.state.matches.filter(card => {
+	// 			return card.playerClass === thisProps.hero ||
+	// 			card.playerClass === "Neutral"
+	// 		})			
+	// 	}
+
 
 		this.setState({
 			matches: matches.filter(card => {
@@ -170,78 +200,49 @@ export default class CardList extends React.Component {
 
 	renderCardList = () => {
 
-		if (this.props.cards && this.state.term) {
-			
-
-			console.log(this.state.matches);
-
-			if (this.props.buildMode && this.props.hero) {
-				this.setState({
-					matches: this.state.matches.filter(card => {
-						return card.playerClass === this.props.hero ||
-						card.playerClass === "Neutral"
+		if (this.state.matches.length < 10) {
+			if (this.props.cards) {
+	
+					return this.state.matches.map(card => {
+						return (
+							<li className='list-group-item' key={card.name}>
+								<div className='row'>
+									<CardImage image={card.img} artist={card.artist}/>
+									<CardInfo 
+										flavor={card.flavor}
+										attack={card.attack}
+										health={card.health}
+										cardId={card.cardId}
+										dbfId={card.dbfId}
+										name={card.name}
+										cost={card.cost}
+										type={card.type}
+										text={card.text}
+										rarity={card.rarity}
+										howToGet={card.howToGet}
+										howToGetGold={card.howToGetGold}
+										class={card.playerClass}
+										cardSet={card.cardSet}
+										getCard={this.getCard}
+										buildMode={this.props.buildMode}
+									/>
+									
+								</div>
+							</li>
+						)
 					})
-				})
-					
-					
-					
-			}
-
-			if (!this.props.buildMode && this.props.hero) {
-				
-				this.setState({
-					matches: this.state.matches.filter(card => {
-						return card.playerClass === this.props.hero
-					})
-				})
-			}
-
-
-				return this.state.matches.map(card => {
-					
-					
-					return (
-						<li className='list-group-item' key={card.name}>
-							<div className='row'>
-								<CardImage image={card.img} artist={card.artist}/>
-								<CardInfo 
-									flavor={card.flavor}
-									attack={card.attack}
-									health={card.health}
-									cardId={card.cardId}
-									dbfId={card.dbfId}
-									name={card.name}
-									cost={card.cost}
-									type={card.type}
-									text={card.text}
-									rarity={card.rarity}
-									howToGet={card.howToGet}
-									howToGetGold={card.howToGetGold}
-									class={card.playerClass}
-									cardSet={card.cardSet}
-									getCard={this.getCard}
-									buildMode={this.props.buildMode}
-								/>
-								
-							</div>
-						</li>
-					)
-				})
-			
+				return (
+					<div>
 						
-		
-
-		return (
-			<div>
-				
-			</div>
-		)
+					</div>
+				)
+			}
 		}
+
+		
 
 			
 	}
-
-	
  	
 	render() {
 		if (this.props.cards) {

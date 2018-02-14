@@ -10,7 +10,6 @@ export default class Filters extends React.Component {
 
 	getFilter = (filterName, filterValue) => {
 		this.props.getFilter(filterName, filterValue)
-		console.log(filterName, filterValue)
 	}
 
 

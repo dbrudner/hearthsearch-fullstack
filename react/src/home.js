@@ -47,7 +47,7 @@ class Home extends Component {
 	}
 
 	render() {
-		 console.log(this.state.term)
+
 		return (
 			<div>
 				<Nav />			
