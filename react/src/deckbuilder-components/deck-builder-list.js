@@ -70,9 +70,15 @@ export default class Deck extends Component {
     componentWillReceiveProps(nextProps) {
         
         if (nextProps.deck) {
-            console.log(nextProps.deck)
             this.setState({
                 deck: this.props.deck
+            })
+        }
+
+        if (nextProps.hero) {
+            console.log(nextProps.hero)
+            this.setState({
+                hero: this.props.hero
             })
         }
 

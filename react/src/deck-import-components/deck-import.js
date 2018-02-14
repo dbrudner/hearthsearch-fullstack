@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import axios from 'axios'
+import DeckBuilder from '../deck-builder'
 import DeckBuilderList from '../deckbuilder-components/deck-builder-list'
 import { SIGVTALRM } from 'constants';
 
@@ -29,7 +30,54 @@ export default class DeckImport extends Component {
         axios.get(`/api/import/${this.state.deckString}`)
         .then(result => {
             let deckString = result.data.cards
-            console.log(deckString)
+            let hero = result.data.heroes[0]
+
+            if (hero === 893 || hero === 47817) {
+                this.setState({
+                    hero: 'Warlock'
+                })
+            }
+            if (hero === 31 || hero === 2826) {
+                this.setState({
+                    hero: 'Hunter'
+                })
+            }
+            if (hero === 637 || hero === 39117) {
+                this.setState({
+                    hero: 'Mage'
+                })
+            }
+            if (hero === 40195 || hero === 930) {
+                this.setState({
+                    hero: 'Rogue'
+                })
+            }
+            if (hero === 274) {
+                this.setState({
+                    hero: 'Druid'
+                })
+            }
+            if (hero === 1066 || hero === 40183) {
+                this.setState({
+                    hero: 'Shaman'
+                })
+            }
+            if (hero === 813 || hero === 41887) {
+                this.setState({
+                    hero: 'Priest'
+                })
+            }
+            if (hero === 671 || hero === 2827 || hero === 46116) {
+                this.setState({
+                    hero: 'Paladin'
+                })
+            }
+            if (hero === 7 ||hero === 2828) {
+                this.setState({
+                    hero: 'Warrior'
+                })
+            }
+
             let newDeck = deckString.forEach(ds => {
                 axios.get(`/blah/${ds[0]}`)
                 .then(result2 => {
@@ -62,7 +110,9 @@ export default class DeckImport extends Component {
                         </div>
                     </form>
                 </div>
-                <DeckBuilderList deck={this.state.deck}/>
+                <DeckBuilder hero={this.state.hero} deck={this.state.deck}/>
+                {/* <DeckBuilderList hero={this.state.hero} deck={this.state.deck}/> */}
+                
             </div>
 		)
 	}

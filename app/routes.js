@@ -19,6 +19,7 @@ module.exports = function(app, passport) {
     
     app.get('/api/import/:deckString', function(req, res) {
         const decoded = deckStrings.decode(req.params.deckString)
+        console.log(decoded)
         res.json(decoded)
     })
 
@@ -51,7 +52,6 @@ module.exports = function(app, passport) {
         
         db.Card.findOne({'dbfId': req.params.dbfId}, (err, response) => {
             if (err) throw err;
-            console.log(response)
 
             res.json(response)
         })
@@ -70,7 +70,6 @@ module.exports = function(app, passport) {
 
     // Get all cards
     app.get('/api/cards', function(req, res) {
-        console.log("HI")
         db.Card.find({})
         .exec((err, result) => {
             if (err) throw err;
@@ -82,7 +81,6 @@ module.exports = function(app, passport) {
     app.get('/api/cards/collectible', function(req, res) {
         db.Card.find({'collectible': true}, function(err, docs) {
             if (err) throw err
-            console.log(docs)            
             res.json(docs)
         })
         
@@ -100,11 +98,6 @@ module.exports = function(app, passport) {
 
     // Updates a deck. Used for deck details form.
     app.post('/deck/update/:deckId', function(req, res) {
-
-        console.log(req.params.deckId)
-        console.log(req.body.archetype)
-        console.log(req.body.description)
-        console.log(req.body.name)
 
         db.Deck.findOneAndUpdate({'_id': req.params.deckId}, {
             archetype: req.body.archetype,
