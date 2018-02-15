@@ -21,7 +21,8 @@ export default class CardList extends React.Component {
 
 		if (nextProps) {
 			this.setState({
-				term: nextProps.term
+				term: nextProps.term,
+				totalRendered: 10
 			}, () => {
 				this.search(nextProps)				
 			})
@@ -176,26 +177,24 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.hero) {
-			console.log(thisProps)
-			matches = matches.filter(function(card) {
-				return card.playerClass === thisProps.hero;
-			})
+
+		if (this.props.buildMode) {
+			if (thisProps.hero) {
+				console.log(thisProps)
+				matches = matches.filter(function(card) {
+					return card.playerClass === thisProps.hero || card.playerClass === "Neutral";
+				})
+			}
 		}
 
-	// 	if (!thisProps.buildMode && thisProps.hero) {
-	// 		matches = this.state.matches.filter(card => {
-	// 			return card.playerClass === thisProps.hero 
-	// 		})	
-	// }
-
-	// 	if (thisProps.buildMode && thisProps.hero) {
-	// 		matches = this.state.matches.filter(card => {
-	// 			return card.playerClass === thisProps.hero ||
-	// 			card.playerClass === "Neutral"
-	// 		})			
-	// 	}
-
+		if (!this.props.buildMode) {
+			if (thisProps.hero) {
+				console.log(thisProps)
+				matches = matches.filter(function(card) {
+					return card.playerClass === thisProps.hero ;
+				})
+			}
+		}
 
 		this.setState({
 			matches: matches.filter(card => {

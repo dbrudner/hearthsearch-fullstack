@@ -151,7 +151,8 @@ select {
 }
 
 .filter-dropdown {
-	width: 66%
+	text-align: center;
+	margin: 10px;
 }
 
 .card-info-container {
@@ -189,11 +190,11 @@ select {
 	font-size: 14px;
 }
 
-.filter-header, .filter-dropdown {
+/* .filter-header, .filter-dropdown {
 	float:left; 
 	display:inline;
 	width: 49%;
-}
+} */
 
 /* @media screen and (min-width: 1100px) {
 	.list-group-item, .filter-panel {
