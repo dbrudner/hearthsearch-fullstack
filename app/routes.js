@@ -79,7 +79,12 @@ module.exports = function(app, passport) {
 
     // Get all collectible cards
     app.get('/api/cards/collectible', function(req, res) {
-        db.Card.find({'collectible': true}, function(err, docs) {
+        db.Card.find({
+            $and: [
+                {'collectible': true}, 
+                {'type': {$ne: 'Hero'}}
+            ]
+        }, function(err, docs) {
             if (err) throw err
             res.json(docs)
         })
