@@ -22,13 +22,9 @@ export default class DeckImport extends Component {
 	handleSubmit = (event) => {
         event.preventDefault();
 
-        // axios.get('/blah/aklsdfasdf')
-        // .then(result => {
-        //     console.log(result)
-        // })
-
         axios.get(`/api/import/${this.state.deckString}`)
         .then(result => {
+            console.log(result)
             let deckString = result.data.cards
             let hero = result.data.heroes[0]
 

@@ -4,7 +4,7 @@ export default function DeckCardsLeft(props) {
 
     const getQuantity = (deck) => {
         return deck.reduce((a, card) => {
-            return card.quantity
+            return card.quantity + a
         }, 0)
     }
 

@@ -93,7 +93,7 @@ class App extends Component {
 								/>
 							</div>
 							<div className='col-lg-1 col-md-1 col-xs-12'>
-								<div className=''>
+								<div className='affix'>
 									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>
 							</div>
