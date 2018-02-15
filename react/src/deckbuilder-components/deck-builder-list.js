@@ -145,12 +145,6 @@ export default class Deck extends Component {
 
     componentDidMount() {
 
-        if (this.props.deck) {
-            this.setState({
-                deck: this.props.deck
-            })
-        }
-
         axios.get('/test')
         .then((response) => {
             this.setState({

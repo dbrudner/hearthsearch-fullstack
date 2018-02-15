@@ -85,7 +85,6 @@ export default class DeckImport extends Component {
                     this.setState({
                         deck: [...this.state.deck, result2.data]                        
                     })
-                    // return result2
                 })
             })
             

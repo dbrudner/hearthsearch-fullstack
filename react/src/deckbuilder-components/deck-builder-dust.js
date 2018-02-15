@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function DeckDust(props) {    
     
-    
+    console.log(props.dust)
+
     if (props.dust) {
         return (
             <div>
