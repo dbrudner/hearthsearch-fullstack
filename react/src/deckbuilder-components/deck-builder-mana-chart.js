@@ -3,6 +3,8 @@ import {BarChart} from 'react-easy-chart';
 
 export default function DeckManaChart(props) {
 
+    console.log(props.deck)
+
     var curve = []
 
     for (let i=0; i<props.deck.length; i++) {
@@ -60,9 +62,6 @@ export default function DeckManaChart(props) {
     var tenMana = curve.filter(index => {
         return index === 10
     })
-
-
-    
 
 
         if (props.deck.length > 0) {

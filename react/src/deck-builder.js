@@ -56,51 +56,50 @@ class App extends Component {
 
 
 		return (
-		<div>
-			<Nav />
-		<div className='deck-builder-container'>
-			<Banner />
-			<div>{this.props.match.params.class}</div>
-			<div className='row'>
-					<div className='col-lg-1 col-md-2 col-xs-12'>
-					{this.state.filterOn ? 
-						<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
+			<div>
+				<Nav />
+				<div className='deck-builder-container'>
+					<Banner />
+						<div className='row'>
+							<div className='col-lg-1 col-md-2 col-xs-12'>
+								{this.state.filterOn ? 
+									<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
+							</div>
+							<div className='col-lg-10 col-md-9 col-xs-12'>
+								<Searchbar onSearch={this.getFilter}/>
+								
+								<CardList
+									cards={this.state.cards} 
+									term={this.state.term} 
+									rarity={this.state.rarity}
+									cardSet={this.state.cardSet}
+									mana={this.state.mana}
+									attack={this.state.attack}
+									health={this.state.health}
+									minMana={this.state.minMana}
+									maxMana={this.state.maxMana}
+									minHealth={this.state.minHealth}
+									maxHealth={this.state.maxHealth}
+									minAttack={this.state.minAttack}
+									maxAttack={this.state.maxAttack}
+									gameFormat={this.state.gameFormat}
+									ability={this.state.ability}
+									ability2={this.state.ability2}
+									tribe={this.state.tribe}
+									type={this.state.type}
+									getCard = {this.getCard}
+									hero={this.props.match ? this.props.match.params.class : this.state.hero}
+									buildMode={true}        
+								/>
+							</div>
+							<div className='col-lg-1 col-md-1 col-xs-12'>
+								<div className=''>
+									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
+								</div>
+							</div>
+						</div>
 					</div>
-				<div className='col-lg-10 col-md-9 col-xs-12'>
-					<Searchbar onSearch={this.getFilter}/>
-					
-					<CardList 
-						cards={this.state.cards} 
-						term={this.state.term} 
-						rarity={this.state.rarity}
-						cardSet={this.state.cardSet}
-						mana={this.state.mana}
-						attack={this.state.attack}
-						health={this.state.health}
-						minMana={this.state.minMana}
-						maxMana={this.state.maxMana}
-						minHealth={this.state.minHealth}
-						maxHealth={this.state.maxHealth}
-						minAttack={this.state.minAttack}
-						maxAttack={this.state.maxAttack}
-						gameFormat={this.state.gameFormat}
-						ability={this.state.ability}
-						ability2={this.state.ability2}
-						tribe={this.state.tribe}
-						type={this.state.type}
-						getCard = {this.getCard}
-						hero={this.props.match.params.class}
-						buildMode={true}        
-					/>
 				</div>
-				<div className='col-lg-1 col-md-1 col-xs-12'>
-					<div className=''>
-						<DeckBuilderList hero={this.props.match.params.class} card={this.state.card}/>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
 	);
 	}
 }

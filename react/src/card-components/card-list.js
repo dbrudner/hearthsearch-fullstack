@@ -73,9 +73,8 @@ export default class CardList extends React.Component {
 
 		let matches = [...nameMatches, ...textMatches]
 
-
-
 		if (thisProps.type && thisProps.type !== 'None') {
+			console.log("matching type")
 			matches = matches.filter((card) => {
 				return card.type === thisProps.type
 			})

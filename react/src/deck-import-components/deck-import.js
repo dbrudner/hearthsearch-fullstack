@@ -83,11 +83,10 @@ export default class DeckImport extends Component {
                 .then(result2 => {
                     result2.data.cardQuantity = ds[1]
                     this.setState({
-                        deck: [...this.state.deck, result2.data]
+                        deck: [...this.state.deck, result2.data]                        
                     })
                     // return result2
                 })
-                // console.log(newDeck)
             })
             
         })
@@ -110,9 +109,7 @@ export default class DeckImport extends Component {
                         </div>
                     </form>
                 </div>
-                <DeckBuilder hero={this.state.hero} deck={this.state.deck}/>
-                {/* <DeckBuilderList hero={this.state.hero} deck={this.state.deck}/> */}
-                
+                {this.state.deck.length > 0 ? <DeckBuilder hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
             </div>
 		)
 	}

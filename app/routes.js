@@ -47,7 +47,7 @@ module.exports = function(app, passport) {
         })
     })
 
-    // Get card by dbfId and attach quantity to returned object
+    // Get card by dbfId
     app.get('/blah/:dbfId', function(req, res) {
         
         db.Card.findOne({'dbfId': req.params.dbfId}, (err, response) => {
