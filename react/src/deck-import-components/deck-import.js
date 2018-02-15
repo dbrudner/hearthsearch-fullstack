@@ -77,7 +77,7 @@ export default class DeckImport extends Component {
             let newDeck = deckString.forEach(ds => {
                 axios.get(`/blah/${ds[0]}`)
                 .then(result2 => {
-                    result2.data.cardQuantity = ds[1]
+                    result2.data.quantity = ds[1]
                     this.setState({
                         deck: [...this.state.deck, result2.data]                        
                     })
@@ -90,9 +90,10 @@ export default class DeckImport extends Component {
 	
 	render() {
 
+        
 		return (
             <div>
-                <div className='search-bar form-group'>
+                {this.state.deck.length === 0 ? <div className='search-bar form-group'>
                     <form onSubmit={this.handleSubmit} >
                         <div className='row'>
                             <div className='col-xs-10'>
@@ -104,6 +105,9 @@ export default class DeckImport extends Component {
                         </div>
                     </form>
                 </div>
+                :
+                <div>Imported</div>}
+                
                 {this.state.deck.length > 0 ? <DeckBuilder hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
             </div>
 		)

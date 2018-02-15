@@ -3,29 +3,36 @@ import {BarChart} from 'react-easy-chart';
 
 export default function DeckManaChart(props) {
 
-    console.log(props.deck)
+    // {
+    //     oneCostCards: 2,
+    //     twoCostCards: 1,
+    //     threeCostCards: 0
+    // }
+
 
     var curve = []
 
     for (let i=0; i<props.deck.length; i++) {
-
         if (props.deck[i].quantity === 1) {
-            curve.push(props.deck[i].mana)
+            curve.push(props.deck[i].mana || props.deck[i].cost)
         } 
 
         if (props.deck[i].quantity === 2) {
-            curve.push(props.deck[i].mana)
-            curve.push(props.deck[i].mana)
+            curve.push(props.deck[i].mana || props.deck[i].cost)
+            curve.push(props.deck[i].mana || props.deck[i].cost)
         }
+    }
+
+
+    const loop = num => {
+
     }
 
     var zeroMana = curve.filter(index => {
         return index === 0
     })
 
-    var oneMana = curve.filter(index => {
-        return index === 1
-    })
+    var oneMana = curve.filter(index => index === 1).length;
 
     var twoMana = curve.filter(index => {
         return index === 2
