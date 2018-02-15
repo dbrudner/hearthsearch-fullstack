@@ -34,14 +34,12 @@ class App extends Component {
 	getCard = card => {
 
 		this.setState({card})
-		console.log(this.state.card)
 	}
 
 	componentWillMount() {
 
-		axios.get('/api/cards')
+		axios.get('/api/cards/collectible')
 		.then((data) => {
-			console.log(data.data)
 			this.setState({cards: data.data})
 		}).catch(err => console.log(err))
 
@@ -56,7 +54,6 @@ class App extends Component {
 
 	render() {
 
-		console.log(this.props.match.params.class)
 
 		return (
 		<div>
@@ -90,6 +87,7 @@ class App extends Component {
 						ability={this.state.ability}
 						ability2={this.state.ability2}
 						tribe={this.state.tribe}
+						type={this.state.type}
 						getCard = {this.getCard}
 						hero={this.props.match.params.class}
 						buildMode={true}        

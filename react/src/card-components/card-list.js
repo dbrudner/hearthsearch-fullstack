@@ -19,6 +19,7 @@ export default class CardList extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 
+
 		if (nextProps) {
 			this.setState({
 				term: nextProps.term,
@@ -54,11 +55,9 @@ export default class CardList extends React.Component {
 	
 	search = (filters) => {
 
-		console.log(this.props.hero)
 
 		const thisProps = this.props
 
-		console.log(thisProps)
 
 		const nameMatches = this.props.cards.filter(item => {
 			return item.name.toLowerCase().match(this.state.term.toLowerCase())
@@ -75,27 +74,26 @@ export default class CardList extends React.Component {
 		let matches = [...nameMatches, ...textMatches]
 
 
-		console.log(thisProps.hero)
 
-		if (thisProps.type) {
+		if (thisProps.type && thisProps.type !== 'None') {
 			matches = matches.filter((card) => {
 				return card.type === thisProps.type
 			})
 		}
 
-		if (thisProps.rarity) {
+		if (thisProps.rarity && thisProps.rarity !== 'None') {
 			matches = matches.filter((card) => {
 				return card.rarity === thisProps.rarity
 			})
 		}
 
-		if (thisProps.cardSet) {
+		if (thisProps.cardSet && thisProps.cardSet !== 'None') {
 			matches = matches.filter((card) => {
 				return card.cardSet === thisProps.cardSet;
 			})
 		}
 
-		if (thisProps.mana) {
+		if (thisProps.mana && thisProps.mana !== 'None') {
 
 			if (thisProps.mana === ">10") {
 				matches = matches.filter((card) => {
@@ -109,7 +107,7 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.attack) {
+		if (thisProps.attack && thisProps.attack !== 'None') {
 
 			if (thisProps.attack === ">10") {
 				matches = matches.filter((card) => {
@@ -121,7 +119,7 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.health) {
+		if (thisProps.health && thisProps.health !== 'None') {
 
 			if (thisProps.health === ">10") {
 				matches = matches.filter((card) => {
@@ -134,32 +132,32 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.minMana) {
+		if (thisProps.minMana && thisProps.minMana !== 'None') {
 			matches = matches.filter((card) => {
 				return card.cost >= thisProps.minMana;
 			})
 		}
 
-		if (thisProps.maxMana) {
+		if (thisProps.maxMana && thisProps.maxMana !== 'None') {
 
 			matches = matches.filter((card) => {
 				return card.cost <= thisProps.maxMana;
 			})
 		}
 
-		if (thisProps.minAttack) {
+		if (thisProps.minAttack && thisProps.minAttack !== 'None') {
 			matches = matches.filter((card) => {
 				return card.attack >= thisProps.minAttack;
 			})
 		}
 
-		if (thisProps.maxAttack) {
+		if (thisProps.maxAttack && thisProps.maxAttack !== 'None') {
 			matches = matches.filter((card) => {
 				return card.attack <= thisProps.maxAttack;
 			})
 		}
 
-		if (thisProps.minMana) {
+		if (thisProps.minMana && thisProps.minMana !== 'None') {
 			matches = matches.filter((card) => {
 				return card.cost <= thisProps.minMana;
 			})
@@ -171,7 +169,7 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.tribe) {
+		if (thisProps.tribe && thisProps.tribe !== 'None') {
 			matches = matches.filter(function(card) {
 				return card.race === thisProps.tribe;
 			})
@@ -180,7 +178,6 @@ export default class CardList extends React.Component {
 
 		if (this.props.buildMode) {
 			if (thisProps.hero) {
-				console.log(thisProps)
 				matches = matches.filter(function(card) {
 					return card.playerClass === thisProps.hero || card.playerClass === "Neutral";
 				})
@@ -189,7 +186,6 @@ export default class CardList extends React.Component {
 
 		if (!this.props.buildMode) {
 			if (thisProps.hero) {
-				console.log(thisProps)
 				matches = matches.filter(function(card) {
 					return card.playerClass === thisProps.hero ;
 				})

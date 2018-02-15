@@ -76,7 +76,6 @@ export default class Deck extends Component {
         }
 
         if (nextProps.hero) {
-            console.log(nextProps.hero)
             this.setState({
                 hero: this.props.hero
             })
@@ -110,9 +109,38 @@ export default class Deck extends Component {
                     }
                 })
             }
-        }
+        }    
+    }
 
-        
+    removeCard = toBeRemoved => {
+        console.log(this.state.deck)
+        console.log(toBeRemoved)
+
+        let newDeck = this.state.deck.map(card => {
+            if (card.name !== toBeRemoved) {
+                console.log(card)
+                return card
+            }
+
+            if (card.name === toBeRemoved) {
+
+                if (card.quantity === 2) {
+                    let newCard = card
+                    newCard.quantity = 1
+                    console.log(newCard)
+                    return newCard
+                }
+            }
+        })
+
+        newDeck = newDeck.filter(item => {
+            if (item) {return item}
+        })
+
+        this.setState({
+            deck: newDeck
+        })
+
     }
 
     componentDidMount() {
@@ -133,17 +161,13 @@ export default class Deck extends Component {
 
     render() {
 
+        console.log(this.state.deck)
+
         const cardDeck = this.state.deck.map(card => {
             return (
-                <li className='list-group-item' key={card.name}>
-                    <div className='deck-list-card-container'>
-                        <span className='deck-list-mana text-center'>
-                            {card.mana}
-                        </span>
-                        <span><DeckCardName quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/></span>
+                    <div>
+                        <DeckCardName removeCard={this.removeCard} mana={card.mana} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
                     </div>
-                    
-                </li>
             )
         })
 
@@ -154,9 +178,9 @@ export default class Deck extends Component {
                 <DeckDust dust={this.state.dust} />
                 <DeckCardsLeft deck={this.state.deck} />
                 {this.state.deck.length > 0 ? <DeckAverageMana curve={this.state.curve} /> : null}
-                <ul className='list-group deck-list'>
+                <div>
                     {cardDeck}
-                </ul>
+                </div>
             </div>
         )
     }

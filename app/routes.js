@@ -79,6 +79,15 @@ module.exports = function(app, passport) {
 
     // Get all collectible cards
     app.get('/api/cards/collectible', function(req, res) {
+        db.Card.find({'collectible': true}, function(err, docs) {
+            if (err) throw err
+            res.json(docs)
+        })
+        
+    })
+
+    // Get All collectible non-hero cards
+    app.get('/api/cards/collectible/noheroes', function(req, res) {
         db.Card.find({
             $and: [
                 {'collectible': true}, 
@@ -88,7 +97,6 @@ module.exports = function(app, passport) {
             if (err) throw err
             res.json(docs)
         })
-        
     })
 
     // Get all decks by one user

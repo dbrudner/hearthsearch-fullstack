@@ -43,7 +43,7 @@ export default class Filters extends React.Component {
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Mana</div> */}
-								<DropDown filter='manaSort' onChange={this.getFilter} options={sortingMethods} />
+								<DropDown filter='sortingMethod' onChange={this.getFilter} options={sortingMethods} />
  							</div>
 						</div>
 						<hr/>
