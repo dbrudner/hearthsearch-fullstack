@@ -25,7 +25,7 @@ class Searchbar extends React.Component {
 		
 
 		return (
-			<div className='search-bar-div form-group'>
+			<div className=''>
 				<form onSubmit={this.handleSubmit} >
 					<div className='row'>
 						<div className='col-xs-10'>

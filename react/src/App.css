@@ -192,7 +192,11 @@ select {
 	background-color: white;
 	padding: 50px;
 	border-radius: 2px;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+}
+
+.panel {
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);	
 }
 
 .search-bar-div {
@@ -203,6 +207,10 @@ select {
 	padding: 0px 60px
 }
 
+.search-bar-input {
+	width: 80%;
+	margin-left: 50%;
+}
 
 input[type=text], textarea {
 	-webkit-transition: all 0.30s ease-in-out;
