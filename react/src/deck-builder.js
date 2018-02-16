@@ -25,6 +25,7 @@ class App extends Component {
 
 	}
 
+
 	getFilter = (filterName, filterValue) => {
 		this.setState({
 			[filterName]: filterValue
@@ -50,10 +51,13 @@ class App extends Component {
 		// }).then(data => {
 
 		// 	this.setState({cards: data.data});
+		this.setState({
+			hero: this.props.hero
+		})
+
 	}
 
 	render() {
-
 
 		return (
 			<div>

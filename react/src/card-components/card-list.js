@@ -247,6 +247,8 @@ export default class CardList extends React.Component {
 	  }
  	
 	render() {
+		console.log(this.props.hero)
+
 		if (this.props.cards) {
 			
 			return (
