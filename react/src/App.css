@@ -19,9 +19,9 @@ body {
 
 
 .card-image, .legend-cardback {
-	margin-left: 20px;
-	width: 200px;
+	width: 250px;
 	height: auto;
+	margin-top: -25px;
 }
 
 .card-name {
@@ -85,7 +85,8 @@ body {
 }
 
 .class {
-	font-size: 18px;
+	font-size: 16px;
+	font-weight: 700
 }
 
 .list-group-item {
@@ -153,7 +154,6 @@ select {
 }
 
 .card-info-container {
-	padding-left: 40px !important;
 }
 
 .deck-header-container {
@@ -166,7 +166,7 @@ select {
 
 .deck-builder-container {
 	margin: 30px;
-	margin-right: 185px;
+	margin-right: 20px;
 }
 
 .card-tile {
@@ -188,11 +188,60 @@ select {
 	font-size: 14px;
 }
 
+.example-enter {
+	opacity: 0.01;
+  }
+  
+  .example-enter.example-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in;
+  }
+  
+  .example-leave {
+	opacity: 1;
+  }
+  
+  .example-leave.example-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
+  }
+
+.sound-board-container {
+	padding: 10px
+}
+
 .search-bar-container {
 	background-color: white;
 	padding: 50px;
 	border-radius: 2px;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+}
+
+.card-list-name {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.card-list-header {
+	display: flex;
+	justify-content: space-between;	
+}
+
+.card-popularity {
+	text-align: right;
+	color: gray;
+}
+
+.card-container {
+	padding: 20px
+}
+
+.card-result {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+	padding: 20px
 }
 
 .panel {
@@ -208,7 +257,7 @@ select {
 }
 
 .search-bar-input {
-	width: 80%;
+	width: 100%;
 	margin-left: 50%;
 }
 
@@ -229,6 +278,12 @@ input[type=text], textarea {
 	margin: 5px 1px 3px 0px;
 	border: 1px solid rgba(81, 203, 238, 1);
   }
+
+.card-list-header {
+	display: flex;
+	justify-content: space-between;
+}
+
 
 /* .filter-header, .filter-dropdown {
 	float:left; 

@@ -54,11 +54,11 @@ class Home extends Component {
 		
 				<Banner />
 				<div className='row'>
-					<div className='col-md-3 col-xs-12'>
+					<div className='col-xs-1 col-md-3 col-lg-2 col-xs-12'>
 						{this.state.filterOn ? 
 							<Filters getFilter={this.getFilter}/> : <div />}
 					</div>
-					<div className='col-md-9 col-xs-12 search-bar-padding'>
+					<div className=' col-xl-11 col-lg-10 col-md-9 col-xs-12 search-bar-padding'>
 						<div className='search-bar-container'>
 							<Searchbar onSearch={this.getFilter}/>
 						</div>

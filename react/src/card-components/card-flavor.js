@@ -11,7 +11,7 @@ export default function CardFlavor(props) {
 	if (props.flavor) {
 		return (
 			<div>
-				<div className='flavor caption'>
+				<div className='flavor'>
 					{filtered(props.flavor)}
 				</div>
 			</div>

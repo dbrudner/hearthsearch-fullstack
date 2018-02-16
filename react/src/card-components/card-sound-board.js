@@ -55,11 +55,19 @@ export default function(props) {
     }
 
     return (
-        <div>
-            <button onClick={playAttackSound}>Attack</button>
-            <button onClick={playIntroSound}>Intro</button>
-            <button onClick={playDeathSound}>Death</button>            
-        </div>
+
+        <div>DF</div>
+        // <div>
+        //     <div>
+        //         <div onClick={playAttackSound}>Attack</div>
+        //     </div>
+        //     <div>                        
+        //         <div onClick={playIntroSound}>Intro</div>
+        //     </div>
+        //     <div>                        
+        //         <div onClick={playDeathSound}>Death</button>
+        //     </div>                       
+        // </div>
     )
 
     

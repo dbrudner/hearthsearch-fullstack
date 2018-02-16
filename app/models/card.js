@@ -43,11 +43,15 @@ var CardSchema = new Schema({
 
     // For neutral cards, push the class of the deck. This is used to chart what classes are using what neutral cards the most.
     inclusionClass: {
-        type: Array
+        type: Array,
+        default: [],
+        required: true
     },
 
     inclusions: {
-        type: Number
+        type: Number,
+        default: 0,
+        required: true
     },
 
     img: {

@@ -4,7 +4,7 @@ import ReactImageFallback from "react-image-fallback"
 export default function CardImage(props) {
 
 	return (
-		<div className='image-container col-sm-12 col-md-3'>
+		<div className='image-container'>
 			{(props.image) ? 
 				<ReactImageFallback 
 					src={props.image}
@@ -21,7 +21,7 @@ export default function CardImage(props) {
 				/>
 			}
 			{props.artist ? <div className='artist'>Artist: {props.artist}</div> : <div />}
-			<div className='wiki-link' ><a target='_blank' href={`https://hearthstone.gamepedia.com/${props.name}`}>wiki link</a></div>
+			<div className='wiki-link' ><a target='_blank' href={`https://hearthstone.gamepedia.com/${props.name}`}>Wiki</a></div>
 
 		</div>
 	)

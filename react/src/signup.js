@@ -95,10 +95,10 @@ export default class SignUp extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
-                    <div className="jumbotron">
-                        <div class='signup-container text-center'>
-                            <h1 className="display-3">Sign up!</h1>
+                <div className='animated fadeIn'>
+                    <div className="jumbotron animated fadeIn">
+                        <div className='signup-container text-center '>
+                            <h1 className="display-3 animated fadeIn">Sign up!</h1>
                             <p className="lead">I stole this shit from bootstrap.</p>
                             <form onSubmit={this.handleSubmit}>
                                 <div>

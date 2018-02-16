@@ -3,7 +3,6 @@ import axios from 'axios'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
 
-import Nav from '../nav-components/nav'
 import Searchbar from '../searchbar'
 import DeckSearchResults from './deck-search-results'
 
@@ -102,7 +101,6 @@ export default class DeckSearch extends React.Component {
 
         return (
             <div>
-                <Nav/>
                 <h3>Archetypes</h3>
                 <div className="form-group">
                     <select className="form-control" id="heroes" onChange={(event) => this.getFilter('hero', event.target.value)}>

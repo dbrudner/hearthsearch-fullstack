@@ -16,6 +16,14 @@ function Deck(name, cards, archetype, user, cost) {
 
 module.exports = function(app, passport) {
 
+    app.get('api/decks/populate', function(req, res) {
+        db.Deck.find({})
+        .populate('cards')
+        .then(function(decks) {
+            res.json(decks)
+        })
+        .catch((err) => {res.json(err)} )
+    })
     
     app.get('/api/import/:deckString', function(req, res) {
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import CardImage from './card-image'
 import CardInfo from './card-info'
+import CardPopularity from './card-popularity'
+
 
 export default class CardList extends React.Component {
 
@@ -55,9 +57,7 @@ export default class CardList extends React.Component {
 	
 	search = (filters) => {
 
-
 		const thisProps = this.props
-
 
 		const nameMatches = this.props.cards.filter(item => {
 			return item.name.toLowerCase().match(this.state.term.toLowerCase())
@@ -74,7 +74,6 @@ export default class CardList extends React.Component {
 		let matches = [...nameMatches, ...textMatches]
 
 		if (thisProps.type && thisProps.type !== 'None') {
-			console.log("matching type")
 			matches = matches.filter((card) => {
 				return card.type === thisProps.type
 			})
@@ -203,30 +202,29 @@ export default class CardList extends React.Component {
 
 			return cards.map(card => {
 				return (
-					<li className='list-group-item' key={card.name}>
-						<div className='row'>
-							<CardImage image={card.img} artist={card.artist}/>
-							<CardInfo 
-								flavor={card.flavor}
-								attack={card.attack}
-								health={card.health}
-								cardId={card.cardId}
-								dbfId={card.dbfId}
-								name={card.name}
-								cost={card.cost}
-								type={card.type}
-								text={card.text}
-								rarity={card.rarity}
-								howToGet={card.howToGet}
-								howToGetGold={card.howToGetGold}
-								class={card.playerClass}
-								cardSet={card.cardSet}
-								getCard={this.getCard}
-								buildMode={this.props.buildMode}
-							/>
-							
+						<div key={card.dbfId} className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container animated fadeIn'>
+							<div class='card-result'>
+								<CardInfo
+								 image={card.img} artist={card.artist}
+									flavor={card.flavor}
+									attack={card.attack}
+									health={card.health}
+									cardId={card.cardId}
+									dbfId={card.dbfId}
+									name={card.name}
+									cost={card.cost}
+									type={card.type}
+									text={card.text}
+									rarity={card.rarity}
+									howToGet={card.howToGet}
+									howToGetGold={card.howToGetGold}
+									class={card.playerClass}
+									cardSet={card.cardSet}
+									getCard={this.getCard}
+									buildMode={this.props.buildMode}
+								/>
+							</div>
 						</div>
-					</li>
 				)
 			})
 		}
@@ -247,15 +245,16 @@ export default class CardList extends React.Component {
 	  }
  	
 	render() {
-		console.log(this.props.hero)
 
 		if (this.props.cards) {
 			
 			return (
 					<div>
-						<ul className='list-group cards'>
+						<div className='list-group cards'>
+							<div class='row'>
 							{this.renderCardList(this.state.matches.slice(0, this.state.totalRendered))}
-						</ul>
+							</div>
+						</div>
 					</div>
 				)
 		}

@@ -16,6 +16,7 @@ import Profile from './profile-components/profile'
 import DeckBuilderDetailsForm from './deckbuilder-components/deck-builder-details-form'
 import DeckImporter from './deck-import-components/deck-import'
 import Nav from './nav-components/nav'
+import './animate.css'
 
 const App = () => {
     return (
