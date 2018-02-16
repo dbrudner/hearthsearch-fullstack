@@ -50,7 +50,6 @@ class Home extends Component {
 
 		return (
 			<div>
-				<Nav />			
 			<div className='deck-builder-container'>
 		
 				<Banner />

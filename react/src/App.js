@@ -16,12 +16,14 @@ import DeckSearch from './deck-search-components/deck-search'
 import UserProfile from './user-profile-components/user-profile'
 import DeckBuilderDetailsForm from './deckbuilder-components/deck-builder-details-form'
 import DeckImporter from './deck-import-components/deck-import'
+import Nav from './nav-components/nav'
 
 const App = () => {
     return (
         
         <Router>
             <div>
+                <Nav/>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />

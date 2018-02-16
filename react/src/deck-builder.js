@@ -57,7 +57,6 @@ class App extends Component {
 
 		return (
 			<div>
-				<Nav />
 				<div className='deck-builder-container'>
 					<Banner />
 						<div className='row'>

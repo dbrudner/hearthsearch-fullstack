@@ -6,7 +6,6 @@ import Nav from './nav-components/nav'
 export default function(props) {
     return (
         <div>
-            <Nav />
             <div className='panel panel-default'>
                 <div className='panel-heading'>Choose a class</div>
                 <div className='row panel-body'>

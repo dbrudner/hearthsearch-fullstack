@@ -18,7 +18,10 @@ module.exports = function(app, passport) {
 
     
     app.get('/api/import/:deckString', function(req, res) {
-        const decoded = deckStrings.decode(req.params.deckString)
+
+        let deckString = req.params.deckString.replace('$', '/')
+        console.log(deckString)
+        const decoded = deckStrings.decode(deckString)
         console.log(decoded)
         res.json(decoded)
     })

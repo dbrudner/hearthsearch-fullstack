@@ -155,7 +155,7 @@ export default class Deck extends Component {
 
     render() {
 
-        // console.log(this.state.deck)
+        console.log(this.props)
 
         const cardDeck = this.state.deck.map(card => {
             return (
