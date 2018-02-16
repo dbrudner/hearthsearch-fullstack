@@ -3,16 +3,12 @@ import axios from 'axios'
 
 export default function SingleDeck(props) {
     
-    axios.get(`/api/deck/${props.match.params.deckId}`)
+    axios.get(`/api/export/${props.match.params.deckId}`)
     .then(function(response) {
-
-        let deckString = response.cards.map(card => {
-            return [card.dbfId, card.cardQuantity]
-        })
-
+        console.log(response)
     })
 
     return (
-        <div>wow</div>
+        <div>${props.match.params.deckId}</div>
     )
 }

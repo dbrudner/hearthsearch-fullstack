@@ -26,6 +26,65 @@ module.exports = function(app, passport) {
         res.json(decoded)
     })
 
+    // makes a deckString for a deck
+    app.get('/api/export/:deckId', function(req, res) {
+        db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
+            if (err) throw err;
+            let deckStringFormattedCards = response.cards.map(card => {
+                return [parseInt(card.dbfId), parseInt(card.quantity)]
+            })
+            
+            let deckStringFormattedHero = response.hero
+
+            if (deckStringFormattedHero === 'Warlock') {
+
+                deckStringFormattedHero = 893
+
+            }
+            if (deckStringFormattedHero === 'Hunter') {
+
+                deckStringFormattedHero = 31
+                
+            }
+            if (deckStringFormattedHero === 'Mage') {
+
+                deckStringFormattedHero = 637
+                
+            }
+            if (deckStringFormattedHero === 'Rogue') {
+                deckStringFormattedHero = 930
+                
+            }
+            if (deckStringFormattedHero === 'Druid') {
+                deckStringFormattedHero = 274
+                
+            }
+            if (deckStringFormattedHero === 'Shaman') {
+                deckStringFormattedHero = 1066
+                
+            }
+            if (deckStringFormattedHero === 'Priest') {
+                deckStringFormattedHero = 813
+               
+            }
+            if (deckStringFormattedHero === 'Paladin') {
+                deckStringFormattedHero = 671
+                
+            }
+            if (deckStringFormattedHero === "Warrior") {
+                deckStringFormattedHero = 7
+            }
+
+            const deckStringObject = {
+                cards: deckStringFormattedCards,
+                heroes: [deckStringFormattedHero],
+                format: 1
+            }
+
+            res.json(deckStrings.encode(deckStringObject));
+        })
+    })
+
     // Logout
     app.get('/profile/logout', function(req, res){
         req.logout();

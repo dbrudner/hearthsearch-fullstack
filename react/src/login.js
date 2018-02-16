@@ -79,7 +79,6 @@ export default class SignUp extends Component {
 
         return (
             <div>
-                <Nav />
                 <div className='card'>
                     <div className='card-content'>
                         {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}

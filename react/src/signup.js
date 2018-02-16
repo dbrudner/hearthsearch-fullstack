@@ -86,7 +86,6 @@ export default class SignUp extends Component {
         if (this.state.isLoggedIn) {
             return (
                 <div>
-                    <Nav />
                     You're already logged in as {this.state.email}
                 </div>
             )
@@ -97,7 +96,6 @@ export default class SignUp extends Component {
         } else {
             return (
                 <div>
-                    <Nav />
                     <div className="jumbotron">
                         <div class='signup-container text-center'>
                             <h1 className="display-3">Sign up!</h1>
