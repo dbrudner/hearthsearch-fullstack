@@ -30,7 +30,6 @@ export default class Deck extends Component {
     getDust(array) {
         return array.reduce((a, card) => {
 
-            console.log('card', card);
     
             if (card.rarity === 'Free') {
                 return a + 0
@@ -113,12 +112,9 @@ export default class Deck extends Component {
     }
 
     removeCard = toBeRemoved => {
-        console.log(this.state.deck)
-        console.log(toBeRemoved)
 
         let newDeck = this.state.deck.map(card => {
             if (card.name !== toBeRemoved) {
-                console.log(card)
                 return card
             }
 
@@ -127,7 +123,6 @@ export default class Deck extends Component {
                 if (card.quantity === 2) {
                     let newCard = card
                     newCard.quantity = 1
-                    console.log(newCard)
                     return newCard
                 }
             }
@@ -154,8 +149,6 @@ export default class Deck extends Component {
     }
 
     render() {
-
-        console.log(this.props)
 
         const cardDeck = this.state.deck.map(card => {
             return (

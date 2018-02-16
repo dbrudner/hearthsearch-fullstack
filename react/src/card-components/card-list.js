@@ -13,7 +13,7 @@ export default class CardList extends React.Component {
 			matches: [],
 			term: '',
 			hero: this.props.hero,
-			totalRendered: 10
+			totalRendered: 12
 		}
 
 		this.search = this.search.bind(this);
@@ -25,7 +25,7 @@ export default class CardList extends React.Component {
 		if (nextProps) {
 			this.setState({
 				term: nextProps.term,
-				totalRendered: 10
+				totalRendered: 12
 			}, () => {
 				this.search(nextProps)				
 			})
@@ -222,6 +222,7 @@ export default class CardList extends React.Component {
 									cardSet={card.cardSet}
 									getCard={this.getCard}
 									buildMode={this.props.buildMode}
+									_id={card._id}
 								/>
 							</div>
 						</div>
@@ -232,7 +233,7 @@ export default class CardList extends React.Component {
 
 	renderTen = () => {
 		this.setState({
-			totalRendered: this.state.totalRendered + 10
+			totalRendered: this.state.totalRendered + 12
 		})
 	}
 

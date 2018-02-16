@@ -10,6 +10,7 @@ import Filters from './filter-components/filters'
 import Banner from './banner'
 import DeckBuilderList from './deckbuilder-components/deck-builder-list'
 import Nav from './nav-components/nav'
+import { Query } from 'mongoose';
 
 class App extends Component {
 	
@@ -68,7 +69,7 @@ class App extends Component {
 								{this.state.filterOn ? 
 									<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 							</div>
-							<div className='col-lg-10 col-md-9 col-xs-12'>
+							<div className='col-lg-9 col-md-9 col-xs-12'>
 								<Searchbar onSearch={this.getFilter}/>
 								
 								<CardList
@@ -95,7 +96,7 @@ class App extends Component {
 									buildMode={true}        
 								/>
 							</div>
-							<div className='col-lg-1 col-md-1 col-xs-12'>
+							<div className='col-lg-2 col-md-2 col-xs-12'>
 								<div className='affix'>
 									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>

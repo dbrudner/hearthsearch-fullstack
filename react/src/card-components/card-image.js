@@ -21,7 +21,7 @@ export default function CardImage(props) {
 				/>
 			}
 			{props.artist ? <div className='artist'>Artist: {props.artist}</div> : <div />}
-			<div className='wiki-link' ><a target='_blank' href={`https://hearthstone.gamepedia.com/${props.name}`}>Wiki</a></div>
+			{/* <div className='wiki-link' ><a target='_blank' href={`https://hearthstone.gamepedia.com/${props.name}`}>Wiki</a></div> */}
 
 		</div>
 	)

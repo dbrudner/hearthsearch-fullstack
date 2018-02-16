@@ -14,7 +14,9 @@ body {
 .artist {
 	text-align: center;
 	font-style: italic;
-	font-weight: 700;
+	font-weight: 400;
+	color: gray;
+	font-family: 'Raleway', sans-serif;
 }
 
 
@@ -52,6 +54,7 @@ body {
 	font-style: italic;
 	font-size: 16px;
 	margin-top: 10px;
+	color: gray
 }
 
 .card-info-list {
@@ -84,9 +87,45 @@ body {
 	color: #E85800;
 }
 
+.warrior {
+	color: #7c0006
+}
+
+.hunter {
+	color: #013f12
+}
+
+.mage {
+	color: #3695f9
+}
+
+.druid {
+	color: #00c677
+}
+
+.paladin {
+	color: #bf9742
+}
+
+.priest {
+	color: #a5a5a5
+}
+
+.rogue {
+	color: #316661
+}
+
+.shaman {
+	color: #122c72
+}
+
+.warlock {
+	color: #46007c
+}
+
 .class {
 	font-size: 16px;
-	font-weight: 700
+	font-family: 'Mukta Mahee', sans-serif;
 }
 
 .list-group-item {
@@ -149,8 +188,9 @@ select {
 }
 
 .filter-dropdown {
-	text-align: center;
-	margin: 10px;
+	margin: 10px !important;
+	text-align: left;
+	width: 84%
 }
 
 .card-info-container {
@@ -282,6 +322,12 @@ input[type=text], textarea {
 .card-list-header {
 	display: flex;
 	justify-content: space-between;
+}
+
+.padding {
+	padding: 20px;
+	font-size: 1px;
+	text-align: center
 }
 
 

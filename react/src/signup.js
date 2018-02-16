@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Nav from './nav-components/nav'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom';
 

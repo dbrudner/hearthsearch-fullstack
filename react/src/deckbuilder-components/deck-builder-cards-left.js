@@ -8,12 +8,10 @@ export default function DeckCardsLeft(props) {
         }, 0)
     }
 
-    console.log(props.deck)
 
    const totalCards = getQuantity(props.deck)
 
     if (props.deck.length) {
-        console.log("HI")
         return (
             <div>
                 {totalCards}/30

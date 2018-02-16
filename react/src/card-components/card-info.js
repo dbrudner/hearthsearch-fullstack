@@ -1,15 +1,5 @@
 import React, {Component} from 'react'
-import Rarity from './card-rarity'
-import CardType from './card-type'
-import Class from './card-class'
-import HowToGet from './card-how-to-get'
-import CardSet from './card-set'
-import Flavor from './card-flavor'
-import CardText from './card-text'
-import CardName from './card-name'
 import AddToDeck from './add-to-deck'
-import CardSoundBoard from './card-sound-board'
-import CardBasicInfo from './card-basic-info'
 import CardImage from './card-image'
 import CardPopularity from './card-popularity'
 import CardFlavor from './card-flavor'
@@ -26,7 +16,7 @@ export default class CardInfo extends Component{
 
 	}
 
-	getCard = (name, mana, rarity, cardSet, hero, dbfId, cardId) => {
+	getCard = (name, mana, rarity, cardSet, hero, dbfId, cardId, _id) => {
 		var card = {
 			name,
 			mana,
@@ -34,7 +24,8 @@ export default class CardInfo extends Component{
 			cardSet,
 			hero,
 			dbfId,
-			cardId
+			cardId,
+			_id
 		}
 		this.props.getCard(card)
 	}
@@ -46,7 +37,7 @@ export default class CardInfo extends Component{
 	}
 
 	render() {
-
+		
 
 		return (
 			<div className=''>
@@ -56,7 +47,7 @@ export default class CardInfo extends Component{
 				</div>
 				<CardImage image={this.props.image} artist={this.props.artist}/>
 				<hr/>
-				<AddToDeck buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>		
+				<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>		
 				<CardFlavor flavor={this.props.flavor} />											
 				{/* { (this.props.type === 'Minion') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null } */}
 			</div>

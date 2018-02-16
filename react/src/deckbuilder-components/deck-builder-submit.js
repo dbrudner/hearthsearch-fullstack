@@ -13,12 +13,18 @@ export default class Submit extends React.Component {
     }
 
     handleClick() {
-        console.log(this.props.userId)
+        const cards = this.props.cards.map(({_id, quantity}) => {
+            return {
+                _id, quantity
+            }
+        })
+
+    
         axios.post('/newdeck', {
             name: this.props.name,
             archetype: this.props.archetype,
             cost: this.props.cost,
-            cards: this.props.cards,
+            cards,
             user: this.props.userId,
             hero: this.props.hero
             })
@@ -33,7 +39,6 @@ export default class Submit extends React.Component {
     
     render() {
 
-        console.log(this.props.hero)
 
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />

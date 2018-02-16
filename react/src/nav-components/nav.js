@@ -37,7 +37,7 @@ export default class Nav extends React.Component {
 	renderClasses = (array) => {
 		return array.map(item => {
 			return (
-				<li><Link to={`/Build/${item}`}>{item}</Link></li>			
+				<li key={item}><Link to={`/Build/${item}`}>{item}</Link></li>			
 			)
 		})
 	}
@@ -70,10 +70,17 @@ export default class Nav extends React.Component {
                      <a className="navbar-brand" href="/">Brand</a>
                      <ul className='nav navbar-nav'>
                         <li><Link to="/Search">Search</Link></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build A Deck<span class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li className="dropdown">
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build A Deck<span className="caret"></span></a>
+							<ul className="dropdown-menu">
 								<li><Link to="/import">Import</Link></li>							
+								{this.renderClasses(classes)}
+							</ul>
+						</li>
+						<li className="dropdown">
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">classNamees<span className="caret"></span></a>
+							<ul className="dropdown-menu">
+								<li><Link to="/import">Classes</Link></li>							
 								{this.renderClasses(classes)}
 							</ul>
 						</li>

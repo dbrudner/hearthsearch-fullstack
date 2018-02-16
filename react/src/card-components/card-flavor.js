@@ -10,8 +10,8 @@ export default function CardFlavor(props) {
 
 	if (props.flavor) {
 		return (
-			<div>
-				<div className='flavor'>
+			<div className='padding'>
+				<div className=''>
 					{filtered(props.flavor)}
 				</div>
 			</div>

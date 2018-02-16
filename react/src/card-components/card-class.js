@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function CardClass(props) {
 
-	console.log(props)
 
 	if (props.hero === 'Paladin') {
 		return (
