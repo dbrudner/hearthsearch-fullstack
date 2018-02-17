@@ -52,7 +52,6 @@ class Home extends Component {
 			<div>
 			<div className='deck-builder-container'>
 		
-				<Banner />
 				<div className='row'>
 					<div className='col-xs-1 col-md-3 col-lg-2 col-xs-12'>
 						{this.state.filterOn ? 

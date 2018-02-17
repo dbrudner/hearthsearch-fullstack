@@ -18,10 +18,15 @@ var DeckSchema = new Schema({
         required: true
     },
 
-    cards: {
-        type: Array,
-        required: true
-    },
+    cards: [{
+        card: {
+            type: Schema.Types.ObjectId,
+            ref: "Card"
+        },
+        cardQuantity: {
+            type: Number
+        }
+    }],
 
     cost: {
         type: Number,
@@ -36,7 +41,7 @@ var DeckSchema = new Schema({
     description: {
         type: String
     },
-    
+   
     upvotes: {
         type: Number,
         default: 0
@@ -45,15 +50,14 @@ var DeckSchema = new Schema({
     curve: {
         type: Number
     },
-
-    // Find all comments with this deckId and populate in an array
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: "Comment",
-    }],
-
+    
     user: {
         type: String
+    },
+
+    createdAt: {
+        type: Date,
+        'Default': Date.now
     }
 });
 

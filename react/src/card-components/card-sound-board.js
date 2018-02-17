@@ -56,18 +56,17 @@ export default function(props) {
 
     return (
 
-        <div>DF</div>
-        // <div>
-        //     <div>
-        //         <div onClick={playAttackSound}>Attack</div>
-        //     </div>
-        //     <div>                        
-        //         <div onClick={playIntroSound}>Intro</div>
-        //     </div>
-        //     <div>                        
-        //         <div onClick={playDeathSound}>Death</button>
-        //     </div>                       
-        // </div>
+        <div className='row'>
+            <div className='col-xs-4'>
+                <div onClick={playAttackSound}><button className='btn'><i className="fas fa-play"></i>Attack</button></div>
+            </div>
+            <div className='col-xs-4'>                        
+                <div onClick={playIntroSound}><button className='btn'><i className="fas fa-play"></i>Intro</button></div>
+            </div>
+            <div className='col-xs-4'>                        
+                <div onClick={playDeathSound}><button className='btn'><i className="fas fa-play"></i>Death</button></div>
+            </div>                       
+        </div>
     )
 
     

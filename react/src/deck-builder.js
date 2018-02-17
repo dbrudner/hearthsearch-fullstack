@@ -63,7 +63,6 @@ class App extends Component {
 		return (
 			<div>
 				<div className='deck-builder-container'>
-					<Banner />
 						<div className='row'>
 							<div className='col-lg-1 col-md-2 col-xs-12'>
 								{this.state.filterOn ? 

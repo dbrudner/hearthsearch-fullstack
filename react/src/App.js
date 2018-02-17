@@ -17,6 +17,9 @@ import DeckBuilderDetailsForm from './deckbuilder-components/deck-builder-detail
 import DeckImporter from './deck-import-components/deck-import'
 import Nav from './nav-components/nav'
 import './animate.css'
+import './hover.css'
+import Banner from './banner'
+
 
 const App = () => {
     return (
@@ -24,6 +27,7 @@ const App = () => {
         <Router>
             <div>
                 <Nav/>
+                <Banner/>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />

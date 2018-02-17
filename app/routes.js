@@ -16,13 +16,25 @@ function Deck(name, cards, archetype, user, cost) {
 
 module.exports = function(app, passport) {
 
-    app.get('api/decks/populate', function(req, res) {
-        db.Deck.find({})
-        .populate('cards')
-        .then(function(decks) {
-            res.json(decks)
+    app.get('/api/decks/populate', function(req, res) {
+        db.Deck.find()
+        .populate('cards.card')   
+        .exec((err, result) => {
+            if (err) {
+               throw err
+            }
+            console.log(result)
+            res.json(result)
         })
-        .catch((err) => {res.json(err)} )
+    })
+
+    // Get all decks
+    app.get('/api/decks', function(req, res) {
+        db.Deck.find({})     
+        .exec((err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
     })
     
     app.get('/api/import/:deckString', function(req, res) {
@@ -108,14 +120,7 @@ module.exports = function(app, passport) {
         })
     })
 
-    // Get all decks
-    app.get('/api/decks', function(req, res) {
-        db.Deck.find({})
-        .exec((err, result) => {
-            if (err) throw err;
-            res.json(result)
-        })
-    })
+    
 
     // Get card by dbfId
     app.get('/blah/:dbfId', function(req, res) {
