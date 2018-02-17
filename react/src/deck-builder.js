@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import axios from 'axios'
-import _ from 'lodash'
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
 import Filters from './filter-components/filters'
 import Banner from './banner'
 import DeckBuilderList from './deckbuilder-components/deck-builder-list'
-import Nav from './nav-components/nav'
-import { Query } from 'mongoose';
 
 class App extends Component {
 	

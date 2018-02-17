@@ -63,14 +63,11 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
-							{/* <li><a href="#">Page 1</a></li>
-							<li><a href="#">Page 2</a></li> 
-							<li><a href="#">Page 3</a></li>  */}
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
-							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+							<li className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
 						</ul>
 						</div>
 					</div>
@@ -84,6 +81,9 @@ export default class Nav extends React.Component {
                         // <li><Link to="/Search">Search</Link></li>
 
 		if (this.state.isLoggedIn === true) {
+
+			console.log('logged in')
+
 			return (
 				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
@@ -96,14 +96,18 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
-							{/* <li><a href="#">Page 1</a></li>
-							<li><a href="#">Page 2</a></li> 
-							<li><a href="#">Page 3</a></li>  */}
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Build
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									{this.renderClasses(classes)}
+								</ul>
+							</li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
-							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li  className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+							<li  className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
 						</ul>
 						</div>
 					</div>
@@ -122,14 +126,14 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
 							{/* <li><a href="#">Page 1</a></li>
 							<li><a href="#">Page 2</a></li> 
 							<li><a href="#">Page 3</a></li>  */}
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
-							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+							<li className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
 						</ul>
 						</div>
 					</div>

@@ -12,6 +12,10 @@ body {
 	margin: 0;
 }
 
+.navbar {
+	width: 100%
+}
+
 .artist {
 	text-align: center;
 	font-style: italic;
@@ -20,12 +24,29 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.add-to-deck-button {
+	border-radius: 15px;
+	border: none;
+	padding: 4px;
+}
+
 .navbar-inverse {
-	background-color:  rgb(122, 52, 122) !important;	
+	background-color:  rgb(122, 52, 122) !important;
+}
+
+.dropdown-toggle:active, .open .dropdown-toggle {
+	background:rgb(122, 52, 122) !important; 
+	color:rgb(255, 217, 0) !important;
 }
 	
 .navbar-inverse .navbar-nav>li>a {
 	color: white
+}
+
+.dropdown {
+	margin-top: 5px;
+	font-size: 19px;
+	margin-left: 15px;
 }
 
 .navbar-nav>li>a {
@@ -136,15 +157,15 @@ body {
 }
 
 .rarity {
-	font-weight: 700;
+	text-align: center;
 }
 
 .common {
-	color: black;
+	color: gray;
 }
 
 .rare {
-	color: #2204FF;
+	color: rgba(83, 86, 255, 0.651);
 }
 
 .epic {
@@ -439,7 +460,7 @@ input[type=text], textarea {
 }
 
 .bottom-card-container {
-	height: 100px;
+	height: 130px;
 }
 
 .panel-heading {

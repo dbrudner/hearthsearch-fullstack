@@ -4,31 +4,31 @@ export default function Rarity(props) {
 
 	if (props.rarity === "Free") {
 		return (
-			<span><span className='rarity common'>Free</span></span>
+			<div><div className='rarity common'>Free <span className={props.type}>{props.type}</span></div></div>
 		)
 	}
 
 	if (props.rarity === "Common") {
 		return (
-			<span><span className='rarity common'>Common</span></span>
+			<div><div className='rarity common'>Common <span className={props.type}>{props.type}</span></div></div>
 		)
 	}
 
 	if (props.rarity === "Rare") {
 		return (
-			<span><span className='rarity rare'>Rare</span></span>
+			<div><div className='rarity rare'>Rare <span className={props.type}>{props.type}</span></div></div>
 		)
 	}
 
 	if (props.rarity === "Epic") {
 		return (
-			<span><span className='rarity epic'>Epic</span></span>
+			<div><div className='rarity epic'>Epic <span className={props.type}>{props.type}</span></div></div>
 		)
 	}
 
 	if (props.rarity === "Legendary") {
 		return (
-			<span><span className='rarity legendary'>Legendary</span></span>
+			<div><div className='rarity legendary'>Legendary <span className={props.type}>{props.type}</span></div></div>
 		)
 	}
 

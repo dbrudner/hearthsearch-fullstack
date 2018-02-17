@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import axios from 'axios'
-import _ from 'lodash'
 // import HearthstoneJSON from "hearthstonejson";
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
 import Filters from './filter-components/filters'
 import Banner from './banner'
-import Nav from './nav-components/nav'
 
 class Home extends Component {
 	

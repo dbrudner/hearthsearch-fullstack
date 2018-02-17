@@ -22,8 +22,8 @@ export default class extends Component{
         return (
             <div>
                 <button onClick={this.handleClick} 
-                    className='btn add-to-deck-button center-block'
-                    >Add to deck
+                    className='add-to-deck-button center-block'
+                    ><span class="glyphicon glyphicon-plus"></span>
                 </button>
             </div>
         )

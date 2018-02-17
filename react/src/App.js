@@ -25,8 +25,10 @@ const App = () => {
     return (
         
         <Router>
-            <div className='container-fluid'>
+            <div>
                 <Nav/>
+            <div className='container-fluid'>
+                
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
@@ -40,6 +42,7 @@ const App = () => {
                 <Route exact path='/deck/:deckId' component={SingleDeck} />
                 <Route exact path='/decks' component={DeckSearch} />
                 <Route exact path ='/deck/page2/:class/:deckId' component={DeckBuilderDetailsForm} />                                                                                                                              
+            </div>
             </div>
         </Router>
     )
