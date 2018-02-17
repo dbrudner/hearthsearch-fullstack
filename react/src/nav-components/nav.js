@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import potato from '../images/potato.svg'
 // import Logout from './logout'
 
 export default class Nav extends React.Component {
@@ -62,34 +63,40 @@ export default class Nav extends React.Component {
                 </nav>
 			)
 		}
-
+						// <li><Link to="/profile">{this.state.email}</Link></li>
+                        // <li><Link to="/Logout">Logout</Link></li>     
+						// <li><Link to="/import">Classes</Link></li>							
+						// <li><Link to="/import">Import</Link></li>							
+                        // <li><Link to="/Search">Search</Link></li>
 
 		if (this.state.isLoggedIn === true) {
 			return (
-                <nav className='navbar nav'>
-                     <a className="navbar-brand" href="/">Brand</a>
-                     <ul className='nav navbar-nav'>
-                        <li><Link to="/Search">Search</Link></li>
-						<li className="dropdown">
-							<a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build A Deck<span className="caret"></span></a>
-							<ul className="dropdown-menu">
-								<li><Link to="/import">Import</Link></li>							
-								{this.renderClasses(classes)}
-							</ul>
-						</li>
-						<li className="dropdown">
-							<a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">classNamees<span className="caret"></span></a>
-							<ul className="dropdown-menu">
-								<li><Link to="/import">Classes</Link></li>							
-								{this.renderClasses(classes)}
-							</ul>
-						</li>
-                     </ul>
-                     <ul className='nav navbar-nav navbar-right'>
-                        <li><Link to="/profile">{this.state.email}</Link></li>
-                        <li><Link to="/Logout">Logout</Link></li>                        
-                     </ul>
-                </nav>
+				<nav className="navbar navbar-inverse">
+					<div className="container-fluid">
+					<a href="#" className="navbar-left">
+						<img className='potato-brand' src={potato} />
+					</a>
+						<div className="navbar-header">
+						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span> 
+						</button>
+						</div>
+						<div className="collapse navbar-collapse" id="myNavbar">
+						<ul className="nav navbar-nav">
+							<li className=""><a href="#" className='nav-potato'>HearthPotato</a></li>
+							<li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li> 
+							<li><a href="#">Page 3</a></li> 
+						</ul>
+						<ul className="nav navbar-nav navbar-right">
+							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</ul>
+						</div>
+					</div>
+				</nav>
             )
 		} else {
 			return (

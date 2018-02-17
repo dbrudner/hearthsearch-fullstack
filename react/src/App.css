@@ -20,6 +20,14 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.navbar-inverse {
+	background-color:  rgb(122, 52, 122) !important;	
+}
+	
+.navbar-inverse .navbar-nav>li>a {
+	color: white
+}
+
 .navbar {
 	margin-bottom: 0 !important;
 }
@@ -52,10 +60,6 @@ body {
 	border-radius: 5px;
 } */
 
-.navbar {
-	background-color: white
-}
-
 .card-name {
   font-size: 48px;
   text-align: center;
@@ -65,7 +69,16 @@ body {
 	text-align: center;
 }
 
+.potato-brand {
+	width: 50px;
+	margin-right: 10px;
+}
 
+.nav-potato {
+	font-size: 24px;
+	font-weight: 700;
+	color: rgb(255, 217, 0) !important;
+}
 
 .second-row {
 	margin-top: 15px;

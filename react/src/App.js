@@ -27,7 +27,6 @@ const App = () => {
         <Router>
             <div>
                 <Nav/>
-                <Banner/>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />
                 <Route exact path='/build/:class' component={DeckBuilder} />
