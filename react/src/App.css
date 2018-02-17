@@ -28,6 +28,10 @@ body {
 	color: white
 }
 
+.navbar-nav>li>a {
+	padding-top: 28px;
+}
+
 .navbar {
 	margin-bottom: 0 !important;
 }
@@ -70,7 +74,7 @@ body {
 }
 
 .potato-brand {
-	width: 50px;
+	width: 80px;
 	margin-right: 10px;
 }
 
@@ -78,6 +82,23 @@ body {
 	font-size: 24px;
 	font-weight: 700;
 	color: rgb(255, 217, 0) !important;
+	border: 2px solid;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 15px !important;
+}
+
+.nav-potato-inverted {
+	font-size: 24px;
+	font-weight: 700;
+	color:  rgb(122, 52, 122) !important;
+	background-color: rgb(255, 217, 0) !important;
+	border: 2px solid;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 15px !important;
 }
 
 .second-row {
@@ -194,6 +215,15 @@ select {
 	margin: 0 auto !important;
 }
 
+.snd-margin-left {
+	margin-left: 5px;
+	margin-top: 20px;
+}
+
+.margin-left-sbrd {
+	margin-left: 5px;
+}
+
 .checkbox-label {
 	text-align: right;
 	font-size: 14px;
@@ -245,7 +275,7 @@ select {
 	padding: 5px;
 	text-align: left;
 	width: 84%;
-	font-size: 24px;
+	font-size: 15px;
 	font-family: 'Arimo', sans-serif;
 	-webkit-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
 	-moz-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
@@ -316,8 +346,6 @@ select {
 
 
 .search-bar-container {
-	margin-left: 60px;
-	margin-right: 60px;
 	background-color: white;
 	padding: 50px;
 	border-radius: 2px;
@@ -353,10 +381,6 @@ select {
 
 .search-bar-div {
 	width: 100%;
-}
-
-.search-bar-padding {
-	padding: 0px 60px
 }
 
 .search-bar-input {

@@ -175,7 +175,7 @@ export default class CardList extends React.Component {
 
 
 		if (this.props.buildMode) {
-			if (thisProps.hero) {
+			if (thisProps.hero && thisProps.hero !== 'None') {
 				matches = matches.filter(function(card) {
 					return card.playerClass === thisProps.hero || card.playerClass === "Neutral";
 				})
@@ -183,7 +183,7 @@ export default class CardList extends React.Component {
 		}
 
 		if (!this.props.buildMode) {
-			if (thisProps.hero) {
+			if (thisProps.hero && thisProps.hero !== 'None') {
 				matches = matches.filter(function(card) {
 					return card.playerClass === thisProps.hero ;
 				})

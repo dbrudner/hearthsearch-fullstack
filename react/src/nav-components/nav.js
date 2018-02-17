@@ -52,15 +52,29 @@ export default class Nav extends React.Component {
 
 		if (!this.state.checkedLoggedin) {
 			return (
-				<nav className='navbar nav'>
-                     <a className="navbar-brand" href="/">Brand</a>
-                     <ul className='nav navbar-nav'>
-                        <li><Link to="/Search">Search</Link></li>
-                        <li><Link to="/Decks">Decks</Link></li>
-                     </ul>
-                     <ul className='nav navbar-nav navbar-right'>                     
-                     </ul>
-                </nav>
+				<nav className="navbar navbar-inverse">
+					<div className="container-fluid">
+						<div className="navbar-header">
+						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span> 
+						</button>
+						</div>
+						<div className="collapse navbar-collapse" id="myNavbar">
+						<ul className="nav navbar-nav">
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
+							{/* <li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li> 
+							<li><a href="#">Page 3</a></li>  */}
+						</ul>
+						<ul className="nav navbar-nav navbar-right">
+							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</ul>
+						</div>
+					</div>
+				</nav>
 			)
 		}
 						// <li><Link to="/profile">{this.state.email}</Link></li>
@@ -73,9 +87,6 @@ export default class Nav extends React.Component {
 			return (
 				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
-					<a href="#" className="navbar-left">
-						<img className='potato-brand' src={potato} />
-					</a>
 						<div className="navbar-header">
 						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 							<span className="icon-bar"></span>
@@ -85,10 +96,10 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><a href="#" className='nav-potato'>HearthPotato</a></li>
-							<li><a href="#">Page 1</a></li>
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
+							{/* <li><a href="#">Page 1</a></li>
 							<li><a href="#">Page 2</a></li> 
-							<li><a href="#">Page 3</a></li> 
+							<li><a href="#">Page 3</a></li>  */}
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -100,17 +111,29 @@ export default class Nav extends React.Component {
             )
 		} else {
 			return (
-                <nav className='navbar nav'>
-					 <Link className='navbar-brand' to="/">Brand</Link>
-                     <ul className='nav navbar-nav'>
-                        <li><Link to="/Search">Search</Link></li>
-                        <li><Link to="/Decks">Decks</Link></li>                 
-                     </ul>
-                     <ul className='nav navbar-nav navbar-right'>
-                        <li><Link to="/login">Log In</Link></li>
-                        <li><Link to="/signup">Sign up</Link></li>                        
-                     </ul>
-                </nav>
+				<nav className="navbar navbar-inverse">
+					<div className="container-fluid">
+						<div className="navbar-header">
+						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span>
+							<span className="icon-bar"></span> 
+						</button>
+						</div>
+						<div className="collapse navbar-collapse" id="myNavbar">
+						<ul className="nav navbar-nav">
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthPotato</Link></li>
+							{/* <li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li> 
+							<li><a href="#">Page 3</a></li>  */}
+						</ul>
+						<ul className="nav navbar-nav navbar-right">
+							<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+							<li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</ul>
+						</div>
+					</div>
+				</nav>
             )
 		}   
 	}    
