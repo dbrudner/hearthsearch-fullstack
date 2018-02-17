@@ -25,7 +25,7 @@ const App = () => {
     return (
         
         <Router>
-            <div>
+            <div className='container-fluid'>
                 <Nav/>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/search' component={Home} />

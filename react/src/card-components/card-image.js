@@ -9,14 +9,14 @@ export default function CardImage(props) {
 				<ReactImageFallback 
 					src={props.image}
 					fallbackImage='images/card_back_legend.gif'
-					className='hvr-float card-image center-block'
+					className='hvr-float card-image center-block img-responsive'
 					initialImage='images/card_back_legend.gif'
 					alt={props.name}
 				/>
 			:
 				<img 
 					src='images/card_back_legend.gif'
-					className='legend-cardback center-block'
+					className='legend-cardback center-block img-fluid'
 					alt={props.name}
 				/>
 			}

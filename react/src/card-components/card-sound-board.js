@@ -56,22 +56,16 @@ export default function(props) {
 
     return (
 
-        <div className='row snd-margin-left'>
-            <div className='col-xs-4 center-block'>
-                <div onClick={playAttackSound}>
-                    <button className='btn'><i className="fas fa-play"></i> Attack</button>
-                </div>
-            </div>
-            <div className='col-xs-4 center-block'>                        
-                <div onClick={playIntroSound}>
-                    <button className='btn margin-left-sbrd'><i className="fas fa-play"></i> Intro</button>
-                </div>
-            </div>
-            <div className='col-xs-4 center-block'>                        
-                <div onClick={playDeathSound} >
-                    <button className='btn'><i className="fas fa-play"></i> Death</button>
-                </div>
-            </div>                       
+        <div className='center-block text-center snd-brd-container'>
+                <span className='' onClick={playAttackSound}>
+                    <button className='btn snd-brd-btn'><i className="fas fa-play"></i> Attack</button>
+                </span>
+                <span className='' onClick={playIntroSound}>
+                    <button className='btn snd-brd-btn margin-left-sbrd'><i className="fas fa-play"></i> Intro</button>
+                </span>
+                <span className='snd-brd-left-mrg' onClick={playDeathSound} >
+                    <button className='btn snd-brd-btn'><i className="fas fa-play"></i> Death</button>
+                </span>
         </div>
     )
 }

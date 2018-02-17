@@ -211,6 +211,7 @@ export default class CardList extends React.Component {
 									health={card.health}
 									cardId={card.cardId}
 									dbfId={card.dbfId}
+									lightForgeScore={card.lightForgeScore}
 									name={card.name}
 									cost={card.cost}
 									type={card.type}
@@ -248,7 +249,7 @@ export default class CardList extends React.Component {
 	render() {
 
 		if (this.props.cards) {
-			
+			console.log(this.props.cards)
 			return (
 					<div>
 						<div className='list-group cards'>

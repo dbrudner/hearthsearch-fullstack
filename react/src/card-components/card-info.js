@@ -5,6 +5,7 @@ import CardPopularity from './card-popularity'
 import CardFlavor from './card-flavor'
 import CardClass from './card-class'
 import CardSoundBoard from './card-sound-board'
+import CardLightForge from './card-lightforge'
 
 export default class CardInfo extends Component{
 	
@@ -38,12 +39,17 @@ export default class CardInfo extends Component{
 	}
 
 	render() {
-		
-
 		return (
 			<div className=''>
 				<div className='card-list-header'>
-					<CardClass hero={this.props.class}/>				
+					<div>
+						<div>
+							<CardClass hero={this.props.class}/>
+						</div>
+						<div>
+							<CardLightForge lightForge={this.props.lightForgeScore}/>
+						</div>
+					</div>						
 					<CardPopularity />
 				</div>
 				<CardImage image={this.props.image} artist={this.props.artist}/>

@@ -113,10 +113,14 @@ body {
 	margin: 20px 3% 0 3%;
 }
 
+.snd-brd-btn {
+	font-size: 12px;
+}
+
 .flavor {
 	text-align: center;
 	font-style: italic;
-	font-size: 16px;
+	font-size: 100%;
 	margin-top: 10px;
 	color: gray
 }
@@ -215,9 +219,12 @@ select {
 	margin: 0 auto !important;
 }
 
-.snd-margin-left {
-	margin-left: 5px;
-	margin-top: 20px;
+.snd-brd-container {
+	margin-top: 5%
+}
+
+.snd-brd-left-mrg {
+	margin-left: 1%
 }
 
 .margin-left-sbrd {
@@ -260,6 +267,19 @@ select {
 	border-radius: 10px;
 }
 
+.filters-container-header {
+	margin-bottom: 20px;
+}
+
+.lightforge-score {
+	color: gray;
+	font-style: italic
+}
+
+.lightforge-score-empty {
+	opacity: 0;
+}
+
 /* .navbar-brand {
 	padding: 0px;
   }
@@ -272,6 +292,7 @@ select {
   
 .filter-dropdown {
 	margin: 10px !important;
+	margin-left: 8% !important;
 	padding: 5px;
 	text-align: left;
 	width: 84%;

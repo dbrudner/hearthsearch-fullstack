@@ -36,7 +36,7 @@ export default class Filters extends React.Component {
 					</div>
 					<div className='panel-body'>
 						<div className='row'>
-							<h4 className='text-center'>Sort By</h4>
+							<h4 className='text-center f-hdr-margin'>Sort By</h4>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Name</div> */}
 								<DropDown filterName='Sort By'  filter='nameSort' onChange={this.getFilter}  options={sorting}/>
@@ -50,6 +50,7 @@ export default class Filters extends React.Component {
 						<div className='row'>
 							{!this.props.deckBuilder ? <div className='col-sm-12 '>
 								{/* <div className='filter-header'>Class</div> */}
+								<h4 className='text-center filters-container-header'>Filters</h4>
 								<DropDown filterName='Class' filter='hero' onChange={this.getFilter}  options={classes}/>
 							</div> : null}
 							
