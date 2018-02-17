@@ -25,7 +25,7 @@ class Searchbar extends React.Component {
 		
 
 		return (
-			<div className=''>
+			<div className='animated fadeIn'>
 				<form onSubmit={this.handleSubmit} >
 					<div className='row'>
 						<div className='col-xs-10'>
