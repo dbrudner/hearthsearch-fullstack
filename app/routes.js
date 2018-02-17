@@ -16,6 +16,24 @@ function Deck(name, cards, archetype, user, cost) {
 
 module.exports = function(app, passport) {
 
+
+    const axios = require('axios')
+
+    // app.get('/api/lightforge', (req, res) => {
+    //     axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
+    //     .then(result => {
+    //         result.data.Cards.forEach(card => {
+    //             db.Card.findOneAndUpdate({'name': card.Name}, {'lightForgeScore': card.Scores})
+    //             .exec((error, result2) => {
+    //                 if (error) throw error                    
+    //                 console.log('updated?')                    
+    //             })
+    //         })
+
+
+    //     })
+    // }) 
+
     app.get('/api/decks/populate', function(req, res) {
         db.Deck.find()
         .populate('cards.card')   

@@ -98,6 +98,10 @@ var CardSchema = new Schema({
 
     downvoters: {
         type: Array
+    },
+
+    lightForgeScore: {
+        type: Array
     }
 
 
