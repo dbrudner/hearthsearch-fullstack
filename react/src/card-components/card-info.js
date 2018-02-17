@@ -40,6 +40,8 @@ export default class CardInfo extends Component{
 	}
 
 	render() {
+
+
 		return (
 			<div className=''>
 				<div className='card-list-header'>

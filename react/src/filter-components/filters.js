@@ -25,7 +25,7 @@ export default class Filters extends React.Component {
 		const gameFormats = ["Standard", "Wild"]
 		const abilities = ["Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
 		const tribe = ["Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
-		const sorting = ["Name", "Mana", "Dust"]
+		const sorting = ["Name", "LightForge Score", "Mana"]
 		const sortingMethods = ["Ascending", "Descending"]
 
 		return (

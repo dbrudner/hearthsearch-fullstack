@@ -3,6 +3,7 @@ import CardImage from './card-image'
 import CardInfo from './card-info'
 import CardPopularity from './card-popularity'
 
+import _ from 'lodash'
 
 export default class CardList extends React.Component {
 
@@ -190,6 +191,74 @@ export default class CardList extends React.Component {
 			}
 		}
 
+		if (this.props.nameSort === 'Mana') {
+			console.log("HI")
+			matches = _.orderBy(matches, 'cost', 'asc')
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'Mana' && this.props.sortingMethod == 'Descending') {
+			matches = _.orderBy(matches, 'cost', 'desc')
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'Name') {
+			console.log("HI")
+			matches = _.orderBy(matches, 'name', 'asc')
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
+			matches = _.orderBy(matches, 'name', 'desc')
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'LightForge Score') {
+			matches = matches.filter(card => {
+				return card.lightForgeScore[0]
+			})
+
+			matches = _.orderBy(matches, card => {
+				return card.lightForgeScore[0].Score;
+			}, ['desc']);
+
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'LightForge Score' && this.props.sortingMethod == 'Ascending') {
+
+			console.log("HI?")
+
+			matches = matches.filter(card => {
+				return card.lightForgeScore[0]
+			})
+
+			matches = _.orderBy(matches, card => {
+				return card.lightForgeScore[0].Score;
+			}, ['asc']);
+
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
+		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
+			matches = _.orderBy(matches, 'name', 'desc')
+			matches = _.uniqBy(matches, function (e) {
+				return e.name;
+			  });
+		}
+
 		this.setState({
 			matches: matches.filter(card => {
 				return card.collectible === true
@@ -248,8 +317,9 @@ export default class CardList extends React.Component {
  	
 	render() {
 
+		console.log(this.props)
+
 		if (this.props.cards) {
-			console.log(this.props.cards)
 			return (
 					<div>
 						<div className='list-group cards'>

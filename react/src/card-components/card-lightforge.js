@@ -2,7 +2,6 @@ import React from 'react';
 
 const LightForge = (props) => {
     
-    console.log(props.lightForge)
 
     if (props.lightForge.length > 0) {
         return (

@@ -46,6 +46,8 @@ class Home extends Component {
 
 	render() {
 
+		console.log(this.state)
+
 		return (
 			<div>
 			<div className='deck-builder-container'>
@@ -59,7 +61,9 @@ class Home extends Component {
 						<div className='search-bar-container'>
 							<Searchbar onSearch={this.getFilter}/>
 						</div>
-						<CardList 
+						<CardList
+							nameSort={this.state.nameSort}
+							sortingMethod={this.state.sortingMethod}
 							cards={this.state.cards} 
 							term={this.state.term} 
 							hero={this.state.hero}
