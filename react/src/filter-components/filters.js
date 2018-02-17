@@ -39,90 +39,90 @@ export default class Filters extends React.Component {
 							<h4 className='text-center'>Sort By</h4>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Name</div> */}
-								<DropDown filter='nameSort' onChange={this.getFilter}  options={sorting}/>
+								<DropDown filterName='Sort By'  filter='nameSort' onChange={this.getFilter}  options={sorting}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Mana</div> */}
-								<DropDown filter='sortingMethod' onChange={this.getFilter} options={sortingMethods} />
+								<DropDown filterName='Sort Method' filter='sortingMethod' onChange={this.getFilter} options={sortingMethods} />
  							</div>
 						</div>
 						<hr/>
 						<div className='row'>
 							{!this.props.deckBuilder ? <div className='col-sm-12 '>
 								{/* <div className='filter-header'>Class</div> */}
-								<DropDown filter='hero' onChange={this.getFilter}  options={classes}/>
+								<DropDown filterName='Class' filter='hero' onChange={this.getFilter}  options={classes}/>
 							</div> : null}
 							
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Card Type</div> */}
-								<DropDown filter='type' onChange={this.getFilter}  options={types}/>
+								<DropDown filterName='Type' filter='type' onChange={this.getFilter}  options={types}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Game Format</div> */}
-								<DropDown filter='gameFormat' onChange={this.getFilter} options={gameFormats} />
+								<DropDown filterName='Game Format' filter='gameFormat' onChange={this.getFilter} options={gameFormats} />
  							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Rarity</div> */}
-								<DropDown filter='rarity' onChange={this.getFilter}  options={rarities}/>
+								<DropDown filterName='Rarity' filter='rarity' onChange={this.getFilter}  options={rarities}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Card Set</div> */}
-								<DropDown filter='cardSet' onChange={this.getFilter} options={cardSets}/>
+								<DropDown filterName='Card Set' filter='cardSet' onChange={this.getFilter} options={cardSets}/>
 							</div>
 						</div>
 						<hr/>
 						<div className='row second-row'>
  							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Ability</div> */}
-								<DropDown filter='ability' onChange={this.getFilter} options={abilities} />
+								<DropDown filterName='Ability' filter='ability' onChange={this.getFilter} options={abilities} />
  							</div>
  							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Ability 2</div> */}
-								<DropDown filter='ability2' onChange={this.getFilter} options={abilities} />
+								<DropDown filterName='Second Ability' filter='ability2' onChange={this.getFilter} options={abilities} />
  							</div>
  							<div className='col-sm-12'>
-								{/* <div className='filter-header'>Tribe</div> */}
-								<DropDown filter='tribe' onChange={this.getFilter} options={tribe} />
+								{/* <div cfilterName='' lassName='filter-header'>Tribe</div> */}
+								<DropDown filterName='Tribe' filter='tribe' onChange={this.getFilter} options={tribe} />
  							</div>
 							 <div className='col-sm-12'>
 								{/* <div className='filter-header'>Mana</div> */}
-								<DropDown filter='mana' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Mana' filter='mana' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Attack</div> */}
-								<DropDown filter='attack' onChange={this.getFilter} options={attack}/>
+								<DropDown filterName='Attack' filter='attack' onChange={this.getFilter} options={attack}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Health</div> */}
-								<DropDown filter='health' onChange={this.getFilter} options={health}/>
+								<DropDown filterName='Health' filter='health' onChange={this.getFilter} options={health}/>
 							</div>
 						</div>
 						<hr/>
 						<div className='row third-row'>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Min Mana</div> */}
-								<DropDown filter='minMana' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Minimum Mana' filter='minMana' onChange={this.getFilter} options={mana}/>
 							</div>
 							
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Max Mana</div> */}
-								<DropDown filter='maxMana' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Maximum Mana' filter='maxMana' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Min Attack</div> */}
-								<DropDown filter='minAttack' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Minimum Attack' filter='minAttack' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Max Attack</div> */}
-								<DropDown filter='maxAttack' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Maximum Attack' filter='maxAttack' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Min Health</div> */}
-								<DropDown filter='minHealth' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Minimum Health' filter='minHealth' onChange={this.getFilter} options={mana}/>
 							</div>
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Max Health</div> */}
-								<DropDown filter='maxHealth' onChange={this.getFilter} options={mana}/>
+								<DropDown filterName='Maximum Health' filter='maxHealth' onChange={this.getFilter} options={mana}/>
 							</div>
 						</div>
 					</div>

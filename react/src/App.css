@@ -3,6 +3,7 @@ body {
 	background-repeat: repeat;
 	margin: 0;
 	overflow-x: hidden;
+	font-family: 'Arimo', sans-serif;
 }
 
 #root {
@@ -216,14 +217,30 @@ select {
 	border-radius: 10px;
 }
 
+/* .navbar-brand {
+	padding: 0px;
+  }
+  .navbar-brand>img {
+	height: 100%;
+	padding: 15px;
+	width: auto;
+  } */
+
+  
 .filter-dropdown {
 	margin: 10px !important;
+	padding: 5px;
 	text-align: left;
 	width: 84%;
+	font-size: 24px;
+	font-family: 'Arimo', sans-serif;
 	-webkit-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
--moz-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
+	-moz-box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
+	box-shadow: 7px 10px 5px -7px rgba(209,209,209,1);
+}
 
+.dropdown-placeholder {
+	color: rgb(214, 214, 214)
 }
 
 .card-info-container {
