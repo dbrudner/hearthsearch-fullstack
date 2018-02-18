@@ -97,13 +97,14 @@ export default class Nav extends React.Component {
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
 							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Build
-								<span class="caret"></span></a>
-								<ul class="dropdown-menu">
+							<li className="dropdown">
+								<a className="dropdown-toggle" data-toggle="dropdown" href="#">Build
+								<span className="caret"></span></a>
+								<ul className="dropdown-menu">
 									{this.renderClasses(classes)}
 								</ul>
 							</li>
+							<li className="nav-item"><Link to="/import">Import</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							<li  className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>

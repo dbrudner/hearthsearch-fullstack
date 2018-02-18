@@ -205,31 +205,23 @@ export default class CardList extends React.Component {
 		if (this.props.nameSort === 'Mana') {
 			console.log("HI")
 			matches = _.orderBy(matches, 'cost', 'asc')
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+			
 		}
 
 		if (this.props.nameSort === 'Mana' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'cost', 'desc')
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+			
 		}
 
 		if (this.props.nameSort === 'Name') {
 			console.log("HI")
 			matches = _.orderBy(matches, 'name', 'asc')
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+			
 		}
 
 		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'name', 'desc')
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+		
 		}
 
 		if (this.props.nameSort === 'LightForge Score') {
@@ -241,9 +233,6 @@ export default class CardList extends React.Component {
 				return card.lightForgeScore[0].Score;
 			}, ['desc']);
 
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
 		}
 
 		if (this.props.nameSort === 'LightForge Score' && this.props.sortingMethod == 'Ascending') {
@@ -258,17 +247,17 @@ export default class CardList extends React.Component {
 				return card.lightForgeScore[0].Score;
 			}, ['asc']);
 
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+		
 		}
 
 		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'name', 'desc')
-			matches = _.uniqBy(matches, function (e) {
-				return e.name;
-			  });
+			
 		}
+
+		matches = _.uniqBy(matches, function (e) {
+			return e.name;
+		  });
 
 		this.setState({
 			matches: matches.filter(card => {
