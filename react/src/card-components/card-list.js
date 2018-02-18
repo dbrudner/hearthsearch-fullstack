@@ -63,6 +63,7 @@ export default class CardList extends React.Component {
 	search = (filters) => {
 
 		const thisProps = this.props
+		console.log(thisProps)
 
 		const nameMatches = this.props.cards.filter(item => {
 			return item.name.toLowerCase().match(this.state.term.toLowerCase())
@@ -77,6 +78,26 @@ export default class CardList extends React.Component {
 		})
 
 		let matches = [...nameMatches, ...textMatches]
+
+		if (thisProps.ability && thisProps.ability !== 'None') {
+			matches = matches.filter(card => {
+				if (card.text) {
+					return card.text.toLowerCase().match(thisProps.ability.toLowerCase())													
+				} else {
+					false
+				}
+			})
+		}
+
+		if (thisProps.ability2 && thisProps.ability2 !== 'None') {
+			matches = matches.filter(card => {
+				if (card.text) {
+					return card.text.toLowerCase().match(thisProps.ability2.toLowerCase())													
+				} else {
+					false
+				}
+			})
+		}
 
 		if (thisProps.type && thisProps.type !== 'None') {
 			matches = matches.filter((card) => {
@@ -236,7 +257,6 @@ export default class CardList extends React.Component {
 
 		if (this.props.nameSort === 'LightForge Score' && this.props.sortingMethod == 'Ascending') {
 
-			console.log("HI?")
 
 			matches = matches.filter(card => {
 				return card.lightForgeScore[0]
