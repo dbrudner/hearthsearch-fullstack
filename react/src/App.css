@@ -475,8 +475,23 @@ select {
 .search-bar-container {
 	background-color: white;
 	padding: 50px;
+	padding-top: 20px;
+	padding-bottom: 50px;
 	border-radius: 2px;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+}
+
+.searchbar-header {
+	font-size: 48px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	text-align: center
+}
+
+.searchbar-description {
+	font-size: 14px;
+	color: rgb(184, 184, 184);
+	font-style: italic;
 }
 
 .card-list-name {
@@ -506,13 +521,16 @@ select {
 	padding: 20px
 }
 
+.mana-10-chart {
+	margin-left: -2px;
+}
+
 .search-bar-div {
 	width: 100%;
 }
 
 .search-bar-input {
 	width: 100%;
-	margin-left: 50%;
 }
 
 input[type=text], textarea {

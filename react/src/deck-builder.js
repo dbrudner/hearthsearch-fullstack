@@ -77,7 +77,7 @@ class App extends Component {
 									cards={this.state.cards} 
 									term={this.state.term} 
 									rarity={this.state.rarity}
-									cardset={this.state.cardset}
+									cardset={this.state.cardSet}
 									mana={this.state.mana}
 									attack={this.state.attack}
 									health={this.state.health}

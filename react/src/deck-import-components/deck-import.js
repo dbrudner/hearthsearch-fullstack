@@ -80,6 +80,11 @@ export default class DeckImport extends Component {
                 axios.get(`/blah/${ds[0]}`)
                 .then(result2 => {
                     result2.data.quantity = ds[1]
+                    console.log(result2)
+                    result2.data.mana = result2.data.cost
+
+                    console.log(result2)
+
                     this.setState({
                         deck: [...this.state.deck, result2.data]                        
                     })

@@ -42,7 +42,6 @@ export default class CardInfo extends Component{
 
 	render() {
 
-		console.log(this.props.cardset)
 
 		if (this.props.buildMode) {
 			return (

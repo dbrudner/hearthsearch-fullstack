@@ -203,7 +203,6 @@ export default class CardList extends React.Component {
 		}
 
 		if (this.props.nameSort === 'Mana') {
-			console.log("HI")
 			matches = _.orderBy(matches, 'cost', 'asc')
 			
 		}
@@ -214,7 +213,6 @@ export default class CardList extends React.Component {
 		}
 
 		if (this.props.nameSort === 'Name') {
-			console.log("HI")
 			matches = _.orderBy(matches, 'name', 'asc')
 			
 		}
@@ -356,7 +354,6 @@ export default class CardList extends React.Component {
  	
 	render() {
 
-		console.log('update', this.props)
 
 		if (this.props.cards) {
 			return (

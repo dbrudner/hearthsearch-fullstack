@@ -160,7 +160,11 @@ export default class Deck extends Component {
 
     render() {
 
-        const cardDeck = this.state.deck.map(card => {
+        let sorted = _.orderBy(this.state.deck, 'mana', 'asc')
+
+        console.log(sorted)
+
+        const cardDeck = sorted.map(card => {
             return (
                 <DeckCardName removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )

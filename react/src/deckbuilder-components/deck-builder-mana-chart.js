@@ -10,15 +10,12 @@ export default function DeckManaChart(props) {
     //     threeCostCards: 0
     // }
 
-    console.log('chart', props)
 
     var curve = []
 
     for (let i=0; i<props.deck.length; i++) {
         if (props.deck[i].quantity === 1) {
 
-            console.log(props.deck[i].mana)
-            console.log(props.deck[i].cost)
             curve.push(props.deck[i].mana || props.deck[i].cost || 0)
         } 
 
@@ -28,21 +25,17 @@ export default function DeckManaChart(props) {
         }
     }
 
-    console.log('curvearray', curve)
 
     var average = curve.reduce((a, b) => {
         return a + b 
     }, 0)
 
-    console.log('average', average/curve.length)
 
     var zeroMana = curve.filter(index => {
-        console.log('0')
         return index === 0
     })
 
     var oneMana = curve.filter(index => {
-        console.log('1')
         return index === 1
     })
 
@@ -82,6 +75,13 @@ export default function DeckManaChart(props) {
         return index === 10
     })
 
+    var tenManaPlus = curve.filter(index => {
+        return index >= 11
+    })
+
+    console.log(tenManaPlus)
+    console.log(tenMana)
+    
 
         if (props.deck.length > 0) {
 
@@ -108,11 +108,11 @@ export default function DeckManaChart(props) {
                             {x: 7, y: sevenMana.length},
                             {x: 8, y: eightMana.length},
                             {x: 9, y: nineMana.length},
-                            {x: 10, y: tenMana.length},
+                            {x: 10, y: tenMana.length + tenManaPlus.length},
                         ]}
                     />
                     <div className='x-axis'>
-                        0 1 2 3 4 5 6 7 8 9 10
+                        0 1 2 3 4 5 6 7 8 9 <span className='mana-10-chart'>10</span>
                     </div>
                 </div>
             )

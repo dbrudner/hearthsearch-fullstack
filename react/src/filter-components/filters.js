@@ -32,7 +32,6 @@ export default class Filters extends React.Component {
 
 	showFilter = () => {
 
-		console.log(this.state.hideFilter);
 
 		const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
 		const types = ["Minion", "Spell", "Weapon"].sort()
