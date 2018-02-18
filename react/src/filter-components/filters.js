@@ -74,10 +74,20 @@ export default class Filters extends React.Component {
 								{/* <div className='filter-header'>Card Type</div> */}
 								<DropDown filterName='Type' filter='type' onChange={this.getFilter}  options={types}/>
 							</div>
-							<div className='col-sm-12'>
-								{/* <div className='filter-header'>Game Format</div> */}
+
+
+							{!this.props.imported ? <div className='col-sm-12 '>
+								{/* <div className='filter-header'>Class</div> */}
+								<DropDown filterName='Game Format' filter='gameFormat' onChange={this.getFilter}  options={gameFormats}/>
+							</div> : null}
+
+							{/* <div className='col-sm-12'>
+								<div className='filter-header'>Game Format</div>
 								<DropDown filterName='Game Format' filter='gameFormat' onChange={this.getFilter} options={gameFormats} />
- 							</div>
+ 							</div> */}
+
+
+
 							<div className='col-sm-12'>
 								{/* <div className='filter-header'>Rarity</div> */}
 								<DropDown filterName='Rarity' filter='rarity' onChange={this.getFilter}  options={rarities}/>

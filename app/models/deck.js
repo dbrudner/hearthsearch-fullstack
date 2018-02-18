@@ -28,8 +28,8 @@ var DeckSchema = new Schema({
         }
     }],
 
-    cost: {
-        type: Number,
+    format: {
+        type: String,
         required: true
     },
 

@@ -56,7 +56,8 @@ export default class DeckBuilderDetails extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()        
 
-        axios.post(`/deck/update/${this.props.match.params.deckId}`, {
+        axios.post(`/deck/update/`, {
+            deckId: this.props.match.params.deckId,
             archetype: this.state.archetype,
             description: this.state.description,
             name: this.state.deckName

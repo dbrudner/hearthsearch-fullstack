@@ -19,14 +19,16 @@ export default class Submit extends React.Component {
             }
         })
 
-    
+        console.log('format', this.props.format)
+
         axios.post('/newdeck', {
             name: this.props.name,
             archetype: this.props.archetype,
             cost: this.props.cost,
             cards,
             user: this.props.userId,
-            hero: this.props.hero
+            hero: this.props.hero,
+            format: this.props.format
             })
             .then(response => {
                 this.setState({

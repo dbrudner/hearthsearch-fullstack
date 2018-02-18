@@ -11,7 +11,8 @@ export default class DeckImport extends Component {
 
         this.state = {
             deck: [],
-            deckString: ''
+            deckString: '',
+            format: 'standard'
         }
     }
 
@@ -88,6 +89,17 @@ export default class DeckImport extends Component {
                     this.setState({
                         deck: [...this.state.deck, result2.data]                        
                     })
+                }).then(() => {
+                    this.state.deck.forEach(card => {
+                        if (card.cardSet === "Basic" || card.cardSet === "Classic" || card.cardSet === "Journey to Un'Goro" || card.cardSet === "Kobolds & Catacombs" || card.cardSet === "Mean Streets of Gadgetzan" ||  card.cardSet === "One Night in Karazhan" || card.cardSet === "Knights of the Frozen Throne" || card.cardSet === "Whispers of the Old Gods") {
+                            return
+                        } else {
+                            this.setState({
+                                format: 'wild'
+                            })
+                            return
+                        }
+                    })
                 })
             })
             
@@ -97,7 +109,8 @@ export default class DeckImport extends Component {
 	
 	render() {
 
-        
+        console.log('import', this.state.format)
+
 		return (
             <div>
                 {this.state.deck.length === 0 ? <div className='search-bar form-group'>
@@ -113,9 +126,9 @@ export default class DeckImport extends Component {
                     </form>
                 </div>
                 :
-                <div>Imported</div>}
+                <div></div>}
                 
-                {this.state.deck.length > 0 ? <DeckBuilder hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
+                {this.state.deck.length > 0 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
             </div>
 		)
 	}

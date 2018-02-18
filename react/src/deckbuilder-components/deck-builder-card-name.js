@@ -11,9 +11,6 @@ export default function DeckCardName(props) {
 
     const mana = () => {
 
-        console.log('props', props)
-        console.log(props.mana)
-        console.log(props.cost)
 
         if (!props.mana && !props.cost) {
            return <div className='card-list-mana animated fadeInRight'>0</div>                        

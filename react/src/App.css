@@ -311,6 +311,11 @@ select {
 	font-style: italic
 }
 
+.format-header {
+	text-align: center;
+	font-size: 1000%;
+}
+
 .too-many {
 	color: rgb(167, 29, 29)
 }
@@ -318,6 +323,18 @@ select {
 .lightforge-score-empty {
 	opacity: 0;
 }
+
+.wild-or-standard-cntr {
+	margin-top: 5%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.standard, .wild {
+	width: 75%;
+	text-align: center;
+}
+
 
 /* .navbar-brand {
 	padding: 0px;
@@ -659,6 +676,16 @@ label {
 	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);	
+}
+
+.format-icon {
+	background-color: rgb(175, 175, 175);
+	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	border-radius: 20px;
+	cursor: pointer;
+	width: 75%;
 }
 
 .potato {

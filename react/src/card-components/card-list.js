@@ -63,7 +63,6 @@ export default class CardList extends React.Component {
 	search = (filters) => {
 
 		const thisProps = this.props
-		console.log(thisProps)
 
 		const nameMatches = this.props.cards.filter(item => {
 			return item.name.toLowerCase().match(this.state.term.toLowerCase())
@@ -111,7 +110,6 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		console.log(thisProps)
 
 		if (thisProps.cardSet && thisProps.cardSet !== 'None') {
 			matches = matches.filter((card) => {

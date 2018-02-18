@@ -78,9 +78,6 @@ export default function DeckManaChart(props) {
     var tenManaPlus = curve.filter(index => {
         return index >= 11
     })
-
-    console.log(tenManaPlus)
-    console.log(tenMana)
     
 
         if (props.deck.length > 0) {

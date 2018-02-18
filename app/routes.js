@@ -203,13 +203,13 @@ module.exports = function(app, passport) {
 
 
     // Updates a deck. Used for deck details form.
-    app.post('/deck/update/:deckId', function(req, res) {
+    app.post('/deck/update', function(req, res) {
 
-        db.Deck.findOneAndUpdate({'_id': req.params.deckId}, {
+        db.Deck.findOneAndUpdate({'_id': req.body.deckId}, {
             archetype: req.body.archetype,
             description: req.body.description,
             name: req.body.name
-        }).exec(result => res.json(result))
+        }).exec((error, result) => res.json(result))
     })
 
     // Check if user is logged in and reurn info about user
@@ -285,7 +285,7 @@ module.exports = function(app, passport) {
             archetype: req.body.archetype,
             cost: req.body.cost,
             cards: req.body.cards,
-            cost: 1200,
+            format: req.body.format,
             user: req.body.user,
             hero: req.body.hero
         }, function(err, result) {

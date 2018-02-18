@@ -8,6 +8,7 @@ import CardList from './card-components/card-list'
 import Filters from './filter-components/filters'
 import Banner from './banner'
 import DeckBuilderList from './deckbuilder-components/deck-builder-list'
+import WildOrStandard from './deckbuilder-components/wild-or-standard'
 
 class App extends Component {
 	
@@ -19,7 +20,8 @@ class App extends Component {
 			term: '',
 			cards: [],
 			card: '',
-			update: true
+			update: true,
+			format: this.props.format || null
 		}
 
 	}
@@ -55,7 +57,19 @@ class App extends Component {
 
 	}
 
+	getFormat = format => {
+		this.setState({format})
+	}
+
 	render() {
+		console.log('state', this.state.format)
+		console.log('props', this.props.format)
+
+		if (!this.state.format) {
+			return (
+				<WildOrStandard getFormat={this.getFormat}/>
+			)
+		}	
 
 		return (
 			<div>
@@ -63,7 +77,7 @@ class App extends Component {
 						<div className='row'>
 							<div className='col-lg-2 col-md-2 col-xs-12'>
 								{this.state.filterOn ? 
-									<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
+									<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 							</div>
 							<div className='col-lg-7 col-md-7 col-xs-12'>
 							<div className='search-bar-container'>
@@ -100,7 +114,7 @@ class App extends Component {
 							<div className='col-lg-3 col-md-3 col-xs-12 builder-list-container'>
 								<div className='affix builder-list'>
 									
-									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
+									<DeckBuilderList format={this.props.format || this.state.format} deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>
 							</div>
 						</div>
