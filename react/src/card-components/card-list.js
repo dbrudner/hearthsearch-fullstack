@@ -90,9 +90,10 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.cardSet && thisProps.cardSet !== 'None') {
+
+		if (thisProps.cardset && thisProps.cardset !== 'None') {
 			matches = matches.filter((card) => {
-				return card.cardSet === thisProps.cardSet;
+				return card.cardSet === thisProps.cardset;
 			})
 		}
 
