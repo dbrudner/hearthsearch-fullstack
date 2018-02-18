@@ -5,8 +5,8 @@ export default function DeckCardName(props) {
     var source = `https://art.hearthstonejson.com/v1/tiles/${props.cardId}.png`
 
     const removeCard = (event) => {
-        console.log('removing')
-        props.removeCard(event.target.name)
+        let cardName = props.name
+        props.removeCard(cardName)
     }
 
     const handleClick = () => {
@@ -23,8 +23,16 @@ export default function DeckCardName(props) {
             return <div className='card-list-mana'>{props.cost}</div>                        
         }
 
+        if (props.mana >= 10) {
+            return <div className='card-list-mana-10'>{props.mana}</div>            
+         }
+ 
+         if (props.cost >= 10) {
+             return <div className='card-list-mana-10'>{props.cost}</div>                        
+         }
+
         if (props.mana || props.cost) {
-            return <div className='card-list-mana'>{props.mana || props.cost}</div>                                    
+            return <div name={props.name} className='card-list-mana'>{props.mana || props.cost}</div>                                    
         }
 
         else {
@@ -35,16 +43,16 @@ export default function DeckCardName(props) {
     }
 
     return (
-        <div onClick={removeCard} className='tile-container'>
+        <div name={props.card} onClick={removeCard} className='tile-container'>
             <div>
-                <div name={props.name} onClick={handleClick} className='deck-list-card-name animated fadeInRight'>
+                <div  className='deck-list-card-name animated fadeInRight'>
                 {props.name} {(props.quantity === 2) ? (<span>x{props.quantity}</span>) : null}
                 </div>
-            <div className='card-tile center-block'>
-                <div className='gray-box'>
+            <div className='card-tile center-block' name={props.card}>
+                <div className='gray-box' name={props.card} >
                     {mana()}
                 </div>
-                <div className='tile-img-cntr'>
+                <div className='tile-img-cntr' name={props.card} >
                     <img name={props.name} alt={`${props.quantity} ${props.name}`} className='card-tile' src={source} />
                 </div>
             </div> 

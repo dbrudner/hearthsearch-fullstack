@@ -112,6 +112,9 @@ export default class Deck extends Component {
     }
 
     removeCard = toBeRemoved => {
+        console.log("Hi")
+
+        console.log('removing', toBeRemoved)
 
         let newDeck = this.state.deck.map(card => {
             if (card.name !== toBeRemoved) {

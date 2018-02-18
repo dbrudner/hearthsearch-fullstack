@@ -58,13 +58,13 @@ export default function(props) {
 
         <div className='center-block text-center snd-brd-container'>
                 <span className='' onClick={playAttackSound}>
-                    <button className='btn snd-brd-btn'><i className="fas fa-play"></i> Attack</button>
+                    <button className='hvr-fade btn snd-brd-btn'><i className="fas fa-play"></i> Attack</button>
                 </span>
                 <span className='' onClick={playIntroSound}>
-                    <button className='btn snd-brd-btn margin-left-sbrd'><i className="fas fa-play"></i> Intro</button>
+                    <button className='hvr-fade btn snd-brd-btn margin-left-sbrd'><i className="fas fa-play"></i> Intro</button>
                 </span>
                 <span className='snd-brd-left-mrg' onClick={playDeathSound} >
-                    <button className='btn snd-brd-btn'><i className="fas fa-play"></i> Death</button>
+                    <button className='hvr-fade btn snd-brd-btn'><i className="fas fa-play"></i> Death</button>
                 </span>
         </div>
     )

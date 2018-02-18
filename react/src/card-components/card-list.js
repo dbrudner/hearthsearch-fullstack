@@ -290,7 +290,7 @@ export default class CardList extends React.Component {
 										howToGet={card.howToGet}
 										howToGetGold={card.howToGetGold}
 										class={card.playerClass}
-										cardSet={card.cardSet}
+										cardset={card.cardSet}
 										getCard={this.getCard}
 										buildMode={this.props.buildMode}
 										_id={card._id}

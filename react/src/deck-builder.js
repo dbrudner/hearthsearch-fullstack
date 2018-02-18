@@ -97,8 +97,8 @@ class App extends Component {
 									buildMode={true}        
 								/>
 							</div>
-							<div className='col-lg-3 col-md-3 col-xs-12'>
-								<div className='affix'>
+							<div className='col-lg-3 col-md-3 col-xs-12 builder-list-container'>
+								<div className='affix builder-list'>
 									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>
 							</div>
