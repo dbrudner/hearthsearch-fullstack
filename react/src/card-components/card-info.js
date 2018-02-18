@@ -32,6 +32,7 @@ export default class CardInfo extends Component{
 			_id
 		}
 		this.props.getCard(card)
+		console.log("hi")
 	}
 
 	handleChange(event) {

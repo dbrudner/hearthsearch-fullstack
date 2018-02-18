@@ -9,8 +9,12 @@ export default function CardImage(props) {
 
     const handleClick = (event) => {
 		console.log("HI?")
-        event.preventDefault()
-        addToDeck(props.name, props.mana, props.rarity, props.cardSet, props.hero, props.dbfId, props.cardId, props._id)
+		event.preventDefault()
+		
+		if (props.buildMode) {
+			addToDeck(props.name, props.mana, props.rarity, props.cardSet, props.hero, props.dbfId, props.cardId, props._id)			
+		}
+
     }
 
 
