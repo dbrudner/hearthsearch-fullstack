@@ -9,11 +9,8 @@ export default function DeckCardName(props) {
         props.removeCard(cardName)
     }
 
-    const handleClick = () => {
-        console.log('event')
-    }
-
     const mana = () => {
+
 
         if (props.mana === 0) {
            return <div className='card-list-mana'>{props.mana}</div>            
@@ -31,8 +28,12 @@ export default function DeckCardName(props) {
              return <div className='card-list-mana-10'>{props.cost}</div>                        
          }
 
-        if (props.mana || props.cost) {
-            return <div name={props.name} className='card-list-mana'>{props.mana || props.cost}</div>                                    
+        if (props.mana) {
+            return <div name={props.name} className='card-list-mana'>{props.mana}</div>                                    
+        }
+
+        if (props.cost) {
+            return <div name={props.name} className='card-list-mana'>{props.cost}</div>                                    
         }
 
         else {

@@ -23,7 +23,16 @@ export default class Deck extends Component {
 
     getManaCurve(deck) {
         return ((deck.reduce((a, card) => {
-            return card.mana + a
+
+            if (card.mana) {
+                return card.mana + a
+            }
+
+            if (card.cost) {
+                
+                return card.cost + a
+            }
+
         }, 0))/(deck.length)).toFixed(2)
     }
 
@@ -112,9 +121,7 @@ export default class Deck extends Component {
     }
 
     removeCard = toBeRemoved => {
-        console.log("Hi")
 
-        console.log('removing', toBeRemoved)
 
         let newDeck = this.state.deck.map(card => {
             if (card.name !== toBeRemoved) {
@@ -155,7 +162,7 @@ export default class Deck extends Component {
 
         const cardDeck = this.state.deck.map(card => {
             return (
-                <DeckCardName removeCard={this.removeCard} mana={card.mana} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
+                <DeckCardName removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )
         })
 

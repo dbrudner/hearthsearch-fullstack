@@ -16,19 +16,25 @@ export default function DeckManaChart(props) {
 
     for (let i=0; i<props.deck.length; i++) {
         if (props.deck[i].quantity === 1) {
+
             console.log(props.deck[i].mana)
             console.log(props.deck[i].cost)
-            curve.push(props.deck[i].mana || props.deck[i].cost)
+            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
         } 
 
         if (props.deck[i].quantity === 2) {
-            curve.push(props.deck[i].mana || props.deck[i].cost)
-            curve.push(props.deck[i].mana || props.deck[i].cost)
+            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
+            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
         }
     }
 
-    console.log(curve)
+    console.log('curvearray', curve)
 
+    var average = curve.reduce((a, b) => {
+        return a + b 
+    }, 0)
+
+    console.log('average', average/curve.length)
 
     var zeroMana = curve.filter(index => {
         console.log('0')
@@ -82,7 +88,7 @@ export default function DeckManaChart(props) {
             return (
                 <div className='bar-chart-container panel panel-default'>
                     <div class='panel-heading text-center curve-panel-header'>
-                        <DeckAverageMana curve={props.curve} />
+                        <DeckAverageMana curve={average/curve.length} />
                     </div>
                     <BarChart
                         colorBars
