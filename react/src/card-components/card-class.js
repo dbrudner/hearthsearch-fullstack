@@ -5,65 +5,65 @@ export default function CardClass(props) {
 
 	if (props.hero === 'Paladin') {
 		return (
-			<div className='paladin class'>Paladin</div>
+			<span className='paladin class'>Paladin</span>
 		)
 	}
 
 	if (props.hero === 'Druid') {
 		return (
-			<div className='druid class'>Druid</div>
+			<span className='druid class'>Druid</span>
 		)
 	}
 
 	if (props.hero === 'Warrior') {
 		return (
-			<div className='warrior class'>Warrior</div>
+			<span className='warrior class'>Warrior</span>
 		)
 	}
 
 	if (props.hero === 'Warlock') {
 		return (
-			<div className='warlock class'>Warlock</div>
+			<span className='warlock class'>Warlock</span>
 		)
 	}
 
 	if (props.hero === 'Mage') {
 		return (
-			<div className='mage class'>Mage</div>
+			<span className='mage class'>Mage</span>
 		)
 	}
 
 	if (props.hero === 'Hunter') {
 		return (
-			<div className='hunter class'>Hunter</div>
+			<span className='hunter class'>Hunter</span>
 		)
 	}
 
 	if (props.hero === 'Rogue') {
 		return (
-			<div className='rogue class'>Rogue</div>
+			<span className='rogue class'>Rogue</span>
 		)
 	}
 
 	if (props.hero === 'Shaman') {
 		return (
-			<div className='shaman class'>Shaman</div>
+			<span className='shaman class'>Shaman</span>
 		)
 	}
 
 	if (props.hero === 'Priest') {
 		return (
-			<div className='priest class'>Priest</div>
+			<span className='priest class'>Priest</span>
 		)
 	}
 
 	if (props.hero === 'Neutral') {
 		return (
-			<div className='neutral class'>Neutral</div>
+			<span className='neutral class'>Neutral</span>
 		)
 	}
 
 	return (
-		<div></div>
+		<span></span>
 	)
 }

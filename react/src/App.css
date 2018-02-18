@@ -548,13 +548,39 @@ input[type=text], textarea {
 	height: 150px;
 }
 
+
+
+.search-btn {
+	margin-top: 5px;
+	font-size: 9px;
+}
+
+.filter-heading-cntr {
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-hdr {
+	font-size: 22px;
+}
+
 .lightforge-score {
 	color: rgb(150, 150, 56)
 }
 
 .cardset {
 	color: rgb(71, 71, 71);
-	font-weight: 700;
+	font-weight: 400;
+}
+
+.hide-filter {
+	font-size: 16px;
+	margin-top: 7px;
+}
+
+label {
+	font-weight: 400 !important;	
 }
 
 .panel-heading {
@@ -572,7 +598,9 @@ input[type=text], textarea {
 
 .panel {
 	border: #46007c solid 0px;
-	box-shadow: 0 10px 13px rgba(0,0,0,0.12), 0 13px 13px rgba(0,0,0,0.24);		
+	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);	
 }
 
 .potato {

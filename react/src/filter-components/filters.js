@@ -6,14 +6,33 @@ export default class Filters extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			hideFilter: false
+		}
 	}
 
 	getFilter = (filterName, filterValue) => {
 		this.props.getFilter(filterName, filterValue)
 	}
 
+	handleFilterChange = () => {
+		if (this.state.hideFilter) {
+			this.setState({
+				hideFilter: false
+			})
+		}
 
-	render() {
+		if (!this.state.hideFilter) {
+			this.setState({
+				hideFilter: true
+			})
+		}
+	}
+
+	showFilter = () => {
+
+		console.log(this.state.hideFilter);
 
 		const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
 		const types = ["Minion", "Spell", "Weapon"].sort()
@@ -28,13 +47,11 @@ export default class Filters extends React.Component {
 		const sorting = ["Name", "LightForge Score", "Mana"]
 		const sortingMethods = ["Ascending", "Descending"]
 
-		return (
-			<div>
-				<div className='panel panel-default'>
-					<div className='panel-heading'>
-						Filters
-					</div>
-					<div className='panel-body'>
+		if (this.state.hideFilter) {
+			return null
+		} else {
+			return (
+				<div className=''>
 						<div className='row'>
 							<h4 className='text-center f-hdr-margin'>Sort By</h4>
 							<div className='col-sm-12'>
@@ -126,6 +143,29 @@ export default class Filters extends React.Component {
 								<DropDown filterName='Maximum Health' filter='maxHealth' onChange={this.getFilter} options={mana}/>
 							</div>
 						</div>
+					</div>
+			)
+		}
+	}
+
+
+	render() {
+
+		return (
+			<div>
+				<div className='panel panel-default'>
+					<div className='panel-heading'>
+						<div className='filter-heading-cntr'>
+							<div className='filters-hdr'>
+								Filters
+							</div>
+							<div className='hide-filter'>
+								<label><input type="checkbox" onChange={this.handleFilterChange} value="" /></label>
+							</div>
+						</div>
+					</div>
+					<div className='panel-body'>
+						{this.showFilter()}
 					</div>
 				</div>
 			</div>

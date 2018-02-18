@@ -50,7 +50,8 @@ export default class CardInfo extends Component{
 					<div className='card-list-header'>
 						<div>
 							<div>
-								<CardClass cardset={this.props.cardset} hero={this.props.class}/>
+								<span><CardClass hero={this.props.class}/></span>
+								<span className='cardset'> - {this.props.cardset}</span>
 							</div>
 							<div className='some-marg'>
 								<CardPopularity />
@@ -68,7 +69,7 @@ export default class CardInfo extends Component{
 						<CardImage image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 					<hr/>
 					<div class='bottom-card-container'>
-						<CardCardset cardset={this.props.cardset} />
+						{/* <CardCardset cardset={this.props.cardset} /> */}
 						<CardRarity rarity={this.props.rarity} type={this.props.type} cardset={this.props.cardset} />
 						<CardFlavor flavor={this.props.flavor} />											
 						{ (this.props.type === 'Minion') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null }
@@ -82,7 +83,8 @@ export default class CardInfo extends Component{
 				<div className='card-list-header'>
 					<div>
 						<div>
-							<CardClass hero={this.props.class}/>
+							<span><CardClass hero={this.props.class}/></span>
+							<span> - {this.props.cardset}</span>
 						</div>
 						<div>
 							<CardLightForge lightForge={this.props.lightForgeScore}/>
@@ -97,7 +99,7 @@ export default class CardInfo extends Component{
 					</div>
 				</div>
 				<div classname='text-center'>
-					<CardCardset cardset={this.props.cardset} />asdfafsd
+					{/* <CardCardset cardset={this.props.cardset} /> */}
 				</div>
 					<CardImage image={this.props.image} artist={this.props.artist}/>
 				<hr/>
