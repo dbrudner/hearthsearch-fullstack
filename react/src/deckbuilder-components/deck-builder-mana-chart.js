@@ -88,7 +88,7 @@ export default function DeckManaChart(props) {
                         colorBars
                         margin={{top: 10, right: 10, bottom: 0, left: 10}}
                         // barWidth={20}
-                        width={170}
+                        width={167}
                         height={80}
                         // xType={'linear'}
                         data = {[

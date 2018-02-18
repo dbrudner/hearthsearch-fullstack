@@ -65,7 +65,7 @@ class App extends Component {
 								{this.state.filterOn ? 
 									<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 							</div>
-							<div className='col-lg-8 col-md-8 col-xs-12'>
+							<div className='col-lg-7 col-md-7 col-xs-12'>
 							<div className='search-bar-container'>
 								<Searchbar onSearch={this.getFilter}/>
 							</div>
@@ -97,7 +97,7 @@ class App extends Component {
 									buildMode={true}        
 								/>
 							</div>
-							<div className='col-lg-2 col-md-2 col-xs-12'>
+							<div className='col-lg-3 col-md-3 col-xs-12'>
 								<div className='affix'>
 									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>

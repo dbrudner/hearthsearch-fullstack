@@ -8,40 +8,20 @@ export default function DeckCardName(props) {
         props.removeCard(event.target.name)
     }
 
-    if (props.rarity === 'Legendary') {
-        return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name legendary epic animated fadeInRight'>
-                {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
-                <img name={props.name} alt={props.name} className='card-tile' src={source} />                
-            </div>
-        )
-    }
-
-    if (props.rarity === 'Epic') {
-        return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name epic animated fadeInRight'>
-                <div className='position-absolute'>
-                    {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
-                </div>
-                <img name={props.name} alt={props.name} className='card-tile position-absolute' src={source} />
-            </div>
-        )
-    }
-
-    if (props.rarity ==='Rare') {
-        return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name rare epic animated fadeInRight'>
-            {props.name} {(props.quantity === 2) ? (<div>{ props.quantity}</div>) : null}
-                <img name={props.name} alt={props.name} className='card-tile' src={source} />    
-            </div>
-        )
-    }
-
     return (
-        <div name={props.name} onClick={removeCard} className='deck-list-card-name epic animated fadeInRight'>
-        {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
-            <img name={props.name} alt={props.name} className='card-tile' src={source} />    
+        <div className='tile-container'>
+            <div>
+                <div name={props.name} onClick={removeCard} className='deck-list-card-name animated fadeInRight'>
+                {props.name} {(props.quantity === 2) ? (<span>x{props.quantity}</span>) : null}
+                </div>
+            <div className='card-tile center-block'>
+                <div className='gray-box'>
+                    <div className='card-list-mana'>{props.mana}</div>
+                </div>
+                <img name={props.name} alt={props.name} className='card-tile' src={source} /> 
+            </div> 
+            </div>
         </div>
     )
-   
+    
 }

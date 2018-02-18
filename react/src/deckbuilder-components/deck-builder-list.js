@@ -152,9 +152,7 @@ export default class Deck extends Component {
 
         const cardDeck = this.state.deck.map(card => {
             return (
-                    <div>
-                        <DeckCardName removeCard={this.removeCard} mana={card.mana} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
-                    </div>
+                <DeckCardName removeCard={this.removeCard} mana={card.mana} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )
         })
 
