@@ -62,6 +62,7 @@ class Home extends Component {
 							<Searchbar onSearch={this.getFilter}/>
 						</div>
 						<CardList
+							render={12}
 							nameSort={this.state.nameSort}
 							sortingMethod={this.state.sortingMethod}
 							cards={this.state.cards} 

@@ -3,7 +3,7 @@ import React from 'react'
 export default function(props) {
     return (
         <div>
-            <strong>Curve: </strong>{props.curve}
+            <span className='avg-curve'>Average: </span><span className='curve'>{props.curve}</span>
         </div>
     )
             

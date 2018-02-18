@@ -14,7 +14,8 @@ export default class CardList extends React.Component {
 			matches: [],
 			term: '',
 			hero: this.props.hero,
-			totalRendered: 12
+			totalRendered: this.props.render,
+			preventUpdate: false
 		}
 
 		this.search = this.search.bind(this);
@@ -26,7 +27,7 @@ export default class CardList extends React.Component {
 		if (nextProps) {
 			this.setState({
 				term: nextProps.term,
-				totalRendered: 12
+				totalRendered: this.props.render
 			}, () => {
 				this.search(nextProps)				
 			})
@@ -53,6 +54,9 @@ export default class CardList extends React.Component {
 
 
 	getCard = (card, cardObj) => {
+		this.setState({
+			preventUpdate: true
+		})
 		this.props.getCard(card);
 	}
 	
@@ -156,11 +160,18 @@ export default class CardList extends React.Component {
 			})
 		}
 
-		if (thisProps.minMana && thisProps.minMana !== 'None') {
+		if (thisProps.minHealth && thisProps.minHealth !== 'None') {
 			matches = matches.filter((card) => {
-				return card.cost <= thisProps.minMana;
+				return card.health <= thisProps.minHealth;
 			})
 		}
+
+		if (thisProps.minHealth && thisProps.minHealth !== 'None') {
+			matches = matches.filter((card) => {
+				return card.health <= thisProps.minHealth;
+			})
+		}
+		
 
 		if (thisProps.gameFormat === "Standard") {
 			matches = matches.filter((card) => {
@@ -269,41 +280,80 @@ export default class CardList extends React.Component {
 
 	renderCardList = (cards) => {
 
-			return cards.map(card => {
-				return (
-						<div key={card.dbfId} className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container animated fadeIn'>
-							<div class='card-result'>
-								<CardInfo
-								 image={card.img} artist={card.artist}
-									flavor={card.flavor}
-									attack={card.attack}
-									health={card.health}
-									cardId={card.cardId}
-									dbfId={card.dbfId}
-									lightForgeScore={card.lightForgeScore}
-									name={card.name}
-									cost={card.cost}
-									type={card.type}
-									text={card.text}
-									rarity={card.rarity}
-									howToGet={card.howToGet}
-									howToGetGold={card.howToGetGold}
-									class={card.playerClass}
-									cardSet={card.cardSet}
-									getCard={this.getCard}
-									buildMode={this.props.buildMode}
-									_id={card._id}
-								/>
+			if (this.props.buildMode) {
+				return cards.map(card => {
+					return (
+							<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
+								<div class='card-result'>
+									<CardInfo
+									image={card.img} artist={card.artist}
+										flavor={card.flavor}
+										attack={card.attack}
+										health={card.health}
+										cardId={card.cardId}
+										dbfId={card.dbfId}
+										lightForgeScore={card.lightForgeScore}
+										name={card.name}
+										cost={card.cost}
+										type={card.type}
+										text={card.text}
+										rarity={card.rarity}
+										howToGet={card.howToGet}
+										howToGetGold={card.howToGetGold}
+										class={card.playerClass}
+										cardSet={card.cardSet}
+										getCard={this.getCard}
+										buildMode={this.props.buildMode}
+										_id={card._id}
+									/>
+								</div>
 							</div>
-						</div>
-				)
-			})
+					)
+			
+				}) 
+			}
+
+			else {
+				return cards.map(card => {
+					return (
+							<div key={card.dbfId} className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container '>
+								<div class='card-result'>
+									<CardInfo
+									image={card.img} artist={card.artist}
+										flavor={card.flavor}
+										attack={card.attack}
+										health={card.health}
+										cardId={card.cardId}
+										dbfId={card.dbfId}
+										lightForgeScore={card.lightForgeScore}
+										name={card.name}
+										cost={card.cost}
+										type={card.type}
+										text={card.text}
+										rarity={card.rarity}
+										howToGet={card.howToGet}
+										howToGetGold={card.howToGetGold}
+										class={card.playerClass}
+										cardSet={card.cardSet}
+										getCard={this.getCard}
+										buildMode={this.props.buildMode}
+										_id={card._id}
+									/>
+								</div>
+							</div>
+					)
+			
+				}) 
+			}
+
+			
+			
 		}
 
 
 	renderTen = () => {
 		this.setState({
-			totalRendered: this.state.totalRendered + 12
+			totalRendered: this.state.totalRendered + this.props.render
 		})
 	}
 
@@ -317,7 +367,7 @@ export default class CardList extends React.Component {
  	
 	render() {
 
-		console.log(this.props)
+		console.log('update', this.props)
 
 		if (this.props.cards) {
 			return (

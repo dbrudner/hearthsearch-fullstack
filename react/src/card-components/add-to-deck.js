@@ -21,10 +21,9 @@ export default class extends Component{
 
         return (
             <div>
-                <button onClick={this.handleClick} 
-                    className='add-to-deck-button center-block'
-                    ><span class="glyphicon glyphicon-plus"></span>
-                </button>
+                <div onClick={this.handleClick}>
+                    <i class="fas fa-plus-circle add-button hvr-push"></i>
+                </div>
             </div>
         )
     }

@@ -18,11 +18,11 @@ class App extends Component {
 			filterOn: true,
 			term: '',
 			cards: [],
-			card: ''
+			card: '',
+			update: true
 		}
 
 	}
-
 
 	getFilter = (filterName, filterValue) => {
 		this.setState({
@@ -31,7 +31,7 @@ class App extends Component {
 	}
 
 	getCard = card => {
-
+		
 		this.setState({card})
 	}
 
@@ -61,14 +61,19 @@ class App extends Component {
 			<div>
 				<div className='deck-builder-container'>
 						<div className='row'>
-							<div className='col-lg-1 col-md-2 col-xs-12'>
+							<div className='col-lg-2 col-md-2 col-xs-12'>
 								{this.state.filterOn ? 
 									<Filters deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 							</div>
-							<div className='col-lg-9 col-md-9 col-xs-12'>
+							<div className='col-lg-8 col-md-8 col-xs-12'>
+							<div className='search-bar-container'>
 								<Searchbar onSearch={this.getFilter}/>
+							</div>
 								
 								<CardList
+									render={50}
+									nameSort={this.state.nameSort}
+									sortingMethod={this.state.sortingMethod}
 									cards={this.state.cards} 
 									term={this.state.term} 
 									rarity={this.state.rarity}

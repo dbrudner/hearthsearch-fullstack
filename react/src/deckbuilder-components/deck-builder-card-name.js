@@ -10,7 +10,7 @@ export default function DeckCardName(props) {
 
     if (props.rarity === 'Legendary') {
         return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name legendary' draggable='true'>
+            <div name={props.name} onClick={removeCard} className='deck-list-card-name legendary epic animated fadeInRight'>
                 {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
                 <img name={props.name} alt={props.name} className='card-tile' src={source} />                
             </div>
@@ -19,7 +19,7 @@ export default function DeckCardName(props) {
 
     if (props.rarity === 'Epic') {
         return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name epic' draggable='true'>
+            <div name={props.name} onClick={removeCard} className='deck-list-card-name epic animated fadeInRight'>
                 <div className='position-absolute'>
                     {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
                 </div>
@@ -30,7 +30,7 @@ export default function DeckCardName(props) {
 
     if (props.rarity ==='Rare') {
         return (
-            <div name={props.name} onClick={removeCard} className='deck-list-card-name rare'>
+            <div name={props.name} onClick={removeCard} className='deck-list-card-name rare epic animated fadeInRight'>
             {props.name} {(props.quantity === 2) ? (<div>{ props.quantity}</div>) : null}
                 <img name={props.name} alt={props.name} className='card-tile' src={source} />    
             </div>
@@ -38,7 +38,7 @@ export default function DeckCardName(props) {
     }
 
     return (
-        <div name={props.name} onClick={removeCard} className='deck-list-card-name' draggable='true'>
+        <div name={props.name} onClick={removeCard} className='deck-list-card-name epic animated fadeInRight'>
         {props.name} {(props.quantity === 2) ? (<div>{props.quantity}</div>) : null}
             <img name={props.name} alt={props.name} className='card-tile' src={source} />    
         </div>

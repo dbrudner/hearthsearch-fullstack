@@ -158,17 +158,24 @@ export default class Deck extends Component {
             )
         })
 
-        return (
-            <div>
-                <DeckManaChart deck={this.state.deck} />
-                {this.state.deck.length > 0 ? <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> : null}
-                <DeckDust dust={this.state.dust} />
-                <DeckCardsLeft deck={this.state.deck} />
-                {this.state.deck.length > 0 ? <DeckAverageMana curve={this.state.curve} /> : null}
-                <div>
-                    {cardDeck}
+        if (this.state.deck.length > 0) {
+            return (
+                <div className='panel panel-default deck-list-container'>
+                    
+                    <div className='mana-chart-container'>
+                        <DeckManaChart deck={this.state.deck} curve={this.state.curve}/>
+                    </div>
+                    {this.state.deck.length > 0 ? <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> : null}
+                    <DeckDust dust={this.state.dust} />
+                    <DeckCardsLeft deck={this.state.deck} />
+                    <div>
+                        {cardDeck}
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return <div/>
+        }
+        
     }
 }

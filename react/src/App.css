@@ -16,6 +16,18 @@ body {
 	width: 100%
 }
 
+.add-button {
+	color: rgb(155, 155, 255);
+	font-size: 28px;
+	cursor: pointer;
+	margin-left: 20%;
+}
+
+.some-marg {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
 .artist {
 	text-align: center;
 	font-style: italic;
@@ -283,11 +295,6 @@ select {
 	color: white
 }
 
-.mana-chart-container {
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
 .filters-container-header {
 	margin-bottom: 20px;
 }
@@ -335,13 +342,29 @@ select {
 	margin: 35px;
 }
 
-.bar-chart-container {
-	width: 193px;
-}
 
 .deck-builder-container {
 	margin: 30px;
 	margin-right: 20px;
+}
+
+.deck-list-container {
+	padding: 10px;
+	width: 100%;
+}
+
+.mana-chart-container {
+	margin-left: 8%;
+	margin-right: 8%;
+}
+
+.avg-curve {
+	font-size: 15px;
+	color: rgb(255, 217, 0);
+}
+
+.curve {
+	font-size: 15px;
 }
 
 .card-tile {
@@ -351,8 +374,10 @@ select {
 }
 
 .x-axis {
-	letter-spacing: .95px;
-	margin-left: 12px;
+	letter-spacing: 1px;
+	padding-left: 13.5px; 
+	border-top: 2px solid black;
+	background-color: lightgray
 }
 
 .deck-list-mana {
