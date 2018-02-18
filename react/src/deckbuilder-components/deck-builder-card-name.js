@@ -48,17 +48,17 @@ export default function DeckCardName(props) {
     }
 
     return (
-        <div className='animated fadeIn' name={props.card} onClick={removeCard} className='tile-container'>
+        <div className='animated fadeInRight' name={props.card} onClick={removeCard} className='tile-container'>
             <div>
                 <div  className='deck-list-card-name animated fadeInRight'>
-                {props.name} {(props.quantity === 2) ? (<span>x{props.quantity}</span>) : null}
+                {props.name} {(props.quantity === 2) ? (<span className='animated fadeInRight'>x{props.quantity}</span>) : null}
                 </div>
-            <div className='card-tile center-block' name={props.card}>
+            <div className='card-tile center-block animated fadeInRight' name={props.card}>
                 <div className='gray-box' name={props.card} >
                     {mana()}
                 </div>
                 <div className='tile-img-cntr animated fadeInRight' name={props.card} >
-                    <img name={props.name} alt={`${props.quantity} ${props.name}`} className='card-tile' src={source} />
+                    <img name={props.name} alt={`${props.quantity} ${props.name}`} className='card-tile animated fadeInRight' src={source} />
                 </div>
             </div> 
             </div>
