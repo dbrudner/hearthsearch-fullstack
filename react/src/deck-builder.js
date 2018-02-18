@@ -77,7 +77,7 @@ class App extends Component {
 									cards={this.state.cards} 
 									term={this.state.term} 
 									rarity={this.state.rarity}
-									cardset={this.state.cardSet}
+									cardSet={this.state.cardSet}
 									mana={this.state.mana}
 									attack={this.state.attack}
 									health={this.state.health}
@@ -99,6 +99,7 @@ class App extends Component {
 							</div>
 							<div className='col-lg-3 col-md-3 col-xs-12 builder-list-container'>
 								<div className='affix builder-list'>
+									
 									<DeckBuilderList deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>
 							</div>

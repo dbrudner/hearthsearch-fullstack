@@ -70,7 +70,7 @@ class Home extends Component {
 							hero={this.state.hero}
 							type={this.state.type}
 							rarity={this.state.rarity}
-							cardset={this.state.cardSet}
+							cardSet={this.state.cardSet}
 							mana={this.state.mana}
 							attack={this.state.attack}
 							health={this.state.health}

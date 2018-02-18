@@ -11,7 +11,26 @@ export default function DeckCardsLeft(props) {
 
    const totalCards = getQuantity(props.deck)
 
-    if (props.deck.length) {
+    if (totalCards === 30) {
+        return (
+            <div className=''>
+                <span className='full-deck'>{totalCards}</span>/30
+            </div>
+        )
+    }
+
+    console.log(totalCards)
+
+    if (totalCards > 30) {
+        console.log('too many')
+        return (
+            <div className=''>
+                <span className='too-many'>{totalCards}</span>/30
+            </div>
+        )
+    }
+
+    if (totalCards) {
         return (
             <div>
                 {totalCards}/30

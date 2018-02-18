@@ -160,6 +160,14 @@ export default class Deck extends Component {
 
     render() {
 
+        const getQuantity = (deck) => {
+            return deck.reduce((a, card) => {
+                return card.quantity + a
+            }, 0)
+        }
+
+        const totalCards = getQuantity(this.state.deck)
+
         let sorted = _.orderBy(this.state.deck, 'mana', 'asc')
 
         console.log(sorted)
@@ -170,16 +178,28 @@ export default class Deck extends Component {
             )
         })
 
-        if (this.state.deck.length > 0) {
+        if (totalCards > 0) {
             return (
-                <div className='panel panel-default deck-list-container'>
-                    
+                <div className='deck-list-container'>
+                    <div className='yr-deck-hdr'>
+                        <div className='yr-deck'>
+                            Your Deck
+                        </div>
+                        <DeckCardsLeft deck={this.state.deck} />                        
+                        <div>
+                            {
+                                totalCards === 30 ? 
+                                <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> 
+                                : 
+                                    <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>
+                            }                        
+                        </div>
+                    </div>
+                    <hr/>
                     <div className='mana-chart-container'>
                         <DeckManaChart deck={this.state.deck} curve={this.state.curve}/>
                     </div>
-                    {this.state.deck.length > 0 ? <Submit hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> : null}
-                    <DeckDust dust={this.state.dust} />
-                    <DeckCardsLeft deck={this.state.deck} />
+                        <DeckDust dust={this.state.dust} />
                     <div>
                         {cardDeck}
                     </div>

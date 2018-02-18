@@ -44,7 +44,7 @@ export default class Submit extends React.Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <button className='btn btn-primary' onClick={() => this.handleClick()}>Submit</button>
+                <button className='btn next-page-btn-success hvr-fade animated fadeIn' onClick={() => this.handleClick()}><span className='submit-btn-text'>Next Page</span></button>
             )
         }
     }

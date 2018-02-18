@@ -245,6 +245,10 @@ hr {
 	border-color: #d3d3d3 !important;
 }
 
+.curve-panel-header {
+	text-align: center
+}
+
 .filter-panel {
 	margin: 0px 80px;
 }
@@ -307,6 +311,10 @@ select {
 	font-style: italic
 }
 
+.too-many {
+	color: rgb(167, 29, 29)
+}
+
 .lightforge-score-empty {
 	opacity: 0;
 }
@@ -338,11 +346,28 @@ select {
 	color: rgb(214, 214, 214)
 }
 
-.card-info-container {
+.full-deck {
+	color: rgba(97, 189, 45, 0.767)
 }
 
 .deck-header-container {
 	margin: 35px;
+}
+
+.submit-btn-text {
+	font-weight: 700
+}
+
+.next-page-btn-success {
+	margin-top: 10px;
+}
+
+.next-page-btn-fail {
+	margin-top: 10px;
+}
+
+.next-page-btn-fail {
+
 }
 
 
@@ -351,7 +376,18 @@ select {
 	margin-right: 20px;
 }
 
+.yr-deck-hdr {
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
 .deck-list-container {
+	border-radius: 10px;
+	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);	
+	background-color: white;
 	width: 260px;
 	padding: 20px;
 	padding-bottom: 50px;
@@ -361,11 +397,12 @@ select {
 .mana-chart-container {
 	margin-left: 8%;
 	margin-right: 8%;
+	box-shadow: 0px 0px 0px 0px rgba(209,209,209,1) !important;
 }
 
 .avg-curve {
 	font-size: 15px;
-	color: rgb(255, 217, 0);
+	color: rgb(55, 96, 231);
 }
 
 .curve {
@@ -602,11 +639,14 @@ label {
 }
 
 .panel-heading {
-	background-color:  rgb(122, 52, 122) !important;
+	background-color:  rgb(122, 52, 122);
 	color: rgb(255, 255, 255) !important;
 	border: #46007c solid 0px;
 	font-size: 16px;
-	
+}
+
+.filter-panel-heading {
+	background-color:  rgb(122, 52, 122) !important;	
 }
 
 .panel-body {
