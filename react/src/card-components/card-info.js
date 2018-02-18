@@ -107,7 +107,7 @@ export default class CardInfo extends Component{
 					<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>		
 					<CardRarity rarity={this.props.rarity} type={this.props.type} />					
 					<CardFlavor flavor={this.props.flavor} />											
-					{ (this.props.type === 'Minion') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null }
+					{ (this.props.type === 'Minion' && this.props.cardset !== 'Knights of the Frozen Throne' && this.props.cardset !== 'Kobolds & Catacombs') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null }
 				</div>
 			</div>
 		)

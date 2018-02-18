@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
 
     app.get('/api/decks/populate', function(req, res) {
         db.Deck.find()
-        .populate('cards.card')   
+        .populate('cards._id')   
         .exec((err, result) => {
             if (err) {
                throw err

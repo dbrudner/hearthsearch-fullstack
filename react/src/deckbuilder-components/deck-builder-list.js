@@ -177,7 +177,7 @@ export default class Deck extends Component {
                 <DeckCardName removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )
         })
-
+ 
         if (totalCards > 0) {
             return (
                 <div className='deck-list-container'>

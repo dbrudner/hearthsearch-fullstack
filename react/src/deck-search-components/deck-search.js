@@ -26,17 +26,12 @@ export default class DeckSearch extends React.Component {
 	}
 
     componentDidMount = () => {
-        // axios.get('/api/decks/populate')
-        // .then(response => {
-        //     console.log(response.data)
-        //     // this.setState({
-        //     //     decks: response.data
-        //     // })
-        // })
-
-        axios.get('/api/lightforge')
+        axios.get('/api/decks/populate')
         .then(response => {
             console.log(response.data)
+            // this.setState({
+            //     decks: response.data
+            // })
         })
 
         // axios.get('/api/cards/collectible')

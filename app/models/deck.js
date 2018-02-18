@@ -19,7 +19,7 @@ var DeckSchema = new Schema({
     },
 
     cards: [{
-        card: {
+        _id: {
             type: Schema.Types.ObjectId,
             ref: "Card"
         },
