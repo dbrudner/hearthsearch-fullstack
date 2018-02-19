@@ -31,6 +31,10 @@ export default class DeckSearch extends React.Component {
         let card = '5a8b0009b2b11e2fb806f269'
         let hero = 'warlock'
 
+        axios.post('/update/hearthpwn')
+        .then(result => {
+            console.log(result)
+        })
         // axios.get('/api/mongoose/import/cards')
         // .then(response => {
         //     console.log(response.data)

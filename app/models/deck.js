@@ -18,6 +18,11 @@ var DeckSchema = new Schema({
         required: true
     },
 
+    // For hearthpwn sourced cards. If they're quantities are already added to cards, changes to false so they wont get added again.
+    addedCards: {
+        type: Boolean
+    },
+
     cards: [{
         _id: {
             type: Schema.Types.ObjectId,
