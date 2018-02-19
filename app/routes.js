@@ -31,6 +31,7 @@ module.exports = function(app, passport) {
 
     // Use this to update lighforge scores for each card
     app.get('/api/lightforge', (req, res) => {
+        console.log("HI?")
         axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
         .then(result => {
             result.data.Cards.forEach(card => {

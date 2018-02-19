@@ -31,7 +31,7 @@ export default class DeckSearch extends React.Component {
         let card = '5a8b0009b2b11e2fb806f269'
         let hero = 'warlock'
 
-        axios.post('/update/hearthpwn')
+        axios.get('/api/lightforge')
         .then(result => {
             console.log(result)
         })
