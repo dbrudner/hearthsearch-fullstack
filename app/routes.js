@@ -20,6 +20,15 @@ module.exports = function(app, passport) {
 
     const axios = require('axios')
 
+
+    app.get('/api/decks/classes', (req, res) => {
+        db.Deck.find()
+        .exec((err, result) => {
+            console.log(result)
+            res.json(result)
+        }) 
+    })
+
     // Use this to update lighforge scores for each card
     app.get('/api/lightforge', (req, res) => {
         axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
