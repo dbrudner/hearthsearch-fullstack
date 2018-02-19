@@ -4,6 +4,7 @@ import CardInfo from './card-info'
 import CardPopularity from './card-popularity'
 
 import _ from 'lodash'
+import axios from 'axios'
 
 export default class CardList extends React.Component {
 
@@ -42,6 +43,62 @@ export default class CardList extends React.Component {
 	}
 
 	componentDidMount() {
+
+		axios.get('/api/decks/classes')
+		.then(result => {
+			console.log("helo")
+			console.log('decks', result)
+
+			const decks = result.data
+
+			const parseDecks = (decks, hero) => {
+				return decks.reduce((a, deck) => {
+					if (deck.hero.toLowerCase() === hero) {
+						return a + 1
+					} else {
+						return a
+					}
+				}, 0)
+			}
+
+			const wildDecks = decks.filter(deck => deck.format === 'wild')
+			const standardDecks = decks.filter(deck => deck.format === 'standard')
+			
+			console.log(wildDecks)
+			console.log(standardDecks)
+
+			console.log(parseDecks(result.data, 'warlock'))
+
+			const object = {
+				standard: {
+					druid: parseDecks(standardDecks, 'druid'),
+					hunter: parseDecks(standardDecks, 'hunter'),
+					mage: parseDecks(standardDecks, 'mage'),
+					paladin: parseDecks(standardDecks, 'paladin'),
+					priest: parseDecks(standardDecks, 'priest'),
+					rogue: parseDecks(standardDecks, 'rogue'),
+					shaman: parseDecks(standardDecks, 'shaman'),
+					warlock: parseDecks(standardDecks, 'warlock'),
+					warrior: parseDecks(standardDecks, 'warrior')
+				},
+
+				wild: {
+					druid: parseDecks(wildDecks, 'druid'),
+					hunter: parseDecks(wildDecks, 'hunter'),
+					mage: parseDecks(wildDecks, 'mage'),
+					paladin: parseDecks(wildDecks, 'paladin'),
+					priest: parseDecks(wildDecks, 'priest'),
+					rogue: parseDecks(wildDecks, 'rogue'),
+					shaman: parseDecks(wildDecks, 'shaman'),
+					warlock: parseDecks(wildDecks, 'warlock'),
+					warrior: parseDecks(wildDecks, 'warrior')
+				}
+			}
+
+			console.log(object)
+
+		})
+
 		if (this.props.cards) {
 			this.search()
 		}
@@ -293,7 +350,10 @@ export default class CardList extends React.Component {
 							<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
 								<div class='card-result'>
 									<CardInfo
-									image={card.img} artist={card.artist}
+										image={card.img} 
+										inclusionsWild={card.inclusionsWild}
+										inclusionsStandard={card.inclusionsStandard}
+										artist={card.artist}
 										flavor={card.flavor}
 										attack={card.attack}
 										health={card.health}
@@ -324,9 +384,12 @@ export default class CardList extends React.Component {
 				return cards.map(card => {
 					return (
 							<div key={card.dbfId} className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container '>
-								<div class='card-result'>
+								<div className='card-result'>
 									<CardInfo
-									image={card.img} artist={card.artist}
+										image={card.img} 
+										artist={card.artist}
+										inclusionsWild={card.inclusionsWild}
+										inclusionsStandard={card.inclusionsStandard}
 										flavor={card.flavor}
 										attack={card.attack}
 										health={card.health}
@@ -379,7 +442,7 @@ export default class CardList extends React.Component {
 			return (
 					<div>
 						<div className='list-group cards'>
-							<div class='row'>
+							<div className='row'>
 							{this.renderCardList(this.state.matches.slice(0, this.state.totalRendered))}
 							</div>
 						</div>
