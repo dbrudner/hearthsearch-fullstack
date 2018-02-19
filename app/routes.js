@@ -309,6 +309,7 @@ module.exports = function(app, passport) {
             cards: req.body.cards,
             format: req.body.format,
             user: req.body.user,
+            source: req.body.source,
             hero: req.body.hero
         }, function(err, result) {
             if (err) throw err

@@ -13,21 +13,26 @@ export default class Submit extends React.Component {
     }
 
     handleClick() {
-        const cards = this.props.cards.map(({_id, quantity}) => {
+
+        console.log('quantity?', this.props.deck)
+
+        const deck = this.props.deck.map(({_id, quantity}) => {
             return {
-                _id, quantity
+                _id, 
+                cardQuantity: quantity
             }
         })
 
-        console.log('format', this.props.format)
+        console.log(deck)
 
         axios.post('/newdeck', {
             name: this.props.name,
             archetype: this.props.archetype,
             cost: this.props.cost,
-            cards,
+            cards: deck,
             user: this.props.userId,
             hero: this.props.hero,
+            source: "HearthTato",
             format: this.props.format
             })
             .then(response => {

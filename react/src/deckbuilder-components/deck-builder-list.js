@@ -170,13 +170,13 @@ export default class Deck extends Component {
 
         let sorted = _.orderBy(this.state.deck, 'mana', 'asc')
 
-        console.log(sorted)
-
         const cardDeck = sorted.map(card => {
             return (
                 <DeckCardName removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )
         })
+
+        console.log('should include quantity', this.state.deck)
  
         if (totalCards > 0) {
             return (
@@ -189,7 +189,7 @@ export default class Deck extends Component {
                         <div>
                             {
                                 totalCards === 30 ? 
-                                <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} cards={this.state.deck} name='name' archetype='archetype' cost={1200} /> 
+                                <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.state.deck} name='name' archetype='archetype' cost={1200} /> 
                                 : 
                                     <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>
                             }                        

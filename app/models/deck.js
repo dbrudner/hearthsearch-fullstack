@@ -36,6 +36,7 @@ var DeckSchema = new Schema({
     //   This field is for where the deck came from -- hearthhead, hearthypwn, hearthsearch, etc.
     source: {
         type: String,
+        required: true
     },
 
     description: {
