@@ -25,6 +25,11 @@ var CardSchema = new Schema({
         type: Boolean
     },
 
+    comments: {
+        type: Array,
+        default :[]
+    },
+
     cost: {
         type: Number
     },
@@ -52,6 +57,69 @@ var CardSchema = new Schema({
         type: Number,
         default: 0,
         required: true
+    },
+
+    inclusions: {
+        Druid: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Hunter: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Mage: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Paladin: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Priest: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Rogue: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Shaman: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Warlock: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Warrior: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        Neutral: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
     },
 
     img: {
@@ -103,8 +171,6 @@ var CardSchema = new Schema({
     lightForgeScore: {
         type: Array
     }
-
-
 
 });
 
