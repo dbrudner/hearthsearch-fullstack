@@ -46,80 +46,116 @@ var CardSchema = new Schema({
         type: Number
     },
 
-    // For neutral cards, push the class of the deck. This is used to chart what classes are using what neutral cards the most.
-    inclusionClass: {
-        type: Array,
-        default: [],
-        required: true
+    inclusionsStandard: {
+        druid: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        hunter: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        mage: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        paladin: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        priest: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        rogue: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        shaman: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        warlock: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        
+        warrior: {
+            type: Number,
+            default: 0,
+            required: true
+        }
     },
 
-    inclusions: {
-        type: Number,
-        default: 0,
-        required: true
-    },
-
-    inclusions: {
-        Druid: {
+    inclusionsWild: {
+        druid: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Hunter: {
+        hunter: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Mage: {
+        mage: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Paladin: {
+        paladin: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Priest: {
+        priest: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Rogue: {
+        rogue: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Shaman: {
+        shaman: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Warlock: {
+        warlock: {
             type: Number,
             default: 0,
             required: true
         },
         
-        Warrior: {
+        warrior: {
             type: Number,
             default: 0,
             required: true
-        },
-        
-        Neutral: {
-            type: Number,
-            default: 0,
-            required: true
-        },
-        
+        }
     },
 
     img: {

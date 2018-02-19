@@ -17,6 +17,7 @@ export default class DeckSearch extends React.Component {
         }
     }
 
+
     getFilter = (filterName, filterValue) => {
         console.log(this.state)
 		this.setState({
@@ -26,13 +27,28 @@ export default class DeckSearch extends React.Component {
 	}
 
     componentDidMount = () => {
-        axios.get('/api/lightforge')
-        .then(response => {
-            console.log(response.data)
-            // this.setState({
-            //     decks: response.data
-            // })
-        })
+
+        let card = '5a8b0009b2b11e2fb806f269'
+        let hero = 'warlock'
+
+        // axios.get('/api/mongoose/import/cards')
+        // .then(response => {
+        //     console.log(response.data)
+        //     // this.setState({
+        //     //     decks: response.data
+        //     // })
+        // })
+
+        // axios.post('/api/card/update', {
+        //     cardId: card,
+        //     hero
+        // })
+        // .then(response => {
+        //     console.log(response.data)
+        //     // this.setState({
+        //     //     decks: response.data
+        //     // })
+        // })
 
         // axios.get('/api/cards/collectible')
         // console.log(response)        

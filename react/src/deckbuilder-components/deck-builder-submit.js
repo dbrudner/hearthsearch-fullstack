@@ -24,6 +24,8 @@ export default class Submit extends React.Component {
         })
 
         console.log(deck)
+        
+        console.log(this.props.hero)
 
         axios.post('/newdeck', {
             name: this.props.name,
@@ -36,9 +38,18 @@ export default class Submit extends React.Component {
             format: this.props.format
             })
             .then(response => {
-                this.setState({
-                    redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
+                console.log('respose', response)
+                response.data.cards.forEach(card => {
+                    const cardId = card._id
+                    axios.post('/api/card/update', {
+                        cardId: card,
+                        hero: this.props.hero,
+                        format: this.props.format
+                    })
                 })
+                // this.setState({
+                //     redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
+                // })
             }).catch(error => {
                 console.log(error)
             });

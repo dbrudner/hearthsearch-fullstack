@@ -176,7 +176,6 @@ export default class Deck extends Component {
             )
         })
 
-        console.log('should include quantity', this.state.deck)
  
         if (totalCards > 0) {
             return (
@@ -188,7 +187,7 @@ export default class Deck extends Component {
                             <DeckCardsLeft deck={this.state.deck} />                        
                         <div>
                             {
-                                totalCards === 30 ? 
+                                totalCards === 3 ? 
                                 <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.state.deck} name='name' archetype='archetype' cost={1200} /> 
                                 : 
                                     <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>
