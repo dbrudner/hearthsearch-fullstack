@@ -57,7 +57,7 @@ var DeckSchema = new Schema({
 
     createdAt: {
         type: Date,
-        'Default': Date.now
+        default: Date.now
     }
 });
 

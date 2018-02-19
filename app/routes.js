@@ -5,6 +5,7 @@ var db = require('./models/index');
 var bodyParser = require('body-parser')
 var deckStrings = require('deckStrings')
 
+var cardsData = require('../card-data/cards.json')
 
 function Deck(name, cards, archetype, user, cost) {
     this.name = name
@@ -19,20 +20,21 @@ module.exports = function(app, passport) {
 
     const axios = require('axios')
 
-    // app.get('/api/lightforge', (req, res) => {
-    //     axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
-    //     .then(result => {
-    //         result.data.Cards.forEach(card => {
-    //             db.Card.findOneAndUpdate({'name': card.Name}, {'lightForgeScore': card.Scores})
-    //             .exec((error, result2) => {
-    //                 if (error) throw error                    
-    //                 console.log('updated?')                    
-    //             })
-    //         })
+    // Use this to update lighforge scores for each card
+    app.get('/api/lightforge', (req, res) => {
+        axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
+        .then(result => {
+            result.data.Cards.forEach(card => {
+                db.Card.findOneAndUpdate({'name': card.Name}, {'lightForgeScore': card.Scores})
+                .exec((error, result2) => {
+                    if (error) throw error                    
+                    console.log('updated?')                    
+                })
+            })
 
 
-    //     })
-    // }) 
+        })
+    }) 
 
     app.get('/api/decks/populate', function(req, res) {
         db.Deck.find()
@@ -53,6 +55,26 @@ module.exports = function(app, passport) {
             if (err) throw err;
             res.json(result)
         })
+    })
+
+    // Use this to import data through mongoose to database
+    app.get('/api/mongoose/import/cards', function(req, res) {
+        console.log("HI?")
+
+        // let collectible = cardsData.filter(card => card.collectible)
+
+        let newCards = []
+
+        for (let key in cardsData) {
+            cardsData[key].forEach(card => {
+                if (card.collectible) {
+                    newCards.push(card)
+                }
+            })
+        }
+        
+        db.Card.insertMany(newCards, (error, docs) => res.json(docs))
+
     })
     
     app.get('/api/import/:deckString', function(req, res) {

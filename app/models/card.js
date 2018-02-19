@@ -6,7 +6,7 @@ var CardSchema = new Schema({
     
     
     artist: {
-        type: String
+        type: String,
     },
 
     attack: {
@@ -27,7 +27,7 @@ var CardSchema = new Schema({
 
     comments: {
         type: Array,
-        default :[]
+        default: []
     },
 
     cost: {

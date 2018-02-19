@@ -26,7 +26,7 @@ export default class DeckSearch extends React.Component {
 	}
 
     componentDidMount = () => {
-        axios.get('/api/decks/populate')
+        axios.get('/api/lightforge')
         .then(response => {
             console.log(response.data)
             // this.setState({
