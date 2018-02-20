@@ -352,19 +352,23 @@ export default class CardList extends React.Component {
 					for (let key in deckA.inclusionsWild) {
 						inclusionsWildDeckA = inclusionsWildDeckA + deckA.inclusionsWild[key]
 					}
+				} else {
+					inclusionsWildDeckA = deckA.inclusionsWild[deckA.playerClass.toLowerCase()]
 				}
 
 				if (deckB.playerClass === 'Neutral') {
 					for (let key in deckB.inclusionsWild) {
 						inclusionsWildDeckB = inclusionsWildDeckB + deckB.inclusionsWild[key]
 					}
+				} else {
+					inclusionsWildDeckB = deckB.inclusionsWild[deckB.playerClass.toLowerCase()]
+					
 				}
 				
 				inclusionsRateDeckA = inclusionsWildDeckA/totalWildDecks
 				inclusionsRateDeckB = inclusionsWildDeckB/totalWildDecks					
 				console.log(deckA.name, inclusionsRateDeckA)
 				console.log(deckB.name, inclusionsRateDeckB)
-				
 				
 				return inclusionsRateDeckB - inclusionsRateDeckA				
 
