@@ -333,7 +333,6 @@ export default class CardList extends React.Component {
 			// console.log(this.state.decksInfo)
 
 			const totalWild = this.state.decksInfo.wild
-			const totalStandard = this.state.decksInfo.standard			
 			
 			matches.sort((deckA, deckB) => {
 
@@ -366,9 +365,73 @@ export default class CardList extends React.Component {
 				}
 				
 				inclusionsRateDeckA = inclusionsWildDeckA/totalWildDecks
-				inclusionsRateDeckB = inclusionsWildDeckB/totalWildDecks					
-				console.log(deckA.name, inclusionsRateDeckA)
-				console.log(deckB.name, inclusionsRateDeckB)
+				inclusionsRateDeckB = inclusionsWildDeckB/totalWildDecks
+				
+				if (deckA.rarity === 'Legendary') {
+					inclusionsRateDeckA = inclusionsRateDeckA * 2
+				}
+
+				if (deckB.rarity === 'Legendary') {
+					inclusionsRateDeckB = inclusionsRateDeckB * 2					
+				}
+
+				// console.log(deckA.name, inclusionsRateDeckA)
+				// console.log(deckB.name, inclusionsRateDeckB)
+				
+				return inclusionsRateDeckB - inclusionsRateDeckA				
+
+			})
+		}
+
+		if (this.props.nameSort === "Overall Standard") {
+			console.log(matches);
+			// console.log(this.state.decksInfo)
+
+			const totalStandard = this.state.decksInfo.standard			
+			
+			matches.sort((deckA, deckB) => {
+
+				let totalStandardDecks = 0
+				let inclusionsStandardDeckA = 0
+				let inclusionsStandardDeckB = 0
+				
+				let inclusionsRateDeckA;
+				let inclusionsRateDeckB
+
+				for (let key in totalStandard) {
+					totalStandardDecks = totalStandardDecks + totalStandard[key]
+					}
+
+				if (deckA.playerClass === 'Neutral') {
+					for (let key in deckA.inclusionsStandard) {
+						inclusionsStandardDeckA = inclusionsStandardDeckA + deckA.inclusionsStandard[key]
+					}
+				} else {
+					inclusionsStandardDeckA = deckA.inclusionsStandard[deckA.playerClass.toLowerCase()]
+				}
+
+				if (deckB.playerClass === 'Neutral') {
+					for (let key in deckB.inclusionsStandard) {
+						inclusionsStandardDeckB = inclusionsStandardDeckB + deckB.inclusionsStandard[key]
+					}
+				} else {
+					inclusionsStandardDeckB = deckB.inclusionsStandard[deckB.playerClass.toLowerCase()]
+					
+				}
+				
+				inclusionsRateDeckA = inclusionsStandardDeckA/totalStandardDecks
+				inclusionsRateDeckB = inclusionsStandardDeckB/totalStandardDecks
+				
+				if (deckA.rarity === 'Legendary') {
+					inclusionsRateDeckA = inclusionsRateDeckA * 2
+				}
+
+				if (deckB.rarity === 'Legendary') {
+					inclusionsRateDeckB = inclusionsRateDeckB * 2					
+				}
+
+				// console.log(deckA.name, inclusionsRateDeckA)
+				// console.log(deckB.name, inclusionsRateDeckB)
 				
 				return inclusionsRateDeckB - inclusionsRateDeckA				
 

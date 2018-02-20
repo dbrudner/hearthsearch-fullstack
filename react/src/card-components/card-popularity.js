@@ -8,7 +8,6 @@ export default function CardPopularity(props) {
 
             const hero = props.hero.toLowerCase()
 
-
             if (props.hero === 'Neutral') {
 
                 let inclusionsWild = 0
@@ -34,7 +33,6 @@ export default function CardPopularity(props) {
                 for (let key in props.decksInfo.standard) {
                     totalStandardDecks = totalStandardDecks + props.decksInfo.standard[key]
                 }
-
 
                 if (props.rarity === 'Legendary') {
                     const standardPercent = ((inclusionsStandard/totalStandardDecks) * 100).toFixed(2) + '%'
