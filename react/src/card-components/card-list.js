@@ -353,7 +353,6 @@ export default class CardList extends React.Component {
 					}
 				})
 
-				console.log(quantity[0])
 
 				return (
 						<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>

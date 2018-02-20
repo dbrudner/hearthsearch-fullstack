@@ -452,6 +452,9 @@ select {
 	padding-left: 0 !important;
 }
 
+.deck-builder-list-container {
+	margin-left: 5px;
+}
 
 .gray-box {
 	/* background-color: gray; */

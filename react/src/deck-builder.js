@@ -151,8 +151,9 @@ class App extends Component {
 							<div className='col-lg-10 col-md-10 col-xs-12'>
 							<div className='search-bar-container'>
 								<Searchbar onSearch={this.getFilter}/>
-								<div>
 									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
+								
+								<div>
 										<SlidingPane
 											isOpen={ this.state.isPaneOpen }
 											width='300px'
@@ -161,7 +162,7 @@ class App extends Component {
 												// triggered on "<" on left top click or on outside click
 												this.setState({ isPaneOpen: false });
 										}}>
-											<div> 
+											<div className='deck-builder-list-container'> 
 												<DeckBuilderList format={this.props.format || this.state.format} deck={this.state.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 											</div>
 										</SlidingPane>

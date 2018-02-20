@@ -16,13 +16,11 @@ export default class extends Component{
 
     handleClick = (event) => {
 
-        console.log("HI")
 
         event.preventDefault()
         this.addToDeck(this.props.name, this.props.mana, this.props.rarity, this.props.cardSet, this.props.hero, this.props.dbfId, this.props.cardId, this.props._id)
         this.setState({clicked: true})
 
-        console.log('fadein', this.state.clicked)
 
 
         setTimeout(() => {
@@ -33,7 +31,6 @@ export default class extends Component{
 
     fadeOut = () => {
         this.setState({clicked: false})
-        console.log('fadeout', this.state.clicked)
         
     }
 

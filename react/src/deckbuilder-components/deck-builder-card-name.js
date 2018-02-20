@@ -51,7 +51,7 @@ export default function DeckCardName(props) {
                 {props.name} {(props.quantity === 2) ? (<span className='animated fadeInRight'>x{props.quantity}</span>) : null}
                 </div>
             <div className='card-tile center-block animated fadeInRight' name={props.card}>
-                <div className='gray-box' name={props.card} >
+                <div className='gray-box animated fadeInRight' name={props.card} >
                     {mana()}
                 </div>
                 <div className='tile-img-cntr animated fadeInRight' name={props.card} >

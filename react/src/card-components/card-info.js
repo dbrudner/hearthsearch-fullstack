@@ -8,6 +8,7 @@ import CardSoundBoard from './card-sound-board'
 import CardLightForge from './card-lightforge'
 import CardRarity from './card-rarity'
 import CardCardset from './card-cardset'
+// import CardQuantity from './card-quantity'
 
 export default class CardInfo extends Component{
 	
@@ -61,6 +62,7 @@ export default class CardInfo extends Component{
 
 	render() {
 
+
 		const cardInclusions = {
 			wild: this.props.inclusionsWild, 
 			standard: this.props.inclusionsStandard
@@ -84,6 +86,7 @@ export default class CardInfo extends Component{
 							</div>
 							<div>
 								<CardLightForge lightForge={this.props.lightForgeScore}/>
+								
 							</div>								
 						</div>
 						<div>
@@ -91,7 +94,7 @@ export default class CardInfo extends Component{
 								<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 							</div>
 							<div>
-								{/* <CardQuantity name={this.props.name} quantity={this.props.quantity} /> */}
+								{/* <CardQuantity name={this.props.name} deck={this.props.deck} /> */}
 							</div>
 						</div>
 					</div>

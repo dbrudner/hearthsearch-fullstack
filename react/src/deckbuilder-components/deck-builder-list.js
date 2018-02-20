@@ -198,6 +198,7 @@ export default class Deck extends Component {
                         <DeckManaChart deck={this.props.deck} curve={this.state.curve}/>
                     </div>
                         <DeckDust dust={this.state.dust} />
+                    <hr/>
                     <div>
                         {cardDeck}
                     </div>
