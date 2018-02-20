@@ -122,29 +122,32 @@ export default class Deck extends Component {
 
     removeCard = toBeRemoved => {
 
+        console.log(toBeRemoved)
+        
+        this.props.removeCard(toBeRemoved)
 
-        let newDeck = this.props.deck.map(card => {
-            if (card.name !== toBeRemoved) {
-                return card
-            }
+        // let newDeck = this.props.deck.map(card => {
+        //     if (card.name !== toBeRemoved) {
+        //         return card
+        //     }
 
-            if (card.name === toBeRemoved) {
+        //     if (card.name === toBeRemoved) {
 
-                if (card.quantity === 2) {
-                    let newCard = card
-                    newCard.quantity = 1
-                    return newCard
-                }
-            }
-        })
+        //         if (card.quantity === 2) {
+        //             let newCard = card
+        //             newCard.quantity = 1
+        //             return newCard
+        //         }
+        //     }
+        // })
 
-        newDeck = newDeck.filter(item => {
-            if (item) {return item}
-        })
+        // newDeck = newDeck.filter(item => {
+        //     if (item) {return item}
+        // })
 
-        this.setState({
-            deck: newDeck
-        })
+        // this.setState({
+        //     deck: newDeck
+        // })
 
     }
 

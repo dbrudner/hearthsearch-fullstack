@@ -14,7 +14,7 @@ export default function CardPopularity(props) {
             console.log('Number of decks in this class:', props.decksInfo.wild[hero] * 2)
 
             const standardPercent = (props.cardInclusions.standard[hero]/(props.decksInfo.standard[hero] * 2) * 100).toFixed(2) + '%'
-            const wildPerecent = (props.cardInclusions.wild[hero]/(props.decksInfo.wild[hero] * 2) * 100).toFixed(2) + '%'
+            const wildPercent = (props.cardInclusions.wild[hero]/(props.decksInfo.wild[hero] * 2) * 100).toFixed(2) + '%'
 
 
             if (props.hero === 'Neutral') {
@@ -23,10 +23,10 @@ export default function CardPopularity(props) {
                 return (
                     <div>
                         <div className='standard'>
-                            <span>Wild: {standardPercent === NaN ?standardPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
+                            <span>Standard: {standardPercent === NaN ?standardPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
                         </div>
                         <span className='wild'>
-                            <span>Standard: {wildPerecent || 0}</span>
+                            <span>Wild: {wildPercent === NaN ?wildPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
                         </span>
                     </div>
                 )

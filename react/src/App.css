@@ -331,9 +331,10 @@ select {
 }
 
 .standard, .wild {
-	width: 75%;
+	width: 100%;
 	text-align: center;
 }
+
 
 
 
@@ -463,6 +464,7 @@ select {
 	height: 51.84px;
 	width: 225px;
 	z-index: 4;
+	cursor:pointer;
 }
 
 .card-list-mana {
@@ -493,6 +495,7 @@ select {
 	font-size: 13px;
 	margin-top: 16px;
 	margin-left: 42px;
+	cursor: pointer;
 }
 
 

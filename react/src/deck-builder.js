@@ -131,6 +131,34 @@ class App extends Component {
 		this.setState({format})
 	}
 
+	removeCard = toBeRemoved => {
+
+		console.log(toBeRemoved)
+
+		let newDeck = this.state.deck.map(card => {
+            if (card.name !== toBeRemoved) {
+                return card
+            }
+
+            if (card.name === toBeRemoved) {
+
+                if (card.quantity === 2) {
+                    let newCard = card
+                    newCard.quantity = 1
+                    return newCard
+                }
+            }
+        })
+
+        newDeck = newDeck.filter(item => {
+            if (item) {return item}
+        })
+
+        this.setState({
+            deck: newDeck
+        })
+	}
+
 	render() {
 
 
@@ -163,7 +191,13 @@ class App extends Component {
 												this.setState({ isPaneOpen: false });
 										}}>
 											<div className='deck-builder-list-container'> 
-												<DeckBuilderList format={this.props.format || this.state.format} deck={this.state.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
+												<DeckBuilderList 
+													format={this.props.format || this.state.format} 
+													deck={this.state.deck} 
+													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+													card={this.state.card}
+													removeCard={this.removeCard}
+												/>
 											</div>
 										</SlidingPane>
 								</div>

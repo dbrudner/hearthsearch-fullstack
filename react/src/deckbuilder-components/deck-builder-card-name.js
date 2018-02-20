@@ -5,6 +5,7 @@ export default function DeckCardName(props) {
     var source = `https://art.hearthstonejson.com/v1/tiles/${props.cardId}.png`
 
     const removeCard = (event) => {
+        console.log('hey')
         let cardName = props.name
         props.removeCard(cardName)
     }

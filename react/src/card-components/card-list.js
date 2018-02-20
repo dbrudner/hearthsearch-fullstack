@@ -395,7 +395,7 @@ export default class CardList extends React.Component {
 			else {
 				return cards.map(card => {
 					return (
-							<div key={card.dbfId} className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container '>
+							<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
 								<div className='card-result'>
 									<CardInfo
 										deck={this.props.deck}
