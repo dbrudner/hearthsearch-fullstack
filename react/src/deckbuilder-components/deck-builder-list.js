@@ -179,12 +179,11 @@ export default class Deck extends Component {
  
         
             return (
-                <div className='deck-list-container'>
+                <div className=''>
                     <div className='yr-deck-hdr'>
-                        <div className='yr-deck'>
-                            Your Deck
+                        <div>
+                            <DeckCardsLeft deck={this.props.deck} />
                         </div>
-                            <DeckCardsLeft deck={this.props.deck} />                        
                         <div>
                             {
                                 totalCards === 3 ? 

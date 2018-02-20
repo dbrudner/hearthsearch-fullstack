@@ -35,8 +35,6 @@ class App extends Component {
 
 	componentWillReceiveProps(nextProps) {
 
-		console.log(nextProps)
-		console.log(this.state.deck)
 
 		if (nextProps.card) {
             if (nextProps.card.name && nextProps.card.rarity) {
@@ -77,8 +75,6 @@ class App extends Component {
 
 	getCard = card => {
 		
-		console.log(card)
-		console.log(this.state.deck)
 
 		this.setState({card})
 
@@ -159,8 +155,8 @@ class App extends Component {
 									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
 										<SlidingPane
 											isOpen={ this.state.isPaneOpen }
-											title='Hey, it is optional pane title.  I can be React component too.'
-											subtitle='Optional subtitle.'
+											width='300px'
+											title='Your Deck'
 											onRequestClose={ () => {
 												// triggered on "<" on left top click or on outside click
 												this.setState({ isPaneOpen: false });
@@ -172,6 +168,7 @@ class App extends Component {
 								</div>
 							</div>
 								<CardList
+									deck={this.state.deck}
 									render={50}
 									nameSort={this.state.nameSort}
 									sortingMethod={this.state.sortingMethod}

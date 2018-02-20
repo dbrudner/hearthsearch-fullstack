@@ -15,13 +15,32 @@ export default class CardInfo extends Component{
 		super(props)
 
 		this.state = {
-			card: ''
+			card: '',
+			quantity: this.props.quantity
 		}
 
 	}
 
+	// componentWillReceiveProps(nextProps) {
+	// 	// console.log(nextProps)
+	// 	if (nextProps) {
+	// 		let quantity = nextProps.deck.map(card => {
+	// 			if (card.dbfId === nextProps.dbfId) {
+	// 				// console.log(card.name, card.quantity)
+	// 				return card.quantity
+	// 			}
+	// 		})
+
+	// 		quantity = quantity[0]
+	// 		this.setState({
+	// 			quantity
+	// 		})
+	// 	}	
+		
+	// }
+
 	getCard = (name, mana, rarity, cardSet, hero, dbfId, cardId, _id) => {
-		var card = {
+		const card = {
 			name,
 			mana,
 			rarity,
@@ -48,6 +67,10 @@ export default class CardInfo extends Component{
 		}
 
 		if (this.props.buildMode) {
+			if (this.props) {
+				// console.log('props', this.props)				
+			}
+
 			return (
 				<div className=''>
 					<div className='card-list-header'>
@@ -65,7 +88,10 @@ export default class CardInfo extends Component{
 						</div>
 						<div>
 							<div>
-								<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>		
+								<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
+							</div>
+							<div>
+								{/* <CardQuantity name={this.props.name} quantity={this.props.quantity} /> */}
 							</div>
 						</div>
 					</div>
@@ -114,7 +140,6 @@ export default class CardInfo extends Component{
 					<CardImage image={this.props.image} artist={this.props.artist}/>
 				<hr/>
 				<div className='bottom-card-container'>
-					<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>		
 					<CardRarity rarity={this.props.rarity} type={this.props.type} />					
 					<CardFlavor flavor={this.props.flavor} />											
 					{ (this.props.type === 'Minion' && this.props.cardset !== 'Knights of the Frozen Throne' && this.props.cardset !== 'Kobolds & Catacombs') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null }

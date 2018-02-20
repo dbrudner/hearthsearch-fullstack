@@ -20,7 +20,7 @@ body {
 	color: rgb(155, 155, 255);
 	font-size: 28px;
 	cursor: pointer;
-	margin-left: 20%;
+	margin-left: 75%;
 }
 
 .some-marg {
@@ -336,6 +336,7 @@ select {
 }
 
 
+
 /* .navbar-brand {
 	padding: 0px;
   }
@@ -409,6 +410,10 @@ select {
 	padding: 20px;
 	padding-bottom: 50px;
 	margin-bottom: 100px;
+}
+
+.format-button {
+	box-shadow: 0 9px #999;
 }
 
 .mana-chart-container {
@@ -677,6 +682,28 @@ label {
 	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);	
+}
+
+.msg-fade-in{
+    color: rgb(18, 122, 0);
+    text-align: center;
+
+    -webkit-transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -ms-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+     opacity: 1;
+}
+
+.msg-fade-out {
+    color: rgb(18, 122, 0);
+    text-align: center;
+
+    -webkit-transition: opacity .7s ease-in-out;
+    -moz-transition: opacity .7s ease-in-out;
+    -ms-transition: opacity .7s ease-in-out;
+    -o-transition: opacity .7s ease-in-out;
+     opacity: 0;
 }
 
 .format-icon {
