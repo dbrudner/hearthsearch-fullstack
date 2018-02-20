@@ -171,7 +171,6 @@ class App extends Component {
 										</SlidingPane>
 								</div>
 							</div>
-								
 								<CardList
 									render={50}
 									nameSort={this.state.nameSort}
