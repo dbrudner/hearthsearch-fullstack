@@ -152,9 +152,24 @@ class App extends Component {
 								{this.state.filterOn ? 
 									<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/> : <div />}
 							</div>
-							<div className='col-lg-7 col-md-7 col-xs-12'>
+							<div className='col-lg-10 col-md-10 col-xs-12'>
 							<div className='search-bar-container'>
 								<Searchbar onSearch={this.getFilter}/>
+								<div>
+									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
+										<SlidingPane
+											isOpen={ this.state.isPaneOpen }
+											title='Hey, it is optional pane title.  I can be React component too.'
+											subtitle='Optional subtitle.'
+											onRequestClose={ () => {
+												// triggered on "<" on left top click or on outside click
+												this.setState({ isPaneOpen: false });
+										}}>
+											<div> 
+												<DeckBuilderList format={this.props.format || this.state.format} deck={this.state.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
+											</div>
+										</SlidingPane>
+								</div>
 							</div>
 								
 								<CardList
@@ -183,25 +198,6 @@ class App extends Component {
 									hero={this.props.match ? this.props.match.params.class : this.state.hero}
 									buildMode={true}        
 								/>
-							</div>
-							<div className='col-lg-3 col-md-3 col-xs-12 builder-list-container'>
-								<div className='affix builder-list'>
-									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
-									<SlidingPane
-										isOpen={ this.state.isPaneOpen }
-										title='Hey, it is optional pane title.  I can be React component too.'
-										subtitle='Optional subtitle.'
-										onRequestClose={ () => {
-											// triggered on "<" on left top click or on outside click
-											this.setState({ isPaneOpen: false });
-									}}>
-										<div> 
-											<DeckBuilderList format={this.props.format || this.state.format} deck={this.state.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
-										</div>
-									</SlidingPane>
-									{/* <DeckBuilderList format={this.props.format || this.state.format} deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/> */}
-									
-								</div>
 							</div>
 						</div>
 					</div>
