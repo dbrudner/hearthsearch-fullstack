@@ -42,6 +42,10 @@ export default class CardInfo extends Component{
 
 	render() {
 
+		const cardInclusions = {
+			wild: this.props.inclusionsWild, 
+			standard: this.props.inclusionsStandard
+		}
 
 		if (this.props.buildMode) {
 			return (
@@ -92,7 +96,13 @@ export default class CardInfo extends Component{
 					</div>
 					<div>
 						<div>					
-							<CardPopularity hero={this.props.class} inclusionsWild={this.props.inclusionsWild} inclusionsStandard={this.props.inclusionsStandard} />
+							<CardPopularity 
+								decksInfo={this.props.decksInfo} 
+								hero={this.props.class} 
+								cardInclusions={cardInclusions}
+								// inclusionsWild={this.props.inclusionsWild} 
+								// inclusionsStandard={this.props.inclusionsStandard} 
+							/>
 						</div>
 						<div>
 						</div>

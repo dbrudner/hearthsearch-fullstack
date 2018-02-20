@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import axios from 'axios'
+import _ from 'lodash'
+
+import Modal from 'react-modal';
+import SlidingPane from 'react-sliding-pane';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
@@ -16,14 +21,52 @@ class App extends Component {
 		super(props);
 
 		this.state = {
+			isPaneOpen: false,
 			filterOn: true,
 			term: '',
 			cards: [],
 			card: '',
 			update: true,
-			format: this.props.format || null
+			format: this.props.format || null,
+			deck: []
 		}
 
+	}
+
+	componentWillReceiveProps(nextProps) {
+
+		console.log(nextProps)
+		console.log(this.state.deck)
+
+		if (nextProps.card) {
+            if (nextProps.card.name && nextProps.card.rarity) {
+                var currentDeck = this.state.deck
+                var newCard = nextProps.card
+                newCard.quantity = 1;
+    
+                var incomingCard = [newCard]
+    
+                for (var i=0; i<currentDeck.length; i++) {
+                    if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
+                        currentDeck[i].quantity = 2
+                    }
+                }
+    
+    
+    
+                var newDeck = currentDeck.concat(incomingCard) 
+    
+                var removedDuplicates = _.uniqBy(newDeck, 'name');
+    
+                this.setState(() => {
+                    return {
+                        deck: removedDuplicates,
+                        dust: this.getDust(removedDuplicates),
+                        curve: this.getManaCurve(removedDuplicates)
+                    }
+                })
+            }
+        }
 	}
 
 	getFilter = (filterName, filterValue) => {
@@ -34,10 +77,41 @@ class App extends Component {
 
 	getCard = card => {
 		
+		console.log(card)
+		console.log(this.state.deck)
+
 		this.setState({card})
+
+		let currentDeck = this.state.deck
+		let newCard = card
+		newCard.quantity = 1;
+
+		let incomingCard = [newCard]
+
+		for (let i=0; i<currentDeck.length; i++) {
+			if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
+				currentDeck[i].quantity = 2
+			}
+		}
+
+
+
+		let newDeck = currentDeck.concat(incomingCard) 
+
+		let removedDuplicates = _.uniqBy(newDeck, 'name');
+
+		this.setState(() => {
+			return {
+				deck: removedDuplicates
+			}
+		})
+
+		
 	}
 
 	componentWillMount() {
+
+		Modal.setAppElement('body');
 
 		axios.get('/api/cards/collectible')
 		.then((data) => {
@@ -62,8 +136,7 @@ class App extends Component {
 	}
 
 	render() {
-		console.log('state', this.state.format)
-		console.log('props', this.props.format)
+
 
 		if (!this.state.format) {
 			return (
@@ -113,8 +186,21 @@ class App extends Component {
 							</div>
 							<div className='col-lg-3 col-md-3 col-xs-12 builder-list-container'>
 								<div className='affix builder-list'>
+									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
+									<SlidingPane
+										isOpen={ this.state.isPaneOpen }
+										title='Hey, it is optional pane title.  I can be React component too.'
+										subtitle='Optional subtitle.'
+										onRequestClose={ () => {
+											// triggered on "<" on left top click or on outside click
+											this.setState({ isPaneOpen: false });
+									}}>
+										<div> 
+											<DeckBuilderList format={this.props.format || this.state.format} deck={this.state.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
+										</div>
+									</SlidingPane>
+									{/* <DeckBuilderList format={this.props.format || this.state.format} deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/> */}
 									
-									<DeckBuilderList format={this.props.format || this.state.format} deck={this.props.deck} hero={this.props.match ? this.props.match.params.class : this.state.hero} card={this.state.card}/>
 								</div>
 							</div>
 						</div>

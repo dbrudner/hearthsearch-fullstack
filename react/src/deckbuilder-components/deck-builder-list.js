@@ -75,55 +75,55 @@ export default class Deck extends Component {
     }
     
 
-    componentWillReceiveProps(nextProps) {
+    // componentWillReceiveProps(nextProps) {
         
-        if (nextProps.deck) {
-            this.setState({
-                deck: this.props.deck
-            })
-        }
+    //     if (nextProps.deck) {
+    //         this.setState({
+    //             deck: this.props.deck
+    //         })
+    //     }
 
-        if (nextProps.hero) {
-            this.setState({
-                hero: this.props.hero
-            })
-        }
+    //     if (nextProps.hero) {
+    //         this.setState({
+    //             hero: this.props.hero
+    //         })
+    //     }
 
-        if (nextProps.card) {
-            if (nextProps.card.name && nextProps.card.rarity) {
-                var currentDeck = this.state.deck
-                var newCard = nextProps.card
-                newCard.quantity = 1;
+    //     if (nextProps.card) {
+    //         if (nextProps.card.name && nextProps.card.rarity) {
+    //             var currentDeck = this.props.deck
+    //             var newCard = nextProps.card
+    //             newCard.quantity = 1;
     
-                var incomingCard = [newCard]
+    //             var incomingCard = [newCard]
     
-                for (var i=0; i<currentDeck.length; i++) {
-                    if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
-                        currentDeck[i].quantity = 2
-                    }
-                }
+    //             for (var i=0; i<currentDeck.length; i++) {
+    //                 if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
+    //                     currentDeck[i].quantity = 2
+    //                 }
+    //             }
     
     
     
-                var newDeck = currentDeck.concat(incomingCard) 
+    //             var newDeck = currentDeck.concat(incomingCard) 
     
-                var removedDuplicates = _.uniqBy(newDeck, 'name');
+    //             var removedDuplicates = _.uniqBy(newDeck, 'name');
     
-                this.setState(() => {
-                    return {
-                        deck: removedDuplicates,
-                        dust: this.getDust(removedDuplicates),
-                        curve: this.getManaCurve(removedDuplicates)
-                    }
-                })
-            }
-        }    
-    }
+    //             this.setState(() => {
+    //                 return {
+    //                     deck: removedDuplicates,
+    //                     dust: this.getDust(removedDuplicates),
+    //                     curve: this.getManaCurve(removedDuplicates)
+    //                 }
+    //             })
+    //         }
+    //     }  
+    // }
 
     removeCard = toBeRemoved => {
 
 
-        let newDeck = this.state.deck.map(card => {
+        let newDeck = this.props.deck.map(card => {
             if (card.name !== toBeRemoved) {
                 return card
             }
@@ -166,9 +166,9 @@ export default class Deck extends Component {
             }, 0)
         }
 
-        const totalCards = getQuantity(this.state.deck)
+        const totalCards = getQuantity(this.props.deck)
 
-        let sorted = _.orderBy(this.state.deck, 'mana', 'asc')
+        let sorted = _.orderBy(this.props.deck, 'mana', 'asc')
 
         const cardDeck = sorted.map(card => {
             return (
@@ -177,18 +177,18 @@ export default class Deck extends Component {
         })
 
  
-        if (totalCards > 0) {
+        
             return (
                 <div className='deck-list-container'>
                     <div className='yr-deck-hdr'>
                         <div className='yr-deck'>
                             Your Deck
                         </div>
-                            <DeckCardsLeft deck={this.state.deck} />                        
+                            <DeckCardsLeft deck={this.props.deck} />                        
                         <div>
                             {
                                 totalCards === 3 ? 
-                                <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.state.deck} name='name' archetype='archetype' cost={1200} /> 
+                                <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.props.deck} name='name' archetype='archetype' cost={1200} /> 
                                 : 
                                     <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>
                             }                        
@@ -196,17 +196,14 @@ export default class Deck extends Component {
                     </div>
                     <hr/>
                     <div className='mana-chart-container'>
-                        <DeckManaChart deck={this.state.deck} curve={this.state.curve}/>
+                        <DeckManaChart deck={this.props.deck} curve={this.state.curve}/>
                     </div>
                         <DeckDust dust={this.state.dust} />
                     <div>
                         {cardDeck}
                     </div>
                 </div>
-            )
-        } else {
-            return <div/>
-        }
+            ) 
         
     }
 }

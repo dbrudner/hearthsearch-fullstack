@@ -10,6 +10,8 @@ export default function DeckManaChart(props) {
     //     threeCostCards: 0
     // }
 
+    console.log('hi', props)
+
 
     var curve = []
 
@@ -78,10 +80,7 @@ export default function DeckManaChart(props) {
     var tenManaPlus = curve.filter(index => {
         return index >= 11
     })
-    
-
-        if (props.deck.length > 0) {
-
+  
             return (
                 <div className='bar-chart-container'>
                     <div class='curve-panel-header'>
@@ -112,18 +111,6 @@ export default function DeckManaChart(props) {
                         0 1 2 3 4 5 6 7 8 9 <span className='mana-10-chart'>10</span>
                     </div>
                 </div>
-            )
-            
-        } 
-        
-        else {
-            return (
-                <div>
-                   
-                </div>
-            )
-        }
-
-        
+            )   
     
 }

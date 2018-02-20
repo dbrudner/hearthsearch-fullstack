@@ -16,7 +16,8 @@ export default class CardList extends React.Component {
 			term: '',
 			hero: this.props.hero,
 			totalRendered: this.props.render,
-			preventUpdate: false
+			preventUpdate: false,
+			decksInfo: null
 		}
 
 		this.search = this.search.bind(this);
@@ -46,8 +47,6 @@ export default class CardList extends React.Component {
 
 		axios.get('/api/decks/classes')
 		.then(result => {
-			console.log("helo")
-			console.log('decks', result)
 
 			const decks = result.data
 
@@ -64,12 +63,9 @@ export default class CardList extends React.Component {
 			const wildDecks = decks.filter(deck => deck.format === 'wild')
 			const standardDecks = decks.filter(deck => deck.format === 'standard')
 			
-			console.log(wildDecks)
-			console.log(standardDecks)
 
-			console.log(parseDecks(result.data, 'warlock'))
 
-			const object = {
+			const decksInfo = {
 				standard: {
 					druid: parseDecks(standardDecks, 'druid'),
 					hunter: parseDecks(standardDecks, 'hunter'),
@@ -95,7 +91,9 @@ export default class CardList extends React.Component {
 				}
 			}
 
-			console.log(object)
+			this.setState({
+				decksInfo
+			})
 
 		})
 
@@ -344,13 +342,15 @@ export default class CardList extends React.Component {
 
 	renderCardList = (cards) => {
 
+		
 			if (this.props.buildMode) {
 				return cards.map(card => {
 					return (
 							<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
 								<div class='card-result'>
 									<CardInfo
-										image={card.img} 
+										image={card.img}
+										decksInfo={this.state.decksInfo} 
 										inclusionsWild={card.inclusionsWild}
 										inclusionsStandard={card.inclusionsStandard}
 										artist={card.artist}
@@ -390,6 +390,7 @@ export default class CardList extends React.Component {
 										artist={card.artist}
 										inclusionsWild={card.inclusionsWild}
 										inclusionsStandard={card.inclusionsStandard}
+										decksInfo={this.state.decksInfo}
 										flavor={card.flavor}
 										attack={card.attack}
 										health={card.health}
