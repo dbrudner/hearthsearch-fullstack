@@ -3,6 +3,7 @@ import './App.css';
 import './index.css';
 import axios from 'axios'
 import _ from 'lodash'
+import MediaQuery from 'react-responsive';
 
 import Modal from 'react-modal';
 import SlidingPane from 'react-sliding-pane';
@@ -182,24 +183,24 @@ class App extends Component {
 									<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
 								
 								<div>
-										<SlidingPane
-											isOpen={ this.state.isPaneOpen }
-											width='300px'
-											title='Your Deck'
-											onRequestClose={ () => {
-												// triggered on "<" on left top click or on outside click
-												this.setState({ isPaneOpen: false });
-										}}>
-											<div className='deck-builder-list-container'> 
-												<DeckBuilderList 
-													format={this.props.format || this.state.format} 
-													deck={this.state.deck} 
-													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-													card={this.state.card}
-													removeCard={this.removeCard}
-												/>
-											</div>
-										</SlidingPane>
+									<SlidingPane
+										isOpen={ this.state.isPaneOpen }
+										width='300px'
+										title='Your Deck'
+										onRequestClose={ () => {
+											// triggered on "<" on left top click or on outside click
+											this.setState({ isPaneOpen: false });
+									}}>
+										<div className='deck-builder-list-container'> 
+											<DeckBuilderList 
+												format={this.props.format || this.state.format} 
+												deck={this.state.deck} 
+												hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+												card={this.state.card}
+												removeCard={this.removeCard}
+											/>
+										</div>
+									</SlidingPane>
 								</div>
 							</div>
 								<CardList

@@ -45,6 +45,8 @@ export default class Filters extends React.Component {
 		const tribe = ["Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
 		const sorting = ["Name", "LightForge Score", "Mana"]
 		const sortingMethods = ["Ascending", "Descending"]
+		const usage = ["Overall Wild", "Overall Standard", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"]
+		
 
 		if (this.state.hideFilter) {
 			return null
@@ -57,7 +59,7 @@ export default class Filters extends React.Component {
 								<DropDown filterName='Sort By'  filter='nameSort' onChange={this.getFilter}  options={sorting}/>
 							</div>
 							<div className='col-sm-12'>
-								<DropDown filterName='Deck Usage' filter='nameSort' onChange={this.getFilter} options={classes} />
+								<DropDown filterName='Deck Usage' filter='nameSort' onChange={this.getFilter} options={usage} />
  							</div>
 							<div className='col-sm-12'>
 								<DropDown filterName='Sort Method' filter='sortingMethod' onChange={this.getFilter} options={sortingMethods} />

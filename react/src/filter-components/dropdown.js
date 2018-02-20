@@ -19,8 +19,6 @@ export default class DropDown extends React.Component {
 	}
 
 	handleChange(event) {
-		console.log(this.props.filter)
-		console.log(event.target.value)
 		this.props.onChange(this.props.filter, event.target.value);
 	}
 

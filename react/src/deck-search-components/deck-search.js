@@ -36,6 +36,11 @@ export default class DeckSearch extends React.Component {
         //     console.log(result)
         // })
 
+        axios.get('/api/decks/populate')
+        .then(result => {
+            console.log(result)
+        })
+
         // axios.get('/api/mongoose/import/cards')
         // .then(response => {
         //     console.log(response.data)
@@ -44,7 +49,7 @@ export default class DeckSearch extends React.Component {
         //     // })
         // })
 
-        // axios.post('/api/card/update', {
+        // axios.post('/update/hearthpwn', {
         //     cardId: card,
         //     hero
         // })

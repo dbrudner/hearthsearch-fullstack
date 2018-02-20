@@ -73,6 +73,7 @@ export default class CardInfo extends Component{
 				// console.log('props', this.props)				
 			}
 
+		console.log(this.props.rarity)
 			return (
 				<div className=''>
 					<div className='card-list-header'>
@@ -82,7 +83,12 @@ export default class CardInfo extends Component{
 								<span className='cardset'> - {this.props.cardset}</span>
 							</div>
 							<div className='some-marg'>
-								<CardPopularity hero={this.props.class} inclusionsWild={this.props.inclusionsWild} inclusionsStandard={this.props.inclusionsStandard} />								
+								<CardPopularity 
+									rarity={'asdf'} 
+									hero={this.props.class} 
+									inclusionsWild={this.props.inclusionsWild} 
+									inclusionsStandard={this.props.inclusionsStandard} 
+								/>								
 							</div>
 							<div>
 								<CardLightForge lightForge={this.props.lightForgeScore}/>
@@ -129,6 +135,7 @@ export default class CardInfo extends Component{
 								decksInfo={this.props.decksInfo} 
 								hero={this.props.class} 
 								cardInclusions={cardInclusions}
+								rarity={this.props.rarity}
 								// inclusionsWild={this.props.inclusionsWild} 
 								// inclusionsStandard={this.props.inclusionsStandard} 
 							/>

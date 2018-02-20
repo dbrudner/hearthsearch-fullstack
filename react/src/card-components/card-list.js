@@ -326,7 +326,10 @@ export default class CardList extends React.Component {
 
 		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'name', 'desc')
-			
+		}
+
+		if (this.props.nameSort === "Overall Wild") {
+			console.log(matches);
 		}
 
 		matches = _.uniqBy(matches, function (e) {

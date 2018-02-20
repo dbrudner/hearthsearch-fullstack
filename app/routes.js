@@ -41,8 +41,6 @@ module.exports = function(app, passport) {
                     console.log('updated?')                    
                 })
             })
-
-
         })
     }) 
 
@@ -53,7 +51,6 @@ module.exports = function(app, passport) {
             if (err) {
                throw err
             }
-            console.log(result)
             res.json(result)
         })
     })
@@ -516,9 +513,6 @@ module.exports = function(app, passport) {
     app.post('/api/card/update', (req, res) => {
 
         const heroQuery = `inclusions.${req.body.hero.toLowerCase()}`
-        console.log(heroQuery)
-        console.log(req.body.hero)
-        console.log(req.body.cardId)
 
 
         if (req.body.format === 'wild') {
@@ -528,14 +522,12 @@ module.exports = function(app, passport) {
             db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {heroQuery: 1}}).exec((err, result) => {
                 if (err) throw err;
                 console.log(result)
-                res.json(result)
             })
 
             if (req.body.hero.toLowerCase() === 'druid') {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.druid': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -543,7 +535,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.hunter': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -551,7 +542,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.mage': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -559,7 +549,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.paladin': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -567,7 +556,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.priest': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -575,7 +563,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.rogue': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -583,7 +570,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.shaman': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -591,7 +577,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.warlock': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -599,7 +584,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.warrior': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
         }
@@ -609,7 +593,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.druid': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -617,7 +600,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.hunter': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -625,7 +607,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.mage': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -633,7 +614,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.paladin': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -641,7 +621,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.priest': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -649,7 +628,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.rogue': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -657,7 +635,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.shaman': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -665,7 +642,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.warlock': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
     
@@ -673,7 +649,6 @@ module.exports = function(app, passport) {
                 db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.warrior': 1}}).exec((err, result) => {
                     if (err) throw err;
                     console.log(result)
-                    res.json(result)
                 })
             }
         }
