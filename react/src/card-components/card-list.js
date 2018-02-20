@@ -330,6 +330,45 @@ export default class CardList extends React.Component {
 
 		if (this.props.nameSort === "Overall Wild") {
 			console.log(matches);
+			// console.log(this.state.decksInfo)
+
+			const totalWild = this.state.decksInfo.wild
+			const totalStandard = this.state.decksInfo.standard			
+			
+			matches.sort((deckA, deckB) => {
+
+				let totalWildDecks = 0
+				let inclusionsWildDeckA = 0
+				let inclusionsWildDeckB = 0
+				
+				let inclusionsRateDeckA;
+				let inclusionsRateDeckB
+
+				for (let key in totalWild) {
+					totalWildDecks = totalWildDecks + totalWild[key]
+					}
+
+				if (deckA.playerClass === 'Neutral') {
+					for (let key in deckA.inclusionsWild) {
+						inclusionsWildDeckA = inclusionsWildDeckA + deckA.inclusionsWild[key]
+					}
+				}
+
+				if (deckB.playerClass === 'Neutral') {
+					for (let key in deckB.inclusionsWild) {
+						inclusionsWildDeckB = inclusionsWildDeckB + deckB.inclusionsWild[key]
+					}
+				}
+				
+				inclusionsRateDeckA = inclusionsWildDeckA/totalWildDecks
+				inclusionsRateDeckB = inclusionsWildDeckB/totalWildDecks					
+				console.log(deckA.name, inclusionsRateDeckA)
+				console.log(deckB.name, inclusionsRateDeckB)
+				
+				
+				return inclusionsRateDeckB - inclusionsRateDeckA				
+
+			})
 		}
 
 		matches = _.uniqBy(matches, function (e) {
