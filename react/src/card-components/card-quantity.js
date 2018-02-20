@@ -7,8 +7,7 @@ export default function CardQuantity(props) {
             return card.quantity
         }
     })
-
-    quantity = quantity[0]
+    
 
     console.log(quantity)
 
