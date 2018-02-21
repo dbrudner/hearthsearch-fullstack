@@ -184,7 +184,7 @@ export default class Deck extends Component {
             return (
                 <div className=''>
                     <div className='yr-deck-hdr'>
-                        <div className='text-center yr-deck'>
+                        <div className={'text-center yr-deck' + this.props.fullScreen}>
                             Your Deck
                         </div>
                         <div>
@@ -205,7 +205,7 @@ export default class Deck extends Component {
                     </div>
                         <DeckDust dust={this.state.dust} />
                     <hr/>
-                    <div>
+                    <div className='card-deck-cntr'>
                         {cardDeck}
                     </div>
                 </div>

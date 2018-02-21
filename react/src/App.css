@@ -411,6 +411,28 @@ select {
 	margin-right: 15px;
 }
 
+.card-deck-cntr {
+	margin-left: -10px;
+}
+
+.yr-deckfull-screen {
+	margin-top: -50px;
+}
+
+.your-deck-container {
+	background-color: white;
+	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	padding: 17%;
+	width: 300px
+}
+
+.yr-deckfull-screen {
+	font-weight: 700;
+	font-size: 36px;
+}
+
 .yr-deck {
 	font-size: 36px;
 	margin-top: 60px;

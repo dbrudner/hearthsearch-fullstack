@@ -258,8 +258,68 @@ class App extends Component {
 										<FiltersSlide imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</SlidingPane>
-								<MediaQuery query='(min-device-width: 1400px)'>							
-									<div className='col-lg-10 col-md-10 col-xs-12'>
+								<MediaQuery query='(min-device-width: 1400px)'>
+									<MediaQuery query='(max-device-width: 1700px)'>					
+										<div className='col-lg-10 col-md-10 col-xs-12'>
+											<div className='search-bar-container'>
+												<Searchbar onSearch={this.getFilter}/>
+												<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
+												<MediaQuery query='(max-device-width: 1400px)'>
+													<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
+												</MediaQuery>
+												<div>
+													<SlidingPane
+														isOpen={ this.state.isPaneOpen }
+														width='300px'
+														onRequestClose={ () => {
+															this.setState({ isPaneOpen: false });
+														}}>
+														<div className='deck-builder-list-container'>
+															<div className='filters-block'>
+															</div>
+															<DeckBuilderList 
+																format={this.props.format || this.state.format} 
+																deck={this.state.deck} 
+																hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+																card={this.state.card}
+																removeCard={this.removeCard}
+															/>
+														</div>
+													</SlidingPane>
+												</div>
+											</div>
+											<CardList
+												deck={this.state.deck}
+												render={50}
+												nameSort={this.state.nameSort}
+												sortingMethod={this.state.sortingMethod}
+												cards={this.state.cards} 
+												term={this.state.term} 
+												rarity={this.state.rarity}
+												cardSet={this.state.cardSet}
+												mana={this.state.mana}
+												attack={this.state.attack}
+												health={this.state.health}
+												minMana={this.state.minMana}
+												maxMana={this.state.maxMana}
+												minHealth={this.state.minHealth}
+												maxHealth={this.state.maxHealth}
+												minAttack={this.state.minAttack}
+												maxAttack={this.state.maxAttack}
+												gameFormat={this.state.gameFormat}
+												ability={this.state.ability}
+												ability2={this.state.ability2}
+												tribe={this.state.tribe}
+												type={this.state.type}
+												getCard = {this.getCard}
+												hero={this.props.match ? this.props.match.params.class : this.state.hero}
+												buildMode={true}        
+											/>
+										</div>
+									</MediaQuery>
+								</MediaQuery>
+								<MediaQuery query='(min-device-width: 2100px)'>
+									<div className='col-lg-8'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
 											<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
@@ -315,7 +375,22 @@ class App extends Component {
 											buildMode={true}        
 										/>
 									</div>
-								</MediaQuery>
+									<div className='col-lg-2'>
+										<div className='affix'>
+											<div className='your-deck-container'>
+												<DeckBuilderList 
+													format={this.props.format || this.state.format} 
+													deck={this.state.deck} 
+													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+													card={this.state.card}
+													removeCard={this.removeCard}
+													fullScreen='full-screen'											
+												/>
+											</div>
+										</div>
+									</div>
+								</MediaQuery>	
+								
 								<MediaQuery query='(max-device-width: 1400px)'>							
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
