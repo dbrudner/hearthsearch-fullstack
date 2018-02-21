@@ -73,7 +73,6 @@ export default class CardInfo extends Component{
 				// console.log('props', this.props)				
 			}
 
-			console.log(this.props.decksInfo)
 			return (
 				<div className=''>
 					<div className='card-list-header'>

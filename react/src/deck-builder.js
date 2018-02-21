@@ -4,10 +4,12 @@ import './index.css';
 import axios from 'axios'
 import _ from 'lodash'
 import MediaQuery from 'react-responsive';
+import Swipe from 'react-easy-swipe';
 
 import Modal from 'react-modal';
 import SlidingPane from 'react-sliding-pane';
 import 'react-sliding-pane/dist/react-sliding-pane.css';
+
 
 import Searchbar from './searchbar'
 import CardList from './card-components/card-list'
@@ -35,6 +37,28 @@ class App extends Component {
 		}
 
 	}
+
+	// onSwipeStart(event) {
+	// 	console.log('Start swiping...', event);
+	// }
+	 
+	onSwipeMove = (position, event) => {
+		console.log(`Moved ${position.x} pixels horizontally`, event);
+		console.log(`Moved ${position.y} pixels vertically`, event);
+
+		if (position.x > 50) {
+			this.setState({isFiltersPaneOpen: true})
+		}
+
+		if (position.x < -50) {
+			console.log('filter open')
+			this.setState({isPaneOpen: true})
+		}
+	}
+	
+	// onSwipeEnd(event) {
+	// 	console.log('End swiping...', event);
+	// }
 
 	componentWillReceiveProps(nextProps) {
 
@@ -175,6 +199,11 @@ class App extends Component {
 
 		return (
 			<div>
+				<Swipe
+					onSwipeStart={this.onSwipeStart}
+					onSwipeMove={this.onSwipeMove}
+					onSwipeEnd={this.onSwipeEnd}
+				>
 				<div className='deck-builder-container'>
 						<div className='row'>
 							<MediaQuery query='(min-device-width: 1400px)'>
@@ -186,7 +215,6 @@ class App extends Component {
 								isOpen={ this.state.isFiltersPaneOpen }
 								width='300px'
 								from ='left'
-								title='Filters'
 								onRequestClose={ () => {
 									this.setState({ isFiltersPaneOpen: false });
 								}}>
@@ -206,7 +234,6 @@ class App extends Component {
 											<SlidingPane
 												isOpen={ this.state.isPaneOpen }
 												width='300px'
-												title='Your Deck'
 												onRequestClose={ () => {
 													this.setState({ isPaneOpen: false });
 												}}>
@@ -262,7 +289,6 @@ class App extends Component {
 											<SlidingPane
 												isOpen={ this.state.isPaneOpen }
 												width='300px'
-												title='Your Deck'
 												onRequestClose={ () => {
 													this.setState({ isPaneOpen: false });
 												}}>
@@ -308,6 +334,7 @@ class App extends Component {
 							</MediaQuery>
 						</div>
 					</div>
+					</Swipe>
 				</div>
 	);
 	}

@@ -327,8 +327,8 @@ export default class CardList extends React.Component {
 		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'name', 'desc')
 		}
-
-		if (this.props.nameSort === "Overall Wild") {
+		console.log(this.props.nameSort)
+		if (this.props.nameSort === "Wild Usage") {
 			const allDecks = this.state.decksInfo.wild
 
 			
@@ -428,15 +428,13 @@ export default class CardList extends React.Component {
 					}
 
 				}
-				console.log(cardA.name, inclusionsRateCardA)
-				console.log(cardB.name, inclusionsRateCardB)
 				
 				return inclusionsRateCardB - inclusionsRateCardA
 
 			})
 		}
 
-		if (this.props.nameSort === "Overall Standard") {
+		if (this.props.nameSort === "Standard Usage") {
 
 			const allDecks = this.state.decksInfo.standard
 
@@ -522,8 +520,6 @@ export default class CardList extends React.Component {
 
 				}
 				
-				console.log(inclusionsRateCardA, cardA.name)
-				console.log(inclusionsRateCardB, cardB.name)																																			
 
 				return inclusionsRateCardB - inclusionsRateCardA
 
@@ -544,7 +540,6 @@ export default class CardList extends React.Component {
 
 	renderCardList = (cards) => {
 		
-		console.log(this.state.decksInfo)
 
 		if (this.props.buildMode) {
 

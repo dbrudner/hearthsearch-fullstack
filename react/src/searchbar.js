@@ -29,18 +29,15 @@ class Searchbar extends React.Component {
 				<div className='searchbar-header'>
 					Search <div className='searchbar-description'>by card name or text</div>
 				</div>
-				<form onSubmit={this.handleSubmit} >
-					<div className='row'>
-						<div className='col-xs-11'>
-							<input className='search-bar-input' type="text" name="term" onChange={this.handleChange}/>
-						</div>
-						<div className='col-xs-1'>
-							<button type='submit' className='btn search-btn hvr-fade'>
-								<i className="fas fa-search"></i>
-							</button>							
-						</div>
-					</div>
+				<form onSubmit={this.handleSubmit} className='searchbar-form text-center'>
+					<div class=''>
+						<input className='search-bar-input' type="text" name="term" onChange={this.handleChange}/>
+						<button type='submit' className='btn search-btn hvr-fade'>
+							<i className="fas fa-search"></i>
+						</button>
+					</div>					
 				</form>
+				
 			</div>
 		)
 	}

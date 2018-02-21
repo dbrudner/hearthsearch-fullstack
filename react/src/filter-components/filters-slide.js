@@ -40,20 +40,24 @@ export default class Filters extends React.Component {
 		const gameFormats = ["Standard", "Wild", "Arena"]
 		const abilities = ["Charge", "Taunt", "Divine Shield", "Deathrattle", "Battlecry", "Silence", "Choose one", "Combo", "Adapt", "Discover", "Freeze", "Enrage", "Inspire", "Lifesteal", "Overload", "Windfury", "Poisonous", "Quest", "Stealth", "Draw", "Can't be targeted", "Discard"].sort()
 		const tribe = ["Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
-		const sorting = ["Name", "LightForge Score", "Mana"]
+		const sorting = ["Name", "LightForge Score", "Standard Usage", "Wild Usage", "Mana"]
 		const sortingMethods = ["Ascending", "Descending"]
-		const usage = ["Overall Wild", "Overall Standard", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"]
+		const usage = ["Wild Usage", "Standard Usage", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"]
 		
 			return (
 				<div className=''>
+                    <div className='slide-filters-hdr'>
+                        Filters
+                    </div>
+                    <hr/>
                     <div className='row'>
                         <h4 className='text-center f-hdr-margin'>Sort By</h4>
                         <div className='col-sm-12'>
                             <DropDown filterName='Sort By'  filter='nameSort' onChange={this.getFilter}  options={sorting}/>
                         </div>
-                        <div className='col-sm-12'>
+                        {/* <div className='col-sm-12'>
                             <DropDown filterName='Deck Usage' filter='nameSort' onChange={this.getFilter} options={usage} />
-                        </div>
+                        </div> */}
                         <div className='col-sm-12'>
                             <DropDown filterName='Sort Method' filter='sortingMethod' onChange={this.getFilter} options={sortingMethods} />
                         </div>

@@ -558,6 +558,10 @@ select {
 	text-align: center
 }
 
+.searchbar-form {
+	display: inline;
+}
+
 .searchbar-description {
 	font-size: 14px;
 	color: rgb(184, 184, 184);
@@ -628,7 +632,7 @@ select {
 }
 
 .search-bar-input {
-	width: 100%;
+	width: 60%;
 }
 
 input[type=text], textarea {
@@ -654,6 +658,13 @@ input[type=text], textarea {
 	justify-content: space-between;
 }
 
+.slide-filters-hdr {
+	font-size: 32px;
+	text-align: center;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
 .padding {
 	padding: 20px;
 	font-size: 1px;
@@ -664,11 +675,13 @@ input[type=text], textarea {
 	height: 150px;
 }
 
-
+.slide-pane__header {
+	height: 0px !important;
+}
 
 .search-btn {
-	margin-top: 5px;
-	font-size: 9px;
+	font-size: 10px;
+	margin-left: 10px;
 }
 
 .filter-heading-cntr {
