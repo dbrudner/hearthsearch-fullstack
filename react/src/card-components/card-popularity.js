@@ -60,7 +60,7 @@ export default function CardPopularity(props) {
         if (props.hero !== 'Neutral') {
             return (
                 <div>
-                    {props.name} is used in {percent} of all Standard {props.hero} decks.
+                    Used in {percent} of all Standard <span className={props.hero.toLowerCase()}>{props.hero}</span> decks.
                 </div>
             )
         }
@@ -68,7 +68,7 @@ export default function CardPopularity(props) {
         if (props.hero === 'Neutral') {
             return (
                 <div>
-                    {props.name} is used in {percent} of all Standard decks.
+                    Used in {percent} of all Standard decks.
                 </div>
             )
         }
@@ -124,7 +124,7 @@ export default function CardPopularity(props) {
         if (props.hero !== 'Neutral') {
             return (
                 <div>
-                    {props.name} is used in {percent} of all Wild {props.hero} decks.
+                    Used in {percent} of all Wild <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
                 </div>
             )
         }
@@ -132,14 +132,14 @@ export default function CardPopularity(props) {
         if (props.hero === 'Neutral') {
             return (
                 <div>
-                    {props.name} is used in {percent} of all Wild decks.
+                   Used in {percent} of all Wild decks.
                 </div>
             )
         }
     }
 
     return (
-        <span className='card-popularity'>
+        <div className='card-popularity'>
             {
                 <div>
                     <div>
@@ -151,6 +151,6 @@ export default function CardPopularity(props) {
                 </div>
                 
                 }
-        </span>
+        </div>
     )
 }

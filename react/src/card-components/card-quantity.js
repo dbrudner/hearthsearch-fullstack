@@ -9,7 +9,6 @@ export default function CardQuantity(props) {
     })
 
 
-    console.log(quantity)
 
     return (
         <div>{quantity}</div>

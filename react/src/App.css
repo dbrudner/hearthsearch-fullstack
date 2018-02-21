@@ -230,6 +230,10 @@ body {
 	color: #46007c
 }
 
+.pophero {
+	font-weight: 700
+}
+
 .class {
 	font-size: 16px;
 	font-family: 'Mukta Mahee', sans-serif;
@@ -572,8 +576,10 @@ select {
 }
 
 .card-popularity {
-	text-align: right;
+	text-align: center;
 	color: gray;
+	font-size: 14px;
+	margin-top: 20px;
 }
 
 .card-container {

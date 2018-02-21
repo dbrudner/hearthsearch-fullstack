@@ -544,53 +544,61 @@ export default class CardList extends React.Component {
 
 	renderCardList = (cards) => {
 		
+		console.log(this.state.decksInfo)
 
 		if (this.props.buildMode) {
-			return cards.map(card => {
 
-				let quantity = this.props.deck.map(deckCard => {
-					if (deckCard.dbfId === card.dbfId) {
-						return deckCard.quantity
-					}
-				})
+			if (this.state.decksInfo) {
+				return cards.map(card => {
 
-
-				return (
-						<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
-							<div class='card-result'>
-								<CardInfo
-									key={card.dbfId}
-									quantity={quantity[0]}
-									deck={this.props.deck}									
-									image={card.img}
-									decksInfo={this.state.decksInfo} 
-									inclusionsWild={card.inclusionsWild}
-									inclusionsStandard={card.inclusionsStandard}
-									artist={card.artist}
-									flavor={card.flavor}
-									attack={card.attack}
-									health={card.health}
-									cardId={card.cardId}
-									dbfId={card.dbfId}
-									lightForgeScore={card.lightForgeScore}
-									name={card.name}
-									cost={card.cost}
-									type={card.type}
-									text={card.text}
-									rarity={card.rarity}
-									howToGet={card.howToGet}
-									howToGetGold={card.howToGetGold}
-									class={card.playerClass}
-									cardset={card.cardSet}
-									getCard={this.getCard}
-									buildMode={this.props.buildMode}
-									_id={card._id}
-								/>
+					let quantity = this.props.deck.map(deckCard => {
+						if (deckCard.dbfId === card.dbfId) {
+							return deckCard.quantity
+						}
+					})
+	
+	
+					return (
+							<div key={card.dbfId} className='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 card-container '>
+								<div class='card-result'>
+									<CardInfo
+										key={card.dbfId}
+										quantity={quantity[0]}
+										deck={this.props.deck}									
+										image={card.img}
+										decksInfo={this.state.decksInfo} 
+										inclusionsWild={card.inclusionsWild}
+										inclusionsStandard={card.inclusionsStandard}
+										artist={card.artist}
+										flavor={card.flavor}
+										attack={card.attack}
+										health={card.health}
+										cardId={card.cardId}
+										dbfId={card.dbfId}
+										lightForgeScore={card.lightForgeScore}
+										name={card.name}
+										cost={card.cost}
+										type={card.type}
+										text={card.text}
+										rarity={card.rarity}
+										howToGet={card.howToGet}
+										howToGetGold={card.howToGetGold}
+										class={card.playerClass}
+										cardset={card.cardSet}
+										getCard={this.getCard}
+										buildMode={this.props.buildMode}
+										_id={card._id}
+									/>
+								</div>
 							</div>
-						</div>
-				)
-		
-			}) 
+					)
+			
+				}) 
+			} else {
+				return <div/>
+			}
+
+			
 		}
 
 			else {

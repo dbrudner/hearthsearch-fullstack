@@ -73,7 +73,7 @@ export default class CardInfo extends Component{
 				// console.log('props', this.props)				
 			}
 
-			console.log(this.props.rarity)
+			console.log(this.props.decksInfo)
 			return (
 				<div className=''>
 					<div className='card-list-header'>
@@ -83,16 +83,10 @@ export default class CardInfo extends Component{
 								<span className='cardset'> - {this.props.cardset}</span>
 							</div>
 							<div className='some-marg'>
-								<CardPopularity 
-									rarity={'asdf'} 
-									hero={this.props.class} 
-									inclusionsWild={this.props.inclusionsWild} 
-									inclusionsStandard={this.props.inclusionsStandard} 
-								/>								
+								
 							</div>
 							<div>
 								<CardLightForge lightForge={this.props.lightForgeScore}/>
-								
 							</div>								
 						</div>
 						<div>
@@ -103,6 +97,15 @@ export default class CardInfo extends Component{
 								<CardQuantity name={this.props.name} deck={this.props.deck} />
 							</div>
 						</div>
+					</div>
+					<div>
+						<CardPopularity 
+							decksInfo={this.props.decksInfo} 
+							hero={this.props.class} 
+							cardInclusions={cardInclusions}
+							rarity={this.props.rarity}
+							name={this.props.name}
+						/>
 					</div>
 						<CardImage image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 					<hr/>
@@ -117,8 +120,7 @@ export default class CardInfo extends Component{
 		}
 		
 		return (
-			
-
+		
 			<div className=''>
 				<div className='card-list-header'>
 					<div>
@@ -126,23 +128,21 @@ export default class CardInfo extends Component{
 							<span><CardClass hero={this.props.class}/></span>
 							<span> - {this.props.cardset}</span>
 						</div>
+					</div>
+					<div>
 						<div>
 							<CardLightForge lightForge={this.props.lightForgeScore}/>
 						</div>
 					</div>
-					<div>
-						<div>					
-							<CardPopularity 
-								decksInfo={this.props.decksInfo} 
-								hero={this.props.class} 
-								cardInclusions={cardInclusions}
-								rarity={this.props.rarity}
-								name={this.props.name}
-							/>
-						</div>
-						<div>
-						</div>
-					</div>
+				</div>
+				<div>					
+					<CardPopularity 
+						decksInfo={this.props.decksInfo} 
+						hero={this.props.class} 
+						cardInclusions={cardInclusions}
+						rarity={this.props.rarity}
+						name={this.props.name}
+					/>
 				</div>
 				<div className='text-center'>
 					{/* <CardCardset cardset={this.props.cardset} /> */}

@@ -106,9 +106,7 @@ class App extends Component {
 		
 	}
 
-	componentWillMount() {
-
-		Modal.setAppElement('body');
+	componentDidMount() {
 
 		axios.get('/api/cards/collectible')
 		.then((data) => {
@@ -125,6 +123,10 @@ class App extends Component {
 		this.setState({
 			hero: this.props.hero
 		})
+	}
+
+	componentWillMount() {
+		Modal.setAppElement('body');		
 
 	}
 
