@@ -260,7 +260,7 @@ class App extends Component {
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1400px)'>
 									<MediaQuery query='(max-device-width: 1700px)'>					
-										<div className='col-lg-10 col-md-10 col-xs-12'>
+										<div className='col-lg-9'>
 											<div className='search-bar-container'>
 													<Searchbar onSearch={this.getFilter}/>
 													<button className='single-view-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck
@@ -313,6 +313,13 @@ class App extends Component {
 												hero={this.props.match ? this.props.match.params.class : this.state.hero}
 												buildMode={true}        
 											/>
+										</div>
+										<div className='col-lg-1'>
+											<button className='long-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>
+												<div className='long-btn-text text-left'>
+													View
+												</div>
+											</button>
 										</div>
 									</MediaQuery>
 								</MediaQuery>
