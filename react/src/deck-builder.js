@@ -262,11 +262,9 @@ class App extends Component {
 									<MediaQuery query='(max-device-width: 1700px)'>					
 										<div className='col-lg-10 col-md-10 col-xs-12'>
 											<div className='search-bar-container'>
-												<Searchbar onSearch={this.getFilter}/>
-												<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
-												<MediaQuery query='(max-device-width: 1400px)'>
-													<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
-												</MediaQuery>
+													<Searchbar onSearch={this.getFilter}/>
+													<button className='single-view-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck
+													</button>
 												<div>
 													<SlidingPane
 														isOpen={ this.state.isPaneOpen }
@@ -318,11 +316,10 @@ class App extends Component {
 										</div>
 									</MediaQuery>
 								</MediaQuery>
-								<MediaQuery query='(min-device-width: 2100px)'>
+								<MediaQuery query='(min-device-width: 1701px)'>
 									<div className='col-lg-8'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
-											<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
 											<MediaQuery query='(max-device-width: 1400px)'>
 												<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
 											</MediaQuery>
@@ -394,11 +391,12 @@ class App extends Component {
 								<MediaQuery query='(max-device-width: 1400px)'>							
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
-												<div className='pane-btns-container'>										
-													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck</button>
+												<div className='pane-btns-container'>
 													<MediaQuery query='(max-device-width: 1400px)'>
 														<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters</button>
-													</MediaQuery>
+													</MediaQuery>									
+													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck</button>
+													
 												</div>
 											<div>
 												<SlidingPane
