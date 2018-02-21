@@ -18,6 +18,9 @@ import Banner from './banner'
 import DeckBuilderList from './deckbuilder-components/deck-builder-list'
 import WildOrStandard from './deckbuilder-components/wild-or-standard'
 import FiltersSlide from './filter-components/filters-slide'
+import DeckInfoMobile from './deckbuilder-components/deck-info-mobile'
+import {StickyContainer, Sticky } from 'react-sticky'
+
 
 class App extends Component {
 	
@@ -204,136 +207,169 @@ class App extends Component {
 					onSwipeMove={this.onSwipeMove}
 					onSwipeEnd={this.onSwipeEnd}
 				>
-				<div className='deck-builder-container'>
-						<div className='row'>
-							<MediaQuery query='(min-device-width: 1400px)'>
-								<div className='col-lg-2'>
-									<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
-								</div>
-							</MediaQuery>
-							<SlidingPane
-								isOpen={ this.state.isFiltersPaneOpen }
-								width='300px'
-								from ='left'
-								onRequestClose={ () => {
-									this.setState({ isFiltersPaneOpen: false });
-								}}>
-								<div>
-									<FiltersSlide imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
-								</div>
-							</SlidingPane>
-							<MediaQuery query='(min-device-width: 1400px)'>							
-								<div className='col-lg-10 col-md-10 col-xs-12'>
-									<div className='search-bar-container'>
-										<Searchbar onSearch={this.getFilter}/>
-										<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
-										<MediaQuery query='(max-device-width: 1400px)'>
-											<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
-										</MediaQuery>
-										<div>
-											<SlidingPane
-												isOpen={ this.state.isPaneOpen }
-												width='300px'
-												onRequestClose={ () => {
-													this.setState({ isPaneOpen: false });
-												}}>
-												<div className='deck-builder-list-container'> 
-													<DeckBuilderList 
-														format={this.props.format || this.state.format} 
-														deck={this.state.deck} 
-														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-														card={this.state.card}
-														removeCard={this.removeCard}
-													/>
-												</div>
-											</SlidingPane>
-										</div>
-									</div>
-									<CardList
-										deck={this.state.deck}
-										render={50}
-										nameSort={this.state.nameSort}
-										sortingMethod={this.state.sortingMethod}
-										cards={this.state.cards} 
-										term={this.state.term} 
-										rarity={this.state.rarity}
-										cardSet={this.state.cardSet}
-										mana={this.state.mana}
-										attack={this.state.attack}
-										health={this.state.health}
-										minMana={this.state.minMana}
-										maxMana={this.state.maxMana}
-										minHealth={this.state.minHealth}
-										maxHealth={this.state.maxHealth}
-										minAttack={this.state.minAttack}
-										maxAttack={this.state.maxAttack}
-										gameFormat={this.state.gameFormat}
-										ability={this.state.ability}
-										ability2={this.state.ability2}
-										tribe={this.state.tribe}
-										type={this.state.type}
-										getCard = {this.getCard}
-										hero={this.props.match ? this.props.match.params.class : this.state.hero}
-										buildMode={true}        
-									/>
-								</div>
-							</MediaQuery>
-							<MediaQuery query='(max-device-width: 1400px)'>							
-									<div className='search-bar-container'>
-										<Searchbar onSearch={this.getFilter}/>
-										<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
-										<MediaQuery query='(max-device-width: 1400px)'>
-											<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
-										</MediaQuery>
-										<div>
-											<SlidingPane
-												isOpen={ this.state.isPaneOpen }
-												width='300px'
-												onRequestClose={ () => {
-													this.setState({ isPaneOpen: false });
-												}}>
-												<div className='deck-builder-list-container'> 
-													<DeckBuilderList 
-														format={this.props.format || this.state.format} 
-														deck={this.state.deck} 
-														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-														card={this.state.card}
-														removeCard={this.removeCard}
-													/>
-												</div>
-											</SlidingPane>
-										</div>
-									</div>
-									<CardList
-										deck={this.state.deck}
-										render={50}
-										nameSort={this.state.nameSort}
-										sortingMethod={this.state.sortingMethod}
-										cards={this.state.cards} 
-										term={this.state.term} 
-										rarity={this.state.rarity}
-										cardSet={this.state.cardSet}
-										mana={this.state.mana}
-										attack={this.state.attack}
-										health={this.state.health}
-										minMana={this.state.minMana}
-										maxMana={this.state.maxMana}
-										minHealth={this.state.minHealth}
-										maxHealth={this.state.maxHealth}
-										minAttack={this.state.minAttack}
-										maxAttack={this.state.maxAttack}
-										gameFormat={this.state.gameFormat}
-										ability={this.state.ability}
-										ability2={this.state.ability2}
-										tribe={this.state.tribe}
-										type={this.state.type}
-										getCard = {this.getCard}
-										hero={this.props.match ? this.props.match.params.class : this.state.hero}
-										buildMode={true}        
-									/>
-							</MediaQuery>
+				<StickyContainer>
+				<div className='sticky-bar'>
+				<Sticky>
+				{
+					({
+					style,
+		
+					// the following are also available but unused in this example 
+					isSticky,
+					wasSticky,
+					distanceFromTop=80,
+					distanceFromBottom=80,
+					calculatedHeight
+					}) => {
+					return (
+						<div style={style} className='sticky-bar'>
+							<DeckInfoMobile hero={this.props.match ? this.props.match.params.class : this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
 						</div>
-					</div>
+					)
+					}
+				}
+				</Sticky>
+				</div>
+			{/* </StickyContainer>
+				<StickyContainer>
+					<Sticky topOffset={5}>
+						{
+							() => <DeckInfoMobile hero={this.props.match ? this.props.match.params.class : this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
+						}
+					</Sticky>						 */}
+					<div className='deck-builder-container'>
+							<div className='row'>
+								<MediaQuery query='(min-device-width: 1400px)'>
+									<div className='col-lg-2'>
+										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
+									</div>
+								</MediaQuery>
+								<SlidingPane
+									isOpen={ this.state.isFiltersPaneOpen }
+									width='300px'
+									from ='left'
+									onRequestClose={ () => {
+										this.setState({ isFiltersPaneOpen: false });
+									}}>
+									<div>
+										<FiltersSlide imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
+									</div>
+								</SlidingPane>
+								<MediaQuery query='(min-device-width: 1400px)'>							
+									<div className='col-lg-10 col-md-10 col-xs-12'>
+										<div className='search-bar-container'>
+											<Searchbar onSearch={this.getFilter}/>
+											<button onClick={() => this.setState({ isPaneOpen: true })}>Click me to open right pane!</button>
+											<MediaQuery query='(max-device-width: 1400px)'>
+												<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
+											</MediaQuery>
+											<div>
+												<SlidingPane
+													isOpen={ this.state.isPaneOpen }
+													width='300px'
+													onRequestClose={ () => {
+														this.setState({ isPaneOpen: false });
+													}}>
+													<div className='deck-builder-list-container'> 
+														<DeckBuilderList 
+															format={this.props.format || this.state.format} 
+															deck={this.state.deck} 
+															hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+															card={this.state.card}
+															removeCard={this.removeCard}
+														/>
+													</div>
+												</SlidingPane>
+											</div>
+										</div>
+										<CardList
+											deck={this.state.deck}
+											render={50}
+											nameSort={this.state.nameSort}
+											sortingMethod={this.state.sortingMethod}
+											cards={this.state.cards} 
+											term={this.state.term} 
+											rarity={this.state.rarity}
+											cardSet={this.state.cardSet}
+											mana={this.state.mana}
+											attack={this.state.attack}
+											health={this.state.health}
+											minMana={this.state.minMana}
+											maxMana={this.state.maxMana}
+											minHealth={this.state.minHealth}
+											maxHealth={this.state.maxHealth}
+											minAttack={this.state.minAttack}
+											maxAttack={this.state.maxAttack}
+											gameFormat={this.state.gameFormat}
+											ability={this.state.ability}
+											ability2={this.state.ability2}
+											tribe={this.state.tribe}
+											type={this.state.type}
+											getCard = {this.getCard}
+											hero={this.props.match ? this.props.match.params.class : this.state.hero}
+											buildMode={true}        
+										/>
+									</div>
+								</MediaQuery>
+								<MediaQuery query='(max-device-width: 1400px)'>							
+										<div className='search-bar-container'>
+												<Searchbar onSearch={this.getFilter}/>
+												<div className='pane-btns-container'>										
+													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck</button>
+													<MediaQuery query='(max-device-width: 1400px)'>
+														<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters</button>
+													</MediaQuery>
+												</div>
+											<div>
+												<SlidingPane
+													isOpen={ this.state.isPaneOpen }
+													width='300px'
+													onRequestClose={ () => {
+														this.setState({ isPaneOpen: false });
+													}}>
+													<div className='deck-builder-list-container'> 
+														<DeckBuilderList 
+															format={this.props.format || this.state.format} 
+															deck={this.state.deck} 
+															hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+															card={this.state.card}
+															removeCard={this.removeCard}
+														/>
+													</div>
+												</SlidingPane>
+											</div>
+										</div>
+										<CardList
+											deck={this.state.deck}
+											render={50}
+											nameSort={this.state.nameSort}
+											sortingMethod={this.state.sortingMethod}
+											cards={this.state.cards} 
+											term={this.state.term} 
+											rarity={this.state.rarity}
+											cardSet={this.state.cardSet}
+											mana={this.state.mana}
+											attack={this.state.attack}
+											health={this.state.health}
+											minMana={this.state.minMana}
+											maxMana={this.state.maxMana}
+											minHealth={this.state.minHealth}
+											maxHealth={this.state.maxHealth}
+											minAttack={this.state.minAttack}
+											maxAttack={this.state.maxAttack}
+											gameFormat={this.state.gameFormat}
+											ability={this.state.ability}
+											ability2={this.state.ability2}
+											tribe={this.state.tribe}
+											type={this.state.type}
+											getCard = {this.getCard}
+											hero={this.props.match ? this.props.match.params.class : this.state.hero}
+											buildMode={true}        
+										/>
+								</MediaQuery>
+							</div>
+						</div>
+						</StickyContainer>
 					</Swipe>
 				</div>
 	);
