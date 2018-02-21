@@ -8,9 +8,27 @@ export default function CardQuantity(props) {
         }
     })
 
+    quantity = quantity.filter(value => {
+        return value
+    })
 
+    console.log(quantity)
 
-    return (
-        <div>{quantity}</div>
-    ) 
+    if (quantity > 0) {
+        return (
+            <div className='text-center quantity-added'>
+                Added {quantity[0]}
+            </div>
+        ) 
+    }
+
+    else {
+        return (
+            <div className='text-center quantity-added invisible'>
+                None added
+            </div>
+        )
+    }
+
+    
 }

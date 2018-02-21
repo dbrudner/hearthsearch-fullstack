@@ -424,6 +424,19 @@ select {
 	color: white;
 }
 
+.add-cntr {
+	margin-right: 20px;
+}
+
+.quantity-added {
+	margin-top: 10px;
+	font-weight: 700;
+}
+
+.invisible {
+	opacity: 0;
+}
+
 .yr-deckundefined {
 	font-size: 32px;
 	font-weight: 700;

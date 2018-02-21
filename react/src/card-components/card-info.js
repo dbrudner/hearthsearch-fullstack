@@ -89,13 +89,13 @@ export default class CardInfo extends Component{
 							</div>								
 						</div>
 						<div>
-							<div>
+							<div className='add-cntr'>
 								<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 							</div>
-							<div>
-								<CardQuantity name={this.props.name} deck={this.props.deck} />
-							</div>
 						</div>
+					</div>
+					<div>
+						<CardQuantity name={this.props.name} deck={this.props.deck} />
 					</div>
 					<div>
 						<CardPopularity 

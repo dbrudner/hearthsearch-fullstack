@@ -44,9 +44,9 @@ export default class extends Component{
         return (
                 <div onClick={this.handleClick}>
                     <i class="fas fa-plus-circle add-button hvr-push"></i>
-                    <div>
+                    {/* <div>
                         <div className={this.state.clicked ? 'msg-fade-in' : 'msg-fade-out'}>Added to deck</div>
-                    </div>
+                    </div> */}
                 </div>
         )
     }
