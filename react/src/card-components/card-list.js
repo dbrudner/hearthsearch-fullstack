@@ -540,7 +540,7 @@ export default class CardList extends React.Component {
 
 	renderCardList = (cards) => {
 		
-
+			
 		if (this.props.buildMode) {
 
 			if (this.state.decksInfo) {
@@ -554,7 +554,9 @@ export default class CardList extends React.Component {
 	
 	
 					return (
-							<div key={card.dbfId} className='col-sm-6 col-xs-12 card-container '>
+							<div key={card.dbfId} className={
+								this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-6 col-xs-12 col-sm-6 card-container'
+							}>
 								<div class='card-result'>
 									<CardInfo
 										key={card.dbfId}
@@ -595,11 +597,12 @@ export default class CardList extends React.Component {
 
 			
 		}
-
 			else {
 				return cards.map(card => {
 					return (
-							<div key={card.dbfId} className='col-lg-6 col-xs-12 col-sm-6 card-container '>
+							<div key={card.dbfId} className={
+								this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-6 col-xs-12 col-sm-6 card-container'
+							}>
 								<div className='card-result'>
 									<CardInfo
 										deck={this.props.deck}

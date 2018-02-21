@@ -113,47 +113,93 @@ class Home extends Component {
 					</div>
 				</MediaQuery>				
 				<MediaQuery query='(min-device-width: 992px)'>
-					<div className='deck-builder-container'>
-				
-						<div className='row'>
-							<div className='col-xs-12 col-md-3 col-lg-2 col-xs-12'>
-								{this.state.filterOn ? 
-									<Filters getFilter={this.getFilter}/> : <div />}
-							</div>
-							<div className=' col-xl-12 col-lg-10 col-md-9 col-xs-12 search-bar-padding'>
-								<div className='search-bar-container'>
-									<Searchbar onSearch={this.getFilter}/>
+					<MediaQuery query='(max-device-width: 1449px)'>
+						<div className='deck-builder-container'>
+					
+							<div className='row'>
+								<div className='col-xs-12 col-md-3 col-lg-2 col-xs-12'>
+									{this.state.filterOn ? 
+										<Filters getFilter={this.getFilter}/> : <div />}
 								</div>
-								<CardList
-									render={12}
-									nameSort={this.state.nameSort}
-									sortingMethod={this.state.sortingMethod}
-									cards={this.state.cards} 
-									term={this.state.term} 
-									hero={this.state.hero}
-									type={this.state.type}
-									rarity={this.state.rarity}
-									cardSet={this.state.cardSet}
-									mana={this.state.mana}
-									attack={this.state.attack}
-									health={this.state.health}
-									minMana={this.state.minMana}
-									maxMana={this.state.maxMana}
-									minHealth={this.state.minHealth}
-									maxHealth={this.state.maxHealth}
-									minAttack={this.state.minAttack}
-									maxAttack={this.state.maxAttack}
-									gameFormat={this.state.gameFormat}
-									ability={this.state.ability}
-									ability2={this.state.ability2}
-									tribe={this.state.tribe}
-									getCard = {this.getCard}
-									buildMode={false}          
-								/>
+								<div className=' col-xl-12 col-lg-10 col-md-9 col-xs-12 search-bar-padding'>
+									<div className='search-bar-container'>
+										<Searchbar onSearch={this.getFilter}/>
+									</div>
+									<CardList
+										render={12}
+										nameSort={this.state.nameSort}
+										sortingMethod={this.state.sortingMethod}
+										cards={this.state.cards} 
+										term={this.state.term} 
+										hero={this.state.hero}
+										type={this.state.type}
+										rarity={this.state.rarity}
+										cardSet={this.state.cardSet}
+										mana={this.state.mana}
+										attack={this.state.attack}
+										health={this.state.health}
+										minMana={this.state.minMana}
+										maxMana={this.state.maxMana}
+										minHealth={this.state.minHealth}
+										maxHealth={this.state.maxHealth}
+										minAttack={this.state.minAttack}
+										maxAttack={this.state.maxAttack}
+										gameFormat={this.state.gameFormat}
+										ability={this.state.ability}
+										ability2={this.state.ability2}
+										tribe={this.state.tribe}
+										getCard = {this.getCard}
+										buildMode={false}          
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
+					</MediaQuery>
 				</MediaQuery>
+				<MediaQuery query='(min-device-width: 1450px)'>
+				<div className='deck-builder-container'>
+					
+					<div className='row'>
+						<div className='col-xs-12 col-md-3 col-lg-2 col-xs-12'>
+							{this.state.filterOn ? 
+								<Filters getFilter={this.getFilter}/> : <div />}
+						</div>
+						<div className=' col-xl-12 col-lg-10 col-md-9 col-xs-12 search-bar-padding'>
+							<div className='search-bar-container'>
+								<Searchbar onSearch={this.getFilter}/>
+							</div>
+							<CardList
+								largeScreen
+								render={12}
+								nameSort={this.state.nameSort}
+								sortingMethod={this.state.sortingMethod}
+								cards={this.state.cards} 
+								term={this.state.term} 
+								hero={this.state.hero}
+								type={this.state.type}
+								rarity={this.state.rarity}
+								cardSet={this.state.cardSet}
+								mana={this.state.mana}
+								attack={this.state.attack}
+								health={this.state.health}
+								minMana={this.state.minMana}
+								maxMana={this.state.maxMana}
+								minHealth={this.state.minHealth}
+								maxHealth={this.state.maxHealth}
+								minAttack={this.state.minAttack}
+								maxAttack={this.state.maxAttack}
+								gameFormat={this.state.gameFormat}
+								ability={this.state.ability}
+								ability2={this.state.ability2}
+								tribe={this.state.tribe}
+								getCard = {this.getCard}
+								buildMode={false}          
+							/>
+						</div>
+					</div>
+				</div>
+				</MediaQuery>
+				
 			</div>
 	);
 	}

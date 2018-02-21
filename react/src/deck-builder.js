@@ -352,6 +352,7 @@ class App extends Component {
 											</div>
 										</div>
 										<CardList
+											largeScreen
 											deck={this.state.deck}
 											render={50}
 											nameSort={this.state.nameSort}
