@@ -27,7 +27,7 @@ class Home extends Component {
 		})
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 
 		axios.get('/api/cards/collectible')
 		.then((data) => {

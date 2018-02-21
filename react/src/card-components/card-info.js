@@ -73,7 +73,7 @@ export default class CardInfo extends Component{
 				// console.log('props', this.props)				
 			}
 
-		console.log(this.props.rarity)
+			console.log(this.props.rarity)
 			return (
 				<div className=''>
 					<div className='card-list-header'>
@@ -118,6 +118,7 @@ export default class CardInfo extends Component{
 		
 		return (
 			
+
 			<div className=''>
 				<div className='card-list-header'>
 					<div>
@@ -136,8 +137,7 @@ export default class CardInfo extends Component{
 								hero={this.props.class} 
 								cardInclusions={cardInclusions}
 								rarity={this.props.rarity}
-								// inclusionsWild={this.props.inclusionsWild} 
-								// inclusionsStandard={this.props.inclusionsStandard} 
+								name={this.props.name}
 							/>
 						</div>
 						<div>

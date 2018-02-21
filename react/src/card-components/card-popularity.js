@@ -2,99 +2,73 @@ import React from 'react'
 
 export default function CardPopularity(props) {
 
+    const hero = props.hero.toLowerCase()
+    const allStandardDecks = props.decksInfo.standard
+    const allStandardDecksWithCard = props.cardInclusions.standard
+
+    let rate;    
+    let percent;
 
     const usage = () => {
-        if (props.decksInfo && props.cardInclusions) {
 
-            const hero = props.hero.toLowerCase()
+        if (props.hero !== 'Neutral') {
+            let totalDecks = allStandardDecks[hero]
+            let totalInclusions = allStandardDecksWithCard[hero]
+            rate = totalInclusions/totalDecks;
 
-            if (props.hero === 'Neutral') {
+            
 
-                let inclusionsWild = 0
-
-                for (let key in props.cardInclusions.wild) {
-                    inclusionsWild = inclusionsWild + props.cardInclusions.wild[key]
-                }
-
-                let totalWildDecks = 0
-
-                for (let key in props.decksInfo.wild) {
-                    totalWildDecks = totalWildDecks + props.decksInfo.wild[key]
-                }
-
-                let inclusionsStandard = 0
-
-                for (let key in props.cardInclusions.standard) {
-                    inclusionsStandard = inclusionsStandard + props.cardInclusions.standard[key]
-                }
-
-                let totalStandardDecks = 0
-
-                for (let key in props.decksInfo.standard) {
-                    totalStandardDecks = totalStandardDecks + props.decksInfo.standard[key]
-                }
-
-                if (props.rarity === 'Legendary') {
-                    const standardPercent = ((inclusionsStandard/totalStandardDecks) * 100).toFixed(2) + '%'
-                    const wildPercent = ((inclusionsWild/totalWildDecks) * 100).toFixed(2) + '%'
-                    return (
-                        <div>
-                            <div className='standard'>
-                                <span>Standard: {standardPercent}</span>
-                            </div>
-                            <span className='wild'>
-                                <span>Wild: {wildPercent}</span>
-                            </span>
-                        </div>
-                    )
-                    
-                } else {
-                    const wildPercent = inclusionsWild/(totalWildDecks * 2)
-                    const standardPercent = inclusionsStandard/(totalStandardDecks * 2)
-                    return (
-                        <div>
-                            <div className='standard'>
-                                <span>Standard: {standardPercent === NaN ?standardPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
-                            </div>
-                            <span className='wild'>
-                                <span>Wild: {wildPercent === NaN ?wildPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
-                            </span>
-                        </div>
-                    )
-                }
-                
-                return (
-                    <div>
-                        
-                    </div>
-                )
-            } else {
-
-                const standardPercent = (props.cardInclusions.standard[hero]/(props.decksInfo.standard[hero] * 2) * 100).toFixed(2) + '%'
-
-                const wildPercent = (props.cardInclusions.wild[hero]/(props.decksInfo.wild[hero] * 2) * 100).toFixed(2) + '%'
-
-                return (
-                    <div>
-                        <div className='standard'>
-                            <span>Standard: {standardPercent === NaN ?standardPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
-                        </div>
-                        <span className='wild'>
-                            <span>Wild: {wildPercent === NaN ?wildPercent:<span>{(0).toFixed(2) + '%'}</span>}</span>
-                        </span>
-                    </div>
-                )
+            if (props.rarity !== 'Legendary') {
+                rate = rate/2
             }
-        } else {
-            return null
+
+            percent = (rate*100).toFixed(2) + '%'
+            
+            if (totalDecks ===  0) {
+                percent = '0.00%'
+            }
         }
 
+        if (props.hero === 'Neutral') {
+            let totalDecks = 0
+            for (let key in allStandardDecks) {
+                totalDecks = totalDecks + allStandardDecks[key]
+            }
+
+            let totalInclusions = 0
+            for (let key in allStandardDecksWithCard) {
+                totalInclusions = totalInclusions + allStandardDecksWithCard[key]
+            }
+            rate = totalInclusions/totalDecks;
+
+            // if (props.rarity !== 'Legendary') {
+            //     rate = rate/2
+            // }
+
+            percent = (rate*100).toFixed(2) + '%'
+
+            if (totalDecks ===  0) {
+                percent = '0.00%'
+            }
+
+        }
         
+
+        return (
+            <div>
+                {percent}
+            </div>
+        )
+
     }
 
     return (
         <span className='card-popularity'>
-            {usage()}
+            {
+                
+                usage()
+                
+                }
         </span>
     )
 }
