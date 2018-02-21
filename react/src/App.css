@@ -424,6 +424,11 @@ select {
 	color: white;
 }
 
+.search {
+	font-size: 32px;
+	font-weight: 700;
+}
+
 .add-cntr {
 	margin-right: 20px;
 }
@@ -778,7 +783,6 @@ input[type=text], textarea {
 .slide-filters-hdr {
 	margin-top: 60px;
 	font-size: 32px;
-	text-align: center;
 	font-weight: 700;
 	margin-bottom: 15px;
 }

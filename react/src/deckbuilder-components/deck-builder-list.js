@@ -184,7 +184,7 @@ export default class Deck extends Component {
             return (
                 <div className=''>
                     <div className='yr-deck-hdr'>
-                        <div className={'text-center yr-deck' + this.props.fullScreen}>
+                        <div className={'yr-deck' + this.props.fullScreen}>
                             Your Deck
                         </div>
                         <div>
