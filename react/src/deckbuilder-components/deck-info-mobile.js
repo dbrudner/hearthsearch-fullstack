@@ -11,6 +11,8 @@ export default function DeckInfoMobile(props) {
     }
 
     const cardsTotal = () => {
+
+
         return (
             <div className={'col-xs-4 quantity-deck-info'}>
                 {getQuantity(props.deck)}/30

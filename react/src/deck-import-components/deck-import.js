@@ -12,7 +12,8 @@ export default class DeckImport extends Component {
         this.state = {
             deck: [],
             deckString: '',
-            format: 'standard'
+            format: 'standard',
+            quantity: 0
         }
     }
 
@@ -21,7 +22,15 @@ export default class DeckImport extends Component {
 	}
 
 	handleSubmit = (event) => {
+
         event.preventDefault();
+
+        const getQuantity = (deck) => {
+			return deck.reduce((a, card) => {
+				return card.quantity + a
+			}, 0)
+		}
+
         let deckString = this.state.deckString
         deckString = deckString.replace('/', '$')
         console.log(deckString)
@@ -100,6 +109,10 @@ export default class DeckImport extends Component {
                             return
                         }
                     })
+                }).then(() => {
+                    this.setState({quantity: getQuantity(this.state.deck)})
+                }).then(() => {
+                    console.log(this.state)
                 })
             })
             
@@ -108,9 +121,6 @@ export default class DeckImport extends Component {
 	}
 	
 	render() {
-
-        console.log('import', this.state.format)
-
 		return (
             <div>
                 {this.state.deck.length === 0 ? <div className='search-bar form-group'>
@@ -128,9 +138,8 @@ export default class DeckImport extends Component {
                 :
                 <div></div>}
                 
-                {this.state.deck.length > 0 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
+                {this.state.quantity === 30 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
             </div>
 		)
 	}
-    
 }

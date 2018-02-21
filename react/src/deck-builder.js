@@ -100,16 +100,6 @@ class App extends Component {
             }
 		}
 		
-		console.log('this.state.deck')
-
-		const getQuantity = (deck) => {
-            return deck.reduce((a, card) => {
-                return card.quantity + a
-            }, 0)
-		}
-		
-
-		console.log(getQuantity(this.state.deck))
 
 	}
 
@@ -119,8 +109,15 @@ class App extends Component {
 		})
 	}
 
+
+
 	getCard = card => {
 		
+		const getQuantity = (deck) => {
+			return deck.reduce((a, card) => {
+				return card.quantity + a
+			}, 0)
+		}
 
 		this.setState({card})
 
@@ -142,28 +139,39 @@ class App extends Component {
 
 		let removedDuplicates = _.uniqBy(newDeck, 'name');
 
-		this.setState(() => {
-			return {
-				deck: removedDuplicates
+		const quant = getQuantity(removedDuplicates)
+
+
+		this.setState({
+			deck: removedDuplicates,
+			quantity: quant	
+		},
+			() => {
+				if (this.state.quantity === 30) {
+					this.setState({
+						isPaneOpen: true
+					})
+				}
 			}
-		})
+		)
 
 		
 	}
 
 	componentDidMount() {
 
-		console.log('this.state.deck')
-
-		const getQuantity = (deck) => {
-            return deck.reduce((a, card) => {
-                return card.quantity + a
-            }, 0)
+		if (this.props.imported) {
+			this.setState({
+				isPaneOpen: true
+			})
 		}
+
+		this.setState({
+			deck: this.props.deck
+		})
+
+		console.log(this.props.imported)
 		
-
-		console.log(getQuantity(this.state.deck))
-
 		axios.get('/api/cards/collectible')
 		.then((data) => {
 			this.setState({cards: data.data})
@@ -184,6 +192,8 @@ class App extends Component {
 	componentWillMount() {
 		Modal.setAppElement('body');		
 
+		
+
 	}
 
 	getFormat = format => {
@@ -193,6 +203,8 @@ class App extends Component {
 	removeCard = toBeRemoved => {
 
 		console.log(toBeRemoved)
+
+		console.log(this.state.deck)
 
 		let newDeck = this.state.deck.map(card => {
             if (card.name !== toBeRemoved) {
@@ -250,7 +262,7 @@ class App extends Component {
 					}) => {
 					return (
 						<div style={style} className='sticky-bar'>
-							<DeckInfoMobile hero={this.props.match ? this.props.match.params.class : this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
+							<DeckInfoMobile hero={this.props.hero ||' this.match.params.hero'} deck={this.state.deck} format={this.props.format || this.state.format}/>
 						</div>
 					)
 					}
@@ -304,7 +316,6 @@ class App extends Component {
 															<div className='filters-block'>
 															</div>
 															<DeckBuilderList
-																getQuantity={this.getQuantity}
 																format={this.props.format || this.state.format} 
 																deck={this.state.deck} 
 																hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -316,7 +327,7 @@ class App extends Component {
 												</div>
 											</div>
 											<CardList
-												deck={this.state.deck}
+												deck={this.state.deck} 
 												render={50}
 												nameSort={this.state.nameSort}
 												sortingMethod={this.state.sortingMethod}
@@ -359,31 +370,11 @@ class App extends Component {
 											<MediaQuery query='(max-device-width: 1400px)'>
 												<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
 											</MediaQuery>
-											<div>
-												<SlidingPane
-													isOpen={ this.state.isPaneOpen }
-													width='300px'
-													onRequestClose={ () => {
-														this.setState({ isPaneOpen: false });
-													}}>
-													<div className='deck-builder-list-container'>
-														<div className='filters-block'>
-														</div>
-														<DeckBuilderList
-															getQuantity={this.getQuantity}														
-															format={this.props.format || this.state.format} 
-															deck={this.state.deck} 
-															hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-															card={this.state.card}
-															removeCard={this.removeCard}
-														/>
-													</div>
-												</SlidingPane>
-											</div>
+											
 										</div>
 										<CardList
 											largeScreen
-											deck={this.state.deck}
+											deck={this.state.deck} 
 											render={50}
 											nameSort={this.state.nameSort}
 											sortingMethod={this.state.sortingMethod}
@@ -414,7 +405,6 @@ class App extends Component {
 										<div className='affix'>
 											<div className='your-deck-container'>
 												<DeckBuilderList 
-													getQuantity={this.getQuantity}
 													format={this.props.format || this.state.format} 
 													deck={this.state.deck} 
 													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -448,7 +438,6 @@ class App extends Component {
 														<div className='filters-block'>
 														</div>
 														<DeckBuilderList 
-															getQuantity={this.getQuantity}							
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 
 															hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -460,7 +449,7 @@ class App extends Component {
 											</div>
 										</div>
 										<CardList
-											deck={this.state.deck}
+											deck={this.state.deck} 
 											render={50}
 											nameSort={this.state.nameSort}
 											sortingMethod={this.state.sortingMethod}
