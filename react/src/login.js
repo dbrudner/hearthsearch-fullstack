@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 // import { Redirect } from 'react-router-dom';
 // import { BrowserRouter } from 'react-router-dom'
+import Banner from './banner'
+import potato from './images/potato.svg'
 
 
 export default class SignUp extends Component {
@@ -78,29 +80,32 @@ export default class SignUp extends Component {
 
         return (
             <div>
-                <div className='card'>
-                    <div className='card-content'>
-                        {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
+                <Banner />
+                <div className='login jumbotron'>
+                    <img src={potato} className='login-potato center-block' />
+                    
+                </div>
+                <div className='login-container center-block text-center'>
+                    {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
                         {this.state.loginError === 'loading' ? 
                             <div>Loading</div>
                             :
                             <div/>
-                        }                        
-                            <form onSubmit={this.handleLogin}>
-                            <div className='input-field'>
-                                <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                                <label for='username'>Username</label>
-                            </div>
-                            <div className='input-field'>
-                                <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                                <label for='password'>Password</label>
-                            </div>
-                            <div>
-                                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-                                </button>
-                            </div>
-                        </form>
+                        }                     
+                    <form onSubmit={this.handleLogin}>
+                    <div className='input-field center-block text-center'>
+                        <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
+                        <label for='username'>Username</label>
                     </div>
+                    <div className='input-field center-block text-center'>
+                        <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
+                        <label for='password'>Password</label>
+                    </div>
+                    <div>
+                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                        </button>
+                    </div>
+                    </form>
                 </div>
             </div>   
         )

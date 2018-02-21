@@ -84,7 +84,7 @@ export default function DeckManaChart(props) {
             return (
                 <div className='bar-chart-container'>
                     <div class='curve-panel-header'>
-                        <DeckAverageMana curve={average/curve.length} />
+                        <DeckAverageMana curve={average/curve.length || 0} />
                     </div>
                     <BarChart
                         colorBars
