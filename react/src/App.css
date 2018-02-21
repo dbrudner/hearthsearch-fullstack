@@ -208,7 +208,7 @@ html {
 }
 
 .hunter {
-	color: #013f12
+	color: #cdc450
 }
 
 .mage {
@@ -403,11 +403,18 @@ select {
 }
 
 .next-page-btn-fail {
+	margin-right: 5px;
+}
 
+.deck-bldr-cntr {
+	margin-left: 10px;
+	margin-right: 15px;
 }
 
 .yr-deck {
-	font-size: 24px;
+	font-size: 36px;
+	margin-top: 60px;
+	font-weight: 700
 }
 
 #myNavbar {
@@ -425,7 +432,7 @@ select {
 	font-size: 18px;
 	text-align: center;
 	margin-bottom: 10px;
-	margin-top: 65px;
+	margin-top: 26px;
 }
 
 .deck-list-container {
@@ -686,7 +693,24 @@ input[type=text], textarea {
 	justify-content: space-between;
 }
 
+/* .empty-block {
+	height: 60px;
+	margin-top: -24px;
+	margin-left: -32px;
+	margin-right: -17px;
+	background-color: black
+}
+
+.filters-block {
+	height: 60px;
+	margin-top: -24px;
+	margin-left: -37px;
+	margin-right: -31px;
+	background-color: black
+} */
+
 .slide-filters-hdr {
+	margin-top: 60px;
 	font-size: 32px;
 	text-align: center;
 	font-weight: 700;
@@ -722,7 +746,7 @@ input[type=text], textarea {
 }
 
 .bottom-card-container {
-	height: 150px;
+	height: 170px;
 }
 
 .slide-pane__header {

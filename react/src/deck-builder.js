@@ -201,13 +201,14 @@ class App extends Component {
 		}	
 
 		return (
-			<div>
+			<div className='deck-bldr-cntr'>
 				<Swipe
 					onSwipeStart={this.onSwipeStart}
 					onSwipeMove={this.onSwipeMove}
 					onSwipeEnd={this.onSwipeEnd}
 				>
 				<StickyContainer>
+				<MediaQuery query='(max-device-width: 1024px)'>
 				<div className='sticky-bar'>
 				<Sticky>
 				{
@@ -230,6 +231,7 @@ class App extends Component {
 				}
 				</Sticky>
 				</div>
+				</MediaQuery>
 			{/* </StickyContainer>
 				<StickyContainer>
 					<Sticky topOffset={5}>
@@ -241,6 +243,7 @@ class App extends Component {
 							<div className='row'>
 								<MediaQuery query='(min-device-width: 1400px)'>
 									<div className='col-lg-2'>
+										
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</MediaQuery>
@@ -270,7 +273,9 @@ class App extends Component {
 													onRequestClose={ () => {
 														this.setState({ isPaneOpen: false });
 													}}>
-													<div className='deck-builder-list-container'> 
+													<div className='deck-builder-list-container'>
+														<div className='filters-block'>
+														</div>
 														<DeckBuilderList 
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 
@@ -327,7 +332,9 @@ class App extends Component {
 													onRequestClose={ () => {
 														this.setState({ isPaneOpen: false });
 													}}>
-													<div className='deck-builder-list-container'> 
+													<div className='deck-builder-list-container'>
+														<div className='filters-block'>
+														</div>
 														<DeckBuilderList 
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 

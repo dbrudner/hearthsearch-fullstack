@@ -15,7 +15,7 @@ export default function WildOrStandard(props) {
             <div className='format-header'>
             </div>
             <div class='row'>
-                <div class='col-xs-12 col-sm-6 icon-cntr animated fadeIn'>
+                <div class='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
                     <ReactFitText>
                         <h3 className='text-center'>Standard</h3>
                     </ReactFitText>
@@ -24,7 +24,7 @@ export default function WildOrStandard(props) {
                     </div>
                 </div>
 
-                <div class='col-xs-12 col-sm-6 icon-cntr'>
+                <div class='col-xs-6 col-sm-6 icon-cntr'>
                     <ReactFitText>
                         <h3 className='text-center'>Wild</h3>
                     </ReactFitText>

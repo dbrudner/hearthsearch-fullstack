@@ -46,6 +46,8 @@ export default class Filters extends React.Component {
 		
 			return (
 				<div className=''>
+                    <div className='empty-block'>
+                    </div>
                     <div className='slide-filters-hdr'>
                         Filters
                     </div>
