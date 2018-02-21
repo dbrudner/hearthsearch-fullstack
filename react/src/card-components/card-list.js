@@ -329,56 +329,109 @@ export default class CardList extends React.Component {
 		}
 
 		if (this.props.nameSort === "Overall Wild") {
-			console.log(matches);
-			// console.log(this.state.decksInfo)
+			const allDecks = this.state.decksInfo.wild
 
-			const totalWild = this.state.decksInfo.wild
 			
-			matches.sort((deckA, deckB) => {
+			matches.sort((cardA, cardB) => {
+				
 
 				let totalWildDecks = 0
-				let inclusionsWildDeckA = 0
-				let inclusionsWildDeckB = 0
+				let wildDecksCardA = 0
+				let wildDecksDeckB = 0
 				
-				let inclusionsRateDeckA;
-				let inclusionsRateDeckB
+				let inclusionsRateCardA;
+				let inclusionsRateCardB;
 
-				for (let key in totalWild) {
-					totalWildDecks = totalWildDecks + totalWild[key]
-					}
+				const cardAHero = cardA.playerClass.toLowerCase()
+				const cardBHero = cardB.playerClass.toLowerCase()
+				
 
-				if (deckA.playerClass === 'Neutral') {
-					for (let key in deckA.inclusionsWild) {
-						inclusionsWildDeckA = inclusionsWildDeckA + deckA.inclusionsWild[key]
+				{
+					for (let key in allDecks) {
+						totalWildDecks = totalWildDecks + allDecks[key]
 					}
-				} else {
-					inclusionsWildDeckA = deckA.inclusionsWild[deckA.playerClass.toLowerCase()]
-				}
-
-				if (deckB.playerClass === 'Neutral') {
-					for (let key in deckB.inclusionsWild) {
-						inclusionsWildDeckB = inclusionsWildDeckB + deckB.inclusionsWild[key]
-					}
-				} else {
-					inclusionsWildDeckB = deckB.inclusionsWild[deckB.playerClass.toLowerCase()]
 					
-				}
-				
-				inclusionsRateDeckA = inclusionsWildDeckA/totalWildDecks
-				inclusionsRateDeckB = inclusionsWildDeckB/totalWildDecks
-				
-				if (deckA.rarity === 'Legendary') {
-					inclusionsRateDeckA = inclusionsRateDeckA * 2
+					
+					if (cardA.playerClass !== 'Neutral') {
+						
+						const decksWithCard = cardA.inclusionsWild[cardAHero]
+						const decksWithSameClass = allDecks[cardAHero]
+						
+
+						inclusionsRateCardA = decksWithCard/decksWithSameClass
+	
+						if (decksWithSameClass === 0) {
+							inclusionsRateCardA = 0
+						}
+
+						if (cardA.rarity !== 'Legendary') {
+							inclusionsRateCardA = inclusionsRateCardA / 2
+						}
+
+					}
+
+					if (cardA.playerClass === 'Neutral') {
+						let decksWithCard = 0
+
+						for (let key in cardA.inclusionsWild) {
+							decksWithCard = decksWithCard + cardA.inclusionsWild[key]
+						}
+
+												
+
+						inclusionsRateCardA = decksWithCard/totalWildDecks
+						
+						// if (cardA.rarity !== 'Legendary') {
+						// 	inclusionsRateCardA = inclusionsRateCardA / 2
+						// }
+					}
+
+
 				}
 
-				if (deckB.rarity === 'Legendary') {
-					inclusionsRateDeckB = inclusionsRateDeckB * 2					
-				}
+				{
+					
+	
+					if (cardB.playerClass !== 'Neutral') {
 
-				// console.log(deckA.name, inclusionsRateDeckA)
-				// console.log(deckB.name, inclusionsRateDeckB)
+
+
+						const decksWithCard = cardB.inclusionsWild[cardBHero]
+						const decksWithSameClass = allDecks[cardBHero]
+	
+						
+
+						inclusionsRateCardB = decksWithCard/decksWithSameClass
+	
+						if (decksWithSameClass === 0) {
+							inclusionsRateCardB = 0
+						}
+
+						if (cardB.rarity !== 'Legendary') {
+							inclusionsRateCardB = inclusionsRateCardB / 2
+						}
+					}
+
+					if (cardB.playerClass === 'Neutral') {
+						let decksWithCard = 0
+
+						for (let key in cardB.inclusionsWild) {
+							decksWithCard = decksWithCard + cardB.inclusionsWild[key]
+						}
+
+
+						inclusionsRateCardB = decksWithCard/totalWildDecks
+
+						// if (cardB.rarity !== 'Legendary') {
+						// 	inclusionsRateCardB = inclusionsRateCardB / 2
+						// }
+					}
+
+				}
+				console.log(cardA.name, inclusionsRateCardA)
+				console.log(cardB.name, inclusionsRateCardB)
 				
-				return inclusionsRateDeckB - inclusionsRateDeckA				
+				return inclusionsRateCardB - inclusionsRateCardA
 
 			})
 		}

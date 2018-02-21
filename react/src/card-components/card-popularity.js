@@ -6,10 +6,14 @@ export default function CardPopularity(props) {
     const allStandardDecks = props.decksInfo.standard
     const allStandardDecksWithCard = props.cardInclusions.standard
 
+    const allWildDecks = props.decksInfo.wild
+    const allWildDecksWithCard = props.cardInclusions.wild
+
+
     let rate;    
     let percent;
 
-    const usage = () => {
+    const standardUsage = () => {
 
         if (props.hero !== 'Neutral') {
             let totalDecks = allStandardDecks[hero]
@@ -53,20 +57,98 @@ export default function CardPopularity(props) {
 
         }
         
+        if (props.hero !== 'Neutral') {
+            return (
+                <div>
+                    {props.name} is used in {percent} of all Standard {props.hero} decks.
+                </div>
+            )
+        }
 
-        return (
-            <div>
-                {percent}
-            </div>
-        )
+        if (props.hero === 'Neutral') {
+            return (
+                <div>
+                    {props.name} is used in {percent} of all Standard decks.
+                </div>
+            )
+        }
 
+        
+
+    }
+
+    const wildUsage = () => {
+        if (props.hero !== 'Neutral') {
+            let totalDecks = allWildDecks[hero]
+            let totalInclusions = allWildDecksWithCard[hero]
+            rate = totalInclusions/totalDecks;
+
+            
+
+            if (props.rarity !== 'Legendary') {
+                rate = rate/2
+            }
+
+            percent = (rate*100).toFixed(2) + '%'
+            
+            if (totalDecks ===  0) {
+                percent = '0.00%'
+            }
+        }
+
+        if (props.hero === 'Neutral') {
+            let totalDecks = 0
+            for (let key in allWildDecks) {
+                totalDecks = totalDecks + allWildDecks[key]
+            }
+
+            let totalInclusions = 0
+            for (let key in allWildDecksWithCard) {
+                totalInclusions = totalInclusions + allWildDecksWithCard[key]
+            }
+            rate = totalInclusions/totalDecks;
+
+            // if (props.rarity !== 'Legendary') {
+            //     rate = rate/2
+            // }
+
+            percent = (rate*100).toFixed(2) + '%'
+
+            if (totalDecks ===  0) {
+                percent = '0.00%'
+            }
+
+        }
+        
+
+        if (props.hero !== 'Neutral') {
+            return (
+                <div>
+                    {props.name} is used in {percent} of all Wild {props.hero} decks.
+                </div>
+            )
+        }
+
+        if (props.hero === 'Neutral') {
+            return (
+                <div>
+                    {props.name} is used in {percent} of all Wild decks.
+                </div>
+            )
+        }
     }
 
     return (
         <span className='card-popularity'>
             {
-                
-                usage()
+                <div>
+                    <div>
+                        {standardUsage()}
+                    </div>
+                    <div>
+                        {wildUsage()}
+                    </div>
+                </div>
                 
                 }
         </span>
