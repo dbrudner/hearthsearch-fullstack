@@ -36,7 +36,8 @@ class App extends Component {
 			card: '',
 			update: true,
 			format: this.props.format || null,
-			deck: []
+			deck: [],
+			quantity: 0
 		}
 
 	}
@@ -63,7 +64,10 @@ class App extends Component {
 	// 	console.log('End swiping...', event);
 	// }
 
+
 	componentWillReceiveProps(nextProps) {
+
+
 
 
 		if (nextProps.card) {
@@ -94,7 +98,19 @@ class App extends Component {
                     }
                 })
             }
-        }
+		}
+		
+		console.log('this.state.deck')
+
+		const getQuantity = (deck) => {
+            return deck.reduce((a, card) => {
+                return card.quantity + a
+            }, 0)
+		}
+		
+
+		console.log(getQuantity(this.state.deck))
+
 	}
 
 	getFilter = (filterName, filterValue) => {
@@ -136,6 +152,17 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+
+		console.log('this.state.deck')
+
+		const getQuantity = (deck) => {
+            return deck.reduce((a, card) => {
+                return card.quantity + a
+            }, 0)
+		}
+		
+
+		console.log(getQuantity(this.state.deck))
 
 		axios.get('/api/cards/collectible')
 		.then((data) => {
@@ -208,7 +235,6 @@ class App extends Component {
 					onSwipeEnd={this.onSwipeEnd}
 				>
 				<StickyContainer>
-				<MediaQuery query='(max-device-width: 1024px)'>
 				<div className='sticky-bar'>
 				<Sticky>
 				{
@@ -231,6 +257,7 @@ class App extends Component {
 				}
 				</Sticky>
 				</div>
+				<MediaQuery query='(max-device-width: 1024px)'>
 				</MediaQuery>
 			{/* </StickyContainer>
 				<StickyContainer>
@@ -242,6 +269,7 @@ class App extends Component {
 					<div className='deck-builder-container'>
 							<div className='row'>
 								<MediaQuery query='(min-device-width: 1400px)'>
+									
 									<div className='col-lg-2'>
 										
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
@@ -259,7 +287,7 @@ class App extends Component {
 									</div>
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1400px)'>
-									<MediaQuery query='(max-device-width: 1700px)'>					
+									<MediaQuery query='(max-device-width: 1700px)'>		
 										<div className='col-lg-9'>
 											<div className='search-bar-container'>
 													<Searchbar onSearch={this.getFilter}/>
@@ -275,7 +303,8 @@ class App extends Component {
 														<div className='deck-builder-list-container'>
 															<div className='filters-block'>
 															</div>
-															<DeckBuilderList 
+															<DeckBuilderList
+																getQuantity={this.getQuantity}
 																format={this.props.format || this.state.format} 
 																deck={this.state.deck} 
 																hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -317,7 +346,7 @@ class App extends Component {
 										<div className='col-lg-1'>
 											<button className='long-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>
 												<div className='long-btn-text text-left'>
-													View
+													View~Cards
 												</div>
 											</button>
 										</div>
@@ -340,7 +369,8 @@ class App extends Component {
 													<div className='deck-builder-list-container'>
 														<div className='filters-block'>
 														</div>
-														<DeckBuilderList 
+														<DeckBuilderList
+															getQuantity={this.getQuantity}														
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 
 															hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -384,6 +414,7 @@ class App extends Component {
 										<div className='affix'>
 											<div className='your-deck-container'>
 												<DeckBuilderList 
+													getQuantity={this.getQuantity}
 													format={this.props.format || this.state.format} 
 													deck={this.state.deck} 
 													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
@@ -417,6 +448,7 @@ class App extends Component {
 														<div className='filters-block'>
 														</div>
 														<DeckBuilderList 
+															getQuantity={this.getQuantity}							
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 
 															hero={this.props.match ? this.props.match.params.class : this.state.hero} 

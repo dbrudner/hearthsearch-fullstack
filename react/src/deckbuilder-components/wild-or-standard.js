@@ -14,8 +14,8 @@ export default function WildOrStandard(props) {
         <div className='wild-or-standard-cntr'>
             <div className='format-header'>
             </div>
-            <div class='row'>
-                <div class='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
+            <div className='row'>
+                <div className='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
                     <ReactFitText>
                         <h3 className='text-center'>Standard</h3>
                     </ReactFitText>

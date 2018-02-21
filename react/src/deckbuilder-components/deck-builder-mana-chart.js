@@ -10,7 +10,6 @@ export default function DeckManaChart(props) {
     //     threeCostCards: 0
     // }
 
-    console.log('hi', props)
 
 
     var curve = []

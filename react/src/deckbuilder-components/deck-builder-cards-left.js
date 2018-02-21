@@ -19,10 +19,8 @@ export default function DeckCardsLeft(props) {
         )
     }
 
-    console.log(totalCards)
 
     if (totalCards > 30) {
-        console.log('too many')
         return (
             <div className=''>
                 <span className='too-many'>{totalCards}</span>/30

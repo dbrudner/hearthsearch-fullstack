@@ -20,11 +20,21 @@ export default function DeckInfoMobile(props) {
 
     return (
         <div className='deck-info-mobile row text-center'>
-            <div className={'col-xs-4 ' + props.hero.toLowerCase()} >
-            {props.hero}
+            <div className='col-xs-4' >
+                <span className='bldr-hdr-class'>
+                    Class:
+                </span>
+                <span className={props.hero.toLowerCase()}>
+                    {props.hero}
+                </span>
             </div>
             <div className={'col-xs-4 ' + props.format + '-deck-info'}>
-            {props.format}
+                <span className='bldr-hdr-class'>
+                    Format:
+                </span>
+                <span className='bldr-hdr-format'>
+                    {props.format}
+                </span>
             </div >
             {cardsTotal()}
         </div>

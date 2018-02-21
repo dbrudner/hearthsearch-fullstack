@@ -327,7 +327,6 @@ export default class CardList extends React.Component {
 		if (this.props.nameSort === 'Name' && this.props.sortingMethod == 'Descending') {
 			matches = _.orderBy(matches, 'name', 'desc')
 		}
-		console.log(this.props.nameSort)
 		if (this.props.nameSort === "Wild Usage") {
 			const allDecks = this.state.decksInfo.wild
 

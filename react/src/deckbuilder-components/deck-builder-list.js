@@ -153,15 +153,7 @@ export default class Deck extends Component {
 
     componentDidMount() {
 
-        axios.get('/test')
-        .then((response) => {
-            this.setState({
-                userId: response.data._id
-            })
-        }) 
-    }
 
-    render() {
 
         const getQuantity = (deck) => {
             return deck.reduce((a, card) => {
@@ -169,13 +161,29 @@ export default class Deck extends Component {
             }, 0)
         }
 
-        const totalCards = getQuantity(this.props.deck)
+        axios.get('/test')
+        .then((response) => {
+            this.setState({
+                userId: response.data._id
+            })
+        })
+
+        
+
+    }
+
+    render() {
+
+        
+
+        const totalCards = this.state.totalCards
+
 
         let sorted = _.orderBy(this.props.deck, 'mana', 'asc')
 
         const cardDeck = sorted.map(card => {
             return (
-                <DeckCardName removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
+                <DeckCardName key={card.dbfId} removeCard={this.removeCard} mana={card.mana || card.cost} quantity={card.quantity} dbfId={card.dbfId} name={card.name} rarity={card.rarity} cardId={card.cardId}/>
             )
         })
 

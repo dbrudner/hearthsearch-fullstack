@@ -433,6 +433,10 @@ select {
 	margin-right: 20px;
 }
 
+.bldr-hdr-class {
+	margin-right: 10px
+}
+
 .quantity-added {
 	margin-top: 10px;
 	font-weight: 700;
@@ -440,6 +444,10 @@ select {
 
 .invisible {
 	opacity: 0;
+}
+
+.bldr-hdr-class {
+	color: gray	
 }
 
 .yr-deckundefined {

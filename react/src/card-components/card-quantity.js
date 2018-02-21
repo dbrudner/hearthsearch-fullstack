@@ -12,7 +12,6 @@ export default function CardQuantity(props) {
         return value
     })
 
-    console.log(quantity)
 
     if (quantity > 0) {
         return (
