@@ -73,81 +73,12 @@ export default class Deck extends Component {
     
             }, 0)
     }
-    
-
-    // componentWillReceiveProps(nextProps) {
-        
-    //     if (nextProps.deck) {
-    //         this.setState({
-    //             deck: this.props.deck
-    //         })
-    //     }
-
-    //     if (nextProps.hero) {
-    //         this.setState({
-    //             hero: this.props.hero
-    //         })
-    //     }
-
-    //     if (nextProps.card) {
-    //         if (nextProps.card.name && nextProps.card.rarity) {
-    //             var currentDeck = this.props.deck
-    //             var newCard = nextProps.card
-    //             newCard.quantity = 1;
-    
-    //             var incomingCard = [newCard]
-    
-    //             for (var i=0; i<currentDeck.length; i++) {
-    //                 if (currentDeck[i].name === newCard.name && currentDeck[i].quantity < 2 && newCard.rarity !== 'Legendary') {
-    //                     currentDeck[i].quantity = 2
-    //                 }
-    //             }
-    
-    
-    
-    //             var newDeck = currentDeck.concat(incomingCard) 
-    
-    //             var removedDuplicates = _.uniqBy(newDeck, 'name');
-    
-    //             this.setState(() => {
-    //                 return {
-    //                     deck: removedDuplicates,
-    //                     dust: this.getDust(removedDuplicates),
-    //                     curve: this.getManaCurve(removedDuplicates)
-    //                 }
-    //             })
-    //         }
-    //     }  
-    // }
 
     removeCard = toBeRemoved => {
 
-        console.log(toBeRemoved)
         
         this.props.removeCard(toBeRemoved)
 
-        // let newDeck = this.props.deck.map(card => {
-        //     if (card.name !== toBeRemoved) {
-        //         return card
-        //     }
-
-        //     if (card.name === toBeRemoved) {
-
-        //         if (card.quantity === 2) {
-        //             let newCard = card
-        //             newCard.quantity = 1
-        //             return newCard
-        //         }
-        //     }
-        // })
-
-        // newDeck = newDeck.filter(item => {
-        //     if (item) {return item}
-        // })
-
-        // this.setState({
-        //     deck: newDeck
-        // })
 
     }
 
@@ -178,9 +109,15 @@ export default class Deck extends Component {
 
     render() {
 
-        const totalCards = this.state.quantity
+        const getQuantity = (deck) => {
+            return deck.reduce((a, card) => {
+                return card.quantity + a
+            }, 0)
+        }
 
-        console.log(totalCards)
+
+        const totalCards = getQuantity(this.props.deck)
+
 
         let sorted = _.orderBy(this.props.deck, 'mana', 'asc')
 
@@ -203,7 +140,7 @@ export default class Deck extends Component {
                         </div>
                         <div>
                             {
-                                totalCards === 3 ? 
+                                totalCards === 30 ? 
                                 <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.props.deck} name='name' archetype='archetype' cost={1200} /> 
                                 : 
                                     <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>

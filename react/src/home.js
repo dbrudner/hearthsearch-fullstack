@@ -42,7 +42,6 @@ class Home extends Component {
 
 		axios.get('/api/cards/collectible')
 		.then((data) => {
-			console.log(data)
 			this.setState({cards: data.data})
 		}).catch(err => console.log(err))
 
@@ -57,7 +56,6 @@ class Home extends Component {
 
 	render() {
 
-		console.log(this.state)
 
 		return (
 			<div>

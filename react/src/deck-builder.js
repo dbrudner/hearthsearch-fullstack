@@ -35,7 +35,7 @@ class App extends Component {
 			cards: [],
 			card: '',
 			update: true,
-			format: this.props.format || null,
+			format: '',
 			deck: [],
 			quantity: 0
 		}
@@ -158,6 +158,20 @@ class App extends Component {
 
 	componentDidMount() {
 
+		console.log(this.props)
+
+		if (this.props.match.params) {
+			this.setState({
+				hero: this.props.match.params.class
+			})
+		}
+		
+		if (this.props.hero) {
+			this.setState({
+				hero: this.props.hero
+			})
+		}
+
 		if (this.props.imported) {
 			this.setState({
 				isPaneOpen: true
@@ -185,9 +199,7 @@ class App extends Component {
 		// }).then(data => {
 
 		// 	this.setState({cards: data.data});
-		this.setState({
-			hero: this.props.hero
-		})
+
 	}
 
 	componentWillMount() {
@@ -198,6 +210,7 @@ class App extends Component {
 	}
 
 	getFormat = format => {
+		console.log(format)
 		this.setState({format})
 	}
 
@@ -258,7 +271,6 @@ class App extends Component {
 					({
 					style,
 		
-					// the following are also available but unused in this example 
 					isSticky,
 					wasSticky,
 					distanceFromTop=80,
@@ -267,7 +279,7 @@ class App extends Component {
 					}) => {
 					return (
 						<div style={style} className='sticky-bar'>
-							<DeckInfoMobile hero={this.props.hero ||' this.match.params.hero'} deck={this.state.deck} format={this.props.format || this.state.format}/>
+							<DeckInfoMobile hero={this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
 						</div>
 					)
 					}
@@ -276,13 +288,6 @@ class App extends Component {
 				</div>
 				<MediaQuery query='(max-device-width: 1024px)'>
 				</MediaQuery>
-			{/* </StickyContainer>
-				<StickyContainer>
-					<Sticky topOffset={5}>
-						{
-							() => <DeckInfoMobile hero={this.props.match ? this.props.match.params.class : this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
-						}
-					</Sticky>						 */}
 					<div className='deck-builder-container'>
 							<div className='row'>
 								<MediaQuery query='(min-device-width: 1400px)'>
@@ -350,7 +355,7 @@ class App extends Component {
 												maxHealth={this.state.maxHealth}
 												minAttack={this.state.minAttack}
 												maxAttack={this.state.maxAttack}
-												gameFormat={this.state.gameFormat}
+												gameFormat={this.state.format}
 												ability={this.state.ability}
 												ability2={this.state.ability2}
 												tribe={this.state.tribe}
@@ -379,6 +384,7 @@ class App extends Component {
 											
 										</div>
 										<CardList
+											format={this.state.format}									
 											largeScreen
 											deck={this.state.deck} 
 											render={50}
@@ -397,7 +403,7 @@ class App extends Component {
 											maxHealth={this.state.maxHealth}
 											minAttack={this.state.minAttack}
 											maxAttack={this.state.maxAttack}
-											gameFormat={this.state.gameFormat}
+											gameFormat={this.state.format}
 											ability={this.state.ability}
 											ability2={this.state.ability2}
 											tribe={this.state.tribe}
@@ -473,7 +479,7 @@ class App extends Component {
 											maxHealth={this.state.maxHealth}
 											minAttack={this.state.minAttack}
 											maxAttack={this.state.maxAttack}
-											gameFormat={this.state.gameFormat}
+											gameFormat={this.state.format}
 											ability={this.state.ability}
 											ability2={this.state.ability2}
 											tribe={this.state.tribe}

@@ -250,11 +250,15 @@ export default class CardList extends React.Component {
 		}
 		
 
-		if (thisProps.gameFormat === "Standard") {
-			matches = matches.filter((card) => {
-				return card.cardSet === "Basic" || card.cardSet === "Classic" || card.cardSet === "Journey to Un'Goro" || card.cardSet === "Kobolds & Catacombs" || card.cardSet === "Mean Streets of Gadgetzan" ||  card.cardSet === "One Night in Karazhan" || card.cardSet === "Knights of the Frozen Throne" || card.cardSet === "Whispers of the Old Gods"
-			})
+		if (this.props.gameFormat) {
+			if (thisProps.gameFormat.toLowerCase() === "standard") {
+				matches = matches.filter((card) => {
+					return card.cardSet === "Basic" || card.cardSet === "Classic" || card.cardSet === "Journey to Un'Goro" || card.cardSet === "Kobolds & Catacombs" || card.cardSet === "Mean Streets of Gadgetzan" ||  card.cardSet === "One Night in Karazhan" || card.cardSet === "Knights of the Frozen Throne" || card.cardSet === "Whispers of the Old Gods"
+				})
+			}
 		}
+		
+		
 
 		if (thisProps.tribe && thisProps.tribe !== 'None') {
 			matches = matches.filter(function(card) {
