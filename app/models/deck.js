@@ -8,6 +8,10 @@ var DeckSchema = new Schema({
         required: true
     },
 
+    cardsAdded: {
+        type: Boolean,
+    },
+
     hero: {
         type: String,
         required: true

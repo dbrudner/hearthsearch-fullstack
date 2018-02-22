@@ -310,18 +310,25 @@ module.exports = function(app, passport) {
     
     app.post('/update/hearthpwn', (req, res) => {
         console.log('updateding?')
-        db.Deck.find({'source': 'HearthPwn'})
+        db.Deck.find({'source': 'HearthPwn', 'cardsAdded': false})
         .exec((error, result) => {
+            console.log('found', result)
+            
+            result.forEach(deck => {
+                db.Deck.findOneAndUpdate({'_id': deck._id}, {'cardsAdded': true})
+                .exec((error, result) => {
+                    if (error) throw error
+                    console.log(result)
+                })
+            })
 
             result.forEach(deck => {
+                db.Deck.findOneAndUpdate({'_id': deck._id}, {'cardsAdded': true})
                 const hero = deck.hero
                 const format = deck.format
 
 
                 deck.cards.forEach(card => {
-                    console.log('card', card);
-                    console.log('hero', hero);
-                    console.log('format', format)
                     const id = card._id
                     const quantity = card.cardQuantity                    
 
