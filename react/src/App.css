@@ -16,6 +16,34 @@ html {
 	margin: 0;
 }
 
+.deck-search-panel {
+	margin: 2%;
+	padding: 1%;
+	border-radius: 5px;
+}
+
+.deck-search-fltrs-panel {
+	margin: 2%;
+	margin-left: 7%;
+}
+
+.deck-totals {
+	font-style: italic;
+}
+
+.cursor {
+	cursor: pointer;	
+}
+
+.left-mrg {
+	margin-left: 20px;
+}
+
+.deck-search-hdr {
+	font-size: 64px;
+	text-align: center
+}
+
 .navbar {
 	width: 100%
 }

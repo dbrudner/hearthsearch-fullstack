@@ -66,7 +66,6 @@ module.exports = function(app, passport) {
 
     // Use this to import data through mongoose to database
     app.get('/api/mongoose/import/cards', function(req, res) {
-        console.log("HI?")
 
         // let collectible = cardsData.filter(card => card.collectible)
 
@@ -87,9 +86,7 @@ module.exports = function(app, passport) {
     app.get('/api/import/:deckString', function(req, res) {
 
         let deckString = req.params.deckString.replace('$', '/')
-        console.log(deckString)
         const decoded = deckStrings.decode(deckString)
-        console.log(decoded)
         res.json(decoded)
     })
 
@@ -250,7 +247,6 @@ module.exports = function(app, passport) {
     // Not tested, assumed wokring (2/11)
     app.post('/deck/upvote/:deckId', function(req, res) {
         db.Deck.findOneAndUpdate({ '_id': req.params.deckId}, {$inc: {upvotes: 1}, $push: {'upvoters': 'niceguy'}}).exec((res) => {
-            console.log(res)
         })
     })
 

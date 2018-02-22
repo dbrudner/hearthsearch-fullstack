@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 import Searchbar from '../searchbar'
 import DeckSearchResults from './deck-search-results'
+import DeckSearchBanner from './deck-search-banner'
+import DeckSearchRow from './deck-search-row'
 
 export default class DeckSearch extends React.Component {
     constructor(props) {
@@ -13,7 +15,9 @@ export default class DeckSearch extends React.Component {
         this.state = {
             term: '',
             decks: [],
-            cards: []
+            cards: [],
+            matches: [],
+            renderCount: 10
         }
     }
 
@@ -27,58 +31,19 @@ export default class DeckSearch extends React.Component {
 	}
 
     componentDidMount = () => {
-
-        let card = '5a8b0009b2b11e2fb806f269'
-        let hero = 'warlock'
-
-        // axios.get('/api/lightforge')
-        // .then(result => {
-        //     console.log(result)
-        // })
-
-        // axios.get('/api/decks/populate')
-        // .then(result => {
-        //     console.log(result)
-        // })
-
-        // axios.get('/api/mongoose/import/cards')
-        // .then(response => {
-        //     console.log(response.data)
-        //     // this.setState({
-        //     //     decks: response.data
-        //     // })
-        // })
-        // axios.post('/api/card/update', {
-        //     format: 'wild',
-        //     hero: 'shaman',
-        //     cards: ['5a8b0aa8eabdf52aa479953d']
-        // })
-        // .then(result => {
-        //     console.log(result)
-        // })
-
-        axios.post('/update/hearthpwn', {
-            cardId: card,
-            hero
+        axios.get('/api/decks/populate')
+        .then(result => {
+            console.log(result)
+            this.setState({
+                decks: result.data
+            })
         })
-        .then(response => {
-            console.log(response.data)
-            // this.setState({
-            //     decks: response.data
-            // })
-        })
-
-        // axios.get('/api/cards/collectible')
-        // console.log(response)        
-        // .then(response => {
-        //     this.setState({
-        //         cards: response.data
-        //     })
-        // })
     }
 
     renderSearchResults= () => {
+        console.log(this.state.renderCount)
         let decks = this.state.decks
+
         // if (this.state.hero) {
         //     decks = decks.filter(deck => {
         //         return deck.playerClass === this.state.hero
@@ -101,7 +66,7 @@ export default class DeckSearch extends React.Component {
 
 
         this.setState({
-            results: decks
+            matches: decks
         })
 
     }
@@ -109,12 +74,11 @@ export default class DeckSearch extends React.Component {
 
 
     render() {
-        const classes = ["None", "Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
-        const gameFormats = ["", "Standard", "Wild"]
-        const tribe = ["", "Beast", "Demon", "Dragon", "Elemental", "Mech", "Murloc", "Pirate", "Totem"]
+        const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
+        const gameFormats = ["Standard", "Wild"]
 
-
-        let cards = this.state.cards.map(card => {
+        // Get dropdown of all cards
+        let cardsDropdown = this.state.cards.map(card => {
             if (card.name) {
                 return (
                     <option value={card.name} key={card.cardId}> {card.name} </option>
@@ -122,14 +86,14 @@ export default class DeckSearch extends React.Component {
             }
         })
 
+        // Get dropdown of all heroes
         let heroes = classes.map(hero => {
             return (
                 <option value={hero} key={hero}> {hero} </option>                
             )
         })        
 
-        cards = cards.slice(7, cards.length)
-
+        // Get dropdown of all archetypes
         let archetypes = this.state.decks.map(deck => {
             return deck.archetype
         })
@@ -137,37 +101,8 @@ export default class DeckSearch extends React.Component {
 
         return (
             <div>
-                <h3>Archetypes</h3>
-                <div className="form-group">
-                    <select className="form-control" id="heroes" onChange={(event) => this.getFilter('hero', event.target.value)}>
-                        {heroes}
-                    </select>
-                </div>
-                <div className="form-group" onChange={(event) => this.getFilter('archetype', event.target.value)}>
-                    <select className="form-control" id="archetypes">
-                        {cards}
-                    </select>
-                </div>
-                <hr/>
-                <h3>Sort by</h3>
-                <div className="form-group">
-                    <select className="form-control" id="sort" onChange={(event) => this.getFilter('sort', event.target.value)}>
-                        <option value='curve'>Mana Curve</option>
-                        <option value='cost'>Dust</option>
-                        <option value='upvotes'>Upvotes</option>
-                        <option value='date'>Date</option>                        
-                    </select>
-                </div>
-                <div className="form-group">
-                    <select className="form-control" id="sortType" onChange={(event) => this.getFilter('sortType', event.target.value)}>
-                        <option value='ascending'>Ascending</option>
-                        <option value='descending'>Descending</option>
-                    </select>
-                </div>
-                <button className='btn btn-primary'>Submit</button>
-                <div>
-                    {this.state.results ? <DeckSearchResults results={this.state.results} /> :  <div>asdfaf</div>}
-                </div>
+                <DeckSearchBanner decks={this.state.decks}/>
+                <DeckSearchRow matches={this.state.matches} getFilter={this.getFilter}/>
             </div>
         )
     }
