@@ -160,9 +160,15 @@ class App extends Component {
 
 		console.log(this.props)
 
-		if (this.props.match.params) {
+		if (this.props.match) {
 			this.setState({
 				hero: this.props.match.params.class
+			})
+		}
+
+		if (this.props.format) {
+			this.setState({
+				format: this.props.format
 			})
 		}
 		

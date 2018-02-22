@@ -32,6 +32,20 @@ class Home extends Component {
 
 	}
 
+	onSwipeMove = (position, event) => {
+		console.log(`Moved ${position.x} pixels horizontally`, event);
+		console.log(`Moved ${position.y} pixels vertically`, event);
+
+		if (position.x > 50) {
+			this.setState({isFiltersPaneOpen: true})
+		}
+
+		if (position.x < -50) {
+			console.log('filter open')
+			this.setState({isPaneOpen: true})
+		}
+	}
+
 	getFilter = (filterName, filterValue) => {
 		this.setState({
 			[filterName]: filterValue
@@ -59,7 +73,12 @@ class Home extends Component {
 
 		return (
 			<div>
-				<MediaQuery query='(max-device-width: 991px)'>
+				<Swipe
+					onSwipeStart={this.onSwipeStart}
+					onSwipeMove={this.onSwipeMove}
+					onSwipeEnd={this.onSwipeEnd}
+				>
+				<MediaQuery query='(max-device-width: 1099px)'>
 					<div className='deck-builder-container'>
 						<SlidingPane
 							isOpen={ this.state.isFiltersPaneOpen }
@@ -77,7 +96,7 @@ class Home extends Component {
 								<div className='search-bar-container'>
 									<Searchbar onSearch={this.getFilter}/>
 									<button className='single-view-deck-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>
-										Filters
+										Click, touch, or swipe right for filters
 									</button>
 								</div>
 								<CardList
@@ -110,7 +129,7 @@ class Home extends Component {
 						</div>
 					</div>
 				</MediaQuery>				
-				<MediaQuery query='(min-device-width: 992px)'>
+				<MediaQuery query='(min-device-width: 1100px)'>
 					<MediaQuery query='(max-device-width: 1449px)'>
 						<div className='deck-builder-container'>
 					
@@ -197,7 +216,7 @@ class Home extends Component {
 					</div>
 				</div>
 				</MediaQuery>
-				
+				</Swipe>
 			</div>
 	);
 	}
