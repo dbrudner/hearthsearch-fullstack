@@ -89,9 +89,12 @@ export default class DeckSearch extends React.Component {
     }
 
     renderTen = () => {
+
+        // console.log(this.state.matches.slice(0, this.state.renderCount))
+
         this.setState({
             renderCount: this.state.renderCount + 10,
-            renderMatches: this.state.matches.slice(0, this.state.renderMatches)
+            renderMatches: this.state.matches.slice(0, this.state.renderCount + 10)
         })
     }
 
