@@ -136,7 +136,7 @@ export default class DeckSearch extends React.Component {
 
         return (
             <div>
-                <DeckSearchBanner decks={this.state.decks}/>
+                <DeckSearchBanner getFilter={this.getFilter} decks={this.state.decks}/>
                 <DeckSearchRow matches={this.state.renderMatches} getFilter={this.getFilter}/>
             </div>
         )

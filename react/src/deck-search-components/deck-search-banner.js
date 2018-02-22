@@ -1,5 +1,7 @@
 import React from 'react'
 import {Popover} from 'react-bootstrap'
+import DeckSearchbar from './deck-searchbar'
+
 
 export default function DeckSearchBanner(props) {
 
@@ -21,6 +23,13 @@ export default function DeckSearchBanner(props) {
 
     return (
         <div className='panel deck-search-panel'>
+            
+            <div className='deck-search-hdr'>
+                Deck Search
+            </div>
+            <div className='text-center'>
+                <DeckSearchbar getFilter={props.getFilter} />
+            </div>
             <div className='deck-totals'>
                 <span className='cursor'>
                     Total Wild Decks: {totalWildDecks || 0}
@@ -28,9 +37,6 @@ export default function DeckSearchBanner(props) {
                 <span className='cursor left-mrg'>
                     Total Standard Decks: {totalStandardDecks}
                 </span>
-            </div>
-            <div className='deck-search-hdr'>
-                Deck Search
             </div>
         </div>
     )

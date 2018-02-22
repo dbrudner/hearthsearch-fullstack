@@ -22,6 +22,14 @@ html {
 	border-radius: 5px;
 }
 
+.deckbox-hero {
+	text-align: right
+}
+
+.deckbox-archetype {
+	text-align: center
+}
+
 .hearthpwn {
 	color: rgb(126, 108, 9)
 }
@@ -34,6 +42,7 @@ html {
 .deck-panel {
 	margin-right: 2%;
 	padding: 20px;
+	border: 1px solid rgb(182, 182, 182) !important;
 }
 
 .deck-box {
@@ -48,6 +57,7 @@ html {
 
 .deck-totals {
 	font-style: italic;
+	text-align: center;
 }
 
 .cursor {
@@ -59,7 +69,7 @@ html {
 }
 
 .deck-search-hdr {
-	font-size: 64px;
+	font-size: 36px;
 	text-align: center
 }
 
