@@ -140,7 +140,7 @@ export default class Deck extends Component {
                         </div>
                         <div>
                             {
-                                totalCards === 30 ? 
+                                totalCards > 0 ? 
                                 <Submit format={this.props.format} hero={this.props.hero} userId={this.state.userId} deck={this.props.deck} name='name' archetype='archetype' cost={1200} /> 
                                 : 
                                     <button disabled className='btn next-page-btn-fail hvr-fade animated fadeIn'><span className='submit-btn-text'>Deck Must Have 30 Cards</span></button>

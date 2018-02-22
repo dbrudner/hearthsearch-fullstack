@@ -39,17 +39,34 @@ export default class Submit extends React.Component {
             })
             .then(response => {
                 console.log('respose', response)
+
+                let arrayOfIds = []
+
                 response.data.cards.forEach(card => {
-                    const cardId = card._id
-                    axios.post('/api/card/update', {
-                        cardId: card,
-                        hero: this.props.hero,
-                        format: this.props.format
-                    })
+                    if (card.cardQuantity === 1) {
+                        arrayOfIds.push(card._id)
+                    }
+
+                    if (card.cardQuantity === 2) {
+                        arrayOfIds.push(card._id)
+                        arrayOfIds.push(card._id)                        
+                    }
                 })
+
+                axios.post('/api/card/update', {
+                    cards: arrayOfIds,
+                    hero: this.props.hero,
+                    format: this.props.format
+                })
+
+                
+            .then((res2) => {
+                console.log(res2)
                 // this.setState({
-                //     redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
-                // })
+                    //     redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
+                    // })
+            })
+            
             }).catch(error => {
                 console.log(error)
             });

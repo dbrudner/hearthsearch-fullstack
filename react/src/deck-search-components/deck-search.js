@@ -36,10 +36,10 @@ export default class DeckSearch extends React.Component {
         //     console.log(result)
         // })
 
-        axios.get('/api/decks/populate')
-        .then(result => {
-            console.log(result)
-        })
+        // axios.get('/api/decks/populate')
+        // .then(result => {
+        //     console.log(result)
+        // })
 
         // axios.get('/api/mongoose/import/cards')
         // .then(response => {
@@ -48,6 +48,14 @@ export default class DeckSearch extends React.Component {
         //     //     decks: response.data
         //     // })
         // })
+        axios.post('/api/card/update', {
+            format: 'wild',
+            hero: 'shaman',
+            cards: ['5a8b0aa8eabdf52aa479953d']
+        })
+        .then(result => {
+            console.log(result)
+        })
 
         // axios.post('/update/hearthpwn', {
         //     cardId: card,

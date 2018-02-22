@@ -513,150 +513,155 @@ module.exports = function(app, passport) {
     app.post('/api/card/update', (req, res) => {
 
         const heroQuery = `inclusions.${req.body.hero.toLowerCase()}`
+        const cards = req.body.cards
+        const format = req.body.format
+
+        // console.log(req.body)
+        console.log('format', format)
+        console.log('hero', heroQuery)
+        console.log('cards', cards)
 
 
-        if (req.body.format === 'wild') {
-
-            const heroQuery = `inclusionsWild.${req.body.hero.toLowerCase()}`
-
-            db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {heroQuery: 1}}).exec((err, result) => {
-                if (err) throw err;
-                console.log(result)
-            })
-
-            if (req.body.hero.toLowerCase() === 'druid') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.druid': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
+        cards.forEach(id => {
+            if (format === 'wild') {
+                // const heroQuery = `inclusionsWild.${req.body.hero.toLowerCase()}`
     
-            if (req.body.hero.toLowerCase() === 'hunter') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.hunter': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
+                // db.Card.findOneAndUpdate({ '_id': card.id}, {$inc: {heroQuery: 1}}).exec((err, result) => {
+                //     if (err) throw err;
+                //     console.log(result)
+                // })
     
-            if (req.body.hero.toLowerCase() === 'mage') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.mage': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'paladin') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.paladin': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'priest') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.priest': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'rogue') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.rogue': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'shaman') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.shaman': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'warlock') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.warlock': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'warrior') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsWild.warrior': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-        }
-
-        if (req.body.format === 'standard') {
-            if (req.body.hero.toLowerCase() === 'druid') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.druid': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'hunter') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.hunter': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'mage') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.mage': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'paladin') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.paladin': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'priest') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.priest': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'rogue') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.rogue': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'shaman') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.shaman': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'warlock') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.warlock': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-    
-            if (req.body.hero.toLowerCase() === 'warrior') {
-                db.Card.findOneAndUpdate({ '_id': req.body.cardId}, {$inc: {'inclusionsStandard.warrior': 1}}).exec((err, result) => {
-                    if (err) throw err;
-                    console.log(result)
-                })
-            }
-        }
-
+                if (req.body.hero.toLowerCase() === 'druid') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.druid': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
         
+                if (req.body.hero.toLowerCase() === 'hunter') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.hunter': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
         
-
+                if (req.body.hero.toLowerCase() === 'mage') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.mage': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
         
+                if (req.body.hero.toLowerCase() === 'paladin') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.paladin': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'priest') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.priest': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'rogue') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.rogue': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'shaman') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.shaman': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'warlock') {
+                    console.log(id)
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.warlock': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log('?')
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'warrior') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.warrior': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+            }
+    
+            if (format === 'standard') {
+                if (req.body.hero.toLowerCase() === 'druid') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.druid': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'hunter') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.hunter': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'mage') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.mage': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'paladin') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.paladin': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'priest') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.priest': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'rogue') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.rogue': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'shaman') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.shaman': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'warlock') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.warlock': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+        
+                if (req.body.hero.toLowerCase() === 'warrior') {
+                    db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.warrior': 1}}).exec((err, result) => {
+                        if (err) throw err;
+                        console.log(result)
+                    })
+                }
+            }
+        })
     })
 
     // Upvote an existing deck comment
