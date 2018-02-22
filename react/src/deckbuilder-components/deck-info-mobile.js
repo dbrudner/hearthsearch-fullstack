@@ -38,7 +38,7 @@ export default function DeckInfoMobile(props) {
                     {props.format}
                 </span>
             </div >
-            {cardsTotal()}
+            {props.deck ? cardsTotal() : null}
         </div>
     )
 

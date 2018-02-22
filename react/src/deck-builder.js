@@ -166,9 +166,12 @@ class App extends Component {
 			})
 		}
 
-		this.setState({
-			deck: this.props.deck
-		})
+		if (this.props.deck) {
+			this.setState({
+				deck: this.props.deck
+			})
+		}
+		
 
 		console.log(this.props.imported)
 		
@@ -238,6 +241,10 @@ class App extends Component {
 				<WildOrStandard getFormat={this.getFormat}/>
 			)
 		}	
+
+		if (this.state.cards) {
+
+		
 
 		return (
 			<div className='deck-bldr-cntr'>
@@ -321,6 +328,7 @@ class App extends Component {
 																hero={this.props.match ? this.props.match.params.class : this.state.hero} 
 																card={this.state.card}
 																removeCard={this.removeCard}
+																quantity={this.state.quantity}
 															/>
 														</div>
 													</SlidingPane>
@@ -410,7 +418,8 @@ class App extends Component {
 													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
 													card={this.state.card}
 													removeCard={this.removeCard}
-													fullScreen='full-screen'											
+													fullScreen='full-screen'
+													quantity={this.state.quantity}										
 												/>
 											</div>
 										</div>
@@ -481,7 +490,8 @@ class App extends Component {
 						</StickyContainer>
 					</Swipe>
 				</div>
-	);
+			);
+		}
 	}
 }
 

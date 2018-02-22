@@ -161,6 +161,10 @@ export default class Deck extends Component {
             }, 0)
         }
 
+        this.setState({
+            quantity: getQuantity(this.props.deck)
+        })
+
         axios.get('/test')
         .then((response) => {
             this.setState({
@@ -174,10 +178,9 @@ export default class Deck extends Component {
 
     render() {
 
-        
+        const totalCards = this.state.quantity
 
-        const totalCards = this.state.totalCards
-
+        console.log(totalCards)
 
         let sorted = _.orderBy(this.props.deck, 'mana', 'asc')
 
