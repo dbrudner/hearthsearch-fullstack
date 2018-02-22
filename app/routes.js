@@ -484,6 +484,7 @@ module.exports = function(app, passport) {
 
                 })
             })
+            res.end()
         })
     })
 
@@ -515,12 +516,6 @@ module.exports = function(app, passport) {
         const heroQuery = `inclusions.${req.body.hero.toLowerCase()}`
         const cards = req.body.cards
         const format = req.body.format
-
-        // console.log(req.body)
-        console.log('format', format)
-        console.log('hero', heroQuery)
-        console.log('cards', cards)
-
 
         cards.forEach(id => {
             if (format === 'wild') {
