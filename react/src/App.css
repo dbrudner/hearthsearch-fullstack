@@ -22,6 +22,25 @@ html {
 	border-radius: 5px;
 }
 
+.hearthpwn {
+	color: rgb(126, 108, 9)
+}
+
+.deck-box-name {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.deck-panel {
+	margin-right: 2%;
+	padding: 20px;
+}
+
+.deck-box {
+	display: flex;
+	justify-content: space-between;
+}
+
 .deck-search-fltrs-panel {
 	margin: 2%;
 	margin-left: 7%;

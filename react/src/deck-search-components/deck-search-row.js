@@ -11,7 +11,7 @@ export default function DeckSearchRow(props) {
                 <DeckSearchFilters getFilter={props.getFilter}/>
             </div>
             <div className='col-lg-9'>
-                {/* <DeckSearchResults matches={props.matches}/> */}
+                <DeckSearchResults matches={props.matches}/>
             </div>
         </div>
     )

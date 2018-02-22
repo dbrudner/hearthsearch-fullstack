@@ -22,7 +22,6 @@ export default function DeckSearchBanner(props) {
     return (
         <div className='panel deck-search-panel'>
             <div className='deck-totals'>
-            
                 <span className='cursor'>
                     Total Wild Decks: {totalWildDecks || 0}
                 </span>

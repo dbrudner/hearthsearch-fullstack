@@ -17,6 +17,7 @@ export default class DeckSearch extends React.Component {
             decks: [],
             cards: [],
             matches: [],
+            renderMatches: [],
             renderCount: 10
         }
     }
@@ -37,7 +38,16 @@ export default class DeckSearch extends React.Component {
             this.setState({
                 decks: result.data
             })
+        }).then (() => {
+            this.renderSearchResults()
         })
+
+        window.addEventListener('scroll', this.onScroll, false);
+
+    }
+
+    componentWillUnmount() {
+		window.removeEventListener('scroll', this.onScroll, false);
     }
 
     renderSearchResults= () => {
@@ -50,26 +60,48 @@ export default class DeckSearch extends React.Component {
         //     })
         // }
 
-        if (this.state.archetype) {
-            decks = decks.filter(deck => {
-                return deck.archetype === this.state.archetype
-            })
-        }
+        // if (this.state.archetype) {
+        //     decks = decks.filter(deck => {
+        //         return deck.archetype === this.state.archetype
+        //     })
+        // }
 
-        if (this.state.sort) {
-            decks = _.sortBy(decks, [this.state.sort],['asc'])
-        }
+        // if (this.state.sort) {
+        //     decks = _.sortBy(decks, [this.state.sort],['asc'])
+        // }
 
-        if (this.state.sortType === 'descending') {
-            decks = _.sortBy(decks, ['cost'],['asc']).reverse()
-        }
+        // if (this.state.sortType === 'descending') {
+        //     decks = _.sortBy(decks, ['cost'],['asc']).reverse()
+        // }
 
 
         this.setState({
             matches: decks
         })
 
+        this.setState({
+            renderMatches: this.state.matches.slice(0, this.state.renderCount)
+        })
+
+        console.log(this.state.renderCount)
+
+        console.log(this.state.renderMatches)
     }
+
+    renderTen = () => {
+        this.setState({
+            renderCount: this.state.renderCount + 10,
+            renderMatches: this.state.matches.slice(0, this.state.renderMatches)
+        })
+    }
+
+    onScroll = () => {
+		if (
+		  (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)
+		) {
+		  this.renderTen();
+		}
+	}
 
 
 
@@ -102,7 +134,7 @@ export default class DeckSearch extends React.Component {
         return (
             <div>
                 <DeckSearchBanner decks={this.state.decks}/>
-                <DeckSearchRow matches={this.state.matches} getFilter={this.getFilter}/>
+                <DeckSearchRow matches={this.state.renderMatches} getFilter={this.getFilter}/>
             </div>
         )
     }
