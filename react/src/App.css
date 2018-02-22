@@ -931,6 +931,15 @@ label {
 	opacity: 0 !important;
 }
 
+.yflow {
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.your-deck-container {
+	margin-bottom: 250px;
+}
+
 .banner-description {
 	font-size: 12px;
 }

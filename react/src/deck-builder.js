@@ -420,7 +420,7 @@ class App extends Component {
 										/>
 									</div>
 									<div className='col-lg-2'>
-										<div className='affix'>
+										<div className='affix yflow'>
 											<div className='your-deck-container'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
