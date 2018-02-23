@@ -1,6 +1,8 @@
 import React from 'react'
 
+
 export default function CardPopularity(props) {
+
 
     const hero = props.hero.toLowerCase()
     const allStandardDecks = props.decksInfo.standard
@@ -60,7 +62,15 @@ export default function CardPopularity(props) {
         if (props.hero !== 'Neutral') {
             return (
                 <div>
-                    Used in {percent} of all Standard <span className={props.hero.toLowerCase()}>{props.hero}</span> decks.
+                    {props.wideCards ? 
+                        <div className={props.hero.toLowerCase()}>
+                            Standard: {percent}
+                        </div>
+                        :
+                        <div>
+                            Used in {percent} of all Standard <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
+                        </div>
+                    }
                 </div>
             )
         }
@@ -68,8 +78,15 @@ export default function CardPopularity(props) {
         if (props.hero === 'Neutral') {
             return (
                 <div>
-                    Used in {percent} of all Standard decks.
-                    
+                    {props.wideCards ? 
+                        <div>
+                            Standard: {percent}
+                        </div>
+                        :
+                        <div>
+                            Used in {percent} of all Standard decks.                            
+                        </div>
+                    }
                 </div>
             )
         }
@@ -124,34 +141,60 @@ export default function CardPopularity(props) {
 
         if (props.hero !== 'Neutral') {
             return (
+
                     <div>
-                        Used in {percent} of all Wild <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
+                        {props.wideCards ? 
+                            <div className={props.hero.toLowerCase()}>
+                                Wild: {percent}
+                            </div>
+                            :
+                            <div>
+                                Used in {percent} of all Wild <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
+                            </div>
+                        }
                     </div>
+
+                    
             )
         }
 
         if (props.hero === 'Neutral') {
             return (
                     <div>
-                        Used in {percent} of all Wild decks.
+                        {props.wideCards ? 
+                            <div>
+                                Wild: {percent}
+                            </div>
+                            :
+                            <div>
+                                Used in {percent} of all Wild decks.                                
+                            </div>
+                        }
                     </div>
             )
         }
     }
 
-    return (
-        <div className='card-popularity'>
-            {
-                <div>
-                        <div>
-                            {standardUsage()}
-                        </div>
-                        <div>
-                            {wildUsage()}
-                        </div>
-                </div>
-                
-                }
-        </div>
-    )
+    if (props.decksInfo) {
+        return (
+            <div className='card-popularity'>
+                {
+                    <div>
+                            <div>
+                                {standardUsage()}
+                            </div>
+                            <div>
+                                {wildUsage()}
+                            </div>
+                    </div>
+                    
+                    }
+            </div>
+        )
+    } else {
+        return (
+            <div/>
+        )
+    }
+    
 }

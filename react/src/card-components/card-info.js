@@ -68,6 +68,61 @@ export default class CardInfo extends Component{
 			standard: this.props.inclusionsStandard
 		}
 
+		if (this.props.wideCards) {
+			if (this.props) {
+				// console.log('props', this.props)				
+			}
+
+			return (
+				<div className=''>
+					<div className='card-list-header'>
+						<div>
+							<div>
+								<span><CardClass hero={this.props.class}/></span>
+								<span className='cardset'> - {this.props.cardset}</span>
+							</div>
+							<div className='some-marg'>
+								
+							</div>
+							<div>
+								<CardLightForge lightForge={this.props.lightForgeScore}/>
+							</div>								
+						</div>
+						<div>
+							<div className='add-cntr'>
+								<AddToDeck _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
+							</div>
+						</div>
+					</div>
+					<div>
+						<CardQuantity name={this.props.name} deck={this.props.deck} />
+					</div>
+					<div>
+						{this.props.decksInfo ? <CardPopularity
+							wideCards
+							decksInfo={this.props.decksInfo} 
+							hero={this.props.class} 
+							cardInclusions={cardInclusions}
+							rarity={this.props.rarity}
+							name={this.props.name}
+						/>
+						:
+						<div/>
+					}
+						
+					</div>
+						<CardImage image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
+					<hr/>
+					<div className='bottom-card-container'>
+						{/* <CardCardset cardset={this.props.cardset} /> */}
+						<CardRarity hero={this.props.class} rarity={this.props.rarity} type={this.props.type} cardset={this.props.cardset} />
+						<CardFlavor flavor={this.props.flavor} />											
+						{ (this.props.type === 'Minion') ? (<CardSoundBoard cardId={this.props.cardId} name={this.props.name} dbfId={this.props.dbfId}/>) : null }
+					</div>
+				</div>
+			)
+		}
+
 		if (this.props.buildMode) {
 			if (this.props) {
 				// console.log('props', this.props)				
@@ -98,13 +153,17 @@ export default class CardInfo extends Component{
 						<CardQuantity name={this.props.name} deck={this.props.deck} />
 					</div>
 					<div>
-						<CardPopularity 
+						{this.props.decksInfo ? <CardPopularity 
 							decksInfo={this.props.decksInfo} 
 							hero={this.props.class} 
 							cardInclusions={cardInclusions}
 							rarity={this.props.rarity}
 							name={this.props.name}
 						/>
+						:
+						<div/>
+					}
+						
 					</div>
 						<CardImage image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode={this.props.buildMode} getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 					<hr/>
@@ -134,15 +193,19 @@ export default class CardInfo extends Component{
 						</div>
 					</div>
 				</div>
-				<div>					
-					<CardPopularity 
-						decksInfo={this.props.decksInfo} 
-						hero={this.props.class} 
-						cardInclusions={cardInclusions}
-						rarity={this.props.rarity}
-						name={this.props.name}
-					/>
-				</div>
+				<div>
+						{this.props.decksInfo ? <CardPopularity 
+							decksInfo={this.props.decksInfo} 
+							hero={this.props.class} 
+							cardInclusions={cardInclusions}
+							rarity={this.props.rarity}
+							name={this.props.name}
+						/>
+						:
+						<div/>
+					}
+						
+					</div>
 				<div className='text-center'>
 					{/* <CardCardset cardset={this.props.cardset} /> */}
 				</div>

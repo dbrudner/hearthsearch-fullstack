@@ -565,6 +565,16 @@ select {
 	margin-top: -50px;
 }
 
+.little-list {
+	background-color: white;
+	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	width: 240px;
+	overflow-x: hidden;
+	padding-top: 40px;
+}
+
 .your-deck-container {
 	background-color: white;
 	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
