@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {Popover, OverlayTrigger} from 'react-bootstrap'
+
 
 export default function DeckSearchResults(props) {
 
@@ -19,7 +21,7 @@ export default function DeckSearchResults(props) {
                             <div className='deck-box-name'>
                                 <Link to={`deck/${result._id}`}>{result.name}</Link>
                             </div>
-                            <div>
+                            <div className='deck-list-src'>
                                 {result.source === 'HearthPwn' ?
                                     <div>
                                         <strong>
@@ -34,6 +36,12 @@ export default function DeckSearchResults(props) {
                                     <span className='hearthtato'> HearthTato</span>
                                 }
 
+                            </div>
+                            <div className='quick-peek'>
+                                <a href="#" className="btn btn-info hvr-fade">
+                                    <span className="glyphicon glyphicon-folder-open"></span>
+                                    <span className='smlleftmrg'>Expand Deck List</span>
+                                </a>
                             </div>
                         </div>
                         <div>
