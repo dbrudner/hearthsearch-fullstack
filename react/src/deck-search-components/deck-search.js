@@ -3,7 +3,6 @@ import axios from 'axios'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
 
-import { Popover } from 'react-bootstrap' 
 
 import Searchbar from '../searchbar'
 import DeckSearchResults from './deck-search-results'
@@ -124,6 +123,8 @@ export default class DeckSearch extends React.Component {
         const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
         const gameFormats = ["Standard", "Wild"]
 
+        
+
         // Get dropdown of all cards
         let cardsDropdown = this.state.cards.map(card => {
             if (card.name) {
@@ -147,11 +148,13 @@ export default class DeckSearch extends React.Component {
 
         const totalResults = this.state.matches.length
 
-        return (
-            <div>
-                <DeckSearchBanner totalResults={totalResults} getFilter={this.getFilter} decks={this.state.decks}/>
-                <DeckSearchRow archetypes={this.state.archetypes} matches={this.state.renderMatches} getFilter={this.getFilter}/>
-            </div>
-        )
+        if (this.state.decks) {
+            return (
+                <div>
+                    <DeckSearchRow totalResults={totalResults} getFilter={this.getFilter} decks={this.state.decks} archetypes={this.state.archetypes} matches={this.state.renderMatches} getFilter={this.getFilter}/>
+                </div>
+            )
+        }
+        
     }
 }

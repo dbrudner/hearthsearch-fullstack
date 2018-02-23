@@ -92,7 +92,7 @@ export default function DeckSearchBanner(props) {
     decksByClass()
 
     return (
-        <div className='panel deck-search-panel'>
+        <div className='deck-search-panel'>
             
             <div className='deck-search-hdr'>
                 Deck Search
