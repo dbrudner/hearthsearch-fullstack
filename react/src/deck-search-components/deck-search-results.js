@@ -1,21 +1,76 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Popover, OverlayTrigger} from 'react-bootstrap'
-import DeckSearchDeckList from './deck-search-deck-list'
+import DeckSearchCardTile from './deck-search-card-tile'
 
 export default function DeckSearchResults(props) {
 
+   
+    const DeckList = deck => {
+
+        return deck.map(cardObj => {
+            const card = cardObj._id
+            const quantity = cardObj.cardQuantity
+
+            var source = `https://art.hearthstonejson.com/v1/tiles/${card.cardId}.png`
+        
+            const mana = () => {
+        
+                if (!card.cost) {
+                return <div className='card-list-mana'>0</div>                        
+                }
+        
+        
+                if (card.cost === 0) {
+                    return <div className='card-list-mana'>0</div>                        
+                }
+        
+                if (card.cost >= 10) {
+                    return <div className='card-list-mana-10'>{card.cost}</div>                        
+                }
+        
+                if (card.cost) {
+                    return <div name={card.name} className='card-list-mana'>{card.cost}</div>
+                }
+                
+            }
+        
+            return (
+                <div className='' name={card.card} className='tile-container'>
+                    <div>
+                        <span  className='deck-list-card-name'>
+                        {card.name} {(quantity === 2) ? (<span className=''>x{quantity}</span>) : null}
+                        </span>
+                    <div className='card-tile center-block' name={card.card}>
+                        <div className='gray-box' name={card.card} >
+                            {mana()}
+                        </div>
+                        <div className='tile-img-cntr' name={card.card} >
+                            <img name={card.name} alt={`${quantity} ${card.name}`} className='card-tile' src={source} />
+                        </div>
+                    </div> 
+                    </div>
+                </div>
+            )
+        })
+    
+
+    }
 
     const renderResults = (results) => {
 
+        console.log(results)
+        
         return results.map(result => {
             let hero = result.hero
             hero = hero.charAt(0).toUpperCase() + hero.slice(1)
 
             const deckList = () => {
                 return (
-                    <Popover id="popover-positioned-left">
-                        <DeckSearchDeckList deck={result} />
+                    <Popover class='deck-search-deck-list' id="popover-positioned-left">
+                        <div>
+                        {DeckList(result.cards)}
+                        </div>
                     </Popover>
                 )
             }

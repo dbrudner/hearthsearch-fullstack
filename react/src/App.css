@@ -664,6 +664,11 @@ select {
 	/* overflow: hidden */
 }
 
+.deck-card-tile {
+	width: 150px;
+	position: absolute;
+}
+
 .builder-list {
 	height: 100vh;
 	overflow-y: scroll;
@@ -831,6 +836,10 @@ select {
 .card-list-header {
 	display: flex;
 	justify-content: space-between;	
+}
+
+.popover-content {
+	width: 252px;
 }
 
 .card-popularity {
