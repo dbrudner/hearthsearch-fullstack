@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {Popover, OverlayTrigger} from 'react-bootstrap'
 import DeckSearchCardTile from './deck-search-card-tile'
+import _ from 'lodash'
 
 export default function DeckSearchResults(props) {
 
@@ -15,7 +16,11 @@ export default function DeckSearchResults(props) {
 
     const DeckList = deck => {
 
-        return deck.map(cardObj => {
+        let sorted = _.orderBy(deck, '_id.cost', 'asc')
+
+        console.log(sorted)
+
+        return sorted.map(cardObj => {
             const card = cardObj._id
             const quantity = cardObj.cardQuantity
 
@@ -65,14 +70,16 @@ export default function DeckSearchResults(props) {
     }
 
     const renderResults = (results) => {
+        
 
-        console.log(results)
         
         return results.map(result => {
+            
             let hero = result.hero
             hero = hero.charAt(0).toUpperCase() + hero.slice(1)
 
             const deckList = () => {
+
                 return (
                     <Popover class='deck-search-deck-list' id="popover-positioned-left">
                         <div>

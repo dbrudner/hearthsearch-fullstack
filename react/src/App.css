@@ -888,6 +888,7 @@ select {
 
 .popover-content {
 	width: 188px;
+	padding-bottom: 15px;
 }
 
 .card-popularity {
