@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 export default function DeckSearchResults(props) {
 
-    console.log(props.matches)
 
     const renderResults = (results) => {
 

@@ -22,13 +22,12 @@ export default class DeckSearch extends React.Component {
         }
     }
 
-
     getFilter = (filterName, filterValue) => {
-        console.log(this.state)
 		this.setState({
 			[filterName]: filterValue
+        }, () => {
+            this.renderSearchResults()            
         })
-        this.renderSearchResults()
 	}
 
     componentDidMount = () => {
@@ -51,8 +50,15 @@ export default class DeckSearch extends React.Component {
     }
 
     renderSearchResults= () => {
-        console.log(this.state.renderCount)
         let decks = this.state.decks
+
+        if (this.state.term) {
+            decks = decks.filter(deck => {
+                return deck.name.toLowerCase().includes(this.state.term.toLowerCase())
+            })
+        }
+
+
 
         // if (this.state.hero) {
         //     decks = decks.filter(deck => {
@@ -80,12 +86,8 @@ export default class DeckSearch extends React.Component {
         })
 
         this.setState({
-            renderMatches: this.state.matches.slice(0, this.state.renderCount)
+            renderMatches: decks.slice(0, this.state.renderCount)
         })
-
-        console.log(this.state.renderCount)
-
-        console.log(this.state.renderMatches)
     }
 
     renderTen = () => {

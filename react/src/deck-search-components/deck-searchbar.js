@@ -15,9 +15,10 @@ export default class DeckSearchbar extends React.Component {
         this.setState({
             term
         })
+
     }
 
-    onSubmit = (event) => {
+    handleSubmit = (event) => {
         const filterName = 'term'
         const term = this.state.term
 
