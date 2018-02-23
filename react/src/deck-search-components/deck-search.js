@@ -73,28 +73,6 @@ export default class DeckSearch extends React.Component {
             })
         }
 
-
-        // if (this.state.hero) {
-        //     decks = decks.filter(deck => {
-        //         return deck.playerClass === this.state.hero
-        //     })
-        // }
-
-        // if (this.state.archetype) {
-        //     decks = decks.filter(deck => {
-        //         return deck.archetype === this.state.archetype
-        //     })
-        // }
-
-        // if (this.state.sort) {
-        //     decks = _.sortBy(decks, [this.state.sort],['asc'])
-        // }
-
-        // if (this.state.sortType === 'descending') {
-        //     decks = _.sortBy(decks, ['cost'],['asc']).reverse()
-        // }
-
-
         this.setState({
             matches: decks
         })
