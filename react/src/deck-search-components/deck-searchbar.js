@@ -31,7 +31,9 @@ export default class DeckSearchbar extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div className='form-group'>
                     <input onChange={this.onChange} type='text' name='term'/>
-                    <button type='submit' class='btn submit-btn'>Search</button>
+                    <button type='submit' className='btn submit-btn hvr-fade'>
+                        <i className="fas fa-search"></i>
+                    </button>
                 </div>
             </form>
         )

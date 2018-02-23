@@ -73,6 +73,11 @@ html {
 	text-align: center
 }
 
+.total-res {
+	font-style: italic;
+	margin-top: 5px;
+}
+
 .navbar {
 	width: 100%
 }

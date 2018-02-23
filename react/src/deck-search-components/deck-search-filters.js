@@ -15,23 +15,13 @@ export default function DeckSearchFilters(props) {
         const format = ['Standard', 'Wild']
         
         return (
-            <div className=''>
-                <div className='row'>
-                    <h4 className='text-center f-hdr-margin'>Sort By</h4>
-                    <div className='col-sm-12'>
-                        <DropDown filterName='Sort By' filter='nameSort' onChange={getFilter}  options={sorting}/>
-                    </div>
-
+            <div className='row'>
+                <div className='col-sm-12 '>
+                    <h4 className='text-center filters-container-header'>Filters</h4>
+                    <DropDown filterName='Class' filter='hero' onChange={getFilter}  options={classes}/>
                 </div>
-                <hr/>
-                <div className='row'>
-                    <div className='col-sm-12 '>
-                        <h4 className='text-center filters-container-header'>Filters</h4>
-                        <DropDown filterName='Class' filter='hero' onChange={getFilter}  options={classes}/>
-                    </div>
-                    <div className='col-sm-12 '>
-                        <DropDown filterName='Format' filter='format' onChange={getFilter}  options={format}/>
-                    </div>
+                <div className='col-sm-12 '>
+                    <DropDown filterName='Format' filter='format' onChange={getFilter}  options={format}/>
                 </div>
             </div>
         )

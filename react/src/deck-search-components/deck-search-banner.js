@@ -38,6 +38,9 @@ export default function DeckSearchBanner(props) {
                     Total Standard Decks: {totalStandardDecks}
                 </span>
             </div>
+            <div className='text-center total-res'>
+                Total Results: {props.totalResults}
+            </div>
         </div>
     )
 }

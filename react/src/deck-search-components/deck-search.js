@@ -50,6 +50,9 @@ export default class DeckSearch extends React.Component {
     }
 
     renderSearchResults= () => {
+
+        console.log(this.state)
+
         let decks = this.state.decks
 
         if (this.state.term) {
@@ -58,6 +61,17 @@ export default class DeckSearch extends React.Component {
             })
         }
 
+        if (this.state.hero) {
+            decks = decks.filter(deck => {
+                return deck.hero === this.state.hero.toLowerCase()
+            })
+        }
+
+        if (this.state.format) {
+            decks = decks.filter(deck => {
+                return deck.format === this.state.format.toLowerCase()
+            })
+        }
 
 
         // if (this.state.hero) {
@@ -135,10 +149,11 @@ export default class DeckSearch extends React.Component {
             return deck.archetype
         })
 
+        const totalResults = this.state.matches.length
 
         return (
             <div>
-                <DeckSearchBanner getFilter={this.getFilter} decks={this.state.decks}/>
+                <DeckSearchBanner totalResults={totalResults} getFilter={this.getFilter} decks={this.state.decks}/>
                 <DeckSearchRow matches={this.state.renderMatches} getFilter={this.getFilter}/>
             </div>
         )
