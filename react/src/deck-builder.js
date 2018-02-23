@@ -272,32 +272,30 @@ class App extends Component {
 				>
 				<StickyContainer>
 				<div className='sticky-bar'>
-				<Sticky>
-				{
-					({
-					style,
-		
-					isSticky,
-					wasSticky,
-					distanceFromTop=80,
-					distanceFromBottom=80,
-					calculatedHeight
-					}) => {
-					return (
-						<div style={style} className='sticky-bar'>
-							<DeckInfoMobile hero={this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
-						</div>
-					)
+					<Sticky>
+					{
+						({
+						style,
+			
+						isSticky,
+						wasSticky,
+						distanceFromTop=80,
+						distanceFromBottom=80,
+						calculatedHeight
+						}) => {
+						return (
+							<div style={style} className='sticky-bar'>
+								<DeckInfoMobile hero={this.state.hero} deck={this.state.deck} format={this.props.format || this.state.format}/>
+							</div>
+						)
+						}
 					}
-				}
-				</Sticky>
+					</Sticky>
 				</div>
-				<MediaQuery query='(max-device-width: 1024px)'>
-				</MediaQuery>
 					<div className='deck-builder-container'>
 							<div className='row'>
-								<MediaQuery query='(min-device-width: 1400px)'>
-									<div className='col-lg-2'>
+								<MediaQuery query='(min-device-width: 1100px)'>
+									<div className='col-xs-2'>
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</MediaQuery>
@@ -312,34 +310,11 @@ class App extends Component {
 										<FiltersSlide imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</SlidingPane>
-								<MediaQuery query='(min-device-width: 1400px)'>
+								<MediaQuery query='(min-device-width: 1100px)'>
 									<MediaQuery query='(max-device-width: 1700px)'>		
-										<div className='col-lg-9'>
+										<div className='col-xs-7'>
 											<div className='search-bar-container'>
-													<Searchbar onSearch={this.getFilter}/>
-													<button className='single-view-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck
-													</button>
-												<div>
-													<SlidingPane
-														isOpen={ this.state.isPaneOpen }
-														width='300px'
-														onRequestClose={ () => {
-															this.setState({ isPaneOpen: false });
-														}}>
-														<div className='deck-builder-list-container'>
-															<div className='filters-block'>
-															</div>
-															<DeckBuilderList
-																format={this.props.format || this.state.format} 
-																deck={this.state.deck} 
-																hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-																card={this.state.card}
-																removeCard={this.removeCard}
-																quantity={this.state.quantity}
-															/>
-														</div>
-													</SlidingPane>
-												</div>
+												<Searchbar onSearch={this.getFilter}/>
 											</div>
 											<CardList
 												deck={this.state.deck} 
@@ -369,12 +344,17 @@ class App extends Component {
 												buildMode={true}        
 											/>
 										</div>
-										<div className='col-lg-1'>
-											<button className='long-deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>
-												<div className='long-btn-text text-left'>
-													View~Cards
-												</div>
-											</button>
+										<div className='col-xs-3'>
+											<div className='your-deck-container'>
+												<DeckBuilderList
+													format={this.props.format || this.state.format} 
+													deck={this.state.deck} 
+													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+													card={this.state.card}
+													removeCard={this.removeCard}
+													quantity={this.state.quantity}
+												/>
+											</div>
 										</div>
 									</MediaQuery>
 								</MediaQuery>
@@ -385,7 +365,6 @@ class App extends Component {
 											<MediaQuery query='(max-device-width: 1400px)'>
 												<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
 											</MediaQuery>
-											
 										</div>
 										<CardList
 											format={this.state.format}									
@@ -434,11 +413,11 @@ class App extends Component {
 									</div>
 								</MediaQuery>	
 								
-								<MediaQuery query='(max-device-width: 1400px)'>							
+								<MediaQuery query='(max-device-width: 1059px)'>							
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
 												<div className='pane-btns-container'>
-													<MediaQuery query='(max-device-width: 1400px)'>
+													<MediaQuery query='(max-device-width: 10px)'>
 														<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters</button>
 													</MediaQuery>									
 													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck</button>

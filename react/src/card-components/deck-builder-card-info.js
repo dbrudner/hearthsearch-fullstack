@@ -63,9 +63,9 @@ export default class CardInfo extends Component{
 						</div>
 					</div>
 					<div>
-						<div>
+						<span>
 							<CardLightForge lightForge={this.props.lightForgeScore}/>
-						</div>
+						</span>
 					</div>
 				</div>
 				<div>
@@ -82,7 +82,7 @@ export default class CardInfo extends Component{
                         <div/>
 					}
                 </div>
-					<CardImage image={this.props.image} artist={this.props.artist}/>
+                    <CardImage noArtist image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 			</div>
 		)
 	}	
