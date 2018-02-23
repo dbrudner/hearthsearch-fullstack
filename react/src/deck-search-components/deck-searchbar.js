@@ -19,6 +19,7 @@ export default class DeckSearchbar extends React.Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault()
         const filterName = 'term'
         const term = this.state.term
 
@@ -27,10 +28,12 @@ export default class DeckSearchbar extends React.Component {
 
     render() {
         return (
-            <div className='form-group'>
-                <input onChange={this.onChange} type='text' name='term'/>
-                <button onClick={this.handleSubmit} type='submit' class='btn submit-btn'>Search</button>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <div className='form-group'>
+                    <input onChange={this.onChange} type='text' name='term'/>
+                    <button type='submit' class='btn submit-btn'>Search</button>
+                </div>
+            </form>
         )
     }
 }
