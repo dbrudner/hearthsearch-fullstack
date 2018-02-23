@@ -882,13 +882,32 @@ select {
 	justify-content: space-between;	
 }
 
+.popover-cardimg {
+	width: 160px;
+}
+
+.hollow-box {
+	width: 160px;
+	height: 242.34px;
+}
+
 .btm-mrg {
 	margin-bottom: 20px;
 }
 
+.deckstring-btn {
+	border-radius: 5px;
+	background-color: rgba(161, 33, 33, 0.774);
+	width: 100%;
+	margin-top: 15px;
+	cursor: pointer;
+	color: white;
+	border: 1px solid rgb(211, 211, 211);
+}
+
 .popover-content {
 	width: 188px;
-	padding-bottom: 15px;
+	/* padding-bottom: 15px; */
 }
 
 .card-popularity {

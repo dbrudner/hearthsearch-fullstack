@@ -3,16 +3,30 @@ import { Link } from 'react-router-dom'
 import {Popover, OverlayTrigger} from 'react-bootstrap'
 import DeckSearchCardTile from './deck-search-card-tile'
 import _ from 'lodash'
+import CardCardset from '../card-components/card-cardset'
+import CardPopularity from '../card-components/card-popularity'
 
 export default function DeckSearchResults(props) {
 
-    const cardPopover = card => {
+    const cardInfoPopover = card => {
+        console.log(card)
+
+
+
         return (
-            <div>
-                card'
-            </div>
+            <Popover>
+                <div>
+                    <div className='hollow-box'>
+                        <img className='popover-cardimg' src={card.img} />
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </Popover>
         )
     }
+    
 
     const DeckList = deck => {
 
@@ -48,20 +62,24 @@ export default function DeckSearchResults(props) {
             }
         
             return (
-                <div className='' name={card.card} className='deck-list-tile-container'>
-                    <div>
-                        <span  className='deck-list-cn'>
-                        {card.name} {(quantity === 2) ? (<span className=''>x{quantity}</span>) : null}
-                        </span>
-                    <div className='deck-card-tile center-block' name={card.card}>
-                        <div className='deck-gray-box' name={card.card} >
-                            {mana()}
+                <div key={card.cardId}> 
+                    <OverlayTrigger trigger='click' placement='right' overlay={cardInfoPopover(card)}>
+                        <div className='' name={card.card} className='deck-list-tile-container'>
+                            <div>
+                                <span  className='deck-list-cn'>
+                                {card.name} {(quantity === 2) ? (<span className=''>x{quantity}</span>) : null}
+                                </span>
+                            <div className='deck-card-tile center-block' name={card.card}>
+                                <div className='deck-gray-box' name={card.card} >
+                                    {mana()}
+                                </div>
+                                <div className='tile-img-cntr' name={card.card} >
+                                    <img name={card.name} alt={`${quantity} ${card.name}`} className='deck-card-tile' src={source} />
+                                </div>
+                            </div> 
+                            </div>
                         </div>
-                        <div className='tile-img-cntr' name={card.card} >
-                            <img name={card.name} alt={`${quantity} ${card.name}`} className='deck-card-tile' src={source} />
-                        </div>
-                    </div> 
-                    </div>
+                    </OverlayTrigger>
                 </div>
             )
         })
@@ -81,9 +99,13 @@ export default function DeckSearchResults(props) {
             const deckList = () => {
 
                 return (
-                    <Popover class='deck-search-deck-list' id="popover-positioned-left">
+                    <Popover className='deck-search-deck-list' id="popover-positioned-left">
                         <div>
-                        {DeckList(result.cards)}
+                            {DeckList(result.cards)}
+                            <div className="btn deckstring-btn">
+                                <span className="glyphicon glyphicon-share"></span> 
+                                <span> Export </span>
+                            </div>
                         </div>
                     </Popover>
                 )
