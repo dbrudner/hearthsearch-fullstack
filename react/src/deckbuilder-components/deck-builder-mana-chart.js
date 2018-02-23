@@ -87,7 +87,7 @@ export default function DeckManaChart(props) {
                     </div>
                     <BarChart
                         colorBars
-                        margin={{top: 10, right: 10, bottom: 0, left: 10}}
+                        margin={{top: 0, right: 10, bottom: 0, left: 0}}
                         // barWidth={20}
                         width={167}
                         height={80}
@@ -106,9 +106,9 @@ export default function DeckManaChart(props) {
                             {x: 10, y: tenMana.length + tenManaPlus.length},
                         ]}
                     />
-                    <div className='x-axis'>
+                    {/* <div className='x-axis'>
                         0 1 2 3 4 5 6 7 8 9 <span className='mana-10-chart'>10</span>
-                    </div>
+                    </div> */}
                 </div>
             )   
     

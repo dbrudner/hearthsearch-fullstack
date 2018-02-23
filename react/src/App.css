@@ -347,7 +347,13 @@ hr {
 }
 
 .curve-panel-header {
-	text-align: center
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-left: -23px;
+	margin-bottom: 15px;
+	background-color: purple;
+	color: white;
 }
 
 .filter-panel {
@@ -500,7 +506,7 @@ select {
 }
 
 .card-deck-cntr {
-	margin-left: -10px;
+	margin-left: 10px;
 }
 
 .single-view-deck-btn {
@@ -567,9 +573,7 @@ select {
 
 .little-list {
 	background-color: white;
-	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
 	width: 240px;
 	overflow-x: hidden;
 	padding-top: 40px;
@@ -577,13 +581,13 @@ select {
 
 .your-deck-container {
 	background-color: white;
-	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	padding: 17%;
-	padding-top: 40px;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+	padding: 30px;
+	padding-top: 0;
 	width: 300px;
 	overflow-x: hidden;
+	margin-bottom: 250px;
+	
 }
 
 .yr-deckfull-screen {
@@ -632,15 +636,15 @@ select {
 }
 
 .mana-chart-container {
-	margin-left: 8%;
-	margin-right: 8%;
-	margin-bottom: 16%;
+	margin: 12% 8%;
 	box-shadow: 0px 0px 0px 0px rgba(209,209,209,1) !important;
+	border-radius: 5px;
+	border: 1px solid gray;
 }
 
 .avg-curve {
 	font-size: 15px;
-	color: rgb(55, 96, 231);
+	color: rgb(191, 206, 255);
 }
 
 
@@ -681,6 +685,18 @@ select {
 	width: 225px;
 	z-index: 4;
 	cursor:pointer;
+}
+
+.big-deck-container {
+	background-color: white;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+	padding: 30px;
+	padding-top: 0;
+	width: 300px;
+	overflow-x: hidden;
+	margin-bottom: 250px;
+	padding-top: 50px;
+	
 }
 
 .card-list-mana {
@@ -755,7 +771,7 @@ select {
 
 
 .search-bar-container {
-	background-color: white;
+	background-color: rgb(255, 255, 255);
 	padding: 50px;
 	padding-top: 20px;
 	padding-bottom: 50px;
@@ -1048,9 +1064,6 @@ label {
 	overflow-y: auto;
 }
 
-.your-deck-container {
-	margin-bottom: 250px;
-}
 
 .banner-description {
 	font-size: 12px;
@@ -1058,6 +1071,10 @@ label {
 
 .full-width {
 	width: 100%;
+}
+
+.bar-chart-container {
+	margin-left: 23px;
 }
 
 .deck-info-mobile {

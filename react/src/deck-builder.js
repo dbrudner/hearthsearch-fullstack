@@ -312,7 +312,7 @@ class App extends Component {
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1100px)'>
 									<MediaQuery query='(max-device-width: 1700px)'>		
-										<div className='col-xs-7'>
+										<div className='col-xs-6'>
 											<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
 											</div>
@@ -344,16 +344,18 @@ class App extends Component {
 												buildMode={true}        
 											/>
 										</div>
-										<div className='col-xs-3'>
-											<div className='your-deck-container'>
-												<DeckBuilderList
-													format={this.props.format || this.state.format} 
-													deck={this.state.deck} 
-													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-													card={this.state.card}
-													removeCard={this.removeCard}
-													quantity={this.state.quantity}
-												/>
+										<div className='col-xs-4 wtf'>
+											<div className='affix yflow'>
+												<div className='your-deck-container'>
+													<DeckBuilderList
+														format={this.props.format || this.state.format} 
+														deck={this.state.deck} 
+														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+														card={this.state.card}
+														removeCard={this.removeCard}
+														quantity={this.state.quantity}
+													/>
+												</div>
 											</div>
 										</div>
 									</MediaQuery>
@@ -398,7 +400,7 @@ class App extends Component {
 									</div>
 									<div className='col-lg-2'>
 										<div className='affix yflow'>
-											<div className='your-deck-container'>
+											<div className='big-deck-container'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
 													deck={this.state.deck} 
