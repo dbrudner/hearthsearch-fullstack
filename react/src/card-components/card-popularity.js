@@ -63,7 +63,7 @@ export default function CardPopularity(props) {
             return (
                 <div>
                     {props.wideCards ? 
-                        <div className={props.hero.toLowerCase()}>
+                        <div className='text-left card-pop-short'>
                             Standard: {percent}
                         </div>
                         :
@@ -79,7 +79,7 @@ export default function CardPopularity(props) {
             return (
                 <div>
                     {props.wideCards ? 
-                        <div>
+                        <div className='text-left card-pop-short'>
                             Standard: {percent}
                         </div>
                         :
@@ -144,7 +144,7 @@ export default function CardPopularity(props) {
 
                     <div>
                         {props.wideCards ? 
-                            <div className={props.hero.toLowerCase()}>
+                            <div className='text-left card-pop-short'>
                                 Wild: {percent}
                             </div>
                             :
@@ -162,7 +162,7 @@ export default function CardPopularity(props) {
             return (
                     <div>
                         {props.wideCards ? 
-                            <div>
+                            <div className='text-left card-pop-short'>
                                 Wild: {percent}
                             </div>
                             :
@@ -177,7 +177,7 @@ export default function CardPopularity(props) {
 
     if (props.decksInfo) {
         return (
-            <div className='card-popularity'>
+            <div className={props.wideCards ? 'short-pop' : 'card-popularity'}>
                 {
                     <div>
                             <div>

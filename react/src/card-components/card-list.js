@@ -2,6 +2,7 @@ import React from 'react'
 import CardImage from './card-image'
 import CardInfo from './card-info'
 import CardPopularity from './card-popularity'
+import DeckBuilderCardInfo from './deck-builder-card-info'
 
 import _ from 'lodash'
 import axios from 'axios'
@@ -545,154 +546,87 @@ export default class CardList extends React.Component {
 		
 			
 		if (this.props.buildMode) {
-
-			if (this.props.wideCards) {
-				return cards.map(card => {
-
-					let quantity = this.props.deck.map(deckCard => {
-						if (deckCard.dbfId === card.dbfId) {
-							return deckCard.quantity
-						}
-					})
-	
-	
-					return (
-							<div key={card.dbfId} className='col-lg-6 col-sm-12 col-md-6 card-container'>
-								<div class='card-result'>
-									<CardInfo
-										wideCards
-										key={card.dbfId}
-										quantity={quantity[0]}
-										deck={this.props.deck}									
-										image={card.img}
-										decksInfo={this.state.decksInfo} 
-										inclusionsWild={card.inclusionsWild}
-										inclusionsStandard={card.inclusionsStandard}
-										artist={card.artist}
-										flavor={card.flavor}
-										attack={card.attack}
-										health={card.health}
-										cardId={card.cardId}
-										dbfId={card.dbfId}
-										lightForgeScore={card.lightForgeScore}
-										name={card.name}
-										cost={card.cost}
-										type={card.type}
-										text={card.text}
-										rarity={card.rarity}
-										howToGet={card.howToGet}
-										howToGetGold={card.howToGetGold}
-										class={card.playerClass}
-										cardset={card.cardSet}
-										getCard={this.getCard}
-										buildMode={this.props.buildMode}
-										_id={card._id}
-									/>
-								</div>
-							</div>
-					)
-			
+			return cards.map(card => {
+				let quantity = this.props.deck.map(deckCard => {
+					if (deckCard.dbfId === card.dbfId) {
+						return deckCard.quantity
+					}
 				})
-			}
 
-			if (this.state.decksInfo) {
-				return cards.map(card => {
-
-					let quantity = this.props.deck.map(deckCard => {
-						if (deckCard.dbfId === card.dbfId) {
-							return deckCard.quantity
-						}
-					})
-	
-	
-					return (
-							<div key={card.dbfId} className={
-								this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-6 col-xs-12 col-sm-6 card-container'
-							}>
-								<div class='card-result'>
-									<CardInfo
-										key={card.dbfId}
-										quantity={quantity[0]}
-										deck={this.props.deck}									
-										image={card.img}
-										decksInfo={this.state.decksInfo} 
-										inclusionsWild={card.inclusionsWild}
-										inclusionsStandard={card.inclusionsStandard}
-										artist={card.artist}
-										flavor={card.flavor}
-										attack={card.attack}
-										health={card.health}
-										cardId={card.cardId}
-										dbfId={card.dbfId}
-										lightForgeScore={card.lightForgeScore}
-										name={card.name}
-										cost={card.cost}
-										type={card.type}
-										text={card.text}
-										rarity={card.rarity}
-										howToGet={card.howToGet}
-										howToGetGold={card.howToGetGold}
-										class={card.playerClass}
-										cardset={card.cardSet}
-										getCard={this.getCard}
-										buildMode={this.props.buildMode}
-										_id={card._id}
-									/>
-								</div>
-							</div>
-					)
-			
-				}) 
-			} else {
-				return <div/>
-			}
-
-			
+				return (
+					<div key={card.dbfId} className='col-lg-4 col-sm-4 col-md-4 card-container'>
+						<div class='card-result'>
+							<DeckBuilderCardInfo
+								wideCards
+								key={card.dbfId}
+								quantity={quantity[0]}
+								deck={this.props.deck}									
+								image={card.img}
+								decksInfo={this.state.decksInfo} 
+								inclusionsWild={card.inclusionsWild}
+								inclusionsStandard={card.inclusionsStandard}
+								artist={card.artist}
+								flavor={card.flavor}
+								attack={card.attack}
+								health={card.health}
+								cardId={card.cardId}
+								dbfId={card.dbfId}
+								lightForgeScore={card.lightForgeScore}
+								name={card.name}
+								cost={card.cost}
+								type={card.type}
+								text={card.text}
+								rarity={card.rarity}
+								howToGet={card.howToGet}
+								howToGetGold={card.howToGetGold}
+								class={card.playerClass}
+								cardset={card.cardSet}
+								getCard={this.getCard}
+								buildMode={this.props.buildMode}
+								_id={card._id}
+							/>
+						</div>
+					</div>
+				)
+			})
 		}
 			else {
 				return cards.map(card => {
 					return (
-							<div key={card.dbfId} className={
-								this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-6 col-xs-12 col-sm-6 card-container'
-							}>
-								<div className='card-result'>
-									<CardInfo
-										deck={this.props.deck}
-										image={card.img} 
-										artist={card.artist}
-										inclusionsWild={card.inclusionsWild}
-										inclusionsStandard={card.inclusionsStandard}
-										decksInfo={this.state.decksInfo}
-										flavor={card.flavor}
-										attack={card.attack}
-										health={card.health}
-										cardId={card.cardId}
-										dbfId={card.dbfId}
-										lightForgeScore={card.lightForgeScore}
-										name={card.name}
-										cost={card.cost}
-										type={card.type}
-										text={card.text}
-										rarity={card.rarity}
-										howToGet={card.howToGet}
-										howToGetGold={card.howToGetGold}
-										class={card.playerClass}
-										cardset={card.cardSet}
-										getCard={this.getCard}
-										buildMode={this.props.buildMode}
-										_id={card._id}
-									/>
-								</div>
+						<div key={card.dbfId} className={this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-6 col-xs-12 col-sm-6 card-container'}>
+							<div className='card-result'>
+								<CardInfo
+									deck={this.props.deck}
+									image={card.img} 
+									artist={card.artist}
+									inclusionsWild={card.inclusionsWild}
+									inclusionsStandard={card.inclusionsStandard}
+									decksInfo={this.state.decksInfo}
+									flavor={card.flavor}
+									attack={card.attack}
+									health={card.health}
+									cardId={card.cardId}
+									dbfId={card.dbfId}
+									lightForgeScore={card.lightForgeScore}
+									name={card.name}
+									cost={card.cost}
+									type={card.type}
+									text={card.text}
+									rarity={card.rarity}
+									howToGet={card.howToGet}
+									howToGetGold={card.howToGetGold}
+									class={card.playerClass}
+									cardset={card.cardSet}
+									getCard={this.getCard}
+									buildMode={this.props.buildMode}
+									_id={card._id}
+								/>
 							</div>
+						</div>
 					)
-			
 				}) 
 			}
-
-			
-			
 		}
-
 
 	renderTen = () => {
 		this.setState({
