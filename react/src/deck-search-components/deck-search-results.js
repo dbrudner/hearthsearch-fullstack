@@ -1,18 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Popover, OverlayTrigger} from 'react-bootstrap'
-
+import DeckSearchDeckList from './deck-search-deck-list'
 
 export default function DeckSearchResults(props) {
 
 
     const renderResults = (results) => {
 
-        
-
         return results.map(result => {
             let hero = result.hero
             hero = hero.charAt(0).toUpperCase() + hero.slice(1)
+
+            const deckList = () => {
+                return (
+                    <Popover id="popover-positioned-left">
+                        <DeckSearchDeckList deck={result} />
+                    </Popover>
+                )
+            }
 
             return (
                 <div className='panel deck-panel' key={result._id}>
@@ -38,10 +44,12 @@ export default function DeckSearchResults(props) {
 
                             </div>
                             <div className='quick-peek'>
-                                <a href="#" className="btn btn-info hvr-fade">
-                                    <span className="glyphicon glyphicon-folder-open"></span>
-                                    <span className='smlleftmrg'>Expand Deck List</span>
-                                </a>
+                                <OverlayTrigger trigger='click' placement='right' overlay={deckList()}>
+                                    <div className="btn btn-info hvr-fade">
+                                        <span className="glyphicon glyphicon-folder-open"></span>
+                                        <span className='smlleftmrg'>Expand Deck List</span>
+                                    </div>
+                                </OverlayTrigger>
                             </div>
                         </div>
                         <div>
