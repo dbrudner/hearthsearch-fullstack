@@ -53,36 +53,7 @@ export default class CardInfo extends Component{
 		return (
 		
 			<div className=''>
-				<div className='card-list-header'>
-					<div>
-						<div>
-							<span>
-                                <CardClass hero={this.props.class}/>
-                            </span>
-							<span> - {this.props.cardset}</span>
-						</div>
-					</div>
-					<div>
-						<span>
-							<CardLightForge lightForge={this.props.lightForgeScore}/>
-						</span>
-					</div>
-				</div>
-				<div>
-                    {this.props.decksInfo ? 
-                        <CardPopularity 
-                            decksInfo={this.props.decksInfo} 
-                            hero={this.props.class} 
-                            cardInclusions={cardInclusions}
-                            rarity={this.props.rarity}
-                            name={this.props.name}
-                            wideCards
-                        />
-                    :
-                        <div/>
-					}
-                </div>
-                    <CardImage noArtist image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
+                <CardImage noArtist image={this.props.image} artist={this.props.artist}  _id={this.props._id} buildMode getCard={this.getCard} cardId={this.props.cardId} dbfId={this.props.dbfId} rarity={this.props.rarity} name={this.props.name} mana={this.props.cost} cardSet={this.props.cardSet} hero={this.props.class}/>
 			</div>
 		)
 	}	

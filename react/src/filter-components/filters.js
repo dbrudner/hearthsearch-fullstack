@@ -151,9 +151,6 @@ export default class Filters extends React.Component {
 							<div className='filters-hdr'>
 								Filters
 							</div>
-							<div className='hide-filter'>
-								<label><input type="checkbox" onChange={this.handleFilterChange} value="" /></label>
-							</div>
 						</div>
 					</div>
 					<div className='panel-body'>

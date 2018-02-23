@@ -264,7 +264,7 @@ class App extends Component {
 		
 
 		return (
-			<div className='deck-bldr-cntr'>
+			<div className=''>
 				<Swipe
 					onSwipeStart={this.onSwipeStart}
 					onSwipeMove={this.onSwipeMove}
@@ -413,16 +413,24 @@ class App extends Component {
 									</div>
 								</MediaQuery>	
 								
-								<MediaQuery query='(max-device-width: 1059px)'>							
+								<MediaQuery query='(max-device-width: 1099px)'>							
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
+												<MediaQuery query='(min-device-width: 601px)'>							
 												<div className='pane-btns-container'>
-													<MediaQuery query='(max-device-width: 10px)'>
-														<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters</button>
-													</MediaQuery>									
-													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck</button>
 													
+													<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters - click or swipe right</button>
+													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck  - click or swipe left</button>
 												</div>
+												</MediaQuery>
+												<MediaQuery query='(max-device-width: 600px)'>
+													<div>
+														<button className='btn filter-btn full-width' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters - click or swipe right</button>
+													</div>
+													<div>												
+														<button className='btn deck-btn full-width' onClick={() => this.setState({ isPaneOpen: true })}>Deck  - click or swipe left</button>
+													</div>
+												</MediaQuery>
 											<div>
 												<SlidingPane
 													isOpen={ this.state.isPaneOpen }

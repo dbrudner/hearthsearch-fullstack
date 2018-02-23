@@ -542,7 +542,7 @@ select {
 	font-size: 32px;
 	font-weight: 700;
 	margin-bottom: 20px;
-	margin-top: 50px;
+	/* margin-top: 50px; */
 }
 
 .long-deck-btn {
@@ -581,6 +581,7 @@ select {
 	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	padding: 17%;
+	padding-top: 40px;
 	width: 300px;
 	overflow-x: hidden;
 }
@@ -641,6 +642,8 @@ select {
 	font-size: 15px;
 	color: rgb(55, 96, 231);
 }
+
+
 
 .curve {
 	font-size: 15px;
@@ -982,9 +985,18 @@ label {
 
 .panel {
 	border: #46007c solid 0px;
+	
 	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
 	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);	
+}
+
+.build-mode-list {
+	background-color: white;
+	border-radius: 10px;
+	-webkit-box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);
+	-moz-box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);
+	box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);	
 }
 
 .msg-fade-in{
@@ -1044,9 +1056,12 @@ label {
 	font-size: 12px;
 }
 
+.full-width {
+	width: 100%;
+}
+
 .deck-info-mobile {
-	width: 109%;
-	margin-left: -15px;
+	width: 100%;
 	margin-top: -5px;
 	background-color: rgb(0, 0, 0);
 	color: white;
@@ -1054,6 +1069,8 @@ label {
 	padding: 20px;
 	font-size: 100%;
 	z-index: 1000;
+	margin-right: 0 !important;
+	margin-left: 0 !important;
 }
 
 /* .filter-header, .filter-dropdown {

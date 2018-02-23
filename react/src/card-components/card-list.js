@@ -554,8 +554,8 @@ export default class CardList extends React.Component {
 				})
 
 				return (
-					<div key={card.dbfId} className='col-lg-4 col-sm-4 col-md-4 card-container'>
-						<div class='card-result'>
+					<div key={card.dbfId} className='col-lg-3 col-md-4 col-xs-6 card-container'>
+						<div class=''>
 							<DeckBuilderCardInfo
 								wideCards
 								key={card.dbfId}
@@ -644,6 +644,17 @@ export default class CardList extends React.Component {
  	
 	render() {
 
+		if (this.props.cards && this.props.buildMode) {
+			return (
+				<div>
+					<div className='build-mode-list cards'>
+						<div className='row'>
+							{this.renderCardList(this.state.matches.slice(0, this.state.totalRendered))}
+						</div>
+					</div>
+				</div>
+			)
+		}
 
 		if (this.props.cards) {
 			return (
@@ -656,6 +667,9 @@ export default class CardList extends React.Component {
 					</div>
 				)
 		}
+
+		
+
 		if (!this.props.cards) {
 			return (
 				<div>
