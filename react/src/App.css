@@ -882,8 +882,12 @@ select {
 	justify-content: space-between;	
 }
 
+.btm-mrg {
+	margin-bottom: 20px;
+}
+
 .popover-content {
-	width: 200px;
+	width: 188px;
 }
 
 .card-popularity {

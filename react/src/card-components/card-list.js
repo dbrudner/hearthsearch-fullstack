@@ -591,6 +591,45 @@ export default class CardList extends React.Component {
 			})
 		}
 			else {
+
+				if (this.props.superWide) {
+					return cards.map(card => {
+						return (
+							<div key={card.dbfId} className='col-lg-3'>
+								<div className='card-result btm-mrg'>
+									<CardInfo
+										xl={this.props.xl}
+										deck={this.props.deck}
+										image={card.img} 
+										artist={card.artist}
+										inclusionsWild={card.inclusionsWild}
+										inclusionsStandard={card.inclusionsStandard}
+										decksInfo={this.state.decksInfo}
+										flavor={card.flavor}
+										attack={card.attack}
+										health={card.health}
+										cardId={card.cardId}
+										dbfId={card.dbfId}
+										lightForgeScore={card.lightForgeScore}
+										name={card.name}
+										cost={card.cost}
+										type={card.type}
+										text={card.text}
+										rarity={card.rarity}
+										howToGet={card.howToGet}
+										howToGetGold={card.howToGetGold}
+										class={card.playerClass}
+										cardset={card.cardSet}
+										getCard={this.getCard}
+										buildMode={this.props.buildMode}
+										_id={card._id}
+									/>
+								</div>
+							</div>
+						)
+					}) 
+				}
+
 				return cards.map(card => {
 					return (
 						<div key={card.dbfId} className={this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-4 col-xs-12 col-md-6 card-container'}>

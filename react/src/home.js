@@ -130,7 +130,7 @@ class Home extends Component {
 					</div>
 				</MediaQuery>				
 				<MediaQuery query='(min-device-width: 1100px)'>
-					<MediaQuery query='(max-device-width: 1449px)'>
+					<MediaQuery query='(max-device-width: 1649px)'>
 						<div className='deck-builder-container'>
 					
 							<div className='row'>
@@ -173,7 +173,7 @@ class Home extends Component {
 						</div>
 					</MediaQuery>
 				</MediaQuery>
-				<MediaQuery query='(min-device-width: 1450px)'>
+				<MediaQuery query='(min-device-width: 1650px)'>
 				<div className='deck-builder-container'>
 					
 					<div className='row'>
@@ -186,6 +186,7 @@ class Home extends Component {
 								<Searchbar onSearch={this.getFilter}/>
 							</div>
 							<CardList
+								superWide
 								largeScreen
 								render={12}
 								nameSort={this.state.nameSort}

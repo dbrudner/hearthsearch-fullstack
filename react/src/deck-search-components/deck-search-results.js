@@ -5,7 +5,14 @@ import DeckSearchCardTile from './deck-search-card-tile'
 
 export default function DeckSearchResults(props) {
 
-   
+    const cardPopover = card => {
+        return (
+            <div>
+                card'
+            </div>
+        )
+    }
+
     const DeckList = deck => {
 
         return deck.map(cardObj => {
