@@ -836,7 +836,7 @@ select {
 .card-popularity {
 	text-align: center;
 	color: gray;
-	font-size: 14px;
+	font-size: 12px;
 	margin-top: 20px;
 }
 
@@ -929,9 +929,12 @@ input[type=text], textarea {
 .deck-btn {
 	background-color: rgb(104, 61, 104);
 	color: white;
+	margin-top: 5px;
 }
 
 .filter-btn {
+	margin-top: 20px;
+	margin-bottom: 5px;
 	color: rgb(104, 61, 104);
 	background-color: rgb(211, 211, 211);
 }
@@ -1072,6 +1075,8 @@ label {
 .full-width {
 	width: 100%;
 }
+
+
 
 .bar-chart-container {
 	margin-left: 23px;
