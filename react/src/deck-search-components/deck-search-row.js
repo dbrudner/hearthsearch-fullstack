@@ -8,7 +8,7 @@ export default function DeckSearchRow(props) {
     return (
         <div className='row'>
             <div className='col-lg-3'>
-                <DeckSearchFilters getFilter={props.getFilter}/>
+                <DeckSearchFilters archetypes={props.archetypes} getFilter={props.getFilter}/>
             </div>
             <div className='col-lg-9'>
                 <DeckSearchResults matches={props.matches}/>

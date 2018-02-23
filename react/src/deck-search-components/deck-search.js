@@ -18,7 +18,8 @@ export default class DeckSearch extends React.Component {
             cards: [],
             matches: [],
             renderMatches: [],
-            renderCount: 10
+            renderCount: 10,
+            archetypes: []
         }
     }
 
@@ -33,9 +34,18 @@ export default class DeckSearch extends React.Component {
     componentDidMount = () => {
         axios.get('/api/decks/populate')
         .then(result => {
-            console.log(result)
+
+            let archetypes = result.data.map(deck => {
+                return deck.archetype
+            }).sort()
+
+            archetypes = _.uniq(archetypes)
+
+            console.log(archetypes)
+
             this.setState({
-                decks: result.data
+                decks: result.data,
+                archetypes
             })
         }).then (() => {
             this.renderSearchResults()
@@ -70,6 +80,12 @@ export default class DeckSearch extends React.Component {
         if (this.state.format) {
             decks = decks.filter(deck => {
                 return deck.format === this.state.format.toLowerCase()
+            })
+        }
+
+        if (this.state.archetype) {
+            decks = decks.filter(deck => {
+                return deck.archetype === this.state.archetype
             })
         }
 
@@ -132,7 +148,7 @@ export default class DeckSearch extends React.Component {
         return (
             <div>
                 <DeckSearchBanner totalResults={totalResults} getFilter={this.getFilter} decks={this.state.decks}/>
-                <DeckSearchRow matches={this.state.renderMatches} getFilter={this.getFilter}/>
+                <DeckSearchRow archetypes={this.state.archetypes} matches={this.state.renderMatches} getFilter={this.getFilter}/>
             </div>
         )
     }

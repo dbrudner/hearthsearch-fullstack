@@ -10,6 +10,7 @@ export default function DeckSearchFilters(props) {
 
 	const renderFilters = () => {
 
+
 		const classes = ["Neutral", "Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
         const sorting = ["Name", "LightForge Score", "Standard Usage", "Wild Usage", "Mana"]
         const format = ['Standard', 'Wild']
@@ -22,6 +23,9 @@ export default function DeckSearchFilters(props) {
                 </div>
                 <div className='col-sm-12 '>
                     <DropDown filterName='Format' filter='format' onChange={getFilter}  options={format}/>
+                </div>
+                <div className='col-sm-12 '>
+                    <DropDown filterName='Archetype' filter='archetype' onChange={getFilter}  options={props.archetypes || []}/>
                 </div>
             </div>
         )
