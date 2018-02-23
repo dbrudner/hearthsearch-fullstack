@@ -16,6 +16,7 @@ html {
 	margin: 0;
 }
 
+
 .deck-search-panel {
 
 	box-shadow: 2px 2px 2px 2px rgba(209,209,209,1);
@@ -246,7 +247,7 @@ html {
 }
 
 .cards {
-	margin: 20px 3% 0 3%;
+	margin-top: 20px;
 }
 
 .snd-brd-btn {
@@ -608,8 +609,7 @@ select {
 
 
 .deck-builder-container {
-	margin: 30px;
-	margin-right: 20px;
+	margin: 15px;
 }
 
 .yr-deck-hdr {

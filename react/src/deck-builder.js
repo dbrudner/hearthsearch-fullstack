@@ -293,7 +293,7 @@ class App extends Component {
 					</Sticky>
 				</div>
 					<div className='deck-builder-container'>
-							<div className='row'>
+							<div className='row mrg'>
 								<MediaQuery query='(min-device-width: 1100px)'>
 									<div className='col-xs-2'>
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
@@ -345,17 +345,15 @@ class App extends Component {
 											/>
 										</div>
 										<div className='col-xs-4 wtf'>
-											<div className='affix yflow'>
-												<div className='your-deck-container'>
-													<DeckBuilderList
-														format={this.props.format || this.state.format} 
-														deck={this.state.deck} 
-														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-														card={this.state.card}
-														removeCard={this.removeCard}
-														quantity={this.state.quantity}
-													/>
-												</div>
+											<div className='your-deck-container'>
+												<DeckBuilderList
+													format={this.props.format || this.state.format} 
+													deck={this.state.deck} 
+													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+													card={this.state.card}
+													removeCard={this.removeCard}
+													quantity={this.state.quantity}
+												/>
 											</div>
 										</div>
 									</MediaQuery>

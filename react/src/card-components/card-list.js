@@ -554,7 +554,7 @@ export default class CardList extends React.Component {
 				})
 
 				return (
-					<div key={card.dbfId} className='col-lg-3 col-md-4 col-xs-6 card-container'>
+					<div key={card.dbfId} className='col-lg-4 col-md-4 col-xs-4 card-container'>
 						<div class=''>
 							<DeckBuilderCardInfo
 								wideCards
