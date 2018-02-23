@@ -773,7 +773,10 @@ select {
     font-size: 11px;
     margin-top: 11px;
     margin-left: 35px;
-    cursor: pointer;
+	cursor: pointer;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 
