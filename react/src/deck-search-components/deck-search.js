@@ -3,6 +3,8 @@ import axios from 'axios'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
 
+import { Popover } from 'react-bootstrap' 
+
 import Searchbar from '../searchbar'
 import DeckSearchResults from './deck-search-results'
 import DeckSearchBanner from './deck-search-banner'
