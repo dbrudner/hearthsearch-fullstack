@@ -194,7 +194,8 @@ export default class CardInfo extends Component{
 					</div>
 				</div>
 				<div>
-						{this.props.decksInfo ? <CardPopularity 
+						{this.props.decksInfo ? <CardPopularity
+							xl={this.props.xl}
 							decksInfo={this.props.decksInfo} 
 							hero={this.props.class} 
 							cardInclusions={cardInclusions}

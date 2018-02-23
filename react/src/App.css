@@ -840,6 +840,11 @@ select {
 	margin-top: 20px;
 }
 
+.big-pop-text {
+	color: green;
+	font-size: 20px;
+}
+
 .sticky-bar {
 	z-index: 1000;
 }

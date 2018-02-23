@@ -123,7 +123,7 @@ class Home extends Component {
 									ability2={this.state.ability2}
 									tribe={this.state.tribe}
 									getCard = {this.getCard}
-									buildMode={false}          
+									buildMode={false}        
 								/>
 							</div>
 						</div>

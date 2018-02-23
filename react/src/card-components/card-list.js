@@ -596,6 +596,7 @@ export default class CardList extends React.Component {
 						<div key={card.dbfId} className={this.props.largeScreen ? 'col-lg-4 card-container' : 'col-lg-4 col-xs-12 col-md-6 card-container'}>
 							<div className='card-result'>
 								<CardInfo
+									xl={this.props.xl}
 									deck={this.props.deck}
 									image={card.img} 
 									artist={card.artist}

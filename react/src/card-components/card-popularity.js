@@ -3,6 +3,8 @@ import React from 'react'
 
 export default function CardPopularity(props) {
 
+    console.log(props.xl)
+
 
     const hero = props.hero.toLowerCase()
     const allStandardDecks = props.decksInfo.standard
@@ -15,7 +17,9 @@ export default function CardPopularity(props) {
     let rate;    
     let percent;
 
+
     const standardUsage = () => {
+
 
         if (props.hero !== 'Neutral') {
             let totalDecks = allStandardDecks[hero]
@@ -60,6 +64,7 @@ export default function CardPopularity(props) {
         }
         
         if (props.hero !== 'Neutral') {
+            console.log(props.xl)
             return (
                 <div>
                     {props.wideCards ? 
@@ -67,7 +72,7 @@ export default function CardPopularity(props) {
                             Standard: {percent}
                         </div>
                         :
-                        <div>
+                        <div className={props.xl ? 'big-pop-text' : 'null'}>
                             Used in {percent} of all Standard <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
                         </div>
                     }
@@ -83,7 +88,7 @@ export default function CardPopularity(props) {
                             Standard: {percent}
                         </div>
                         :
-                        <div>
+                        <div className={props.xl ? 'big-pop-text' : 'null'}>
                             Used in {percent} of all Standard decks.                            
                         </div>
                     }
@@ -148,7 +153,7 @@ export default function CardPopularity(props) {
                                 Wild: {percent}
                             </div>
                             :
-                            <div>
+                            <div className={props.xl ? 'big-pop-text' : 'null'}>
                                 Used in {percent} of all Wild <span className={props.hero.toLowerCase() + ''}>{props.hero}</span> decks.
                             </div>
                         }
@@ -166,7 +171,7 @@ export default function CardPopularity(props) {
                                 Wild: {percent}
                             </div>
                             :
-                            <div>
+                            <div className={props.xl ? 'big-pop-text' : 'null'}>
                                 Used in {percent} of all Wild decks.                                
                             </div>
                         }
