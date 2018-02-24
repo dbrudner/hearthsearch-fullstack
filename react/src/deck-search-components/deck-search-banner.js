@@ -78,7 +78,7 @@ export default class DeckSearchBanner extends React.Component {
                         <div className='pi-pad'>
                             <PieChart 
                                 labels 
-                                // clickHandler={d => {this.setState({hero: d.data.key, dataDisplay:`${d.value} ${d.data.key} decks` })}} 
+                                clickHandler={d => {this.setState({hero: d.data.key, dataDisplay:`${d.value} ${d.data.key} decks` })}} 
                                 data={data} 
                                 size={200} 
                                 innerHoleSize={100}
@@ -114,7 +114,7 @@ export default class DeckSearchBanner extends React.Component {
                         <div className='pi-pad'>
                             <PieChart 
                                 labels 
-                                // clickHandler={d => {this.setState({hero: d.data.key, dataDisplay:`${d.value} ${d.data.key} decks` })}} 
+                                clickHandler={d => {this.setState({hero: d.data.key, dataDisplay:`${d.value} ${d.data.key} decks` })}} 
                                 data={data} 
                                 size={200} 
                                 innerHoleSize={100}
@@ -135,6 +135,8 @@ export default class DeckSearchBanner extends React.Component {
         }
 
         const popOverClasses = format => {
+
+            
             return (
                 <Popover id="popover-positioned-left">
                     {decksByClass(format)}

@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	overflow-x: hidden;
 	font-family: 'Arimo', sans-serif;
+	padding-right: 0 !important;
 }
 
 html {

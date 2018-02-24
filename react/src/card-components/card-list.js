@@ -555,7 +555,7 @@ export default class CardList extends React.Component {
 
 				return (
 					<div key={card.dbfId} className='col-lg-4 col-md-4 col-xs-4 card-container'>
-						<div class=''>
+						<div className='animated fadeIn'>
 							<DeckBuilderCardInfo
 								wideCards
 								key={card.dbfId}
@@ -596,7 +596,7 @@ export default class CardList extends React.Component {
 					return cards.map(card => {
 						return (
 							<div key={card.dbfId} className='col-lg-3'>
-								<div className='card-result btm-mrg'>
+								<div className='card-result btm-mrg animated fadeIn'>
 									<CardInfo
 										xl={this.props.xl}
 										deck={this.props.deck}
