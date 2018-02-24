@@ -42,7 +42,6 @@ export default class DeckSearch extends React.Component {
 
             archetypes = _.uniq(archetypes)
 
-            console.log(archetypes)
 
             this.setState({
                 decks: result.data,
@@ -62,7 +61,6 @@ export default class DeckSearch extends React.Component {
 
     renderSearchResults= () => {
 
-        console.log(this.state)
 
         let decks = this.state.decks
 
@@ -101,7 +99,6 @@ export default class DeckSearch extends React.Component {
 
     renderTen = () => {
 
-        // console.log(this.state.matches.slice(0, this.state.renderCount))
 
         this.setState({
             renderCount: this.state.renderCount + 10,

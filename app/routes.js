@@ -95,10 +95,8 @@ module.exports = function(app, passport) {
         db.Deck.findOne({'_id': req.params.deckId})
         .populate('cards._id')
         .exec((err, response) => {
-            console.log(response)
             if (err) throw err;
             let deckStringFormattedCards = response.cards.map(card => {
-                console.log(card)
                 return [parseInt(card.dbfId || card._id.dbfId), parseInt(card.quantity || card.cardQuantity)]
             })
             
@@ -143,7 +141,6 @@ module.exports = function(app, passport) {
                 deckStringFormattedHero = 7
             }
 
-            console.log(deckStringFormattedHero)
 
 
             const deckStringObject = {
@@ -152,7 +149,6 @@ module.exports = function(app, passport) {
                 format: 1
             }
 
-            console.log(deckStringObject)
 
             res.json(deckStrings.encode(deckStringObject));
         })

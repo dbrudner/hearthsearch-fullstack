@@ -24,7 +24,6 @@ export default function DeckSearchBanner(props) {
 
         const classes = ["Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
 
-        console.log(format)
 
         if (format) {
             const render = () => {
