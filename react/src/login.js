@@ -77,7 +77,7 @@ export default class SignUp extends Component {
                 <form onSubmit={this.handleLogin}>
                 <div className='login-hdr'>
                     <div>
-                        <i class="far fa-user"></i>
+                        <i className="lightblue far fa-user"></i>
                     </div>
                     <div>
                         Login

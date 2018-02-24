@@ -22,6 +22,12 @@ export default class Nav extends React.Component {
 		}
 	}
 
+	logout = () => {
+		this.setState({
+			isLoggedIn: false
+		})
+	}
+
 	componentWillMount() {
 		axios.get('/test')
 		.then((response) => {
@@ -104,7 +110,7 @@ export default class Nav extends React.Component {
 						<ul className="nav navbar-nav navbar-right">
 							{/* <li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li> */}
 							{/* <li onClick={this.login} className='hvr-float'><a><span className="glyphicon glyphicon-log-in"></span> Login</a></li> */}
-							<li className='hvr-float'><Link to='/logout'><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
+							<li onClick={this.logout} className='hvr-float'><Link to='/logout'><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
 						</ul>
 						</div>
 					</div>
