@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import axios from 'axios'
 import DeckBuilder from '../deck-builder'
 import DeckBuilderList from '../deckbuilder-components/deck-builder-list'
-import { SIGVTALRM } from 'constants';
+import {Modal} from 'react-bootstrap'
 
 export default class DeckImport extends Component {
     
@@ -13,7 +13,8 @@ export default class DeckImport extends Component {
             deck: [],
             deckString: '',
             format: 'standard',
-            quantity: 0
+            quantity: 0,
+            modal: true
         }
     }
 
@@ -112,7 +113,9 @@ export default class DeckImport extends Component {
                 }).then(() => {
                     this.setState({quantity: getQuantity(this.state.deck)})
                 }).then(() => {
-                    console.log(this.state)
+                    this.setState({
+                        modal: false
+                    })
                 })
             })
             
@@ -122,30 +125,35 @@ export default class DeckImport extends Component {
 	
 	render() {
 		return (
-            <div className='panel import-panel'>
-                <div className='import-hdr'>
-                    Import a Deck
-                </div>
-                {this.state.deck.length === 0 ? <div className='search-bar form-group'>
-                    <form onSubmit={this.handleSubmit} >
-                        <div className='row'>
-                            <div className='col-xs-10'>
-                                <input className='form-control' type="text" name="term" onChange={this.handleChange}/>													
-                            </div>
-                            <div className='col-xs-2'>
-                            {this.state.deckString.length > 60 ? 
-                                <button type='submit' className='btn btn-primary'>Submit</button>							                             
-                            :
-                            <button disabled className='btn btn-danger'>Invalid Deck String</button>	
-                            }
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                :
-                <div></div>}
+            <div>
+                <Modal show={this.state.modal} onHide={this.handleImportClose}>
+                    <div className='import-cntr'>
                 
-                {this.state.quantity === 30 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div></div>}
+                    <div className='import-hdr'>
+                        Import a Deck
+                    </div>
+                    {this.state.deck.length === 0 ? <div className='search-bar form-group'>
+                        <form onSubmit={this.handleSubmit} >
+                            <div className=''>
+                                <div className=''>
+                                    <input className='form-control' type="text" name="term" onChange={this.handleChange}/>													
+                                </div>
+                                <div className='text-center'>
+                                {this.state.deckString.length > 60 ? 
+                                    <button type='submit' className='import-btn btn btn-primary'>Submit</button>							                             
+                                :
+                                <button disabled className='import-btn btn btn-danger'>Invalid Deck String</button>	
+                                }
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    :
+                    <div></div>}
+                    </div>
+                </Modal>
+                    
+                    {this.state.quantity === 30 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div></div>}
             </div>
 		)
 	}

@@ -845,6 +845,15 @@ select {
 	font-style: italic;
 }
 
+.import-cntr {
+	padding: 20px 40px;
+}
+
+.import-btn {
+	margin-top: 20px;
+}
+
+
 .login {
 	background-color: rgb(85, 85, 85);
 	margin-left: -15px;
@@ -902,8 +911,9 @@ input[type=password], textarea {
 
 .import-hdr {
 	margin-bottom: 20px;
-	font-size: 40px;
-	font-weight: 700
+	font-size: 24px;
+	font-weight: 700;
+	text-align: center
 }	
 
 .desc {

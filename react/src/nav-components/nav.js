@@ -6,6 +6,7 @@ import potato from '../images/potato.svg'
 import { Modal } from 'react-bootstrap'
 import Login from '../login'
 import Signup from '../signup'
+import Import from '../deck-import-components/deck-import'
 // import Logout from './logout'
 
 export default class Nav extends React.Component {
@@ -19,7 +20,8 @@ export default class Nav extends React.Component {
 			fireRedirect: null,
 			checkedLoggedin: false,
 			loginModal: false,
-			signupModal: false
+			signupModal: false,
+			importModal: false
 
 		}
 	}
@@ -60,10 +62,26 @@ export default class Nav extends React.Component {
 		})
 	}
 
+	import = () => {
+		console.log('hi')
+		this.setState({
+			importModal: true
+		})
+	}
+
+
+	handleImportClose = () => {
+		console.log('close')
+		this.setState({
+			importModal: false
+		})
+	}
+
     handleClose = () => {
         this.setState({
 			loginModal: false,
-			signupModal: false
+			signupModal: false,
+			importModal: false
 		}, () => {
 			axios.get('/test')
 			.then((response) => {
@@ -131,7 +149,7 @@ export default class Nav extends React.Component {
 								</ul>
 							</li>
 							<li className="nav-item hvr-float"><Link to="/decks">Decks</Link></li>							
-							<li className="nav-item hvr-float"><Link to="/import">Import</Link></li>
+							<li className='nav-item hvr-float cursor'><Link to="/import">Import</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							{/* <li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li> */}
@@ -140,6 +158,9 @@ export default class Nav extends React.Component {
 						</ul>
 						</div>
 					</div>
+					<Modal show={this.state.importModal} onHide={this.handleImportClose}>
+						<Import />
+					</Modal>
 				</nav>
             )
 		} 
