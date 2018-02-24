@@ -4,6 +4,8 @@ import DeckBuilder from '../deck-builder'
 import DeckBuilderList from '../deckbuilder-components/deck-builder-list'
 import {Modal} from 'react-bootstrap'
 
+import { Redirect } from 'react-router-dom';
+
 export default class DeckImport extends Component {
     
     constructor(props) {
@@ -14,8 +16,17 @@ export default class DeckImport extends Component {
             deckString: '',
             format: 'standard',
             quantity: 0,
-            modal: true
+            modal: true,
+            reDirect: null
         }
+    }
+
+    handleImportClose = () => {
+        console.log('hi')
+        this.setState({
+            modal: false,
+            reDirect: '/'
+        })
     }
 
     handleChange = (event) => {
@@ -124,6 +135,11 @@ export default class DeckImport extends Component {
 	}
 	
 	render() {
+
+        if (this.state.reDirect) {
+            return <Redirect to={{ pathname: this.state.reDirect }} />
+        }
+
 		return (
             <div>
                 <Modal show={this.state.modal} onHide={this.handleImportClose}>

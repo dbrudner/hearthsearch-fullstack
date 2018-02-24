@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Popover, OverlayTrigger} from 'react-bootstrap'
-import DeckSearchCardTile from './deck-search-card-tile'
 import _ from 'lodash'
 import CardCardset from '../card-components/card-cardset'
 import CardPopularity from '../card-components/card-popularity'
