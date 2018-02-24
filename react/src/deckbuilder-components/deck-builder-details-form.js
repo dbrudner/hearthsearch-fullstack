@@ -15,7 +15,10 @@ export default class DeckBuilderDetails extends React.Component {
             decks: [],
             archetypes: [],
             description: '',
-            redirectTo: null
+            redirectTo: null,
+            check: null,
+            permission: null,
+            userId: null
         }
     }
 
@@ -43,8 +46,34 @@ export default class DeckBuilderDetails extends React.Component {
             console.log(this.state.decks)
         })
 
-        
 
+        axios.get('/test')
+        .then(res => {
+            const id = res.data._id
+            this.setState({id} ,() => {
+                axios.get(`/api/deck/${this.props.match.params.deckId}`)
+                .then(res2 => {
+                    console.log(res2.data.user)
+                    console.log(this.state.id)
+
+                    if (res2.data.user === this.state.id) {
+                        this.setState({
+                            check: true,
+                            permission: true
+                        })
+                    } else {
+                        this.setState({
+                            permission: false,
+                            check: true
+                        })
+                    }
+
+                })
+            })
+        })
+
+
+       
     }
 
     handleChange = (event, name) => {
@@ -69,7 +98,7 @@ export default class DeckBuilderDetails extends React.Component {
             })
         })
     }
-
+ 
     render() {
             const archetypes = this.state.archetypes.map(archetype => {
                 return (
@@ -79,29 +108,51 @@ export default class DeckBuilderDetails extends React.Component {
                 )
             })
 
-            if (this.state.redirectTo) {
-                return <Redirect to={{ pathname: this.state.redirectTo }} />
-            } 
+        
+
+        if (!this.state.check) {
+            return (
+                <div>
+                    Checking permissions
+                </div>
+            )
+            
+        }
+
+        if (!this.state.permission) {
+            return (
+                <div>
+                    You are not permitted to view this page
+                </div>
+            )
+        }
+
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } 
         
         if (!this.state.redirectTo) {
             return (
-                <div>
+                <div className='panel deck-update-panel'>
+                    <div className='deckinfohdr'>Deck Info</div>
                     <div className='deck-details-form'>
                         <div className='form-group'>
                             <input onChange={(event) => {this.handleChange(event, 'deckName')}} name='deckName' className='form-control' placeholder='Deck Name' />
                         </div>
-                        <select className="form-control" onChange={(event) => {this.handleChange(event, 'archetype')}}>
-                            <option value="None">Archetype</option>
-                            <option value="Aggressive Face">Aggressive Face</option>
-                            <option value="Aggressive Board Control">Aggressive Board Control</option>
-                            <option value="Midrange">Midrange</option>
-                            <option value="Control">Control</option>
-                            <option value="Miracle">Miracle</option>                    
-                            <option value="One Turn Kill">One Turn Kill</option>
-                            <option value="Fatigue">Fatigue</option>
-                            {archetypes}
-                        </select>
-                        <div className="form-group">
+                        <div>
+                            <select className="form-control" onChange={(event) => {this.handleChange(event, 'archetype')}}>
+                                <option value="None">Archetype</option>
+                                <option value="Aggressive Face">Aggressive Face</option>
+                                <option value="Aggressive Board Control">Aggressive Board Control</option>
+                                <option value="Midrange">Midrange</option>
+                                <option value="Control">Control</option>
+                                <option value="Miracle">Miracle</option>                    
+                                <option value="One Turn Kill">One Turn Kill</option>
+                                <option value="Fatigue">Fatigue</option>
+                                {archetypes}
+                            </select>
+                        </div>
+                        <div className="form-group desc">
                             <textarea placeholder='Description' onChange={(event) => {this.handleChange(event, 'description')}} className="form-control" rows="5" id="comment"></textarea>
                         </div>
                         <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>

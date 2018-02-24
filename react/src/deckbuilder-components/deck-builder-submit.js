@@ -53,27 +53,26 @@ export default class Submit extends React.Component {
                     }
                 })
 
-                axios.post('/api/card/update', {
-                    cards: arrayOfIds,
-                    hero: this.props.hero,
-                    format: this.props.format
+                // axios.post('/api/card/update', {
+                //     cards: arrayOfIds,
+                //     hero: this.props.hero,
+                //     format: this.props.format
+                // })
+                this.setState({
+                    redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
                 })
-
                 
-            .then((res2) => {
-                console.log(res2)
-                // this.setState({
-                    //     redirectTo: '/deck/page2/' + this.props.hero + '/' + response.data._id
-                    // })
-            })
             
-            }).catch(error => {
+            
+            })
+            .catch(error => {
                 console.log(error)
             });
     } 
     
     render() {
 
+        console.log(this.state.redirectTo)
 
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />

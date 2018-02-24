@@ -41,10 +41,6 @@ class App extends Component {
 		}
 
 	}
-
-	// onSwipeStart(event) {
-	// 	console.log('Start swiping...', event);
-	// }
 	 
 	onSwipeMove = (position, event) => {
 		console.log(`Moved ${position.x} pixels horizontally`, event);
