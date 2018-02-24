@@ -92,58 +92,67 @@ module.exports = function(app, passport) {
 
     // makes a deckString for a deck
     app.get('/api/export/:deckId', function(req, res) {
-        db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
+        db.Deck.findOne({'_id': req.params.deckId})
+        .populate('cards._id')
+        .exec((err, response) => {
+            console.log(response)
             if (err) throw err;
             let deckStringFormattedCards = response.cards.map(card => {
-                return [parseInt(card.dbfId), parseInt(card.quantity)]
+                console.log(card)
+                return [parseInt(card.dbfId || card._id.dbfId), parseInt(card.quantity || card.cardQuantity)]
             })
             
-            let deckStringFormattedHero = response.hero
+            let deckStringFormattedHero = response.hero.toLowerCase()
 
-            if (deckStringFormattedHero === 'Warlock') {
+            if (deckStringFormattedHero === 'warlock') {
 
                 deckStringFormattedHero = 893
 
             }
-            if (deckStringFormattedHero === 'Hunter') {
+            if (deckStringFormattedHero === 'hunter') {
 
                 deckStringFormattedHero = 31
                 
             }
-            if (deckStringFormattedHero === 'Mage') {
+            if (deckStringFormattedHero === 'mage') {
 
                 deckStringFormattedHero = 637
                 
             }
-            if (deckStringFormattedHero === 'Rogue') {
+            if (deckStringFormattedHero === 'rogue') {
                 deckStringFormattedHero = 930
                 
             }
-            if (deckStringFormattedHero === 'Druid') {
+            if (deckStringFormattedHero === 'druid') {
                 deckStringFormattedHero = 274
                 
             }
-            if (deckStringFormattedHero === 'Shaman') {
+            if (deckStringFormattedHero === 'shaman') {
                 deckStringFormattedHero = 1066
                 
             }
-            if (deckStringFormattedHero === 'Priest') {
+            if (deckStringFormattedHero === 'priest') {
                 deckStringFormattedHero = 813
                
             }
-            if (deckStringFormattedHero === 'Paladin') {
+            if (deckStringFormattedHero === 'paladin') {
                 deckStringFormattedHero = 671
                 
             }
-            if (deckStringFormattedHero === "Warrior") {
+            if (deckStringFormattedHero === "warrior") {
                 deckStringFormattedHero = 7
             }
+
+            console.log(deckStringFormattedHero)
+
 
             const deckStringObject = {
                 cards: deckStringFormattedCards,
                 heroes: [deckStringFormattedHero],
                 format: 1
             }
+
+            console.log(deckStringObject)
 
             res.json(deckStrings.encode(deckStringObject));
         })

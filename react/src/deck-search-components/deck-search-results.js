@@ -5,11 +5,18 @@ import DeckSearchCardTile from './deck-search-card-tile'
 import _ from 'lodash'
 import CardCardset from '../card-components/card-cardset'
 import CardPopularity from '../card-components/card-popularity'
+import axios from 'axios'
 
 export default function DeckSearchResults(props) {
 
+    const getDeckstring = id => {
+        axios.get(`/api/export/${id}`)
+        .then(result => {
+            console.log(result)
+        })
+    }
+
     const cardInfoPopover = card => {
-        console.log(card)
 
 
 
@@ -32,7 +39,6 @@ export default function DeckSearchResults(props) {
 
         let sorted = _.orderBy(deck, '_id.cost', 'asc')
 
-        console.log(sorted)
 
         return sorted.map(cardObj => {
             const card = cardObj._id
@@ -89,8 +95,6 @@ export default function DeckSearchResults(props) {
 
     const renderResults = (results) => {
         
-
-        
         return results.map(result => {
             
             let hero = result.hero
@@ -98,11 +102,12 @@ export default function DeckSearchResults(props) {
 
             const deckList = () => {
 
+
                 return (
                     <Popover className='deck-search-deck-list' id="popover-positioned-left">
                         <div>
                             {DeckList(result.cards)}
-                            <div className="btn deckstring-btn">
+                            <div className="btn deckstring-btn" onClick={() => {getDeckstring(result._id)}}>
                                 <span className="glyphicon glyphicon-share"></span> 
                                 <span> Export </span>
                             </div>
