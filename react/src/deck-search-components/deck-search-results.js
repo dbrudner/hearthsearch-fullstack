@@ -93,7 +93,7 @@ export default class DeckSearchResults extends React.Component {
                 }
             
                 return (
-                    <div key={card.cardId}> 
+                    <div className='deck-search-list-ctr' key={card.cardId}> 
                         <OverlayTrigger trigger='click' placement='right' overlay={cardInfoPopover(card)}>
                             <div className='' name={card.card} className='deck-list-tile-container'>
                                 <div>

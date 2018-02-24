@@ -891,24 +891,32 @@ select {
 	height: 242.34px;
 }
 
+.deck-search-list-ctr {
+	width: 160px;
+}
+
 .btm-mrg {
 	margin-bottom: 20px;
 }
 
+.pi-pad {
+	padding: 20px;
+}
+
 .deckstring-btn {
 	border-radius: 5px;
-	background-color: rgba(161, 33, 33, 0.774);
 	width: 100%;
+	background-color: rgba(161, 33, 33, 0.774);
 	margin-top: 15px;
 	cursor: pointer;
 	color: white;
 	border: 1px solid rgb(211, 211, 211);
 }
 
-.popover-content {
+/* .popover-content {
 	width: 188px;
-	/* padding-bottom: 15px; */
-}
+ } 
+ */
 
 .card-popularity {
 	text-align: center;
