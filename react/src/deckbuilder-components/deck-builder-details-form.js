@@ -35,7 +35,6 @@ export default class DeckBuilderDetails extends React.Component {
                 return archetype !== 'archetype'
             })
 
-            console.log(archetypes)
 
             this.setState({
                 decks: result.data,
@@ -43,7 +42,6 @@ export default class DeckBuilderDetails extends React.Component {
             })
         })
         .then(() => {
-            console.log(this.state.decks)
         })
 
 
@@ -53,8 +51,6 @@ export default class DeckBuilderDetails extends React.Component {
             this.setState({id} ,() => {
                 axios.get(`/api/deck/${this.props.match.params.deckId}`)
                 .then(res2 => {
-                    console.log(res2.data.user)
-                    console.log(this.state.id)
 
                     if (res2.data.user === this.state.id) {
                         this.setState({
@@ -92,7 +88,6 @@ export default class DeckBuilderDetails extends React.Component {
             name: this.state.deckName
         })
         .then(res => {
-            console.log(res)
             this.setState({
                 redirectTo: `/deck/${this.props.match.params.deckId}`
             })

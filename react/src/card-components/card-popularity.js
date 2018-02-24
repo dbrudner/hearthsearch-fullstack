@@ -3,7 +3,6 @@ import React from 'react'
 
 export default function CardPopularity(props) {
 
-    console.log(props.xl)
 
 
     const hero = props.hero.toLowerCase()
@@ -64,7 +63,6 @@ export default function CardPopularity(props) {
         }
         
         if (props.hero !== 'Neutral') {
-            console.log(props.xl)
             return (
                 <div>
                     {props.wideCards ? 

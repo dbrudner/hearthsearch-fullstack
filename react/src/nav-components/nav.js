@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import potato from '../images/potato.svg'
+import { Modal } from 'react-bootstrap'
+import Login from '../login'
 // import Logout from './logout'
 
 export default class Nav extends React.Component {
@@ -14,7 +16,9 @@ export default class Nav extends React.Component {
 			isLoggedIn: false,
 			email: '',
 			fireRedirect: null,
-			checkedLoggedin: false
+			checkedLoggedin: false,
+			loginModal: false
+
 		}
 	}
 
@@ -35,6 +39,19 @@ export default class Nav extends React.Component {
 		})
 	}
 
+	login = () => {
+		console.log('login')
+		this.setState({
+			loginModal: true
+		})
+	}
+
+    handleClose = () => {
+        this.setState({
+            loginModal: false
+        })
+    }
+
 	renderClasses = (array) => {
 		return array.map(item => {
 			return (
@@ -53,32 +70,9 @@ export default class Nav extends React.Component {
 		if (!this.state.checkedLoggedin) {
 			return (
 				<nav className="navbar navbar-inverse">
-					<div className="container-fluid">
-						<div className="navbar-header">
-						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span> 
-						</button>
-						</div>
-						<div className="collapse navbar-collapse" id="myNavbar">
-						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
-						</ul>
-						<ul className="nav navbar-nav navbar-right">
-							<li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
-							<li className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
-						</ul>
-						</div>
-					</div>
 				</nav>
 			)
 		}
-						// <li><Link to="/profile">{this.state.email}</Link></li>
-                        // <li><Link to="/Logout">Logout</Link></li>     
-						// <li><Link to="/import">Classes</Link></li>							
-						// <li><Link to="/import">Import</Link></li>							
-                        // <li><Link to="/Search">Search</Link></li>
 
 		if (this.state.isLoggedIn === true) {
 
@@ -108,14 +102,17 @@ export default class Nav extends React.Component {
 							<li className="nav-item hvr-float"><Link to="/import">Import</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
-							<li  className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
-							<li  className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+							{/* <li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li> */}
+							{/* <li onClick={this.login} className='hvr-float'><a><span className="glyphicon glyphicon-log-in"></span> Login</a></li> */}
+							<li className='hvr-float'><Link to='/logout'><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
 						</ul>
 						</div>
 					</div>
 				</nav>
             )
-		} else {
+		} 
+		
+		else {
 			return (
 				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
@@ -135,10 +132,13 @@ export default class Nav extends React.Component {
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							<li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
-							<li className='hvr-float'><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+							<li onClick={this.login} className='hvr-float cursor'><a><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
 						</ul>
 						</div>
 					</div>
+					<Modal show={this.state.loginModal} onHide={this.handleClose}>
+						<Login/>
+					</Modal>
 				</nav>
             )
 		}   

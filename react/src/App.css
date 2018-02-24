@@ -856,19 +856,20 @@ select {
 	width: 25%
 }
 
-.login-header {
-	text-alIgn: center;
-	font-size: 48px;
-	font-family: 'Mukta Vaani', sans-serif;
+
+input[type=password], textarea {
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #DDDDDD;
 }
 
 .login-container {
-	background-color: white;
-	margin-left: 30%;
-	margin-right: -2%;
-	border-radius: 2px;
-	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
-	padding: 50px;
+	padding-top: 20px;
 }
 
 .card-list-name {
@@ -886,6 +887,17 @@ select {
 	width: 160px;
 }
 
+.import-panel {
+	margin: 100px;
+	padding: 50px;
+}
+
+.import-hdr {
+	margin-bottom: 20px;
+	font-size: 40px;
+	font-weight: 700
+}	
+
 .desc {
 	margin-top: 10px;
 }
@@ -902,6 +914,7 @@ select {
 
 .deck-update-panel {
 	margin: 50px;
+
 	padding: 50px;
 	border-radius: 5px;
 }
@@ -973,6 +986,19 @@ select {
 	width: 79%;
 }
 
+.login-hdr {
+	text-align: center;
+	font-size: 26px;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+.login-btn {
+	width: 100px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
 input[type=text], textarea {
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
@@ -984,12 +1010,19 @@ input[type=text], textarea {
 	border: 1px solid #DDDDDD;
   }
    
-  input[type=text]:focus, textarea:focus {
+input[type=text]:focus, textarea:focus {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 	padding: 3px 0px 3px 3px;
 	margin: 5px 1px 3px 0px;
 	border: 1px solid rgba(81, 203, 238, 1);
-  }
+}
+
+input[type=password]:focus, textarea:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
 
 .card-list-header {
 	display: flex;

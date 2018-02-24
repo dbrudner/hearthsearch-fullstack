@@ -122,7 +122,10 @@ export default class DeckImport extends Component {
 	
 	render() {
 		return (
-            <div>
+            <div className='panel import-panel'>
+                <div className='import-hdr'>
+                    Import a Deck
+                </div>
                 {this.state.deck.length === 0 ? <div className='search-bar form-group'>
                     <form onSubmit={this.handleSubmit} >
                         <div className='row'>
@@ -130,7 +133,11 @@ export default class DeckImport extends Component {
                                 <input className='form-control' type="text" name="term" onChange={this.handleChange}/>													
                             </div>
                             <div className='col-xs-2'>
-                                <button type='submit' className='btn btn-primary'>Submit</button>							
+                            {this.state.deckString.length > 60 ? 
+                                <button type='submit' className='btn btn-primary'>Submit</button>							                             
+                            :
+                            <button disabled className='btn btn-danger'>Invalid Deck String</button>	
+                            }
                             </div>
                         </div>
                     </form>
@@ -138,7 +145,7 @@ export default class DeckImport extends Component {
                 :
                 <div></div>}
                 
-                {this.state.quantity === 30 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div>Upload a deck</div>}
+                {this.state.quantity === 30 ? <DeckBuilder imported format={this.state.format} hero={this.state.hero} deck={this.state.deck}/> : <div></div>}
             </div>
 		)
 	}

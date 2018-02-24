@@ -18,25 +18,21 @@ export default class SignUp extends Component {
             redirectTo: null,
             loginError: false
         }
-
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);                
-        this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = event => {
         this.setState({
             password: event.target.value
         })
     }
 
-    handleUsernameChange(event) {
+    handleUsernameChange = event => {
         this.setState({
             email: event.target.value
         })
     }
 
-    handleLogin(event) {
+    handleLogin = event => {
         console.log("HI")
         event.preventDefault();
         let email = this.state.email
@@ -65,49 +61,41 @@ export default class SignUp extends Component {
             console.log(error);
           }); 
     }
+    
 
     render() {
-
-        // const loading =  () => {
-        //     return (
-        //     <div>
-        //         Loading
-        //     </div>
-        //     )
-        // }
-            
-        
+                    
 
         return (
-            <div>
-                <Banner />
-                <div className='login jumbotron'>
-                    <img src={potato} className='login-potato center-block' />
-                    
-                </div>
-                <div className='login-container center-block text-center'>
-                    {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
-                        {this.state.loginError === 'loading' ? 
-                            <div>Loading</div>
-                            :
-                            <div/>
-                        }                     
-                    <form onSubmit={this.handleLogin}>
-                    <div className='input-field center-block text-center'>
-                        <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                        <label for='username'>Username</label>
-                    </div>
-                    <div className='input-field center-block text-center'>
-                        <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                        <label for='password'>Password</label>
+            <div className='text-center center-block login-container'>
+                {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
+                    {this.state.loginError === 'loading' ? 
+                        <div>Loading</div>
+                        :
+                        <div/>
+                    }                     
+                <form onSubmit={this.handleLogin}>
+                <div className='login-hdr'>
+                    <div>
+                        <i class="far fa-user"></i>
                     </div>
                     <div>
-                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-                        </button>
+                        Login
                     </div>
-                    </form>
                 </div>
-            </div>   
+                <hr/>
+                    <div className='input-field center-block text-center'>
+                        <input placeholder='Username' name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
+                    </div>
+                    <div className='input-field center-block text-center'>
+                        <input placeholder='Password' className='pass' name='password' type="password" value={this.state.value} onChange={this.handlePasswordChange} />
+                    </div>
+                <div className='text-center'>
+                    <button className="btn btn-primary login-btn" type="submit" name="action">Login
+                    </button>
+                </div>
+                </form>
+            </div>
         )
     }
 }
