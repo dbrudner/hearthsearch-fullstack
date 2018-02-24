@@ -40,7 +40,7 @@ export default class SignUp extends Component {
         })
     }
 
-    handleSubmit(event) {
+    handleSubmit = event => {
         console.log("HI")
         event.preventDefault();
         let username = this.state.username
@@ -57,12 +57,12 @@ export default class SignUp extends Component {
                     redirectTo: '/'
                 })
             })
+          }).then(() => {
+              this.props.handleClose()
           })
           .catch(function (error) {
             console.log(error);
           });
-
-        
     }
 
     componentWillMount() {
@@ -94,37 +94,38 @@ export default class SignUp extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div className='animated fadeIn'>
-                    <div className="jumbotron animated fadeIn">
-                        <div className='signup-container text-center '>
-                            <h1 className="display-3 animated fadeIn">Sign up!</h1>
-                            <p className="lead">I stole this shit from bootstrap.</p>
-                            <form onSubmit={this.handleSubmit}>
-                                <div>
-                                    <label>
-                                    Username:
-                                    <input name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                    Email:
-                                    <input name='email' type="text" value={this.state.value} onChange={this.handleEmailChange} />
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                    Password:
-                                    <input name='password' type="text" value={this.state.value} onChange={this.handlePasswordChange} />
-                                    </label>
-                                </div>
-                                <div>                            
-                                    <input type="submit" value="Submit" />
-                                </div>
-                            </form>
+                <div className='text-center center-block login-container'>
+                {this.state.loginError === 'error' ? <div>Login Error</div> : <div/>}
+                    {this.state.loginError === 'loading' ? 
+                        <div>Loading</div>
+                        :
+                        <div/>
+                    }                     
+                <form onSubmit={this.handleSubmit}>
+                    <div className='login-hdr'>
+                        <div>
+                            <i class="lightblue fas fa-user-plus"></i>
+                        </div>
+                        <div>
+                            Sign Up
                         </div>
                     </div>
-                </div>
+                    <hr/>
+                        <div className='input-field center-block text-center sml-mrg'>
+                            <input placeholder='Username' name='username' type="text" value={this.state.value} onChange={this.handleUsernameChange} />
+                        </div>
+                        <div className='input-field center-block text-center sml-mrg'>
+                            <input placeholder='email' className='' name='email' type="text" value={this.state.value} onChange={this.handleEmailChange} />
+                        </div>
+                        <div className='input-field center-block text-center sml-mrg'>
+                            <input placeholder='Password' className='pass' name='password' type="password" value={this.state.value} onChange={this.handlePasswordChange} />
+                        </div>
+                    <div className='text-center'>
+                        <button className="btn btn-primary login-btn" type="submit" name="action">Sign Up
+                        </button>
+                    </div>
+                </form>
+            </div>
             )
         }
     }

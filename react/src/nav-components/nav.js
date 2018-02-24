@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import potato from '../images/potato.svg'
 import { Modal } from 'react-bootstrap'
 import Login from '../login'
+import Signup from '../signup'
 // import Logout from './logout'
 
 export default class Nav extends React.Component {
@@ -17,7 +18,8 @@ export default class Nav extends React.Component {
 			email: '',
 			fireRedirect: null,
 			checkedLoggedin: false,
-			loginModal: false
+			loginModal: false,
+			signupModal: false
 
 		}
 	}
@@ -52,10 +54,34 @@ export default class Nav extends React.Component {
 		})
 	}
 
+	signup = () => {
+		this.setState({
+			signupModal: true
+		})
+	}
+
     handleClose = () => {
         this.setState({
-            loginModal: false
-        })
+			loginModal: false,
+			signupModal: false
+		}, () => {
+			axios.get('/test')
+			.then((response) => {
+				this.setState({
+					checkedLoggedin: true
+				})
+				if (response.data) {
+					this.setState(() => {
+						return {
+							isLoggedIn: true,
+							email: response.data.local.email
+						}
+					})
+				}
+			})
+		})
+		
+		
     }
 
 	renderClasses = (array) => {
@@ -137,13 +163,16 @@ export default class Nav extends React.Component {
 							<li><a href="#">Page 3</a></li>  */}
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
-							<li className='hvr-float'><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+							<li onClick={this.signup} className='hvr-float cursor'><a><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
 							<li onClick={this.login} className='hvr-float cursor'><a><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
 						</ul>
 						</div>
 					</div>
 					<Modal show={this.state.loginModal} onHide={this.handleClose}>
 						<Login/>
+					</Modal>
+					<Modal show={this.state.signupModal} onHide={this.handleClose}>
+						<Signup handleClose={this.handleClose}/>
 					</Modal>
 				</nav>
             )
