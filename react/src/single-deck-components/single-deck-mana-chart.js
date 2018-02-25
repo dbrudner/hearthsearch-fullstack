@@ -1,20 +1,22 @@
 import React from 'react';
 import {BarChart} from 'react-easy-chart';
-import DeckAverageMana from './deck-average-mana'
+import DeckAverageMana from '../deckbuilder-components/deck-average-mana'
 
 export default function DeckManaChart(props) {
+
+    console.log('chart', props.deck)
 
     var curve = []
 
     for (let i=0; i<props.deck.length; i++) {
-        if (props.deck[i].quantity === 1) {
+        if (props.deck[i].cardQuantity === 1) {
 
-            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
+            curve.push(props.deck[i]._id.cost || 0)
         } 
 
-        if (props.deck[i].quantity === 2) {
-            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
-            curve.push(props.deck[i].mana || props.deck[i].cost || 0)
+        if (props.deck[i].cardQuantity === 2) {
+            curve.push(props.deck[i]._id.cost || 0)
+            curve.push(props.deck[i]._id.cost || 0)
         }
     }
 
@@ -74,14 +76,14 @@ export default function DeckManaChart(props) {
   
             return (
                 <div className='bar-chart-container'>
-                    <div className='curve-panel-header'>
+                    <div class='curve-panel-header-single'>
                         <DeckAverageMana curve={average/curve.length || 0} />
                     </div>
                     <BarChart
                         colorBars
                         margin={{top: 0, right: 10, bottom: 0, left: 0}}
                         // barWidth={20}
-                        width={167}
+                        width={110}
                         height={80}
                         // xType={'linear'}
                         data = {[

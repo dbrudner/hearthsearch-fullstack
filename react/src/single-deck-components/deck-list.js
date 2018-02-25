@@ -1,6 +1,7 @@
 import React from 'react'
 import {OverlayTrigger, Popover} from 'react-bootstrap'
 import _ from 'lodash'
+import DeckManaChart from './single-deck-mana-chart'
 
 export default function DeckList(props) {
     const cardInfoPopover = card => {
@@ -25,11 +26,9 @@ export default function DeckList(props) {
     
         sorted = _.orderBy(sorted, '_id.cost', 'asc')
         
-        console.log(sorted)
     
         return sorted.map(cardObj => {
     
-            console.log(cardObj)
     
             const card = cardObj._id
             const quantity = cardObj.cardQuantity
@@ -83,6 +82,7 @@ export default function DeckList(props) {
 
     return (
         <div>
+            <DeckManaChart deck={props.deck} />
             {RenderDeckList(props.deck)}
         </div>
     )

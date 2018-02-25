@@ -41,9 +41,6 @@ export default class DeckSearchResults extends React.Component {
         }
 
         const cardInfoPopover = card => {
-    
-    
-    
             return (
                 <Popover>
                     <div>

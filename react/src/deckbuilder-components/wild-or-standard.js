@@ -16,19 +16,19 @@ export default function WildOrStandard(props) {
             </div>
             <div className='row'>
                 <div className='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
-                    
+                    <ReactFitText>
+                        <h3 className='text-center'>Standard</h3>
+                    </ReactFitText>
                     <div className='standard center-block'>
-                    <h3 className='text-center'>Standard</h3>
-                    
                         <img name="standard" onClick={handleClick} className='format-icon hvr-fade' src={standard} />
                     </div>
                 </div>
 
                 <div class='col-xs-6 col-sm-6 icon-cntr'>
-                
+                    <ReactFitText>
+                        <h3 className='text-center'>Wild</h3>
+                    </ReactFitText>
                     <div className='wild center-block'>
-                    <h3 className='text-center'>Wild</h3>
-                    
                         <img name="wild" onClick={handleClick} className='format-icon hvr-fade' src={wild} />
                     </div>
                 </div>
