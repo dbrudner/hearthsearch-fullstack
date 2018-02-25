@@ -140,7 +140,7 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthSearch</Link></li>
 							<li className="dropdown">
 								<a className="dropdown-toggle hvr-float" data-toggle="dropdown" href="#">Build
 								<span className="caret"></span></a>
@@ -178,7 +178,7 @@ export default class Nav extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="myNavbar">
 						<ul className="nav navbar-nav">
-							<li className=""><Link to="/" className='nav-potato-inverted'>HearthTato</Link></li>
+							<li className=""><Link to="/" className='nav-potato-inverted'>HearthSearch</Link></li>
 							{/* <li><a href="#">Page 1</a></li>
 							<li><a href="#">Page 2</a></li> 
 							<li><a href="#">Page 3</a></li>  */}

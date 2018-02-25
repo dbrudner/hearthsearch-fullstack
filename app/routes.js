@@ -162,8 +162,10 @@ module.exports = function(app, passport) {
 
     // Get one deck
     app.get('/api/deck/:deckId', function(req,res) {
-        console.log('hi')
-        db.Deck.findOne({'_id': req.params.deckId}, (err, response) => {
+        
+        db.Deck.findOne({'_id': req.params.deckId})
+        .populate('cards._id')
+        .exec((err, response) => {
             if (err) throw err;
             console.log('res', response)
             res.json(response)
