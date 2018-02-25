@@ -47,11 +47,11 @@ export default class DeckSearchBanner extends React.Component {
     render() {
         const decks = this.props.decks
 
+        console.log('decks', decks)
 
         const decksByClass = format => {
 
             const classes = ["Warrior", "Druid", "Mage", "Hunter", "Priest", "Rogue", "Warlock", "Shaman", "Paladin"].sort()
-
 
             if (format) {
                 const render = () => {
@@ -123,12 +123,13 @@ export default class DeckSearchBanner extends React.Component {
                     )
                 }
         
+                    return (
+                        <div>
+                            {render()}
+                        </div>
+                    ) 
                 
-                return (
-                    <div>
-                        {render()}
-                    </div>
-                )
+                
             }
 
             
@@ -149,40 +150,46 @@ export default class DeckSearchBanner extends React.Component {
 
         decksByClass()
 
-        return (
-            <div className='deck-search-panel'>
-                
-                <div className='deck-search-hdr'>
-                    Deck Search
-                </div>
-                <div className='text-center'>
-                    <DeckSearchbar getFilter={this.props.getFilter} />
-                </div>
-                <div className='deck-totals'>
-                    <span className='cursor'>
-                        <OverlayTrigger trigger='click' placement='left' overlay={popOverClasses('wild')}>
-                            <span>
-                                Total Wild Decks: {this.state.totalWildDecks}
-                            </span>
-                        </OverlayTrigger>
-                    </span>
-                    <span className='cursor left-mrg'>
-                        <OverlayTrigger trigger='click' placement='right' overlay={popOverClasses('standard')}>
-                            <span>
-                                Total Standard Decks: {this.state.totalStandardDecks}
-                            </span>
-                        </OverlayTrigger>
-                    </span>
-                </div>
-                <div className='text-center total-res'>
-                    <OverlayTrigger trigger='click' placement='bottom' overlay={popOverClasses()}>
+        if (this.state.totalWildDecks) {
+            return (
+                <div className='deck-search-panel'>
+                    
+                    <div className='deck-search-hdr'>
+                        Deck Search
+                    </div>
+                    <div className='text-center'>
+                        <DeckSearchbar getFilter={this.props.getFilter} />
+                    </div>
+                    <div className='deck-totals'>
                         <span className='cursor'>
-                                Total Results: {this.props.totalResults}
+                            <OverlayTrigger trigger='click' placement='left' overlay={popOverClasses('wild')}>
+                                <span>
+                                    Total Wild Decks: {this.state.totalWildDecks}
+                                </span>
+                            </OverlayTrigger>
                         </span>
-                    </OverlayTrigger>
+                        <span className='cursor left-mrg'>
+                            <OverlayTrigger trigger='click' placement='right' overlay={popOverClasses('standard')}>
+                                <span>
+                                    Total Standard Decks: {this.state.totalStandardDecks}
+                                </span>
+                            </OverlayTrigger>
+                        </span>
+                    </div>
+                    <div className='text-center total-res'>
+                        <OverlayTrigger trigger='click' placement='bottom' overlay={popOverClasses()}>
+                            <span className='cursor'>
+                                    Total Results: {this.props.totalResults}
+                            </span>
+                        </OverlayTrigger>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return <div/>
+        }
+
+        
     }
 
     
