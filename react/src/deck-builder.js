@@ -362,7 +362,9 @@ class App extends Component {
 									</div>
 									<div className='col-xs-2'>
 										
-										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
+										{/* <div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}> */}
+										<div className='animated fadeIn'>
+										
 											<div className='decklist-bldr-cntr'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
