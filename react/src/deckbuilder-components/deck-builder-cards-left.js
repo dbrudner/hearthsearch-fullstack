@@ -35,7 +35,11 @@ export default function DeckCardsLeft(props) {
             </div>
         )
     } else {
-        return null
+        return (
+            <div>
+                0/30
+            </div>
+        )
     }
 
     

@@ -128,10 +128,6 @@ export default class DeckSearchResults extends React.Component {
                         <Popover className='deck-search-deck-list' id="popover-positioned-left">
                             <div>
                                 {DeckList(result.cards)}
-                                    <div className="btn deckstring-btn" onClick={() => getDeckstring(result._id)}>
-                                        <span className="glyphicon glyphicon-share"></span> 
-                                        <span> Export </span>
-                                    </div>
                             </div>
                         </Popover>
                     )
@@ -162,12 +158,17 @@ export default class DeckSearchResults extends React.Component {
                                 </div>
                                 <div className='quick-peek'>
                                     <OverlayTrigger trigger='click' placement='right' overlay={deckList()}>
-                                        <div className="btn btn-info hvr-fade">
+                                        <span className="btn btn-info hvr-fade">
                                             <span className="glyphicon glyphicon-folder-open"></span>
                                             <span className='smlleftmrg'>Expand Deck List</span>
-                                        </div>
+                                        </span>
                                     </OverlayTrigger>
+                                    <span className="btn deckstring-btn" onClick={() => getDeckstring(result._id)}>
+                                        <span className="glyphicon glyphicon-share"></span> 
+                                        <span> Export </span>
+                                    </span>
                                 </div>
+                                
                             </div>
                             <div>
                                 <div>
@@ -190,7 +191,9 @@ export default class DeckSearchResults extends React.Component {
                     <Modal.Title>Deck String</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {this.state.deckString || 'Loading'}
+                    <div className='deckstring'>
+                        {this.state.deckString || 'Loading'}
+                    </div>
                 </Modal.Body>
                 </Modal>
                 {renderResults(this.props.matches)}

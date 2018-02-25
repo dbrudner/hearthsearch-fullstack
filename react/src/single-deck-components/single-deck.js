@@ -137,7 +137,7 @@ export default class SingleDeck extends React.Component {
                             </div>
                         </div>
                         <div className='col-lg-2'>
-                            <div className='decklist-cntr panel'>
+                            <div className='decklist-cntr-single panel'>
                                 <div className='decklistctr'>
                                     <DeckList deck={this.state.cards}/>
                                 </div>

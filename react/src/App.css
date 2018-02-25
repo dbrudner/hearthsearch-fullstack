@@ -994,18 +994,21 @@ input[type=password], textarea {
 	margin-bottom: 20px;
 }
 
+.deckstring {
+	font-size: 10px;
+}
+
 .pi-pad {
 	padding: 20px;
 }
 
 .deckstring-btn {
 	border-radius: 5px;
-	width: 100%;
 	background-color: rgba(161, 33, 33, 0.774);
-	margin-top: 15px;
 	cursor: pointer;
 	color: white;
 	border: 1px solid rgb(211, 211, 211);
+	margin-left: 10px;
 }
 
 /* .popover-content {
@@ -1218,12 +1221,21 @@ svg {
 	overflow-x: hidden;
 }
 
+.decklist-cntr-single {
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 177px;
+	overflow-x: hidden;
+}
+
 .decklist-bldr-cntr {
+	border: solid rgb(201, 201, 201) 1px !important;
 	padding-top: 30px;
 	padding-bottom: 50px;
 	width: 200px;
 	overflow-x: hidden;
-	margin-bottom: 250px;
+	margin-bottom: 200px;
 }
 
 
