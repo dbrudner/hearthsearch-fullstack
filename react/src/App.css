@@ -1221,6 +1221,14 @@ svg {
 	overflow-x: hidden;
 }
 
+
+
+.dl-col {
+	background-color: white;
+	margin-top: -15px;
+	padding-left: 50px;
+}
+
 .decklist-cntr-single {
 	margin-top: 20px;
 	padding-top: 10px;
@@ -1319,6 +1327,10 @@ svg {
 
 .slide-pane__close {
 	opacity: 0 !important;
+}
+
+.fix-top-margin {
+	margin-top: -90px;
 }
 
 .yflow {

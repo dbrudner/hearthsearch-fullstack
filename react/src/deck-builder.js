@@ -37,7 +37,8 @@ class App extends Component {
 			update: true,
 			format: '',
 			deck: [],
-			quantity: 0
+			quantity: 0,
+			fixMargin: false
 		}
 
 	}
@@ -202,13 +203,32 @@ class App extends Component {
 
 		// 	this.setState({cards: data.data});
 
+		window.addEventListener('scroll', this.onScroll, false);
+
 	}
 
 	componentWillMount() {
 		Modal.setAppElement('body');		
 
-		
+		window.removeEventListener('scroll', this.onScroll, false);
 
+	}
+
+	onScroll = () => {
+
+		if (window.scrollY >= 90) {
+			console.log('ayyy')
+			this.setState({
+				fixMargin: true
+			})
+		}
+
+		if (window.scrollY < 90) {
+			console.log('ayyy')
+			this.setState({
+				fixMargin: false
+			})
+		}
 	}
 
 	getFormat = format => {
@@ -341,7 +361,8 @@ class App extends Component {
 										/>
 									</div>
 									<div className='col-lg-2'>
-										<div className='affix yflow'>
+										
+										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin' : 'affix yflow'}>
 											<div className='decklist-bldr-cntr panel'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
