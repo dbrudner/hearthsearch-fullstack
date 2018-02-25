@@ -54,8 +54,9 @@ export default class SingleDeck extends React.Component {
         } 
         
         else {
-            <div>
-            </div>
+            return (
+                <div/>
+            )
         }
 
         
