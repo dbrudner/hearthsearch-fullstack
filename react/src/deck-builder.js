@@ -327,7 +327,7 @@ class App extends Component {
 									</div>
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1100px)'>
-									<div className='col-lg-6'>
+									<div className='col-xs-6'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
 										</div>
@@ -360,7 +360,7 @@ class App extends Component {
 											buildMode={true}        
 										/>
 									</div>
-									<div className='col-lg-2'>
+									<div className='col-xs-2'>
 										
 										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
 											<div className='decklist-bldr-cntr'>

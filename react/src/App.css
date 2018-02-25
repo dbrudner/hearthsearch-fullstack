@@ -19,15 +19,13 @@ html {
 
 
 .deck-search-panel {
-
-	box-shadow: 2px 2px 2px 2px rgba(209,209,209,1);
-
 	border-radius: 5px;
 	background-color: white;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	margin-right: 2%;
 	margin-top: 30px;
+	border: 1px solid lightgray;
 }
 
 .deckbox-hero {
@@ -134,8 +132,7 @@ html {
 
 .deck-search-hdr {
 	font-size: 64px;
-	padding-top: 30px;
-	margin-top: 30px;
+	margin-top: 20px;
 	font-weight: 700;
 	text-align: center;
 	margin-bottom: 30px;
@@ -249,6 +246,7 @@ html {
 
 .cards {
 	margin-top: 20px;
+	border: 1px solid lightgray;
 }
 
 .snd-brd-btn {
@@ -868,10 +866,10 @@ textarea {
 .search-bar-container {
 	background-color: rgb(255, 255, 255);
 	padding: 50px;
-	padding-top: 20px;
+	padding-top: 0;
 	padding-bottom: 50px;
 	border-radius: 2px;
-	box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+	border: 1px solid lightgray
 }
 
 .searchbar-header {
@@ -1244,6 +1242,7 @@ svg {
 	width: 200px;
 	overflow-x: hidden;
 	margin-bottom: 200px;
+	background-color: white;
 }
 
 
@@ -1267,20 +1266,9 @@ svg {
 	background-color: rgb(255, 255, 255)
 }
 
-.panel {
-	border: #46007c solid 0px;
-	
-	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	box-shadow: 9px 9px 7px -5px rgba(201,201,201,1);	
-}
-
 .build-mode-list {
 	background-color: white;
-	border-radius: 10px;
-	-webkit-box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);
-	-moz-box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);
-	box-shadow: 6px 6px 5px -5px rgba(201,201,201,1);	
+	border-radius: 3px;
 }
 
 .msg-fade-in{
