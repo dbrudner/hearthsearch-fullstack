@@ -291,7 +291,7 @@ class App extends Component {
 					<div className='deck-builder-container'>
 							<div className='row mrg'>
 								<MediaQuery query='(min-device-width: 1100px)'>
-									<div className='col-xs-2'>
+									<div className='col-xs-offset-1 col-xs-2'>
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</MediaQuery>
@@ -307,64 +307,12 @@ class App extends Component {
 									</div>
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1100px)'>
-									<MediaQuery query='(max-device-width: 1700px)'>		
-										<div className='col-xs-6'>
-											<div className='search-bar-container'>
-												<Searchbar onSearch={this.getFilter}/>
-											</div>
-											<CardList
-												deck={this.state.deck} 
-												render={50}
-												nameSort={this.state.nameSort}
-												sortingMethod={this.state.sortingMethod}
-												cards={this.state.cards} 
-												term={this.state.term} 
-												rarity={this.state.rarity}
-												cardSet={this.state.cardSet}
-												mana={this.state.mana}
-												attack={this.state.attack}
-												health={this.state.health}
-												minMana={this.state.minMana}
-												maxMana={this.state.maxMana}
-												minHealth={this.state.minHealth}
-												maxHealth={this.state.maxHealth}
-												minAttack={this.state.minAttack}
-												maxAttack={this.state.maxAttack}
-												gameFormat={this.state.format}
-												ability={this.state.ability}
-												ability2={this.state.ability2}
-												tribe={this.state.tribe}
-												type={this.state.type}
-												getCard = {this.getCard}
-												hero={this.props.match ? this.props.match.params.class : this.state.hero}
-												buildMode={true}        
-											/>
-										</div>
-										<div className='col-xs-4 wtf'>
-											<div className='your-deck-container'>
-												<DeckBuilderList
-													format={this.props.format || this.state.format} 
-													deck={this.state.deck} 
-													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-													card={this.state.card}
-													removeCard={this.removeCard}
-													quantity={this.state.quantity}
-												/>
-											</div>
-										</div>
-									</MediaQuery>
-								</MediaQuery>
-								<MediaQuery query='(min-device-width: 1701px)'>
-									<div className='col-lg-8'>
+									<div className='col-lg-6'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
-											<MediaQuery query='(max-device-width: 1400px)'>
-												<button onClick={() => this.setState({ isFiltersPaneOpen: true })}>Click me tofilters pane!</button>
-											</MediaQuery>
 										</div>
 										<CardList
 											format={this.state.format}									
-											largeScreen
 											deck={this.state.deck} 
 											render={50}
 											nameSort={this.state.nameSort}
@@ -394,7 +342,7 @@ class App extends Component {
 									</div>
 									<div className='col-lg-2'>
 										<div className='affix yflow'>
-											<div className='big-deck-container'>
+											<div className='decklist-bldr-cntr panel'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
 													deck={this.state.deck} 

@@ -3,36 +3,57 @@ import wild from '../images/wild.svg'
 import standard from '../images/standard.svg'
 import ReactFitText from 'react-fittext'
 
-export default function WildOrStandard(props) {
+export default class WildOrStandard extends React.Component{
 
-    const handleClick = (event) => {
+    constructor(props) {
+        super(props)
 
-        props.getFormat(event.target.name)
+        this.state = {
+            format: ''
+        }
     }
 
-    return (
-        <div className='wild-or-standard-cntr'>
-            <div className='format-header'>
-            </div>
-            <div className='row'>
-                <div className='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
-                    <ReactFitText>
-                        <h3 className='text-center'>Standard</h3>
-                    </ReactFitText>
-                    <div className='standard center-block'>
-                        <img name="standard" onClick={handleClick} className='format-icon hvr-fade' src={standard} />
-                    </div>
-                </div>
+    handleClick = event => {
 
-                <div class='col-xs-6 col-sm-6 icon-cntr'>
-                    <ReactFitText>
-                        <h3 className='text-center'>Wild</h3>
-                    </ReactFitText>
-                    <div className='wild center-block'>
-                        <img name="wild" onClick={handleClick} className='format-icon hvr-fade' src={wild} />
+        this.props.getFormat(event.target.name)
+    }
+
+    handleHover = event => {
+
+        console.log(event.target.name)
+
+
+        this.setState({
+            format: event.target.name
+        })
+    }
+
+
+    render() {
+        return (
+            <div className='wild-or-standard-cntr'>
+                <div className='format-header'>
+                </div>
+                <div className='animated fadeIn format-hdr text-center'>
+                    {this.state.format}
+                </div>  
+                <div className='row'>
+                    <div className='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
+                        <div className='standard center-block'>
+                            <img onMouseEnter={this.handleHover} name="Standard" onClick={this.handleClick} className='format-icon hvr-fade' src={standard} />
+                        </div>
+                    </div>
+    
+                    <div class='col-xs-6 col-sm-6 icon-cntr'>
+                        <div className='wild center-block'>
+                            <img onMouseEnter={this.handleHover} name="Wild" onClick={this.handleClick} className='format-icon hvr-fade' src={wild} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
+    
+    
 }

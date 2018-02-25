@@ -148,12 +148,9 @@ export default class Deck extends Component {
                         </div>
                     </div>
                     <hr/>
-                    <div className='mana-chart-container'>
                         <DeckManaChart deck={this.props.deck} curve={this.state.curve}/>
-                    </div>
-                        <DeckDust dust={this.state.dust} />
                     <hr/>
-                    <div className='card-deck-cntr'>
+                    <div className='bldr-card-deck-cntr'>
                         {cardDeck}
                     </div>
                 </div>

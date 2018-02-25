@@ -520,6 +520,10 @@ select {
 	margin-left: 10px;
 }
 
+.bldr-card-deck-cntr {
+	margin-left: 20px;
+}
+
 .single-view-deck-btn {
 	text-align: center;
 	margin-top: 10px;
@@ -603,7 +607,8 @@ select {
 
 .yr-deckfull-screen {
 	font-weight: 700;
-	font-size: 36px;
+	font-size: 20px;
+	margin-bottom: 5px;
 }
 
 .yr-deck {
@@ -712,7 +717,7 @@ textarea {
 	/* background-color: gray; */
 	background: linear-gradient(to right, rgb(0, 0, 0), rgba(141, 141, 141, 0.24)); /* Standard syntax (must be last) */
 	position: absolute;
-	height: 36px;
+	height: 36.86px;
 	width: 160px;
 	z-index: 4;
 	cursor:pointer;
@@ -982,6 +987,7 @@ input[type=password], textarea {
 
 .deck-search-list-ctr {
 	width: 160px;
+	margin-top: 4px;
 }
 
 .btm-mrg {
@@ -1061,10 +1067,10 @@ input[type=password], textarea {
 }
 
 input[type=text], textarea {
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-	-o-transition: all 0.30s ease-in-out;
+	-webkit-transition: all 0.10s ease-in-out;
+	-moz-transition: all 0.10s ease-in-out;
+	-ms-transition: all 0.10s ease-in-out;
+	-o-transition: all 0.10s ease-in-out;
 	outline: none;
 	padding: 3px 0px 3px 3px;
 	margin: 5px 1px 3px 0px;
@@ -1195,13 +1201,30 @@ label {
 	font-size: 24px;
 }
 
-.decklist-cntr {
-	margin-top: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 177px;
+.next-page-btn-fail {
+	font-size: 10px;
 }
 
+svg {
+	border-bottom: 1px solid rgb(150, 150, 150);
+	border-left: 1px solid rgb(160, 160, 160);
+}
+
+.decklist-cntr {
+	margin-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	width: 177px;
+	overflow-x: hidden;
+}
+
+.decklist-bldr-cntr {
+	padding-top: 30px;
+	padding-bottom: 50px;
+	width: 200px;
+	overflow-x: hidden;
+	margin-bottom: 250px;
+}
 
 
 .decklistctr {
@@ -1263,13 +1286,15 @@ label {
 }
 
 .format-icon {
-	background-color: rgb(175, 175, 175);
-	-webkit-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	-moz-box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	box-shadow: 11px 11px 5px -5px rgba(201,201,201,1);
-	border-radius: 20px;
-	cursor: pointer;
 	width: 75%;
+	cursor: pointer;
+}
+
+.format-hdr {
+	font-size: 48px;
+	margin-bottom: 20px;
+	font-weight: 700
+
 }
 
 .potato {
