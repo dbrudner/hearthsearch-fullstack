@@ -327,7 +327,7 @@ class App extends Component {
 									</div>
 								</SlidingPane>
 								<MediaQuery query='(min-device-width: 1100px)'>
-									<div className='col-xs-6'>
+									<div className='col-xs-7'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
 										</div>
@@ -360,21 +360,23 @@ class App extends Component {
 											buildMode={true}        
 										/>
 									</div>
-									<div className='col-xs-2'>
+									<div className='col-xs-2 list-ctr'>
 										
 										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
+										<div className='decklisthdr'>Your Deck</div>
 										{/* <div className='animated fadeIn'> */}
-										
-											<div className='decklist-bldr-cntr'>
-												<DeckBuilderList 
-													format={this.props.format || this.state.format} 
-													deck={this.state.deck} 
-													hero={this.props.match ? this.props.match.params.class : this.state.hero} 
-													card={this.state.card}
-													removeCard={this.removeCard}
-													fullScreen='full-screen'
-													quantity={this.state.quantity}										
-												/>
+											<div className='omg'>
+												<div className='decklist-bldr-cntr'>
+													<DeckBuilderList 
+														format={this.props.format || this.state.format} 
+														deck={this.state.deck} 
+														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+														card={this.state.card}
+														removeCard={this.removeCard}
+														fullScreen='full-screen'
+														quantity={this.state.quantity}										
+													/>
+												</div>
 											</div>
 										</div>
 									</div>

@@ -132,9 +132,6 @@ export default class Deck extends Component {
             return (
                 <div className=''>
                     <div className='yr-deck-hdr'>
-                        <div className={'yr-deck' + this.props.fullScreen}>
-                            Your Deck
-                        </div>
                         <div>
                             <DeckCardsLeft deck={this.props.deck} />
                         </div>

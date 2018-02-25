@@ -118,11 +118,11 @@ html {
 }
 
 .navbar-inverse {
-	background-color:  rgb(122, 52, 122) !important;
+	background-color:  rgb(50, 0, 83) !important;
 }
 
 .dropdown-toggle:active, .open .dropdown-toggle {
-	background:rgb(122, 52, 122) !important; 
+	background:rgb(50, 0, 83) !important; 
 	color:rgb(255, 217, 0) !important;
 }
 
@@ -1219,7 +1219,6 @@ svg {
 }
 
 
-
 .dl-col {
 	background-color: white;
 	margin-top: -15px;
@@ -1236,28 +1235,33 @@ svg {
 
 .decklist-bldr-cntr {
 	border: solid rgb(201, 201, 201) 1px !important;
-	padding-top: 30px;
 	padding-bottom: 30px;
 	width: 200px;
 	overflow-x: hidden;
 	margin-bottom: 100px;
 	background-color: white;
+	margin-left: 30px;
+	margin-top: 10px;
+
 }
 
+.omg {
+	margin-left: -10px;
+}
 
 .decklistctr {
 	margin-left: 10px;
 }
 
 .panel-heading {
-	background-color:  rgb(122, 52, 122);
+	background-color:  rgb(50, 0, 83);
 	color: rgb(255, 255, 255) !important;
 	border: #46007c solid 0px;
 	font-size: 16px;
 }
 
 .filter-panel-heading {
-	background-color:  rgb(122, 52, 122) !important;	
+	background-color:  rgb(50, 0, 83) !important;	
 }
 
 .panel-body {
@@ -1309,6 +1313,13 @@ svg {
 	margin-top: -15px;
 }
 
+.list-ctr {
+	margin-top: -15px;
+	background-color: white;
+	height: 5000px;
+	padding: 0
+}
+
 .potato {
 	width: 100px;
 }
@@ -1322,12 +1333,29 @@ svg {
 }
 
 .fix-top-margin {
-	margin-top: -90px;
+	margin-top: -87px;
 }
 
 .yflow {
 	max-height: 100%;
 	overflow-y: auto;
+	width: 100%;
+}
+
+.list-ctr {
+	border-left: 2px solid rgb(172, 172, 172); 
+	
+}
+
+.decklisthdr {
+	background-color: rgb(50, 0, 83);
+	color: white;
+	font-size: 32px;
+	border-bottom: solid gray 2px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    font-family: 'Arimo', sans-serif;
 }
 
 
