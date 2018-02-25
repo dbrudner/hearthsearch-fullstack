@@ -24,21 +24,18 @@ module.exports = function(app, passport) {
     app.get('/api/decks/classes', (req, res) => {
         db.Deck.find()
         .exec((err, result) => {
-            console.log(result)
             res.json(result)
         }) 
     })
 
     // Use this to update lighforge scores for each card
     app.get('/api/lightforge', (req, res) => {
-        console.log("HI?")
         axios.get('http://thelightforge.com/api/TierList/Latest?locale=us')
         .then(result => {
             result.data.Cards.forEach(card => {
                 db.Card.findOneAndUpdate({'name': card.Name}, {'lightForgeScore': card.Scores})
                 .exec((error, result2) => {
                     if (error) throw error                    
-                    console.log('updated?')                    
                 })
             })
         })
@@ -167,7 +164,6 @@ module.exports = function(app, passport) {
         .populate('cards._id')
         .exec((err, response) => {
             if (err) throw err;
-            console.log('res', response)
             res.json(response)
         })
     })
@@ -261,7 +257,6 @@ module.exports = function(app, passport) {
     // Not tested, assumed wokring (2/11)    
     app.post('/deck/downvote/:deckId', function(req, res) {
         db.Deck.findOneAndUpdate({ '_id': req.params.deckId}, {$inc: {downvotes: 1}, $push: {'downvoters': 'meanie'}}).exec((res) => {
-            console.log(res)
         })
     })
 
@@ -271,7 +266,6 @@ module.exports = function(app, passport) {
     app.post('/card/upvote/:cardId', function(req, res) {
         db.Card.findOneAndUpdate({ 'cardId': req.params.cardId}, {$inc: {upvotes: 1}, $push: {'upvoters': 'guy'}}).exec((err, res) => {
             if (err) throw err;
-            console.log(res)
         })
     })
 
@@ -281,7 +275,6 @@ module.exports = function(app, passport) {
     app.post('/card/downvote/:cardId', function(req, res) {
         db.Card.findOneAndUpdate({ 'cardId': req.params.cardId}, {$inc: {downvotes: 1}, $push: {'downvoters': 'guy'}}).exec((err, res) => {
             if (err) throw err;
-            console.log(res)
         })
     })
 
@@ -313,7 +306,6 @@ module.exports = function(app, passport) {
 
     
     app.post('/update/hearthpwn', (req, res) => {
-        console.log('updateding?')
         db.Deck.find({'source': 'HearthPwn', 'cardsAdded': false})
         .exec((error, result) => {
             console.log('found', result)
@@ -322,7 +314,6 @@ module.exports = function(app, passport) {
                 db.Deck.findOneAndUpdate({'_id': deck._id}, {'cardsAdded': true})
                 .exec((error, result) => {
                     if (error) throw error
-                    console.log(result)
                 })
             })
 
@@ -348,7 +339,6 @@ module.exports = function(app, passport) {
                             
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.druid': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
                                 
                             })
                         }
@@ -356,7 +346,6 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'hunter') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.hunter': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
                                 
                             })
                         }
@@ -364,7 +353,6 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'mage') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.mage': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
                                 
                             })
                         }
@@ -372,7 +360,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'paladin') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.paladin': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -380,7 +368,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'priest') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.priest': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -388,7 +376,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'rogue') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.rogue': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -396,7 +384,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'shaman') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.shaman': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -404,7 +392,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'warlock') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.warlock': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -412,7 +400,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'warrior') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsWild.warrior': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -422,7 +410,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'druid') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.druid': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -430,7 +418,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'hunter') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.hunter': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -438,7 +426,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'mage') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.mage': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -446,7 +434,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'paladin') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.paladin': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -454,7 +442,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'priest') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.priest': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -462,7 +450,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'rogue') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.rogue': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -470,7 +458,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'shaman') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.shaman': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -478,7 +466,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'warlock') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.warlock': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -486,7 +474,7 @@ module.exports = function(app, passport) {
                         if (hero.toLowerCase() === 'warrior') {
                             db.Card.findOneAndUpdate({ '_id': id}, {$inc: {'inclusionsStandard.warrior': quantity}}).exec((err, result) => {
                                 if (err) throw err;
-                                console.log(result)
+                                
                                 
                             })
                         }
@@ -681,7 +669,7 @@ module.exports = function(app, passport) {
     // Post a new deck comment
     app.post('/newdeckcomment', function(req, res) {
         db.DeckComment.create({
-            user: req.body.user,
+            user: req.body.userId,
             comment: req.body.comment,
             deckId: req.body.deckId,
             date: new Date(),
@@ -700,9 +688,13 @@ module.exports = function(app, passport) {
     })
 
     // Get all comments for a deck
-    app.get('/api/deck/comments', function(req, res) {
-        db.DeckComment.find({'deckId': req.body.deckId})
-        .exec(result => json(result))
+    app.get('/api/deck/comments/:deckId', function(req, res) {
+        console.log(req.params.deckId)
+        db.DeckComment.find({'deckId': req.params.deckId})
+        .exec((error, result) => {
+            console.log('hey', result)
+            res.json(result)
+        })
     });
 
     // Route for posting a new card. Not needed for anything, but since I made it already, left it here.

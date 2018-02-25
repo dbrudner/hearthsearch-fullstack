@@ -16,25 +16,21 @@ export default class SignUp extends Component {
             email: ''
         }
 
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);                
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleUsernameChange(event) {
+    handleUsernameChange = event => {
         this.setState({
             username: event.target.value
         })
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = event => {
         this.setState({
             password: event.target.value
         })
     }
 
-    handleEmailChange(event) {
+    handleEmailChange = event => {
         this.setState({
             email: event.target.value
         })
@@ -46,6 +42,10 @@ export default class SignUp extends Component {
         let username = this.state.username
         let email = this.state.email
         let password = this.state.password
+
+        console.log(username)
+        console.log(email)
+        console.log(password)
 
         axios.post('/signup', {
             email, username, password
