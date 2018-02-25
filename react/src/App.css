@@ -1343,8 +1343,7 @@ svg {
 }
 
 .list-ctr {
-	border-left: 2px solid rgb(172, 172, 172); 
-	
+	border-left: 2px solid rgb(172, 172, 172); 	
 }
 
 .decklisthdr {
@@ -1352,10 +1351,10 @@ svg {
 	color: white;
 	font-size: 32px;
 	border-bottom: solid gray 2px;
-	padding-left: 10px;
+	padding-left: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-    font-family: 'Arimo', sans-serif;
+	font-family: 'Arimo', sans-serif;
 }
 
 

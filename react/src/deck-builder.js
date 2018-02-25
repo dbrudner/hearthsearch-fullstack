@@ -310,8 +310,8 @@ class App extends Component {
 				</div>
 					<div className='deck-builder-container'>
 							<div className='row mrg'>
-								<MediaQuery query='(min-device-width: 1100px)'>
-									<div className='col-xs-offset-1 col-xs-2'>
+								<MediaQuery query='(min-device-width: 801px)'>
+									<div className='col-xs-3'>
 										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</MediaQuery>
@@ -326,7 +326,64 @@ class App extends Component {
 										<FiltersSlide imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
 									</div>
 								</SlidingPane>
-								<MediaQuery query='(min-device-width: 1100px)'>
+								<MediaQuery query='(min-device-width: 801px)'>
+									<MediaQuery query='(max-device-width: 1300px)'>
+									
+									<div className='col-xs-6'>
+										<div className='search-bar-container'>
+											<Searchbar onSearch={this.getFilter}/>
+										</div>
+										<CardList
+											format={this.state.format}									
+											deck={this.state.deck} 
+											render={50}
+											nameSort={this.state.nameSort}
+											sortingMethod={this.state.sortingMethod}
+											cards={this.state.cards} 
+											term={this.state.term} 
+											rarity={this.state.rarity}
+											cardSet={this.state.cardSet}
+											mana={this.state.mana}
+											attack={this.state.attack}
+											health={this.state.health}
+											minMana={this.state.minMana}
+											maxMana={this.state.maxMana}
+											minHealth={this.state.minHealth}
+											maxHealth={this.state.maxHealth}
+											minAttack={this.state.minAttack}
+											maxAttack={this.state.maxAttack}
+											gameFormat={this.state.format}
+											ability={this.state.ability}
+											ability2={this.state.ability2}
+											tribe={this.state.tribe}
+											type={this.state.type}
+											getCard = {this.getCard}
+											hero={this.props.match ? this.props.match.params.class : this.state.hero}
+											buildMode={true}        
+										/>
+									</div>
+									<div className='col-xs-3 list-ctr'>
+										
+										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
+										<div className='decklisthdr'>Your Deck</div>
+										{/* <div className='animated fadeIn'> */}
+											<div className='omg'>
+												<div className='decklist-bldr-cntr'>
+													<DeckBuilderList 
+														format={this.props.format || this.state.format} 
+														deck={this.state.deck} 
+														hero={this.props.match ? this.props.match.params.class : this.state.hero} 
+														card={this.state.card}
+														removeCard={this.removeCard}
+														fullScreen='full-screen'
+														quantity={this.state.quantity}										
+													/>
+												</div>
+											</div>
+										</div>
+									</div>
+									</MediaQuery>
+									<MediaQuery query='(min-device-width: 1301px'>
 									<div className='col-xs-7'>
 										<div className='search-bar-container'>
 											<Searchbar onSearch={this.getFilter}/>
@@ -380,9 +437,10 @@ class App extends Component {
 											</div>
 										</div>
 									</div>
+									</MediaQuery>
 								</MediaQuery>	
 								
-								<MediaQuery query='(max-device-width: 1099px)'>							
+								<MediaQuery query='(max-device-width: 800px)'>							
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
 												<MediaQuery query='(min-device-width: 601px)'>							
