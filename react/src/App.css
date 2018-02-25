@@ -227,7 +227,7 @@ html {
 .nav-potato-inverted {
 	font-size: 24px;
 	font-weight: 700;
-	color:  rgb(122, 52, 122) !important;
+	color:  rgb(50, 0, 83) !important;
 	background-color: rgb(255, 217, 0) !important;
 	border: 2px solid;
 	border-radius: 5px;
@@ -351,7 +351,7 @@ hr {
 	padding-bottom: 3px;
 	margin-left: -23px;
 	margin-bottom: 15px;
-	background-color: purple;
+	background-color: rgb(50, 0, 83);
 	color: white;
 }
 
@@ -526,7 +526,7 @@ select {
 	margin-top: 10px;
 	height: 50px;
 	width: 100%;
-	background-color: rgb(104, 61, 104);
+	background-color: rgb(50, 0, 83);
 	color: white;
 }
 

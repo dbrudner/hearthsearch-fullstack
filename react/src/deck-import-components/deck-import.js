@@ -155,7 +155,7 @@ export default class DeckImport extends Component {
                                     <input className='form-control' type="text" name="term" onChange={this.handleChange}/>													
                                 </div>
                                 <div className='text-center'>
-                                {this.state.deckString.length > 60 ? 
+                                {this.state.deckString.length > 40 ? 
                                     <button type='submit' className='import-btn btn btn-primary'>Submit</button>							                             
                                 :
                                 <button disabled className='import-btn btn btn-danger'>Invalid Deck String</button>	

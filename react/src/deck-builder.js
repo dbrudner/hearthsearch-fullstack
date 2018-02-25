@@ -444,10 +444,11 @@ class App extends Component {
 										<div className='search-bar-container'>
 												<Searchbar onSearch={this.getFilter}/>
 												<MediaQuery query='(min-device-width: 601px)'>							
-												<div className='pane-btns-container'>
-													
-													<button className='btn filter-btn' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters - click or swipe right</button>
-													<button className='btn deck-btn' onClick={() => this.setState({ isPaneOpen: true })}>Deck  - click or swipe left</button>
+												<div>
+													<button className='btn filter-btn full-width' onClick={() => this.setState({ isFiltersPaneOpen: true })}>Filters - click or swipe right</button>
+												</div>
+												<div>												
+													<button className='btn deck-btn full-width' onClick={() => this.setState({ isPaneOpen: true })}>Deck  - click or swipe left</button>
 												</div>
 												</MediaQuery>
 												<MediaQuery query='(max-device-width: 600px)'>
