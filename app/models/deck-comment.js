@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 
 var DeckCommentSchema = new Schema({
     user: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
 
     comment: {

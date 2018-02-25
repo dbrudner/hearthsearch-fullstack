@@ -687,10 +687,27 @@ module.exports = function(app, passport) {
         })
     })
 
+    app.get('/api/user/:username', (req, res) => {
+        db.User.find({username: username})
+        .exec((error, result) => {
+            if (error) throw error
+            res.json(result)
+        })
+    })
+
+    app.post('/api/user/email/', (req, res) => {
+        db.User.findOneAndUpdate({_id: req.body.id}, {email: req.body.email})
+        .exec((error, result) => {
+            if (error) throw error
+            res.json(result)
+        })
+    })
+
     // Get all comments for a deck
     app.get('/api/deck/comments/:deckId', function(req, res) {
         console.log(req.params.deckId)
         db.DeckComment.find({'deckId': req.params.deckId})
+        .populate('user')
         .exec((error, result) => {
             console.log('hey', result)
             res.json(result)

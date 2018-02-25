@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import DeckList from './deck-list'
+import Comments from './single-deck-comments'
+
 
 import {Grid, Row, Col} from 'react-bootstrap'
 
@@ -15,7 +17,8 @@ export default class SingleDeck extends React.Component {
             deck: null,
             username: null,
             comment: '',
-            id: ''
+            id: '',
+            comments: []
         }
     }
 
@@ -36,13 +39,12 @@ export default class SingleDeck extends React.Component {
         axios.post('/newdeckcomment', data)
         .then(res => console.log(res))
     }
-
+    
     componentDidMount() {
 
-        console.log(`/api/deck/comments/${this.props.match.params.deckId}`)
 
         axios.get(`/api/deck/comments/${this.props.match.params.deckId}`)
-        .then(res => console.log(res))
+        .then(res => this.setState({comments: res.data}))
 
         axios.get(`/api/export/${this.props.match.params.deckId}`)
         .then(res => {
@@ -62,7 +64,6 @@ export default class SingleDeck extends React.Component {
 
         axios.get('/test')
         .then(res => {
-            console.log('user', res.data)
 
             if (res.data.local) {
                 this.setState({
@@ -114,6 +115,7 @@ export default class SingleDeck extends React.Component {
                                     {this.state.deck.source === 'HearthPwn' ? <div> This Deck is from HearthPwn.com</div> : this.state.deck.description || "No description"}
                                     </div>
                                 </div>
+                                <div>
                                 {this.state.username ? 
                                     <div className='single-deck-comments'>
                                         <form onSubmit={this.handleSubmit}>
@@ -124,11 +126,14 @@ export default class SingleDeck extends React.Component {
                                         </form>
                                     </div>
                                     :
-                                    <div>
+                                    <div className='login-helper'>
                                         Login to post comments
                                     </div>
                                 }
-                                
+                                </div>
+                                <div className='comments-cntr'>
+                                    <Comments comments={this.state.comments} />
+                                </div>
                             </div>
                         </div>
                         <div className='col-lg-2'>

@@ -656,6 +656,13 @@ select {
 	font-size: 16px;
 }
 
+.login-helper {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-style: italic;
+	color: gray
+}
+
 textarea {
     resize: none;
 }

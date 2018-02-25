@@ -47,17 +47,27 @@ export default class SignUp extends Component {
         console.log(email)
         console.log(password)
 
+        // axios.get('/api/user/:username')
+        // .then(res => {
+
+        // })
+
         axios.post('/signup', {
             email, username, password
           })
           .then(response => {
-            console.log(response);
+            axios.post('/api/user/email/', {email})
+            
+          }).then(resp => {
+            console.log('resp', resp)
             this.setState(() => {
                 return ({
                     redirectTo: '/'
                 })
             })
-          }).then(() => {
+          })
+          
+          .then(() => {
               this.props.handleClose()
           })
           .catch(function (error) {
