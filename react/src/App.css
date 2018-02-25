@@ -1305,6 +1305,10 @@ svg {
 
 }
 
+.tpmr {
+	margin-top: -15px;
+}
+
 .potato {
 	width: 100px;
 }
@@ -1318,7 +1322,7 @@ svg {
 }
 
 .fix-top-margin {
-	margin-top: -102px;
+	margin-top: -90px;
 }
 
 .yflow {
