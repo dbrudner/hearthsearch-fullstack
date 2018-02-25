@@ -216,14 +216,14 @@ class App extends Component {
 
 	onScroll = () => {
 
-		if (window.scrollY >= 90) {
+		if (window.scrollY >= 80) {
 			console.log('ayyy')
 			this.setState({
 				fixMargin: true
 			})
 		}
 
-		if (window.scrollY < 90) {
+		if (window.scrollY < 80) {
 			console.log('ayyy')
 			this.setState({
 				fixMargin: false
@@ -362,8 +362,8 @@ class App extends Component {
 									</div>
 									<div className='col-lg-2'>
 										
-										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin' : 'affix yflow'}>
-											<div className='decklist-bldr-cntr panel'>
+										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
+											<div className='decklist-bldr-cntr'>
 												<DeckBuilderList 
 													format={this.props.format || this.state.format} 
 													deck={this.state.deck} 
