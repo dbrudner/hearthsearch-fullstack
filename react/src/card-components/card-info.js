@@ -132,9 +132,8 @@ export default class CardInfo extends Component{
 				<div className=''>
 					<div className='card-list-header'>
 						<div>
-							<div>
+							<div className='no-oflow'>
 								<span><CardClass hero={this.props.class}/></span>
-								<span className='cardset'> - {this.props.cardset}</span>
 							</div>
 							<div className='some-marg'>
 								
@@ -149,6 +148,7 @@ export default class CardInfo extends Component{
 							</div>
 						</div>
 					</div>
+						<div>{this.props.cardset}</div>
 					<div>
 						<CardQuantity name={this.props.name} deck={this.props.deck} />
 					</div>
@@ -182,9 +182,8 @@ export default class CardInfo extends Component{
 			<div className=''>
 				<div className='card-list-header'>
 					<div>
-						<div>
+						<div className='no-oflow'>
 							<span><CardClass hero={this.props.class}/></span>
-							<span> - {this.props.cardset}</span>
 						</div>
 					</div>
 					<div>
@@ -193,6 +192,7 @@ export default class CardInfo extends Component{
 						</div>
 					</div>
 				</div>
+				<div>{this.props.cardset}</div>
 				<div>
 						{this.props.decksInfo ? <CardPopularity
 							xl={this.props.xl}

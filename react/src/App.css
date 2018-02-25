@@ -663,6 +663,10 @@ select {
 	color: gray
 }
 
+.modal-dialog {
+	z-index: 1000;
+}
+
 textarea {
     resize: none;
 }
@@ -808,6 +812,13 @@ textarea {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+/* .no-oflow {
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 12px
+} */
 
 
 .x-axis {
