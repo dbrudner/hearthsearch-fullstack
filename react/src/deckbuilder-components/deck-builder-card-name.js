@@ -64,7 +64,7 @@ export default function DeckCardName(props) {
     // )
     
     return (
-        <div className='animated fadeInRight deck-search-list-ctr' key={props.cardId}> 
+        <div className='animated fadeInRight deck-search-list-ctr' key={props.cardId} onClick={removeCard}> 
             <div className='' name={props.card} className='animated fadeInRight deck-list-tile-container'>
                 <div>
                     <span  className='animated fadeInRight deck-list-cn'>
