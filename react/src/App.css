@@ -1415,8 +1415,6 @@ svg {
 	width: 100%;
 }
 
-
-
 .bar-chart-container {
 	margin-left: 23px;
 }
@@ -1433,16 +1431,3 @@ svg {
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
-
-/* .filter-header, .filter-dropdown {
-	float:left; 
-	display:inline;
-	width: 49%;
-} */
-
-/* @media screen and (min-width: 1100px) {
-	.list-group-item, .filter-panel {
-		margin-left: 300px;
-		margin-right: 300px;
-	}
-} */
