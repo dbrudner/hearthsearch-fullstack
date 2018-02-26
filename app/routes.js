@@ -3,7 +3,7 @@ var path = require('path')
 var mongoose = require('mongoose');
 var db = require('./models/index');
 var bodyParser = require('body-parser')
-var deckStrings = require('deckStrings')
+var deckstrings = require('deckstrings')
 
 var cardsData = require('../card-data/cards.json')
 
@@ -83,11 +83,11 @@ module.exports = function(app, passport) {
     app.get('/api/import/:deckString', function(req, res) {
 
         let deckString = req.params.deckString.replace('$', '/')
-        const decoded = deckStrings.decode(deckString)
+        const decoded = deckstrings.decode(deckString)
         res.json(decoded)
     })
 
-    // makes a deckString for a deck
+    
     app.get('/api/export/:deckId', function(req, res) {
         db.Deck.findOne({'_id': req.params.deckId})
         .populate('cards._id')
@@ -147,7 +147,7 @@ module.exports = function(app, passport) {
             }
 
 
-            res.json(deckStrings.encode(deckStringObject));
+            res.json(deckstrings.encode(deckStringObject));
         })
     })
 

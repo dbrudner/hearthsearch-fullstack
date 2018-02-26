@@ -35,7 +35,6 @@ const App = () => {
                 <Route exact path='/import' component={DeckImporter} />                
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/profile/:userId' component={Profile} />
-                <Route exact path='/profile' component={Profile} />                
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/logout' component={Logout} />
                 <Route exact path='/build' component={ChooseClass} />

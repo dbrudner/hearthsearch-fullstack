@@ -28,8 +28,7 @@ export default function Comments(props) {
                     <div className='comment-body'>
                         {comment.comment}
                     </div>
-                    <hr/>
-                    
+                    <hr/>                    
                 </div>
             )
         })
