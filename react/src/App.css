@@ -518,7 +518,10 @@ select {
 }
 
 .bldr-card-deck-cntr {
-	margin-left: 20px;
+	margin-left: 18px;
+}
+.hr-mrg {
+	margin-left: 5px
 }
 
 .single-view-deck-btn {
@@ -984,8 +987,8 @@ input[type=password], textarea {
 
 .deck-search-list-ctr {
 	width: 160px;
-	margin-top: 4px;
-}
+	margin-top: 4px; 	
+}	
 
 .btm-mrg {
 	margin-bottom: 20px;
@@ -1234,15 +1237,13 @@ svg {
 }
 
 .decklist-bldr-cntr {
-	border: solid rgb(201, 201, 201) 1px !important;
 	padding-bottom: 30px;
 	width: 200px;
 	overflow-x: hidden;
 	margin-bottom: 100px;
 	background-color: white;
-	margin-left: 30px;
 	margin-top: 10px;
-
+	padding-left: 10px;
 }
 
 .omg {
@@ -1317,7 +1318,10 @@ svg {
 	margin-top: -15px;
 	background-color: white;
 	height: 5000px;
-	padding: 0
+	padding: 0;
+	width: 200px;
+	border-left: 2px solid rgb(172, 172, 172); 	
+	border-right: 2px solid rgb(172, 172, 172);
 }
 
 .potato {
@@ -1342,19 +1346,17 @@ svg {
 	width: 100%;
 }
 
-.list-ctr {
-	border-left: 2px solid rgb(172, 172, 172); 	
-}
-
 .decklisthdr {
 	background-color: rgb(50, 0, 83);
 	color: white;
 	font-size: 32px;
 	border-bottom: solid gray 2px;
-	padding-left: 20px;
+	padding-left: 25px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	width: 198px;
 	font-family: 'Arimo', sans-serif;
+
 }
 
 

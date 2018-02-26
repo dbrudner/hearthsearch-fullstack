@@ -259,10 +259,13 @@ export default class CardList extends React.Component {
 			}
 		}
 		
+
 		
 
 		if (thisProps.tribe && thisProps.tribe !== 'None') {
 			matches = matches.filter(function(card) {
+				console.log(card)
+				console.log(thisProps.tribe)				
 				return card.race === thisProps.tribe;
 			})
 		}

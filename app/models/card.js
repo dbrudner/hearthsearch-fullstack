@@ -178,6 +178,10 @@ var CardSchema = new Schema({
         type: String
     },
 
+    race: {
+        type: String
+    },
+
     text: {
         type: String
     },

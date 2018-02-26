@@ -215,6 +215,7 @@ class App extends Component {
 	}
 
 	onScroll = () => {
+		console.log(window.scrollY)
 
 		if (window.scrollY >= 80) {
 			console.log('ayyy')
@@ -311,9 +312,18 @@ class App extends Component {
 					<div className='deck-builder-container'>
 							<div className='row mrg'>
 								<MediaQuery query='(min-device-width: 801px)'>
-									<div className='col-xs-3'>
-										<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
-									</div>
+									<MediaQuery query='(max-device-width: 1600px)'>
+									
+										<div className='col-xs-3'>
+											<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
+										</div>
+									</MediaQuery>
+									<MediaQuery query='(min-device-width: 1600px)'>
+									
+										<div className='col-xs-2 col-xs-offset-1'>
+											<Filters imported={this.props.imported} deckBuilder={true} getFilter={this.getFilter}/>
+										</div>
+									</MediaQuery>
 								</MediaQuery>
 								<SlidingPane
 									isOpen={ this.state.isFiltersPaneOpen }
@@ -363,8 +373,7 @@ class App extends Component {
 										/>
 									</div>
 									<div className='col-xs-3 list-ctr'>
-										
-										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
+									<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
 										<div className='decklisthdr'>Your Deck</div>
 										{/* <div className='animated fadeIn'> */}
 											<div className='omg'>
@@ -381,6 +390,7 @@ class App extends Component {
 												</div>
 											</div>
 										</div>
+
 									</div>
 									</MediaQuery>
 									<MediaQuery query='(min-device-width: 1301px'>
@@ -418,7 +428,6 @@ class App extends Component {
 										/>
 									</div>
 									<div className='col-xs-2 list-ctr'>
-										
 										<div className={this.state.fixMargin ? 'affix yflow fix-top-margin animated fadeIn' : 'affix yflow animated fadeIn'}>
 										<div className='decklisthdr'>Your Deck</div>
 										{/* <div className='animated fadeIn'> */}
