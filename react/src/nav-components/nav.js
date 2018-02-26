@@ -119,7 +119,7 @@ export default class Nav extends React.Component {
 
 		if (!this.state.checkedLoggedin) {
 			return (
-				<nav className="navbar navbar-inverse">
+				<nav className="navbar navbar-inverse navbar-static-top">
 				</nav>
 			)
 		}
@@ -129,7 +129,7 @@ export default class Nav extends React.Component {
 			console.log('logged in')
 
 			return (
-				<nav className="navbar navbar-inverse">
+				<nav className="navbar navbar-inverse navbar-static-top">
 					<div className="container-fluid">
 						<div className="navbar-header">
 						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -167,7 +167,7 @@ export default class Nav extends React.Component {
 		
 		else {
 			return (
-				<nav className="navbar navbar-inverse">
+				<nav className="navbar navbar-inverse navbar-static-top">
 					<div className="container-fluid">
 						<div className="navbar-header">
 						<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
