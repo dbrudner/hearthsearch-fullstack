@@ -471,13 +471,14 @@ class App extends Component {
 											<div>
 												<SlidingPane
 													isOpen={ this.state.isPaneOpen }
-													width='300px'
+													width='200px'
 													onRequestClose={ () => {
 														this.setState({ isPaneOpen: false });
 													}}>
 													<div className='deck-builder-list-container'>
 														<div className='filters-block'>
 														</div>
+														<div className='top-mrg'>
 														<DeckBuilderList 
 															format={this.props.format || this.state.format} 
 															deck={this.state.deck} 
@@ -485,6 +486,7 @@ class App extends Component {
 															card={this.state.card}
 															removeCard={this.removeCard}
 														/>
+														</div>
 													</div>
 												</SlidingPane>
 											</div>

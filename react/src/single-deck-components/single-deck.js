@@ -115,6 +115,9 @@ export default class SingleDeck extends React.Component {
                                     {this.state.deck.source === 'HearthPwn' ? <div> This Deck is from HearthPwn.com</div> : this.state.deck.description || "No description"}
                                     </div>
                                 </div>
+                                <div className='comments-cntr'>
+                                    <Comments comments={this.state.comments} />
+                                </div>
                                 <div>
                                 {this.state.username ? 
                                     <div className='single-deck-comments'>
@@ -131,9 +134,7 @@ export default class SingleDeck extends React.Component {
                                     </div>
                                 }
                                 </div>
-                                <div className='comments-cntr'>
-                                    <Comments comments={this.state.comments} />
-                                </div>
+                                
                             </div>
                         </div>
                         <div className='col-lg-2'>

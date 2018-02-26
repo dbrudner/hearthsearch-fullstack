@@ -3,28 +3,33 @@ import { Link } from 'react-router-dom'
 
 export default function Comments(props) {
 
-    console.log(props.comments)
+    console.log('comments', props.comments)
 
     const renderComments = comments => {
 
         return comments.map(comment => {
-
+            let date = comment.date.split('T')
+            let time = date[1]
+            date = date[0]
+            time = time.split('.')[0]
+            
             return (
                 <div className='comments-panel'>
-                    <div className='user-comment flex'>
-                        <div>
-                        <Link to='/user'>
-                            {comment.user.local.email}
-                        </Link>
+                    <div>
+                        <div className='comments-user'>
+                            <Link to='/user'>
+                                {comment.user.local.email}
+                            </Link>
                         </div>
                         <div className='date'>
-                            Date
+                            {date}
                         </div>
                     </div>
-                    <hr/>
                     <div className='comment-body'>
                         {comment.comment}
                     </div>
+                    <hr/>
+                    
                 </div>
             )
         })

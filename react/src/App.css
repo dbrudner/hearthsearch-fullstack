@@ -51,9 +51,37 @@ html {
 	border: 1px solid rgb(182, 182, 182) !important;
 }
 
+.comments-user {
+	font-weight: 700;
+	margin-left: 10px;
+}
+
+.date {
+	font-style: italic;
+	margin-left: 10px;
+}
+
+.time {
+	font-style: italic;
+}
+
 .deck-box {
 	display: flex;
 	justify-content: space-between;
+}
+
+.comment-body {
+	margin-left: 10px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.user-comment {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
 }
 
 .deck-search-fltrs-panel {
@@ -1330,6 +1358,25 @@ svg {
 
 .slide-pane__header {
 	flex: 0 0 0px !important;
+}
+
+.comments-cntr {
+	padding-top: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid lightgray;
+	border-bottom: none;
+}
+
+
+
+.top-mrg {
+	margin-top: 50px;
+	margin-left: -30px;
+}
+
+.top-mrg-slide {
+	margin-top: 40px;
 }
 
 .slide-pane__close {

@@ -88,7 +88,9 @@ class Home extends Component {
 								this.setState({ isFiltersPaneOpen: false });
 							}}>
 							<div>
-								<FiltersSlide imported={this.props.imported} fit='search' getFilter={this.getFilter}/>
+								<div className='top-mrg-slide'>
+									<FiltersSlide imported={this.props.imported} fit='search' getFilter={this.getFilter}/>
+								</div>
 							</div>
 						</SlidingPane>
 						<div className='row'>

@@ -35,7 +35,7 @@ export default class WildOrStandard extends React.Component{
                 <div className='format-header'>
                 </div>
                 <div className='animated fadeIn format-hdr text-center'>
-                    {this.state.format}
+                    {this.state.format || 'Choose Format'}
                 </div>  
                 <div className='row'>
                     <div className='col-xs-6 col-sm-6 icon-cntr animated fadeIn'>
